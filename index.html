@@ -384,6 +384,99 @@
     padding: 0 16px;
   }
   @media print { .sound { display: none; } }
+
+  /* Tablet — shots 3 → 2 col, mini player adjustments */
+  @media (max-width: 1100px) {
+    .page { padding: 40px 32px 64px; }
+    .shots { grid-template-columns: repeat(2, 1fr); }
+    .candidates { grid-template-columns: 1fr; }
+    .masthead h1 { font-size: 36px; }
+  }
+
+  /* Phone — single column, stacked masthead, compact UI */
+  @media (max-width: 720px) {
+    body { font-size: 14px; }
+    .page { padding: 24px 16px 56px; }
+    header.masthead {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .masthead .title-block { text-align: left; }
+    .masthead h1 { font-size: 30px; line-height: 1.1; }
+    .masthead .eyebrow { font-size: 10px; letter-spacing: 0.16em; }
+    .brand-block { justify-items: start; gap: 10px; }
+    .masthead .meta { min-width: 0; }
+    .masthead .meta strong { font-size: 11px; }
+    .intro {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      margin-bottom: 32px;
+    }
+    .intro p { font-size: 15px; }
+    .intro .stats { grid-template-rows: none; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .stat { padding-bottom: 4px; }
+    .stat span { font-size: 14px; }
+    .beat { margin-bottom: 28px; }
+    .beat-head {
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      grid-template-areas: "num title" "num meta";
+    }
+    .beat-num { grid-area: num; font-size: 36px; }
+    .beat-title { grid-area: title; font-size: 18px; }
+    .beat-title .sub { display: block; margin-left: 0; margin-top: 2px; font-size: 12px; }
+    .beat-meta { grid-area: meta; text-align: left; font-size: 10px; }
+    .shots { grid-template-columns: 1fr; gap: 12px; }
+    .shot .body { padding: 12px 14px 14px; }
+    .shot .title { font-size: 15px; }
+    .shot .desc { font-size: 13px; }
+    .shot:hover { transform: none; }
+    .shot:hover .frame::after { display: none; }
+    .play-bar { top: 8px; margin-bottom: -28px; }
+    .play-btn { padding: 10px 16px; font-size: 11px; letter-spacing: 0.12em; }
+    .sound-head {
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      grid-template-areas: "num title" "num meta";
+    }
+    .sound-head .num { grid-area: num; font-size: 36px; }
+    .sound-head h2 { grid-area: title; font-size: 18px; }
+    .sound-head h2 .sub { display: block; margin-left: 0; margin-top: 2px; font-size: 12px; }
+    .sound-head .meta { grid-area: meta; text-align: left; font-size: 10px; }
+    .track-loader {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .track-loader button { width: 100%; }
+    .candidates { gap: 10px; }
+    /* Lightbox compact */
+    .lightbox-head { grid-template-columns: 1fr; gap: 6px; padding: 12px 16px; }
+    .lightbox-head .badge { font-size: 9px; }
+    .lightbox-head .title { font-size: 14px; }
+    .lightbox-head .controls { flex-wrap: wrap; gap: 4px; }
+    .lightbox-head button { padding: 6px 10px; font-size: 10px; }
+    .lightbox-stage { padding: 12px; }
+    .lightbox-frame { width: 96vw; }
+    .lightbox-foot {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 12px 16px 16px;
+    }
+    .lightbox-foot .desc { font-size: 12px; }
+    .lightbox-foot .nav { text-align: left; font-size: 10px; }
+    .lightbox-foot .progress { flex-wrap: wrap; }
+    .lightbox-foot .dot { width: 5px; height: 5px; }
+    /* Mini player — narrower, anchored bottom on phone */
+    .mini-player {
+      width: calc(100vw - 24px);
+      max-width: 360px;
+      right: 12px;
+      bottom: 12px;
+    }
+    .mini-tab { font-size: 9px; padding: 7px 2px; letter-spacing: 0.08em; }
+  }
   .play-bar {
     position: sticky;
     top: 16px;
@@ -1152,22 +1245,25 @@
   function startMusicAtSlideshow() {
     const action = function() {
       try {
-        awaitingSeekTo = F1_START_SEC;
+        // Highlight F1 tab
+        document.querySelectorAll('.mini-tab').forEach(function(t){
+          t.classList.toggle('active', t.getAttribute('data-track') === '27qC3KK5wjQzyNenY53fep');
+        });
+        // Load F1 and immediately pause to suppress an audible 0:00 burst
         spotifyController.loadUri(F1_URI);
-        // Belt-and-suspenders: also try to seek directly after a short delay
-        // in case the playback_update event fires too early to be useful.
-        var attempts = 0;
-        var trySeek = function() {
-          if (awaitingSeekTo == null) return; // playback_update already handled it
-          attempts++;
-          try {
-            spotifyController.seek(F1_START_SEC);
-            spotifyController.play();
-          } catch(e) {}
-          if (attempts < 6) setTimeout(trySeek, 350);
-          else awaitingSeekTo = null;
-        };
-        setTimeout(trySeek, 350);
+        try { spotifyController.pause(); } catch(e) {}
+        // Aggressive multi-attempt seek+play. Each attempt re-seeks before playing,
+        // so even if an earlier attempt landed at 0:00 (because the track wasn't
+        // ready yet) the next attempt forces the playhead back to 0:20.
+        var delays = [600, 1100, 1700, 2400, 3200, 4200];
+        delays.forEach(function(d){
+          setTimeout(function(){
+            try {
+              spotifyController.seek(F1_START_SEC);
+              spotifyController.play();
+            } catch(e) {}
+          }, d);
+        });
       } catch(e) {}
     };
     if (spotifyController) action(); else pendingMusicAction = action;
