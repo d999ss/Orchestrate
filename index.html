@@ -678,24 +678,24 @@
     <div class="candidates">
       <div class="candidate">
         <div class="candidate-head">
-          <div class="label"><span class="pos">01</span>a good man with a broken heart · LoVibe.</div>
+          <div class="label"><span class="pos">01</span>F1 · Hans Zimmer (F1® The Movie Original Score)</div>
           <button class="clear" onclick="clearSlot(0)">Clear</button>
         </div>
-        <iframe id="slot-0" src="https://open.spotify.com/embed/track/07fNxq0gkGFZpAYCTd0v2A?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe id="slot-0" src="https://open.spotify.com/embed/track/27qC3KK5wjQzyNenY53fep?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
       <div class="candidate">
         <div class="candidate-head">
-          <div class="label"><span class="pos">02</span>starly · Slowed · LONOWN, riserayss</div>
+          <div class="label"><span class="pos">02</span>a good man with a broken heart · LoVibe.</div>
           <button class="clear" onclick="clearSlot(1)">Clear</button>
         </div>
-        <iframe id="slot-1" src="https://open.spotify.com/embed/track/2ao4kVf8DsGghi3mUGaVEr?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe id="slot-1" src="https://open.spotify.com/embed/track/07fNxq0gkGFZpAYCTd0v2A?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
       <div class="candidate">
         <div class="candidate-head">
-          <div class="label"><span class="pos">03</span>F1 · Hans Zimmer (F1® The Movie Original Score)</div>
+          <div class="label"><span class="pos">03</span>starly · Slowed · LONOWN, riserayss</div>
           <button class="clear" onclick="clearSlot(2)">Clear</button>
         </div>
-        <iframe id="slot-2" src="https://open.spotify.com/embed/track/27qC3KK5wjQzyNenY53fep?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe id="slot-2" src="https://open.spotify.com/embed/track/2ao4kVf8DsGghi3mUGaVEr?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
       <div class="candidate">
         <div class="candidate-head">
@@ -1058,9 +1058,9 @@
 <div class="mini-player" id="miniPlayer" aria-label="Music player">
   <div class="mini-player-handle" id="miniPlayerHandle" title="Drag to move"></div>
   <div class="mini-player-tabs">
+    <button class="mini-tab active" data-track="27qC3KK5wjQzyNenY53fep" data-label="F1">F1</button>
     <button class="mini-tab" data-track="07fNxq0gkGFZpAYCTd0v2A" data-label="LoVibe.">LoVibe.</button>
     <button class="mini-tab" data-track="2ao4kVf8DsGghi3mUGaVEr" data-label="starly">starly</button>
-    <button class="mini-tab active" data-track="27qC3KK5wjQzyNenY53fep" data-label="F1">F1</button>
     <button class="mini-tab" data-track="53KH5aEFGi0PMlwAvpCT5t" data-label="Track 4">Track 4</button>
   </div>
   <div id="miniPlayerEmbed"></div>
@@ -1124,28 +1124,56 @@
   const ADVANCE_MS = 3200;
 
   const F1_URI = 'spotify:track:27qC3KK5wjQzyNenY53fep';
+  const F1_START_SEC = 20;
   let spotifyController = null;
   let pendingMusicAction = null;
+  let awaitingSeekTo = null;
+
   window.onSpotifyIframeApiReady = function(IFrameAPI) {
     const element = document.getElementById('miniPlayerEmbed');
     const options = { uri: F1_URI, width: '100%', height: 80 };
     IFrameAPI.createController(element, options, function(EmbedController) {
       spotifyController = EmbedController;
+      EmbedController.addListener('playback_update', function(e){
+        if (awaitingSeekTo == null) return;
+        if (e && e.data && (e.data.duration > 0 || e.data.position >= 0)) {
+          var target = awaitingSeekTo;
+          awaitingSeekTo = null;
+          try {
+            spotifyController.seek(target);
+            spotifyController.play();
+          } catch(err) {}
+        }
+      });
       if (pendingMusicAction) { pendingMusicAction(); pendingMusicAction = null; }
     });
   };
+
   function startMusicAtSlideshow() {
     const action = function() {
       try {
+        awaitingSeekTo = F1_START_SEC;
         spotifyController.loadUri(F1_URI);
-        setTimeout(function(){
-          try { spotifyController.seek(20); spotifyController.play(); } catch(e) {}
-        }, 600);
+        // Belt-and-suspenders: also try to seek directly after a short delay
+        // in case the playback_update event fires too early to be useful.
+        var attempts = 0;
+        var trySeek = function() {
+          if (awaitingSeekTo == null) return; // playback_update already handled it
+          attempts++;
+          try {
+            spotifyController.seek(F1_START_SEC);
+            spotifyController.play();
+          } catch(e) {}
+          if (attempts < 6) setTimeout(trySeek, 350);
+          else awaitingSeekTo = null;
+        };
+        setTimeout(trySeek, 350);
       } catch(e) {}
     };
     if (spotifyController) action(); else pendingMusicAction = action;
   }
   function pauseMusic() {
+    awaitingSeekTo = null;
     if (spotifyController) { try { spotifyController.pause(); } catch(e) {} }
   }
   function openSlideshow(startIndex) {
