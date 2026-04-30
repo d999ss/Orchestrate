@@ -539,6 +539,26 @@
     display: none;
   }
   .mini-player.active { display: block; }
+  .mini-player-handle {
+    height: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.0));
+    border-bottom: 1px solid var(--border);
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+  .mini-player-handle:active { cursor: grabbing; }
+  .mini-player-handle::before {
+    content: "";
+    width: 32px;
+    height: 3px;
+    background: var(--ink-dim);
+    border-radius: 999px;
+    opacity: 0.6;
+  }
+  .mini-player.dragging { transition: none !important; box-shadow: 0 16px 50px rgba(0,0,0,0.8); }
   .mini-player-tabs {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1015,6 +1035,7 @@
   </footer>
 
 <div class="mini-player" id="miniPlayer" aria-label="Music player">
+  <div class="mini-player-handle" id="miniPlayerHandle" title="Drag to move"></div>
   <div class="mini-player-tabs">
     <button class="mini-tab" data-track="07fNxq0gkGFZpAYCTd0v2A" data-label="LoVibe.">LoVibe.</button>
     <button class="mini-tab" data-track="2ao4kVf8DsGghi3mUGaVEr" data-label="starly">starly</button>
@@ -1184,6 +1205,60 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openSlideshow(idx); }
       });
     });
+    (function setupMiniPlayerDrag(){
+      var mp = document.getElementById('miniPlayer');
+      var handle = document.getElementById('miniPlayerHandle');
+      if (!mp || !handle) return;
+      var dragging = false;
+      var startX = 0, startY = 0;
+      var origLeft = 0, origTop = 0;
+      function onPointerDown(e) {
+        var rect = mp.getBoundingClientRect();
+        mp.style.left = rect.left + 'px';
+        mp.style.top = rect.top + 'px';
+        mp.style.right = 'auto';
+        mp.style.bottom = 'auto';
+        origLeft = rect.left;
+        origTop = rect.top;
+        var p = e.touches ? e.touches[0] : e;
+        startX = p.clientX;
+        startY = p.clientY;
+        dragging = true;
+        mp.classList.add('dragging');
+        e.preventDefault();
+      }
+      function onPointerMove(e) {
+        if (!dragging) return;
+        var p = e.touches ? e.touches[0] : e;
+        var dx = p.clientX - startX;
+        var dy = p.clientY - startY;
+        var nl = Math.max(8, Math.min(window.innerWidth - mp.offsetWidth - 8, origLeft + dx));
+        var nt = Math.max(8, Math.min(window.innerHeight - mp.offsetHeight - 8, origTop + dy));
+        mp.style.left = nl + 'px';
+        mp.style.top = nt + 'px';
+      }
+      function onPointerUp() {
+        if (!dragging) return;
+        dragging = false;
+        mp.classList.remove('dragging');
+        try { localStorage.setItem('miniPlayerPos', JSON.stringify({left: mp.style.left, top: mp.style.top})); } catch(e) {}
+      }
+      handle.addEventListener('mousedown', onPointerDown);
+      window.addEventListener('mousemove', onPointerMove);
+      window.addEventListener('mouseup', onPointerUp);
+      handle.addEventListener('touchstart', onPointerDown, {passive: false});
+      window.addEventListener('touchmove', onPointerMove, {passive: false});
+      window.addEventListener('touchend', onPointerUp);
+      try {
+        var saved = JSON.parse(localStorage.getItem('miniPlayerPos') || 'null');
+        if (saved && saved.left && saved.top) {
+          mp.style.left = saved.left;
+          mp.style.top = saved.top;
+          mp.style.right = 'auto';
+          mp.style.bottom = 'auto';
+        }
+      } catch(e) {}
+    })();
     var miniTabs = document.querySelectorAll('.mini-tab');
     miniTabs.forEach(function(tab){
       tab.addEventListener('click', function(){
