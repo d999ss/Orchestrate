@@ -8,7 +8,7 @@ Storyboard and previz package for **GE Vernova × Bttr** "Orchestrate 2026" Dire
 
 | Path | What |
 |------|------|
-| `storyboard.html` | Self-contained interactive storyboard. 27 sub-shots across 9 beats, embedded Spotify candidates, fullscreen slideshow. Open in any browser. |
+| `index.html` | Self-contained interactive storyboard. 27 sub-shots across 9 beats, embedded Spotify candidates, fullscreen slideshow. Open in any browser. |
 | `frames/` | Nine 16:9 reference frames extracted from the original storyboard PDF (1280×720 PNG). Used as `start_image` references for hero-shot generation. |
 | `subshots/` | 18 newly generated sub-shot mp4s (Seedance 2.0 std, 1080p, 4s each). Pair with the v3 hero shots in `../ge-previz-v3/` for the full 27-shot edit. |
 | `bttr-favicon.svg` / `bttr-favicon-dark.svg` | Bttr. wordmark assets pulled from makebttr.com. |
@@ -40,7 +40,7 @@ Storyboard and previz package for **GE Vernova × Bttr** "Orchestrate 2026" Dire
 ## Usage
 
 ```bash
-open storyboard.html
+open index.html
 ```
 
 Click **Play Slideshow** for fullscreen review. Paste any Spotify track URL into the loader to audition music candidates.
