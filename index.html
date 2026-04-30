@@ -1290,17 +1290,14 @@
     document.getElementById('lb-playpause').textContent = 'Pause';
     document.getElementById('lightbox').classList.add('active');
     document.getElementById('miniPlayer').classList.add('active');
-    document.querySelectorAll('.mini-tab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-track') === '27qC3KK5wjQzyNenY53fep'); });
     renderShot();
     startTimer();
-    startMusicAtSlideshow();
     document.body.style.overflow = 'hidden';
   }
   function closeSlideshow() {
     document.getElementById('lightbox').classList.remove('active');
     document.getElementById('miniPlayer').classList.remove('active');
     stopTimer();
-    pauseMusic();
     document.body.style.overflow = '';
   }
   function renderShot() {
