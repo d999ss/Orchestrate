@@ -468,14 +468,26 @@
     .lightbox-foot .nav { text-align: left; font-size: 10px; }
     .lightbox-foot .progress { flex-wrap: wrap; }
     .lightbox-foot .dot { width: 5px; height: 5px; }
-    /* Mini player — narrower, anchored bottom on phone */
+    /* Mini player — bottom bar instead of floating widget on phone */
     .mini-player {
-      width: calc(100vw - 24px);
-      max-width: 360px;
-      right: 12px;
-      bottom: 12px;
+      width: 100vw !important;
+      max-width: none !important;
+      left: 0 !important;
+      right: 0 !important;
+      top: auto !important;
+      bottom: 0 !important;
+      border-radius: 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: none !important;
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.6);
     }
-    .mini-tab { font-size: 9px; padding: 7px 2px; letter-spacing: 0.08em; }
+    .mini-player-handle { display: none; }
+    .mini-tab { font-size: 10px; padding: 9px 2px; letter-spacing: 0.08em; }
+    .mini-player iframe { height: 80px; }
+    /* When slideshow is active on mobile, push lightbox content above the bar */
+    .lightbox.active { padding-bottom: 0; }
+    .lightbox-foot { padding-bottom: 132px; }
   }
   .play-bar {
     position: sticky;
