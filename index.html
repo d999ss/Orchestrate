@@ -509,6 +509,32 @@
     .lightbox.active { padding-bottom: 0; }
     .lightbox-foot { padding-bottom: 132px; }
   }
+  .play-floater {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 800;
+    background: var(--lime);
+    color: #000;
+    border: none;
+    padding: 14px 22px 14px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    box-shadow: 0 12px 32px rgba(166, 255, 0, 0.22), 0 2px 8px rgba(0,0,0,0.4);
+    transition: transform 0.12s, filter 0.12s, box-shadow 0.12s;
+  }
+  .play-floater:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 16px 40px rgba(166, 255, 0, 0.32), 0 2px 8px rgba(0,0,0,0.5); }
+  .play-floater svg { width: 14px; height: 14px; }
+  @media (max-width: 720px) {
+    .play-floater { right: 12px; bottom: 12px; padding: 11px 16px 11px 14px; font-size: 11px; }
+  }
   .play-bar {
     position: sticky;
     top: 16px;
@@ -1068,12 +1094,13 @@
   #board-branded-matrix .vds-frame .frame { margin-bottom: 14px; }
   #board-branded-matrix .vds-legend {
     border-top: 1px solid var(--border);
-    padding: 28px 0 12px;
+    border-bottom: 1px solid var(--border);
+    padding: 22px 0;
     display: grid;
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 160px 1fr;
     gap: 32px;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
   }
   #board-branded-matrix .vds-legend-label {
     font-family: var(--display);
@@ -1455,18 +1482,11 @@
 <div class="page">
 
   <nav class="board-nav" role="tablist" aria-label="Storyboards">
-    <button class="board-tab active" data-board="kick-to-grid" role="tab" aria-selected="true">From Kick to Grid</button>
-    <button class="board-tab" data-board="branded-matrix" role="tab" aria-selected="false">Branded Matrix</button>
+    <button class="board-tab active" data-board="branded-matrix" role="tab" aria-selected="true">Branded Matrix</button>
+    <button class="board-tab" data-board="kick-to-grid" role="tab" aria-selected="false">From Kick to Grid</button>
   </nav>
 
-  <div class="board active" id="board-kick-to-grid">
-
-  <div class="play-bar">
-    <button class="play-btn" onclick="openSlideshow()">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      Play Slideshow
-    </button>
-  </div>
+  <div class="board" id="board-kick-to-grid">
 
   <header class="masthead">
     <div class="brand-block">
@@ -1894,25 +1914,52 @@
 
   </div><!-- /board-kick-to-grid -->
 
-  <div class="board" id="board-branded-matrix">
-  <div class="board" id="board-branded-matrix">
+  <div class="board active" id="board-branded-matrix">
 
-    <div class="play-bar">
-      <button class="play-btn" onclick="openSlideshow(0, 'board-branded-matrix')">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        Play Slideshow
-      </button>
-    </div>
-
-    <header class="vds-masthead">
-      <div class="vds-head-left">
-        <div class="vds-title">VISUAL DIRECTION STORYBOARD</div>
-        <div class="vds-tagline">CONNECTED. INTELLIGENT. GLOBAL.</div>
+    <header class="masthead">
+      <div class="brand-block">
+        <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
+          <svg width="68" height="53" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="#FFFFFF"/>
+            <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="#FFFFFF"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="#FFFFFF"/>
+          </svg>
+        </a>
+        <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
+        <div class="meta">
+          <strong>Visual Direction Storyboard</strong>
+          27 frames · ~60 sec runtime<br/>
+          makebttr.com · May 1, 2026
+        </div>
       </div>
-      <div class="vds-head-right">
-        <p>A visual direction rooted in connection, data, and global intelligence. Inspired by networks, technology, and the flow of information shaping a smarter future.</p>
+      <div class="title-block">
+        <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
+        <h1>Branded Matrix<br/><span class="accent">Connected. Intelligent. Global.</span></h1>
       </div>
     </header>
+
+    <section class="intro">
+      <p>A visual direction rooted in connection, data, and global intelligence. Inspired by networks, technology, and the flow of information shaping a smarter future. <span class="accent">Where systems become intelligence in motion.</span></p>
+      <div class="stats">
+        <div class="stat"><label>Aspect</label><span>16:9</span></div>
+        <div class="stat"><label>Beats</label><span>9 × 3 frames</span></div>
+        <div class="stat"><label>Runtime</label><span>~60 sec</span></div>
+      </div>
+    </section>
+
+    <section class="vds-legend">
+      <div class="vds-legend-label">VISUAL ELEMENTS</div>
+      <div class="vds-legend-items">
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none"><circle cx="4" cy="6" r="1.5" fill="#00B2A9"/><circle cx="11" cy="6" r="1.5" fill="#00B2A9"/><circle cx="18" cy="6" r="1.5" fill="#00B2A9"/><circle cx="25" cy="6" r="1.5" fill="#00B2A9"/><circle cx="4" cy="12" r="1.5" fill="#00B2A9"/><circle cx="11" cy="12" r="1.5" fill="#00B2A9"/><circle cx="18" cy="12" r="1.5" fill="#00B2A9"/><circle cx="25" cy="12" r="1.5" fill="#00B2A9"/><circle cx="4" cy="18" r="1.5" fill="#00B2A9"/><circle cx="11" cy="18" r="1.5" fill="#00B2A9"/><circle cx="18" cy="18" r="1.5" fill="#00B2A9"/><circle cx="25" cy="18" r="1.5" fill="#00B2A9"/></svg><span>DATA POINTS</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none"><circle cx="4" cy="12" r="2" fill="#00B2A9"/><circle cx="16" cy="6" r="2" fill="#00B2A9"/><circle cx="22" cy="18" r="2" fill="#00B2A9"/><circle cx="28" cy="10" r="2" fill="#00B2A9"/><line x1="4" y1="12" x2="16" y2="6" stroke="#00B2A9" stroke-width="0.8"/><line x1="16" y1="6" x2="22" y2="18" stroke="#00B2A9" stroke-width="0.8"/><line x1="22" y1="18" x2="28" y2="10" stroke="#00B2A9" stroke-width="0.8"/><line x1="16" y1="6" x2="28" y2="10" stroke="#00B2A9" stroke-width="0.8"/></svg><span>CONNECTIONS</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.8"><circle cx="14" cy="14" r="11"/><ellipse cx="14" cy="14" rx="11" ry="4"/><line x1="3" y1="14" x2="25" y2="14"/><line x1="14" y1="3" x2="14" y2="25"/></svg><span>GLOBAL NETWORK</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none" stroke="#00B2A9" stroke-width="0.8"><path d="M2 14 Q 10 4, 18 12 T 30 10"/><path d="M2 18 Q 10 8, 18 16 T 30 14"/></svg><span>FLOW &amp; MOVEMENT</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.8"><circle cx="14" cy="14" r="10"/><circle cx="14" cy="14" r="5"/><circle cx="14" cy="14" r="1.5" fill="#00B2A9"/></svg><span>FOCUS &amp; INSIGHT</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none" stroke="#00B2A9" stroke-width="0.9"><circle cx="10" cy="8" r="3"/><circle cx="22" cy="8" r="3"/><path d="M4 22 Q 10 14, 16 22 Q 22 14, 28 22"/></svg><span>HUMAN IMPACT</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.9"><circle cx="14" cy="16" r="6"/><line x1="14" y1="4" x2="14" y2="8"/><line x1="6" y1="16" x2="2" y2="16"/><line x1="22" y1="16" x2="26" y2="16"/><line x1="8" y1="10" x2="5" y2="7"/><line x1="20" y1="10" x2="23" y2="7"/></svg><span>FUTURE &amp; GROWTH</span></div>
+      </div>
+    </section>
+
 
     <section class="vds-grid">
       <div class="vds-beat">
@@ -2160,18 +2207,6 @@
       </div>
     </section>
 
-    <section class="vds-legend">
-      <div class="vds-legend-label">VISUAL ELEMENTS</div>
-      <div class="vds-legend-items">
-        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none"><circle cx="4" cy="6" r="1.5" fill="#00B2A9"/><circle cx="11" cy="6" r="1.5" fill="#00B2A9"/><circle cx="18" cy="6" r="1.5" fill="#00B2A9"/><circle cx="25" cy="6" r="1.5" fill="#00B2A9"/><circle cx="4" cy="12" r="1.5" fill="#00B2A9"/><circle cx="11" cy="12" r="1.5" fill="#00B2A9"/><circle cx="18" cy="12" r="1.5" fill="#00B2A9"/><circle cx="25" cy="12" r="1.5" fill="#00B2A9"/><circle cx="4" cy="18" r="1.5" fill="#00B2A9"/><circle cx="11" cy="18" r="1.5" fill="#00B2A9"/><circle cx="18" cy="18" r="1.5" fill="#00B2A9"/><circle cx="25" cy="18" r="1.5" fill="#00B2A9"/></svg><span>DATA POINTS</span></div>
-        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none"><circle cx="4" cy="12" r="2" fill="#00B2A9"/><circle cx="16" cy="6" r="2" fill="#00B2A9"/><circle cx="22" cy="18" r="2" fill="#00B2A9"/><circle cx="28" cy="10" r="2" fill="#00B2A9"/><line x1="4" y1="12" x2="16" y2="6" stroke="#00B2A9" stroke-width="0.8"/><line x1="16" y1="6" x2="22" y2="18" stroke="#00B2A9" stroke-width="0.8"/><line x1="22" y1="18" x2="28" y2="10" stroke="#00B2A9" stroke-width="0.8"/><line x1="16" y1="6" x2="28" y2="10" stroke="#00B2A9" stroke-width="0.8"/></svg><span>CONNECTIONS</span></div>
-        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.8"><circle cx="14" cy="14" r="11"/><ellipse cx="14" cy="14" rx="11" ry="4"/><line x1="3" y1="14" x2="25" y2="14"/><line x1="14" y1="3" x2="14" y2="25"/></svg><span>GLOBAL NETWORK</span></div>
-        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none" stroke="#00B2A9" stroke-width="0.8"><path d="M2 14 Q 10 4, 18 12 T 30 10"/><path d="M2 18 Q 10 8, 18 16 T 30 14"/></svg><span>FLOW &amp; MOVEMENT</span></div>
-        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.8"><circle cx="14" cy="14" r="10"/><circle cx="14" cy="14" r="5"/><circle cx="14" cy="14" r="1.5" fill="#00B2A9"/></svg><span>FOCUS &amp; INSIGHT</span></div>
-        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none" stroke="#00B2A9" stroke-width="0.9"><circle cx="10" cy="8" r="3"/><circle cx="22" cy="8" r="3"/><path d="M4 22 Q 10 14, 16 22 Q 22 14, 28 22"/></svg><span>HUMAN IMPACT</span></div>
-        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.9"><circle cx="14" cy="16" r="6"/><line x1="14" y1="4" x2="14" y2="8"/><line x1="6" y1="16" x2="2" y2="16"/><line x1="22" y1="16" x2="26" y2="16"/><line x1="8" y1="10" x2="5" y2="7"/><line x1="20" y1="10" x2="23" y2="7"/></svg><span>FUTURE &amp; GROWTH</span></div>
-      </div>
-    </section>
 
     <footer class="colophon">
       <div>GE Vernova · Orchestrate 2026 · Visual Direction Storyboard</div>
@@ -2179,6 +2214,11 @@
     </footer>
 
   </div><!-- /board-branded-matrix -->
+
+<button class="play-floater" onclick="openSlideshow()" aria-label="Play slideshow">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+  <span>Play Slideshow</span>
+</button>
 
 <div class="mini-player" id="miniPlayer" aria-label="Music player">
   <div class="mini-player-handle" id="miniPlayerHandle" title="Drag to move"></div>
