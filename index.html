@@ -933,6 +933,179 @@
     .sts-grid .shots { grid-template-columns: 1fr; gap: 14px; }
   }
 
+  /* Imagery Direction — Close-Ups page */
+  #board-imagery-direction .id-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    margin: 24px 0 56px;
+  }
+  #board-imagery-direction .id-card {
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.15s;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 8px;
+  }
+  #board-imagery-direction .id-card:hover { transform: translateY(-2px); }
+  #board-imagery-direction .id-card:hover .id-frame::after {
+    content: "▶ OPEN";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lime);
+    font-family: var(--display);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    pointer-events: none;
+  }
+  #board-imagery-direction .id-num {
+    font-family: var(--display);
+    font-size: 14px;
+    color: var(--lime);
+    letter-spacing: 0.06em;
+    display: inline-block;
+  }
+  #board-imagery-direction .id-name {
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  #board-imagery-direction .id-frame {
+    aspect-ratio: 1 / 1;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+  }
+  #board-imagery-direction .id-frame video,
+  #board-imagery-direction .id-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #board-imagery-direction .id-vis {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  #board-imagery-direction .id-vis-system {
+    background:
+      radial-gradient(circle, rgba(0,178,169,0.35) 1px, transparent 1.6px) 0 0 / 10px 10px,
+      radial-gradient(ellipse 70% 80% at 60% 60%, rgba(0,178,169,0.25), transparent 70%),
+      linear-gradient(140deg, #0a2a30, #061a1d);
+  }
+  #board-imagery-direction .id-vis-infra {
+    background:
+      linear-gradient(180deg, transparent 50%, rgba(166,255,0,0.12) 80%, transparent 100%),
+      linear-gradient(95deg, rgba(255,255,255,0.0) 30%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.0) 70%),
+      linear-gradient(85deg, rgba(0,178,169,0.0) 30%, rgba(0,178,169,0.4) 50%, rgba(0,178,169,0.0) 70%),
+      linear-gradient(180deg, #0a1a22, #020608);
+    background-size: 100% 100%, 100% 4px, 100% 6px, 100% 100%;
+    background-position: 0 0, 0 60%, 0 70%, 0 0;
+    background-repeat: no-repeat;
+  }
+  #board-imagery-direction .id-vis-ui::before {
+    content: "68%";
+    position: absolute;
+    top: 40%;
+    left: 18%;
+    font-family: var(--display);
+    font-size: clamp(28px, 4vw, 56px);
+    color: var(--lime);
+    letter-spacing: 0.04em;
+  }
+  #board-imagery-direction .id-vis-ui {
+    background:
+      radial-gradient(circle at 26% 50%, rgba(166,255,0,0.18) 0%, transparent 30%),
+      linear-gradient(135deg, #061418, #020608);
+  }
+  #board-imagery-direction .id-vis-ui::after {
+    content: "";
+    position: absolute;
+    inset: 60% 10% 18% 10%;
+    background: linear-gradient(90deg, transparent, rgba(0,178,169,0.5), transparent);
+    height: 2px;
+    top: auto;
+    bottom: 30%;
+  }
+  #board-imagery-direction .id-vis-moments::before {
+    content: "COLLABORATION IN PROGRESS";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--display);
+    font-size: clamp(11px, 1.4vw, 18px);
+    color: var(--lime);
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+  }
+  #board-imagery-direction .id-vis-moments {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.05), transparent 40%, rgba(0,0,0,0.6)),
+      linear-gradient(135deg, #0a2228, #020608);
+  }
+  #board-imagery-direction .id-vis-light {
+    background:
+      radial-gradient(circle at 30% 50%, rgba(255,255,255,0.95) 0%, rgba(0,178,169,0.6) 4%, transparent 12%),
+      conic-gradient(from 180deg at 30% 50%, transparent 0deg, rgba(0,178,169,0.15) 20deg, transparent 40deg, rgba(0,178,169,0.12) 80deg, transparent 110deg, rgba(0,178,169,0.10) 140deg, transparent 170deg),
+      radial-gradient(circle, rgba(0,178,169,0.25) 1px, transparent 2px) 0 0 / 8px 8px,
+      linear-gradient(140deg, #061a1d, #020608);
+  }
+  #board-imagery-direction .id-card p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--white);
+    margin-top: 4px;
+  }
+  #board-imagery-direction .id-guidelines {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-bottom: 32px;
+  }
+  #board-imagery-direction .id-guide-label {
+    font-family: var(--display);
+    font-size: 13px;
+    color: var(--lime);
+    letter-spacing: 0.18em;
+    margin-bottom: 18px;
+  }
+  #board-imagery-direction .id-guide-items {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+  #board-imagery-direction .id-guide-item {
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+  }
+  #board-imagery-direction .id-guide-item strong {
+    display: block;
+    font-family: var(--display);
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    margin-bottom: 6px;
+  }
+  @media (max-width: 1100px) {
+    #board-imagery-direction .id-grid { grid-template-columns: repeat(3, 1fr); }
+    #board-imagery-direction .id-guide-items { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 720px) {
+    #board-imagery-direction .id-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    #board-imagery-direction .id-guide-items { grid-template-columns: repeat(2, 1fr); }
+  }
+
   /* Visual Direction Storyboard — magazine-clean (Imagery Direction layout) */
   #board-branded-matrix .vds-masthead {
     display: grid;
@@ -1483,7 +1656,8 @@
 
   <nav class="board-nav" role="tablist" aria-label="Storyboards">
     <button class="board-tab active" data-board="branded-matrix" role="tab" aria-selected="true">Branded Matrix</button>
-    <button class="board-tab" data-board="kick-to-grid" role="tab" aria-selected="false">From Kick to Grid</button>
+    <button class="board-tab" data-board="imagery-direction" role="tab" aria-selected="false">Imagery Direction</button>
+    <button class="board-tab" data-board="kick-to-grid" role="tab" aria-selected="false">World Cup</button>
   </nav>
 
   <div class="board" id="board-kick-to-grid">
@@ -2215,6 +2389,114 @@
 
   </div><!-- /board-branded-matrix -->
 
+  <div class="board" id="board-imagery-direction">
+    <header class="masthead">
+      <div class="brand-block">
+        <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
+          <svg width="68" height="53" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="#FFFFFF"/>
+            <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="#FFFFFF"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="#FFFFFF"/>
+          </svg>
+        </a>
+        <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
+        <div class="meta">
+          <strong>Imagery Direction · Close-Ups</strong>
+          10 categories · brand reference<br/>
+          makebttr.com · May 1, 2026
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="eyebrow">GE Vernova · Orchestrate 2026 · Imagery Direction</div>
+        <h1>Close-Ups<br/><span class="accent">Connection. Flow. Intelligence.</span></h1>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p>Purpose-driven close-ups that communicate connection, flow, and intelligence. Every image earns its frame — <span class="accent">be purposeful, show connection, think globally, keep human, drive clarity, create focus.</span></p>
+    </section>
+
+    <section class="id-grid">
+      <div class="id-card">
+        <div class="id-num">01</div>
+        <div class="id-name">THE SYSTEM</div>
+        <div class="id-frame"><div class="id-vis id-vis-system"></div></div>
+        <p>Structured data fields.<br/>Controlled, intelligent, and intentional.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">02</div>
+        <div class="id-name">CONNECTIONS</div>
+        <div class="id-frame"><video src="vds/02_connections.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <p>Precise links. Purposeful relationships.<br/>Engineered to connect.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">03</div>
+        <div class="id-name">THE GLOBE</div>
+        <div class="id-frame"><video src="vds/03_world.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <p>Global scale made of data.<br/>Part of a system, not a symbol.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">04</div>
+        <div class="id-name">HUMAN + TECHNOLOGY</div>
+        <div class="id-frame"><video src="vds/06_human.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <p>Human potential amplified.<br/>Technology in service of people.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">05</div>
+        <div class="id-name">DATA IN MOTION</div>
+        <div class="id-frame"><video src="vds/04_flow.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <p>Directional flow.<br/>Momentum with meaning.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">06</div>
+        <div class="id-name">INFRASTRUCTURE</div>
+        <div class="id-frame"><div class="id-vis id-vis-infra"></div></div>
+        <p>Built systems in motion.<br/>The foundation that enables progress.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">07</div>
+        <div class="id-name">INTERFACES &amp; UI</div>
+        <div class="id-frame"><div class="id-vis id-vis-ui"></div></div>
+        <p>Clean interfaces.<br/>Information at a glance.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">08</div>
+        <div class="id-name">HUMAN MOMENTS</div>
+        <div class="id-frame"><div class="id-vis id-vis-moments"></div></div>
+        <p>Focused collaboration.<br/>Real people, real impact.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">09</div>
+        <div class="id-name">SCALE + PERSPECTIVE</div>
+        <div class="id-frame"><video src="vds/07_global.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <p>Enormous scale.<br/>Connected across every layer.</p>
+      </div>
+      <div class="id-card">
+        <div class="id-num">10</div>
+        <div class="id-name">LIGHT + CONTRAST</div>
+        <div class="id-frame"><div class="id-vis id-vis-light"></div></div>
+        <p>Contrast creates clarity.<br/>Light guides attention.</p>
+      </div>
+    </section>
+
+    <section class="id-guidelines">
+      <div class="id-guide-label">IMAGERY GUIDELINES</div>
+      <div class="id-guide-items">
+        <div class="id-guide-item"><strong>BE PURPOSEFUL</strong>Every image should have a clear reason to exist.</div>
+        <div class="id-guide-item"><strong>SHOW CONNECTION</strong>Highlight links, networks, and integration.</div>
+        <div class="id-guide-item"><strong>THINK GLOBALLY</strong>Use scale and perspective to communicate impact.</div>
+        <div class="id-guide-item"><strong>KEEP HUMAN</strong>Balance technology with human relevance.</div>
+        <div class="id-guide-item"><strong>DRIVE CLARITY</strong>Focus on readability, contrast, and hierarchy.</div>
+        <div class="id-guide-item"><strong>CREATE FOCUS</strong>Use depth, light, and composition to guide the eye.</div>
+      </div>
+    </section>
+
+    <footer class="colophon">
+      <div>GE Vernova · Orchestrate 2026 · Imagery Direction · Close-Ups</div>
+      <div class="right">Bttr · May 1, 2026</div>
+    </footer>
+  </div><!-- /board-imagery-direction -->
+
 <button class="play-floater" onclick="openSlideshow()" aria-label="Play slideshow">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
   <span>Play Slideshow</span>
@@ -2312,6 +2594,18 @@
     {id:"09B", beat:"09 — The Vision",        title:"Earth, full grid",      duration:"2s", desc:"Full grid network active, planetary in scope.", camera:"Locked · planetary", placeholder:true},
     {id:"09C", beat:"09 — The Vision",        title:"Sunrise horizon",       duration:"3s", video:"vds/09_vision.mp4", desc:"The horizon ignites with light. Climactic hold.", camera:"Locked hero · sunrise horizon"}
   ];
+  const ID_SHOTS = [
+    {id:"01", beat:"Imagery Direction · Close-Ups", title:"The System",            duration:"—", desc:"Structured data fields. Controlled, intelligent, and intentional.", camera:"Close-up · macro", placeholder:true},
+    {id:"02", beat:"Imagery Direction · Close-Ups", title:"Connections",           duration:"—", video:"vds/02_connections.mp4", desc:"Precise links. Purposeful relationships. Engineered to connect.", camera:"Close-up · network detail"},
+    {id:"03", beat:"Imagery Direction · Close-Ups", title:"The Globe",             duration:"—", video:"vds/03_world.mp4", desc:"Global scale made of data. Part of a system, not a symbol.", camera:"Close-up · globe section"},
+    {id:"04", beat:"Imagery Direction · Close-Ups", title:"Human + Technology",    duration:"—", video:"vds/06_human.mp4", desc:"Human potential amplified. Technology in service of people.", camera:"Macro · profile + data"},
+    {id:"05", beat:"Imagery Direction · Close-Ups", title:"Data in Motion",        duration:"—", video:"vds/04_flow.mp4", desc:"Directional flow. Momentum with meaning.", camera:"Macro · flowing data"},
+    {id:"06", beat:"Imagery Direction · Close-Ups", title:"Infrastructure",        duration:"—", desc:"Built systems in motion. The foundation that enables progress.", camera:"Low angle · light trails", placeholder:true},
+    {id:"07", beat:"Imagery Direction · Close-Ups", title:"Interfaces & UI",       duration:"—", desc:"Clean interfaces. Information at a glance.", camera:"Macro · dashboard", placeholder:true},
+    {id:"08", beat:"Imagery Direction · Close-Ups", title:"Human Moments",         duration:"—", desc:"Focused collaboration. Real people, real impact.", camera:"Close-up · moment", placeholder:true},
+    {id:"09", beat:"Imagery Direction · Close-Ups", title:"Scale + Perspective",   duration:"—", video:"vds/07_global.mp4", desc:"Enormous scale. Connected across every layer.", camera:"Aerial · network overlay"},
+    {id:"10", beat:"Imagery Direction · Close-Ups", title:"Light + Contrast",      duration:"—", desc:"Contrast creates clarity. Light guides attention.", camera:"Macro · starburst", placeholder:true}
+  ];
   let activeShots = SHOTS;
   let lbIndex = 0;
   let lbPlaying = true;
@@ -2376,7 +2670,9 @@
   }
   function openSlideshow(startIndex, boardName) {
     var board = boardName || (document.querySelector('.board.active') && document.querySelector('.board.active').id) || 'board-kick-to-grid';
-    activeShots = (board === 'board-branded-matrix') ? BM_SHOTS : SHOTS;
+    activeShots = (board === 'board-branded-matrix') ? BM_SHOTS
+                : (board === 'board-imagery-direction') ? ID_SHOTS
+                : SHOTS;
     lbIndex = (typeof startIndex === 'number' && startIndex >= 0 && startIndex < activeShots.length) ? startIndex : 0;
     lbPlaying = true;
     document.getElementById('lb-playpause').textContent = 'Pause';
@@ -2461,10 +2757,11 @@
       tab.addEventListener('click', function(){ switchBoard(tab.getAttribute('data-board')); });
     });
     var initial = location.hash.replace('#', '');
-    if (initial === 'branded-matrix' || initial === 'kick-to-grid') switchBoard(initial);
+    if (initial === 'branded-matrix' || initial === 'kick-to-grid' || initial === 'imagery-direction') switchBoard(initial);
     var boardConfigs = [
       { id: 'board-kick-to-grid', shots: SHOTS, selector: '.shots .shot' },
-      { id: 'board-branded-matrix', shots: BM_SHOTS, selector: '.vds-frame' }
+      { id: 'board-branded-matrix', shots: BM_SHOTS, selector: '.vds-frame' },
+      { id: 'board-imagery-direction', shots: ID_SHOTS, selector: '.id-card' }
     ];
     boardConfigs.forEach(function(cfg){
       var board = document.getElementById(cfg.id);
