@@ -1658,7 +1658,7 @@
           </div>
         </div>
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-pulse"></div><div class="duration">2s</div></div>
+          <div class="frame"><video src="spark/01_ignite.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
           <div class="body">
             <div class="shot-id">Frame 3</div>
             <div class="title">First pulse</div>
@@ -1696,7 +1696,7 @@
           </div>
         </div>
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-grid bm-locked"></div><div class="duration">2s</div></div>
+          <div class="frame"><video src="spark/03_structure.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
           <div class="body">
             <div class="shot-id">Frame 6</div>
             <div class="title">Grid locks into alignment</div>
@@ -1734,7 +1734,7 @@
           </div>
         </div>
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-lattice"></div><div class="duration">2s</div></div>
+          <div class="frame"><video src="spark/02_flow.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
           <div class="body">
             <div class="shot-id">Frame 9</div>
             <div class="title">Grid extrudes into depth</div>
@@ -1754,7 +1754,7 @@
       </header>
       <div class="shots">
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-pulse-green"></div><div class="duration">2s</div></div>
+          <div class="frame"><video src="spark/08_neverstops.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
           <div class="body">
             <div class="shot-id">Frame 10</div>
             <div class="title">First green pulse</div>
@@ -1801,7 +1801,7 @@
           </div>
         </div>
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-sphere"></div><div class="duration">2s</div></div>
+          <div class="frame"><video src="spark/03_structure.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
           <div class="body">
             <div class="shot-id">Frame 14</div>
             <div class="title">Dense sphere forms</div>
@@ -1848,7 +1848,7 @@
           </div>
         </div>
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-network bm-flow"></div><div class="duration">2s</div></div>
+          <div class="frame"><video src="spark/05_unified.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
           <div class="body">
             <div class="shot-id">Frame 18</div>
             <div class="title">Energy resumes flow</div>
@@ -1906,7 +1906,7 @@
       </header>
       <div class="shots">
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-pullback"></div><div class="duration">2s</div></div>
+          <div class="frame"><video src="spark/04_expand.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
           <div class="body">
             <div class="shot-id">Frame 22</div>
             <div class="title">Camera pulls back</div>
@@ -1944,7 +1944,7 @@
       </header>
       <div class="shots">
         <div class="shot">
-          <div class="frame"><div class="bm-vis bm-extreme-wide"></div><div class="duration">2.5s</div></div>
+          <div class="frame"><video src="spark/06_realtime.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2.5s</div></div>
           <div class="body">
             <div class="shot-id">Frame 25</div>
             <div class="title">Extreme wide</div>
@@ -2091,29 +2091,29 @@
   const BM_SHOTS = [
     {id:"F1",  beat:"01 — Birth", title:"Absolute zero", duration:"2s", visClass:"bm-zero", desc:"Black frame. No grain, no gradient. Hold the tension.", camera:"Locked · pure void"},
     {id:"F2",  beat:"01 — Birth", title:"Single dot appears", duration:"2s", visClass:"bm-dot", desc:"One white dot, center frame. Hard edge, no glow, perfectly still.", camera:"Locked · sub-pixel precision"},
-    {id:"F3",  beat:"01 — Birth", title:"First pulse", duration:"2s", visClass:"bm-pulse", desc:"Dot emits one controlled pulse. Expands, contracts. Rhythm begins.", camera:"Locked · pulse cycle"},
+    {id:"F3",  beat:"01 — Birth", title:"First pulse", duration:"2s", video:"spark/01_ignite.mp4", desc:"Dot emits one controlled pulse. Expands, contracts. Rhythm begins.", camera:"Locked · pulse cycle"},
     {id:"F4",  beat:"02 — Structure", title:"Dot splits into four", duration:"2s", visClass:"bm-four", desc:"Perfect square, equal spacing. Mathematical division.", camera:"Locked · symmetry"},
     {id:"F5",  beat:"02 — Structure", title:"Exponential duplication", duration:"2s", visClass:"bm-grid", desc:"4 → 16 → 64 → 256. Grid fills the frame with precision.", camera:"Locked · exponential beat"},
-    {id:"F6",  beat:"02 — Structure", title:"Grid locks into alignment", duration:"2s", visClass:"bm-grid bm-locked", desc:"Every node snaps into its perfect position. Stillness.", camera:"Locked · snap-to-grid"},
+    {id:"F6",  beat:"02 — Structure", title:"Grid locks into alignment", duration:"2s", video:"spark/03_structure.mp4", desc:"Every node snaps into its perfect position. Stillness.", camera:"Locked · snap-to-grid"},
     {id:"F7",  beat:"03 — Pattern", title:"Horizontal wave", duration:"2s", visClass:"bm-wave-h", desc:"Each node brightens in sequence. Smooth sine motion across the grid.", camera:"Locked · sine sweep"},
     {id:"F8",  beat:"03 — Pattern", title:"Waves intersect", duration:"2s", visClass:"bm-wave-cross", desc:"Vertical wave crosses horizontal. Interference pattern emerges — complexity.", camera:"Locked · cross-pattern"},
-    {id:"F9",  beat:"03 — Pattern", title:"Grid extrudes into depth", duration:"2s", visClass:"bm-lattice", desc:"Nodes connect into a 3D lattice. Subtle perspective shift reveals structure.", camera:"Slow tilt · 3D reveal"},
-    {id:"F10", beat:"04 — Activation", title:"First green pulse", duration:"2s", visClass:"bm-pulse-green", desc:"Energy enters. Travels node to node along the connections.", camera:"Locked · path tracking"},
+    {id:"F9",  beat:"03 — Pattern", title:"Grid extrudes into depth", duration:"2s", video:"spark/02_flow.mp4", desc:"Nodes connect into a 3D lattice. Subtle perspective shift reveals structure.", camera:"Slow tilt · 3D reveal"},
+    {id:"F10", beat:"04 — Activation", title:"First green pulse", duration:"2s", video:"spark/08_neverstops.mp4", desc:"Energy enters. Travels node to node along the connections.", camera:"Locked · path tracking"},
     {id:"F11", beat:"04 — Activation", title:"Energy splits at junctions", duration:"2s", visClass:"bm-split", desc:"Multiple paths form. Clean and efficient distribution.", camera:"Locked · branching"},
     {id:"F12", beat:"04 — Activation", title:"Overload moment", duration:"2s", visClass:"bm-converge", desc:"Several pulses converge. Bright flash. Instant stabilization.", camera:"Locked · flash & settle"},
     {id:"F13", beat:"05 — Compression", title:"Lattice pulls inward", duration:"2s", visClass:"bm-collapse", desc:"Structure collapses toward center. Connections preserved.", camera:"Locked · inward force"},
-    {id:"F14", beat:"05 — Compression", title:"Dense sphere forms", duration:"2s", visClass:"bm-sphere", desc:"Thousands of nodes compressed into a single glowing object.", camera:"Locked · core hold"},
+    {id:"F14", beat:"05 — Compression", title:"Dense sphere forms", duration:"2s", video:"spark/03_structure.mp4", desc:"Thousands of nodes compressed into a single glowing object.", camera:"Locked · core hold"},
     {id:"F15", beat:"05 — Compression", title:"Surface flickers", duration:"2s", visClass:"bm-sphere bm-flicker", desc:"Micro-currents on the surface. High-frequency activity contained.", camera:"Macro · surface detail"},
     {id:"F16", beat:"06 — Refinement", title:"Sphere fractures into vectors", duration:"2s", visClass:"bm-vectors", desc:"Clean directional lines shoot outward. No fragments — pure direction.", camera:"Locked · radial vectors"},
     {id:"F17", beat:"06 — Refinement", title:"Vectors reorganize", duration:"2s", visClass:"bm-network", desc:"Fewer nodes, smarter connections, more open space. Optimization made visible.", camera:"Locked · re-arrangement"},
-    {id:"F18", beat:"06 — Refinement", title:"Energy resumes flow", duration:"2s", visClass:"bm-network bm-flow", desc:"Faster, smoother, no redundancy. The system now performs.", camera:"Locked · steady flow"},
+    {id:"F18", beat:"06 — Refinement", title:"Energy resumes flow", duration:"2s", video:"spark/05_unified.mp4", desc:"Faster, smoother, no redundancy. The system now performs.", camera:"Locked · steady flow"},
     {id:"F19", beat:"07 — Intelligence", title:"Node cluster, dynamic reroute", duration:"2s", visClass:"bm-cluster", desc:"Close on a cluster. Incoming energy reroutes around congestion.", camera:"Macro · reroute reveal"},
     {id:"F20", beat:"07 — Intelligence", title:"System-wide evolution", duration:"2s", visClass:"bm-evolve", desc:"Patterns shift continuously. No repetition.", camera:"Locked · pattern morph"},
     {id:"F21", beat:"07 — Intelligence", title:"Emergent geometry", duration:"2s", visClass:"bm-emergent", desc:"New structures form and lock into function. Order from intelligence.", camera:"Locked · structure lock"},
-    {id:"F22", beat:"08 — Scale", title:"Camera pulls back", duration:"2s", visClass:"bm-pullback", desc:"Network extends far beyond the original frame. The reveal.", camera:"Slow pull-back · scale"},
+    {id:"F22", beat:"08 — Scale", title:"Camera pulls back", duration:"2s", video:"spark/04_expand.mp4", desc:"Network extends far beyond the original frame. The reveal.", camera:"Slow pull-back · scale"},
     {id:"F23", beat:"08 — Scale", title:"Multiple layers appear", duration:"2s", visClass:"bm-layers", desc:"Stacked systems, semi-transparent, different depths.", camera:"Locked · layer stack"},
     {id:"F24", beat:"08 — Scale", title:"Cross-layer flow", duration:"2s", visClass:"bm-cross-flow", desc:"Energy moves across layers. Vertical and horizontal orchestration in sync.", camera:"Locked · poly-axis flow"},
-    {id:"F25", beat:"09 — Control", title:"Extreme wide", duration:"2.5s", visClass:"bm-extreme-wide", desc:"Full network visible. Massive and ordered.", camera:"Extreme wide · full reveal"},
+    {id:"F25", beat:"09 — Control", title:"Extreme wide", duration:"2.5s", video:"spark/06_realtime.mp4", desc:"Full network visible. Massive and ordered.", camera:"Extreme wide · full reveal"},
     {id:"F26", beat:"09 — Control", title:"Perfect rhythm", duration:"2s", visClass:"bm-rhythm", desc:"All nodes pulse in sync. Balanced energy. No spikes, no gaps.", camera:"Locked · sync pulse"},
     {id:"F27", beat:"09 — Control", title:"Hard cut to GE Vernova", duration:"2.5s", visClass:"bm-mark", desc:"Black. The mark appears center. A single green pulse passes beneath, fades to zero.", camera:"Locked · signature"}
   ];
