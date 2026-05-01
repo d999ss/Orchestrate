@@ -794,6 +794,99 @@
     margin: 0 auto 32px;
   }
 
+  /* "From Spark to System" — clean reference-style 3x3 grid */
+  .sts-grid .shots {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .sts-grid .shot {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    transition: transform 0.15s ease;
+  }
+  .sts-grid .shot:hover { transform: translateY(-2px); }
+  .sts-grid .shot:hover .frame::after {
+    content: "▶ OPEN";
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 9, 13, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    pointer-events: none;
+  }
+  .sts-grid .shot .frame {
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+  }
+  .sts-grid .shot .frame .duration {
+    background: transparent;
+    color: var(--ink-mute);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    padding: 0;
+    bottom: auto;
+    right: auto;
+    top: 8px;
+    left: 12px;
+    backdrop-filter: none;
+  }
+  .sts-grid .shot .body {
+    padding: 12px 0 0;
+    background: transparent;
+  }
+  .sts-grid .shot .body .title {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.45;
+  }
+  /* End-card 9 — text card with green tint, like the reference */
+  .sts-endcard .frame {
+    background: linear-gradient(135deg, #0a3a1a 0%, #1a8a3a 100%) !important;
+  }
+  .sts-endcard-vis {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 14% 8% 10%;
+  }
+  .sts-endcard-text {
+    font-size: clamp(14px, 2.2vw, 22px);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+  .sts-endcard-text .accent-warm { color: #fff; }
+  .sts-endcard-mark {
+    font-size: clamp(9px, 1.1vw, 11px);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  @media (max-width: 1100px) {
+    .sts-grid .shots { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  }
+  @media (max-width: 720px) {
+    .sts-grid .shots { grid-template-columns: 1fr; gap: 14px; }
+  }
+
   /* Branded Matrix visualizations — minimalist dot/grid placeholders */
   .bm-vis {
     position: absolute;
@@ -1059,9 +1152,104 @@
 <div class="page">
 
   <nav class="board-nav" role="tablist" aria-label="Storyboards">
+    <button class="board-tab" data-board="spark-to-system" role="tab" aria-selected="false">From Spark to System</button>
     <button class="board-tab active" data-board="kick-to-grid" role="tab" aria-selected="true">From Kick to Grid</button>
     <button class="board-tab" data-board="branded-matrix" role="tab" aria-selected="false">Branded Matrix</button>
   </nav>
+
+  <div class="board" id="board-spark-to-system">
+
+    <div class="play-bar">
+      <button class="play-btn" onclick="openSlideshow(0, 'board-spark-to-system')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play Slideshow
+      </button>
+    </div>
+
+    <header class="masthead">
+      <div class="brand-block">
+        <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
+          <svg width="68" height="53" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="#FFFFFF"/>
+            <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="#FFFFFF"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="#FFFFFF"/>
+          </svg>
+        </a>
+        <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
+        <div class="meta">
+          <strong>Direction 1 · 9-frame cut</strong>
+          ~60 sec runtime<br/>
+          makebttr.com · April 30, 2026
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
+        <h1>Direction 1<br/><span class="accent">From Spark to System</span></h1>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p>From raw energy to intelligent systems, a continuous current flows, connects, and powers performance across the world. Energy begins as a spark, builds into motion, and transforms into intelligence, flowing seamlessly through systems at scale. <span class="accent">Where Energy Becomes Intelligence in Motion.</span></p>
+      <div class="stats">
+        <div class="stat"><label>Aspect</label><span>16:9</span></div>
+        <div class="stat"><label>Frames</label><span>9</span></div>
+        <div class="stat"><label>Runtime</label><span>~60 sec</span></div>
+      </div>
+    </section>
+
+    <section class="beat sts-grid">
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><video src="spark/01_ignite.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">01</div></div>
+          <div class="body"><div class="title">An energy ignites</div></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><video src="spark/02_flow.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">02</div></div>
+          <div class="body"><div class="title">The energy forms and flows</div></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><video src="spark/03_structure.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">03</div></div>
+          <div class="body"><div class="title">The energy refines and forms structure, intelligence becomes visible</div></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><video src="spark/04_expand.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">04</div></div>
+          <div class="body"><div class="title">Intelligence expands, linking systems across distance</div></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><video src="spark/05_unified.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">05</div></div>
+          <div class="body"><div class="title">Connected systems operate as one</div></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><video src="spark/06_realtime.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">06</div></div>
+          <div class="body"><div class="title">Systems respond in real time, guiding every moment</div></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><video src="spark/07_moments.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">07</div></div>
+          <div class="body"><div class="title">The energy flows into the moments that matter</div></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><video src="spark/08_neverstops.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="duration">08</div></div>
+          <div class="body"><div class="title">The flow never stops</div></div>
+        </div>
+        <div class="shot sts-endcard">
+          <div class="frame">
+            <div class="sts-endcard-vis">
+              <div class="sts-endcard-text">Where Energy Becomes<br/><span class="accent-warm">Intelligence in Motion</span></div>
+              <div class="sts-endcard-mark">GE Vernova</div>
+            </div>
+            <div class="duration">09</div>
+          </div>
+          <div class="body"><div class="title">Where Energy Becomes Intelligence in Motion</div></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="colophon">
+      <div>GE Vernova · Orchestrate 2026 · Direction 1 · From Spark to System</div>
+      <div class="right">Bttr · April 30, 2026</div>
+    </footer>
+
+  </div><!-- /board-spark-to-system -->
 
   <div class="board active" id="board-kick-to-grid">
 
@@ -1995,6 +2183,17 @@
     {id:"09B", beat:"09 — From the Game to the Grid", title:"Grid spreading continents", duration:"2.5s", video:"subshots/09B_grid_continents.mp4", desc:"Green grid lines snake across continents, connecting cities in a living web.", camera:"Slow orbit · time-lapse spread"},
     {id:"09C", beat:"09 — From the Game to the Grid", title:"Hero hold, full network", duration:"3s", video:"heroes/09_grid_global.mp4", desc:"Earth at night with full grid network active. Cities pulse in rhythm. Climactic hold.", camera:"Locked hero · final fade"}
   ];
+  const STS_SHOTS = [
+    {id:"01", beat:"Direction 1 — From Spark to System", title:"An energy ignites", duration:"6.6s", video:"spark/01_ignite.mp4", desc:"From raw energy to intelligent systems — it begins as a spark.", camera:"Macro · ignition"},
+    {id:"02", beat:"Direction 1 — From Spark to System", title:"The energy forms and flows", duration:"6.6s", video:"spark/02_flow.mp4", desc:"Currents braid together. Motion takes shape.", camera:"Locked · flowing currents"},
+    {id:"03", beat:"Direction 1 — From Spark to System", title:"The energy refines and forms structure, intelligence becomes visible", duration:"6.6s", video:"spark/03_structure.mp4", desc:"Network of nodes coalesces into a clear structure.", camera:"Slow orbit · 3D reveal"},
+    {id:"04", beat:"Direction 1 — From Spark to System", title:"Intelligence expands, linking systems across distance", duration:"6.6s", video:"spark/04_expand.mp4", desc:"Earth from orbit. The grid spreads across continents.", camera:"Slow rotation · planetary scale"},
+    {id:"05", beat:"Direction 1 — From Spark to System", title:"Connected systems operate as one", duration:"6.6s", video:"spark/05_unified.mp4", desc:"Multiple nodes pulse in synchrony. Unified rhythm.", camera:"Locked · network hold"},
+    {id:"06", beat:"Direction 1 — From Spark to System", title:"Systems respond in real time, guiding every moment", duration:"6.6s", video:"spark/06_realtime.mp4", desc:"City scale: energy responds and routes through urban infrastructure.", camera:"Aerial · time-lapse"},
+    {id:"07", beat:"Direction 1 — From Spark to System", title:"The energy flows into the moments that matter", duration:"6.6s", video:"spark/07_moments.mp4", desc:"Stadium activated. Anticipation crests.", camera:"Wide · stadium reveal"},
+    {id:"08", beat:"Direction 1 — From Spark to System", title:"The flow never stops", duration:"6.6s", video:"spark/08_neverstops.mp4", desc:"Continuous current. The system runs forever.", camera:"Locked · endless flow"},
+    {id:"09", beat:"Direction 1 — From Spark to System", title:"Where Energy Becomes Intelligence in Motion", duration:"6.6s", visClass:"sts-end-vis", desc:"GE Vernova signature card. Tagline reveal.", camera:"Locked · brand"}
+  ];
   const BM_SHOTS = [
     {id:"F1",  beat:"01 — Birth", title:"Absolute zero", duration:"2s", visClass:"bm-zero", desc:"Black frame. No grain, no gradient. Hold the tension.", camera:"Locked · pure void"},
     {id:"F2",  beat:"01 — Birth", title:"Single dot appears", duration:"2s", visClass:"bm-dot", desc:"One white dot, center frame. Hard edge, no glow, perfectly still.", camera:"Locked · sub-pixel precision"},
@@ -2088,7 +2287,7 @@
   }
   function openSlideshow(startIndex, boardName) {
     var board = boardName || (document.querySelector('.board.active') && document.querySelector('.board.active').id) || 'board-kick-to-grid';
-    activeShots = (board === 'board-branded-matrix') ? BM_SHOTS : SHOTS;
+    activeShots = (board === 'board-branded-matrix') ? BM_SHOTS : (board === 'board-spark-to-system') ? STS_SHOTS : SHOTS;
     lbIndex = (typeof startIndex === 'number' && startIndex >= 0 && startIndex < activeShots.length) ? startIndex : 0;
     lbPlaying = true;
     document.getElementById('lb-playpause').textContent = 'Pause';
@@ -2171,8 +2370,9 @@
       tab.addEventListener('click', function(){ switchBoard(tab.getAttribute('data-board')); });
     });
     var initial = location.hash.replace('#', '');
-    if (initial === 'branded-matrix' || initial === 'kick-to-grid') switchBoard(initial);
+    if (initial === 'branded-matrix' || initial === 'kick-to-grid' || initial === 'spark-to-system') switchBoard(initial);
     var boardConfigs = [
+      { id: 'board-spark-to-system', shots: STS_SHOTS },
       { id: 'board-kick-to-grid', shots: SHOTS },
       { id: 'board-branded-matrix', shots: BM_SHOTS }
     ];
