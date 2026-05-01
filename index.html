@@ -907,7 +907,163 @@
     .sts-grid .shots { grid-template-columns: 1fr; gap: 14px; }
   }
 
-  /* Branded Matrix board — clean reference-style layout */
+  /* Visual Direction Storyboard — exact reference layout */
+  #board-branded-matrix .vds-masthead {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    padding: 8px 0 36px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  #board-branded-matrix .vds-title {
+    font-family: var(--display);
+    font-size: 38px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  #board-branded-matrix .vds-tagline {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: var(--aqua);
+  }
+  #board-branded-matrix .vds-head-right p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-mute);
+    max-width: 540px;
+    text-align: right;
+    margin-left: auto;
+  }
+  #board-branded-matrix .vds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  #board-branded-matrix .vds-frame {
+    background: var(--teal-deep);
+    padding: 22px 22px 24px;
+    border: 1px solid #143842;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+    position: relative;
+  }
+  #board-branded-matrix .vds-frame:hover {
+    border-color: var(--aqua);
+    transform: translateY(-2px);
+  }
+  #board-branded-matrix .vds-frame .frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  #board-branded-matrix .vds-frame .frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #board-branded-matrix .vds-frame:hover .frame::after {
+    content: "▶ OPEN";
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 43, 51, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lime);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    pointer-events: none;
+  }
+  #board-branded-matrix .vds-num {
+    font-family: var(--display);
+    font-size: 18px;
+    color: var(--aqua);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  #board-branded-matrix .vds-name {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  #board-branded-matrix .vds-frame p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-mute);
+    max-width: 240px;
+  }
+  #board-branded-matrix .vds-legend {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 12px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  #board-branded-matrix .vds-legend-label {
+    font-family: var(--display);
+    font-size: 14px;
+    color: var(--lime);
+    letter-spacing: 0.18em;
+  }
+  #board-branded-matrix .vds-legend-items {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 16px;
+    align-items: center;
+  }
+  #board-branded-matrix .vds-legend-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+  #board-branded-matrix .vds-legend-item svg {
+    width: 38px;
+    height: 38px;
+    opacity: 0.9;
+  }
+  #board-branded-matrix .vds-legend-item span {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    font-family: var(--display);
+  }
+  @media (max-width: 1100px) {
+    #board-branded-matrix .vds-grid { grid-template-columns: repeat(2, 1fr); }
+    #board-branded-matrix .vds-legend-items { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  }
+  @media (max-width: 720px) {
+    #board-branded-matrix .vds-masthead {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    #board-branded-matrix .vds-head-right p { text-align: left; }
+    #board-branded-matrix .vds-title { font-size: 28px; }
+    #board-branded-matrix .vds-grid { grid-template-columns: 1fr; }
+    #board-branded-matrix .vds-legend { grid-template-columns: 1fr; gap: 16px; }
+    #board-branded-matrix .vds-legend-items { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Branded Matrix board — legacy 27-frame layout (now unused but harmless) */
   #board-branded-matrix .shots { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
   #board-branded-matrix .beat { margin-bottom: 56px; }
   #board-branded-matrix .beat-num { font-size: 36px; }
@@ -1681,6 +1837,7 @@
   </div><!-- /board-kick-to-grid -->
 
   <div class="board" id="board-branded-matrix">
+  <div class="board" id="board-branded-matrix">
 
     <div class="play-bar">
       <button class="play-btn" onclick="openSlideshow(0, 'board-branded-matrix')">
@@ -1689,426 +1846,88 @@
       </button>
     </div>
 
-    <header class="masthead">
-      <div class="brand-block">
-        <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
-          <svg width="68" height="53" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="#FFFFFF"/>
-            <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="#FFFFFF"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="#FFFFFF"/>
-          </svg>
-        </a>
-        <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
-        <div class="meta">
-          <strong>Storyboard v3 · System Film</strong>
-          27 frames · ~60 sec runtime<br/>
-          makebttr.com · April 30, 2026
-        </div>
+    <header class="vds-masthead">
+      <div class="vds-head-left">
+        <div class="vds-title">VISUAL DIRECTION STORYBOARD</div>
+        <div class="vds-tagline">CONNECTED. INTELLIGENT. GLOBAL.</div>
       </div>
-      <div class="title-block">
-        <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
-        <h1>Branded Matrix<br/><span class="accent">Dots, Patterns, Electricity</span></h1>
+      <div class="vds-head-right">
+        <p>A visual direction rooted in connection, data, and global intelligence. Inspired by networks, technology, and the flow of information shaping a smarter future.</p>
       </div>
     </header>
 
-    <section class="intro">
-      <p>System → Intelligence → Control. From a single point, structure emerges, patterns activate, and a network learns to orchestrate itself. <span class="accent">Clean. Visual. Executable.</span></p>
-      <div class="stats">
-        <div class="stat"><label>Aspect</label><span>16:9</span></div>
-        <div class="stat"><label>Frames</label><span>9 × 3 chapters</span></div>
-        <div class="stat"><label>Runtime</label><span>~60 sec</span></div>
+    <section class="vds-grid">
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/01_beginning.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">01</div>
+        <div class="vds-name">THE BEGINNING</div>
+        <p>A field of data points emerges from darkness.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/02_connections.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">02</div>
+        <div class="vds-name">CONNECTIONS FORM</div>
+        <p>Points connect, creating networks and pathways across the space.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/03_world.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">03</div>
+        <div class="vds-name">THE WORLD TAKES SHAPE</div>
+        <p>Connections build structure, forming a digital globe.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/04_flow.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">04</div>
+        <div class="vds-name">FLOW OF INFORMATION</div>
+        <p>Data moves, travels, and flows across borders in real time.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/05_focus.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">05</div>
+        <div class="vds-name">FOCUS &amp; INSIGHT</div>
+        <p>Zooming in reveals clusters, insights, and intelligence within the data.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/06_human.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">06</div>
+        <div class="vds-name">HUMAN IMPACT</div>
+        <p>Technology empowers people and creates impact in the real world.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/07_global.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">07</div>
+        <div class="vds-name">GLOBAL REACH</div>
+        <p>A wide perspective shows the scale of our connected world.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/08_future.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">08</div>
+        <div class="vds-name">FUTURE FORWARD</div>
+        <p>The network evolves, adapts, and grows toward limitless possibilities.</p>
+      </div>
+      <div class="vds-frame">
+        <div class="frame"><video src="vds/09_vision.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="vds-num">09</div>
+        <div class="vds-name">THE VISION</div>
+        <p>A future where technology and humanity connect to build a better tomorrow.</p>
       </div>
     </section>
 
-    <!-- Beat 1: BIRTH -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">01</div>
-        <div class="beat-title">Birth<span class="sub">Absolute zero, then a single point</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-zero"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 1</div>
-            <div class="title">Absolute zero</div>
-            <div class="desc">Black frame. No grain, no gradient. Hold the tension.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · pure void</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-dot"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 2</div>
-            <div class="title">Single dot appears</div>
-            <div class="desc">One white dot, center frame. Hard edge, no glow, perfectly still.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · sub-pixel precision</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><video src="spark/01_ignite.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 3</div>
-            <div class="title">First pulse</div>
-            <div class="desc">Dot emits one controlled pulse. Expands, contracts. Rhythm begins.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · pulse cycle</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 2: STRUCTURE -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">02</div>
-        <div class="beat-title">Structure<span class="sub">Replication and alignment</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-four"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 4</div>
-            <div class="title">Dot splits into four</div>
-            <div class="desc">Perfect square, equal spacing. Mathematical division.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · symmetry</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-grid"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 5</div>
-            <div class="title">Exponential duplication</div>
-            <div class="desc">4 → 16 → 64 → 256. Grid fills the frame with precision.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · exponential beat</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><video src="spark/03_structure.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 6</div>
-            <div class="title">Grid locks into alignment</div>
-            <div class="desc">Every node snaps into its perfect position. Stillness.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · snap-to-grid</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 3: PATTERN -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">03</div>
-        <div class="beat-title">Pattern<span class="sub">Waves, interference, depth</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-wave-h"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 7</div>
-            <div class="title">Horizontal wave</div>
-            <div class="desc">Each node brightens in sequence. Smooth sine motion across the grid.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · sine sweep</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-wave-cross"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 8</div>
-            <div class="title">Waves intersect</div>
-            <div class="desc">Vertical wave crosses horizontal. Interference pattern emerges — complexity.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · cross-pattern</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><video src="spark/02_flow.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 9</div>
-            <div class="title">Grid extrudes into depth</div>
-            <div class="desc">Nodes connect into a 3D lattice. Subtle perspective shift reveals structure.</div>
-            <div class="direction"><strong>Camera:</strong> Slow tilt · 3D reveal</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 4: ACTIVATION -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">04</div>
-        <div class="beat-title">Activation<span class="sub">Energy enters the system</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><video src="spark/08_neverstops.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 10</div>
-            <div class="title">First green pulse</div>
-            <div class="desc">Energy enters. Travels node to node along the connections.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · path tracking</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-split"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 11</div>
-            <div class="title">Energy splits at junctions</div>
-            <div class="desc">Multiple paths form. Clean and efficient distribution.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · branching</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-converge"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 12</div>
-            <div class="title">Overload moment</div>
-            <div class="desc">Several pulses converge. Bright flash. Instant stabilization.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · flash &amp; settle</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 5: COMPRESSION -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">05</div>
-        <div class="beat-title">Compression<span class="sub">The lattice condenses</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-collapse"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 13</div>
-            <div class="title">Lattice pulls inward</div>
-            <div class="desc">Structure collapses toward center. Connections preserved.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · inward force</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><video src="spark/03_structure.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 14</div>
-            <div class="title">Dense sphere forms</div>
-            <div class="desc">Thousands of nodes compressed into a single glowing object.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · core hold</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-sphere bm-flicker"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 15</div>
-            <div class="title">Surface flickers</div>
-            <div class="desc">Micro-currents on the surface. High-frequency activity contained.</div>
-            <div class="direction"><strong>Camera:</strong> Macro · surface detail</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 6: REFINEMENT -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">06</div>
-        <div class="beat-title">Refinement<span class="sub">Smarter, fewer, faster</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-vectors"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 16</div>
-            <div class="title">Sphere fractures into vectors</div>
-            <div class="desc">Clean directional lines shoot outward. No fragments — pure direction.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · radial vectors</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-network"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 17</div>
-            <div class="title">Vectors reorganize</div>
-            <div class="desc">Fewer nodes, smarter connections, more open space. Optimization made visible.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · re-arrangement</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><video src="spark/05_unified.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 18</div>
-            <div class="title">Energy resumes flow</div>
-            <div class="desc">Faster, smoother, no redundancy. The system now performs.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · steady flow</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 7: INTELLIGENCE -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">07</div>
-        <div class="beat-title">Intelligence<span class="sub">Learning, adapting, evolving</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-cluster"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 19</div>
-            <div class="title">Node cluster, dynamic reroute</div>
-            <div class="desc">Close on a cluster. Incoming energy reroutes around congestion.</div>
-            <div class="direction"><strong>Camera:</strong> Macro · reroute reveal</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-evolve"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 20</div>
-            <div class="title">System-wide evolution</div>
-            <div class="desc">Patterns shift continuously. No repetition.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · pattern morph</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-emergent"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 21</div>
-            <div class="title">Emergent geometry</div>
-            <div class="desc">New structures form and lock into function. Order from intelligence.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · structure lock</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 8: SCALE -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">08</div>
-        <div class="beat-title">Scale<span class="sub">Beyond the original frame</span></div>
-        <div class="beat-meta">~6 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><video src="spark/04_expand.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 22</div>
-            <div class="title">Camera pulls back</div>
-            <div class="desc">Network extends far beyond the original frame. The reveal.</div>
-            <div class="direction"><strong>Camera:</strong> Slow pull-back · scale</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-layers"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 23</div>
-            <div class="title">Multiple layers appear</div>
-            <div class="desc">Stacked systems, semi-transparent, different depths.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · layer stack</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-cross-flow"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 24</div>
-            <div class="title">Cross-layer flow</div>
-            <div class="desc">Energy moves across layers. Vertical and horizontal orchestration in sync.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · poly-axis flow</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Beat 9: CONTROL -->
-    <section class="beat">
-      <header class="beat-head">
-        <div class="beat-num">09</div>
-        <div class="beat-title">Control<span class="sub">Mastery, balance, signature</span></div>
-        <div class="beat-meta">~7 sec · 3 frames</div>
-      </header>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><video src="spark/06_realtime.mp4" autoplay muted loop playsinline preload="metadata"></video><div class="badge">Hero</div><div class="duration">2.5s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 25</div>
-            <div class="title">Extreme wide</div>
-            <div class="desc">Full network visible. Massive and ordered.</div>
-            <div class="direction"><strong>Camera:</strong> Extreme wide · full reveal</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-rhythm"></div><div class="duration">2s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 26</div>
-            <div class="title">Perfect rhythm</div>
-            <div class="desc">All nodes pulse in sync. Balanced energy. No spikes, no gaps.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · sync pulse</div>
-          </div>
-        </div>
-        <div class="shot">
-          <div class="frame"><div class="bm-vis bm-mark"></div><div class="duration">2.5s</div></div>
-          <div class="body">
-            <div class="shot-id">Frame 27</div>
-            <div class="title">Hard cut to GE Vernova</div>
-            <div class="desc">Black. The mark appears center. A single green pulse passes beneath, fades to zero.</div>
-            <div class="direction"><strong>Camera:</strong> Locked · signature</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="beat" style="margin-top:48px;border-top:1px solid var(--border-strong);padding-top:32px;">
-      <header class="beat-head">
-        <div class="beat-num" style="color:var(--accent-warm);">§</div>
-        <div class="beat-title">Execution Rules<span class="sub">Discipline of the cut</span></div>
-        <div class="beat-meta">No exceptions</div>
-      </header>
-      <div class="shots" style="grid-template-columns:repeat(5,1fr);">
-        <div class="shot" style="cursor:default;">
-          <div class="body" style="padding:16px;">
-            <div class="shot-id">01</div>
-            <div class="title">No randomness</div>
-            <div class="desc">Every motion deterministic.</div>
-          </div>
-        </div>
-        <div class="shot" style="cursor:default;">
-          <div class="body" style="padding:16px;">
-            <div class="shot-id">02</div>
-            <div class="title">No decorative motion</div>
-            <div class="desc">If it doesn't function, cut it.</div>
-          </div>
-        </div>
-        <div class="shot" style="cursor:default;">
-          <div class="body" style="padding:16px;">
-            <div class="shot-id">03</div>
-            <div class="title">Mathematically precise spacing</div>
-            <div class="desc">Sub-pixel grid alignment.</div>
-          </div>
-        </div>
-        <div class="shot" style="cursor:default;">
-          <div class="body" style="padding:16px;">
-            <div class="shot-id">04</div>
-            <div class="title">Green only at activation</div>
-            <div class="desc">Reserved color = reserved meaning.</div>
-          </div>
-        </div>
-        <div class="shot" style="cursor:default;">
-          <div class="body" style="padding:16px;">
-            <div class="shot-id">05</div>
-            <div class="title">Minimal, intentional camera</div>
-            <div class="desc">Movement only when it earns its frame.</div>
-          </div>
-        </div>
+    <section class="vds-legend">
+      <div class="vds-legend-label">VISUAL ELEMENTS</div>
+      <div class="vds-legend-items">
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none"><circle cx="4" cy="6" r="1.5" fill="#00B2A9"/><circle cx="11" cy="6" r="1.5" fill="#00B2A9"/><circle cx="18" cy="6" r="1.5" fill="#00B2A9"/><circle cx="25" cy="6" r="1.5" fill="#00B2A9"/><circle cx="4" cy="12" r="1.5" fill="#00B2A9"/><circle cx="11" cy="12" r="1.5" fill="#00B2A9"/><circle cx="18" cy="12" r="1.5" fill="#00B2A9"/><circle cx="25" cy="12" r="1.5" fill="#00B2A9"/><circle cx="4" cy="18" r="1.5" fill="#00B2A9"/><circle cx="11" cy="18" r="1.5" fill="#00B2A9"/><circle cx="18" cy="18" r="1.5" fill="#00B2A9"/><circle cx="25" cy="18" r="1.5" fill="#00B2A9"/></svg><span>DATA POINTS</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none"><circle cx="4" cy="12" r="2" fill="#00B2A9"/><circle cx="16" cy="6" r="2" fill="#00B2A9"/><circle cx="22" cy="18" r="2" fill="#00B2A9"/><circle cx="28" cy="10" r="2" fill="#00B2A9"/><line x1="4" y1="12" x2="16" y2="6" stroke="#00B2A9" stroke-width="0.8"/><line x1="16" y1="6" x2="22" y2="18" stroke="#00B2A9" stroke-width="0.8"/><line x1="22" y1="18" x2="28" y2="10" stroke="#00B2A9" stroke-width="0.8"/><line x1="16" y1="6" x2="28" y2="10" stroke="#00B2A9" stroke-width="0.8"/></svg><span>CONNECTIONS</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.8"><circle cx="14" cy="14" r="11"/><ellipse cx="14" cy="14" rx="11" ry="4"/><line x1="3" y1="14" x2="25" y2="14"/><line x1="14" y1="3" x2="14" y2="25"/></svg><span>GLOBAL NETWORK</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none" stroke="#00B2A9" stroke-width="0.8"><path d="M2 14 Q 10 4, 18 12 T 30 10"/><path d="M2 18 Q 10 8, 18 16 T 30 14"/></svg><span>FLOW &amp; MOVEMENT</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.8"><circle cx="14" cy="14" r="10"/><circle cx="14" cy="14" r="5"/><circle cx="14" cy="14" r="1.5" fill="#00B2A9"/></svg><span>FOCUS &amp; INSIGHT</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 32 24" fill="none" stroke="#00B2A9" stroke-width="0.9"><circle cx="10" cy="8" r="3"/><circle cx="22" cy="8" r="3"/><path d="M4 22 Q 10 14, 16 22 Q 22 14, 28 22"/></svg><span>HUMAN IMPACT</span></div>
+        <div class="vds-legend-item"><svg viewBox="0 0 28 28" fill="none" stroke="#00B2A9" stroke-width="0.9"><circle cx="14" cy="16" r="6"/><line x1="14" y1="4" x2="14" y2="8"/><line x1="6" y1="16" x2="2" y2="16"/><line x1="22" y1="16" x2="26" y2="16"/><line x1="8" y1="10" x2="5" y2="7"/><line x1="20" y1="10" x2="23" y2="7"/></svg><span>FUTURE &amp; GROWTH</span></div>
       </div>
     </section>
 
     <footer class="colophon">
-      <div>GE Vernova · Orchestrate 2026 · Branded Matrix · Storyboard v3 · System Film</div>
+      <div>GE Vernova · Orchestrate 2026 · Visual Direction Storyboard</div>
       <div class="right">Bttr · April 30, 2026</div>
     </footer>
 
@@ -2178,33 +1997,15 @@
     {id:"09C", beat:"09 — From the Game to the Grid", title:"Hero hold, full network", duration:"3s", video:"heroes/09_grid_global.mp4", desc:"Earth at night with full grid network active. Cities pulse in rhythm. Climactic hold.", camera:"Locked hero · final fade"}
   ];
   const BM_SHOTS = [
-    {id:"F1",  beat:"01 — Birth", title:"Absolute zero", duration:"2s", visClass:"bm-zero", desc:"Black frame. No grain, no gradient. Hold the tension.", camera:"Locked · pure void"},
-    {id:"F2",  beat:"01 — Birth", title:"Single dot appears", duration:"2s", visClass:"bm-dot", desc:"One white dot, center frame. Hard edge, no glow, perfectly still.", camera:"Locked · sub-pixel precision"},
-    {id:"F3",  beat:"01 — Birth", title:"First pulse", duration:"2s", video:"spark/01_ignite.mp4", desc:"Dot emits one controlled pulse. Expands, contracts. Rhythm begins.", camera:"Locked · pulse cycle"},
-    {id:"F4",  beat:"02 — Structure", title:"Dot splits into four", duration:"2s", visClass:"bm-four", desc:"Perfect square, equal spacing. Mathematical division.", camera:"Locked · symmetry"},
-    {id:"F5",  beat:"02 — Structure", title:"Exponential duplication", duration:"2s", visClass:"bm-grid", desc:"4 → 16 → 64 → 256. Grid fills the frame with precision.", camera:"Locked · exponential beat"},
-    {id:"F6",  beat:"02 — Structure", title:"Grid locks into alignment", duration:"2s", video:"spark/03_structure.mp4", desc:"Every node snaps into its perfect position. Stillness.", camera:"Locked · snap-to-grid"},
-    {id:"F7",  beat:"03 — Pattern", title:"Horizontal wave", duration:"2s", visClass:"bm-wave-h", desc:"Each node brightens in sequence. Smooth sine motion across the grid.", camera:"Locked · sine sweep"},
-    {id:"F8",  beat:"03 — Pattern", title:"Waves intersect", duration:"2s", visClass:"bm-wave-cross", desc:"Vertical wave crosses horizontal. Interference pattern emerges — complexity.", camera:"Locked · cross-pattern"},
-    {id:"F9",  beat:"03 — Pattern", title:"Grid extrudes into depth", duration:"2s", video:"spark/02_flow.mp4", desc:"Nodes connect into a 3D lattice. Subtle perspective shift reveals structure.", camera:"Slow tilt · 3D reveal"},
-    {id:"F10", beat:"04 — Activation", title:"First green pulse", duration:"2s", video:"spark/08_neverstops.mp4", desc:"Energy enters. Travels node to node along the connections.", camera:"Locked · path tracking"},
-    {id:"F11", beat:"04 — Activation", title:"Energy splits at junctions", duration:"2s", visClass:"bm-split", desc:"Multiple paths form. Clean and efficient distribution.", camera:"Locked · branching"},
-    {id:"F12", beat:"04 — Activation", title:"Overload moment", duration:"2s", visClass:"bm-converge", desc:"Several pulses converge. Bright flash. Instant stabilization.", camera:"Locked · flash & settle"},
-    {id:"F13", beat:"05 — Compression", title:"Lattice pulls inward", duration:"2s", visClass:"bm-collapse", desc:"Structure collapses toward center. Connections preserved.", camera:"Locked · inward force"},
-    {id:"F14", beat:"05 — Compression", title:"Dense sphere forms", duration:"2s", video:"spark/03_structure.mp4", desc:"Thousands of nodes compressed into a single glowing object.", camera:"Locked · core hold"},
-    {id:"F15", beat:"05 — Compression", title:"Surface flickers", duration:"2s", visClass:"bm-sphere bm-flicker", desc:"Micro-currents on the surface. High-frequency activity contained.", camera:"Macro · surface detail"},
-    {id:"F16", beat:"06 — Refinement", title:"Sphere fractures into vectors", duration:"2s", visClass:"bm-vectors", desc:"Clean directional lines shoot outward. No fragments — pure direction.", camera:"Locked · radial vectors"},
-    {id:"F17", beat:"06 — Refinement", title:"Vectors reorganize", duration:"2s", visClass:"bm-network", desc:"Fewer nodes, smarter connections, more open space. Optimization made visible.", camera:"Locked · re-arrangement"},
-    {id:"F18", beat:"06 — Refinement", title:"Energy resumes flow", duration:"2s", video:"spark/05_unified.mp4", desc:"Faster, smoother, no redundancy. The system now performs.", camera:"Locked · steady flow"},
-    {id:"F19", beat:"07 — Intelligence", title:"Node cluster, dynamic reroute", duration:"2s", visClass:"bm-cluster", desc:"Close on a cluster. Incoming energy reroutes around congestion.", camera:"Macro · reroute reveal"},
-    {id:"F20", beat:"07 — Intelligence", title:"System-wide evolution", duration:"2s", visClass:"bm-evolve", desc:"Patterns shift continuously. No repetition.", camera:"Locked · pattern morph"},
-    {id:"F21", beat:"07 — Intelligence", title:"Emergent geometry", duration:"2s", visClass:"bm-emergent", desc:"New structures form and lock into function. Order from intelligence.", camera:"Locked · structure lock"},
-    {id:"F22", beat:"08 — Scale", title:"Camera pulls back", duration:"2s", video:"spark/04_expand.mp4", desc:"Network extends far beyond the original frame. The reveal.", camera:"Slow pull-back · scale"},
-    {id:"F23", beat:"08 — Scale", title:"Multiple layers appear", duration:"2s", visClass:"bm-layers", desc:"Stacked systems, semi-transparent, different depths.", camera:"Locked · layer stack"},
-    {id:"F24", beat:"08 — Scale", title:"Cross-layer flow", duration:"2s", visClass:"bm-cross-flow", desc:"Energy moves across layers. Vertical and horizontal orchestration in sync.", camera:"Locked · poly-axis flow"},
-    {id:"F25", beat:"09 — Control", title:"Extreme wide", duration:"2.5s", video:"spark/06_realtime.mp4", desc:"Full network visible. Massive and ordered.", camera:"Extreme wide · full reveal"},
-    {id:"F26", beat:"09 — Control", title:"Perfect rhythm", duration:"2s", visClass:"bm-rhythm", desc:"All nodes pulse in sync. Balanced energy. No spikes, no gaps.", camera:"Locked · sync pulse"},
-    {id:"F27", beat:"09 — Control", title:"Hard cut to GE Vernova", duration:"2.5s", visClass:"bm-mark", desc:"Black. The mark appears center. A single green pulse passes beneath, fades to zero.", camera:"Locked · signature"}
+    {id:"01", beat:"Visual Direction Storyboard", title:"The Beginning", duration:"6.6s", video:"vds/01_beginning.mp4", desc:"A field of data points emerges from darkness.", camera:"Macro · emergence"},
+    {id:"02", beat:"Visual Direction Storyboard", title:"Connections Form", duration:"6.6s", video:"vds/02_connections.mp4", desc:"Points connect, creating networks and pathways across the space.", camera:"Locked · network growth"},
+    {id:"03", beat:"Visual Direction Storyboard", title:"The World Takes Shape", duration:"6.6s", video:"vds/03_world.mp4", desc:"Connections build structure, forming a digital globe.", camera:"Slow orbit · 3D reveal"},
+    {id:"04", beat:"Visual Direction Storyboard", title:"Flow of Information", duration:"6.6s", video:"vds/04_flow.mp4", desc:"Data moves, travels, and flows across borders in real time.", camera:"Slow rotation · arcing data"},
+    {id:"05", beat:"Visual Direction Storyboard", title:"Focus & Insight", duration:"6.6s", video:"vds/05_focus.mp4", desc:"Zooming in reveals clusters, insights, and intelligence within the data.", camera:"Macro · cluster zoom"},
+    {id:"06", beat:"Visual Direction Storyboard", title:"Human Impact", duration:"6.6s", video:"vds/06_human.mp4", desc:"Technology empowers people and creates impact in the real world.", camera:"Profile · human + data"},
+    {id:"07", beat:"Visual Direction Storyboard", title:"Global Reach", duration:"6.6s", video:"vds/07_global.mp4", desc:"A wide perspective shows the scale of our connected world.", camera:"Wide · halftone world map"},
+    {id:"08", beat:"Visual Direction Storyboard", title:"Future Forward", duration:"6.6s", video:"vds/08_future.mp4", desc:"The network evolves, adapts, and grows toward limitless possibilities.", camera:"Forward motion · evolving network"},
+    {id:"09", beat:"Visual Direction Storyboard", title:"The Vision", duration:"6.6s", video:"vds/09_vision.mp4", desc:"A future where technology and humanity connect to build a better tomorrow.", camera:"Locked hero · sunrise horizon"}
   ];
   let activeShots = SHOTS;
   let lbIndex = 0;
@@ -2355,15 +2156,13 @@
     var initial = location.hash.replace('#', '');
     if (initial === 'branded-matrix' || initial === 'kick-to-grid') switchBoard(initial);
     var boardConfigs = [
-      { id: 'board-kick-to-grid', shots: SHOTS },
-      { id: 'board-branded-matrix', shots: BM_SHOTS }
+      { id: 'board-kick-to-grid', shots: SHOTS, selector: '.shots .shot' },
+      { id: 'board-branded-matrix', shots: BM_SHOTS, selector: '.vds-frame' }
     ];
     boardConfigs.forEach(function(cfg){
       var board = document.getElementById(cfg.id);
       if (!board) return;
-      // Only attach click handlers to top-level shot cards inside .shots grids
-      // (skip the Execution Rules block which uses .shot but isn't a real shot).
-      var cards = board.querySelectorAll('.shots .shot');
+      var cards = board.querySelectorAll(cfg.selector);
       cards.forEach(function(card, idx){
         if (idx >= cfg.shots.length) return;
         card.setAttribute('role', 'button');
