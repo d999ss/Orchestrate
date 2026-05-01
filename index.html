@@ -60,7 +60,7 @@
   }
   .masthead h1, .masthead h1 .accent,
   .placeholder-board h2,
-  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title,
+  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title, #board-anatomy-watt .vds-title,
   .vds-title, .vds-tagline {
     font-family: var(--display);
     font-weight: 400;
@@ -1158,7 +1158,7 @@
   }
 
   /* Visual Direction Storyboard — magazine-clean (Imagery Direction layout) */
-  #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead {
+  #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead , #board-anatomy-watt .vds-masthead{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -1166,7 +1166,7 @@
     margin-bottom: 28px;
     border-bottom: 1px solid var(--border);
   }
-  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title {
+  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title , #board-anatomy-watt .vds-title{
     font-family: var(--display);
     font-size: 38px;
     font-weight: 400;
@@ -1175,7 +1175,7 @@
     line-height: 1;
     margin-bottom: 10px;
   }
-  #board-branded-matrix .vds-tagline, #board-kick-to-grid .vds-tagline {
+  #board-branded-matrix .vds-tagline, #board-kick-to-grid .vds-tagline , #board-anatomy-watt .vds-tagline{
     font-family: var(--display);
     font-size: 17px;
     font-weight: 400;
@@ -1190,13 +1190,13 @@
     text-align: right;
     margin-left: auto;
   }
-  #board-branded-matrix .vds-grid, #board-kick-to-grid .vds-grid {
+  #board-branded-matrix .vds-grid, #board-kick-to-grid .vds-grid , #board-anatomy-watt .vds-grid{
     display: grid;
     gap: 40px;
     margin-bottom: 56px;
   }
-  #board-branded-matrix .vds-beat, #board-kick-to-grid .vds-beat { display: grid; gap: 14px; }
-  #board-branded-matrix .vds-beat-head, #board-kick-to-grid .vds-beat-head {
+  #board-branded-matrix .vds-beat, #board-kick-to-grid .vds-beat , #board-anatomy-watt .vds-beat{ display: grid; gap: 14px; }
+  #board-branded-matrix .vds-beat-head, #board-kick-to-grid .vds-beat-head , #board-anatomy-watt .vds-beat-head{
     display: grid;
     grid-template-columns: 64px 1fr;
     column-gap: 18px;
@@ -1205,30 +1205,30 @@
     border-bottom: 1px solid var(--border);
     padding-bottom: 10px;
   }
-  #board-branded-matrix .vds-beat-num, #board-kick-to-grid .vds-beat-num {
+  #board-branded-matrix .vds-beat-num, #board-kick-to-grid .vds-beat-num , #board-anatomy-watt .vds-beat-num{
     grid-row: span 2;
     font-family: var(--display);
     font-size: 36px;
     color: var(--lime);
     line-height: 1;
   }
-  #board-branded-matrix .vds-beat-name, #board-kick-to-grid .vds-beat-name {
+  #board-branded-matrix .vds-beat-name, #board-kick-to-grid .vds-beat-name , #board-anatomy-watt .vds-beat-name{
     font-family: var(--display);
     font-size: 18px;
     letter-spacing: 0.18em;
     color: var(--white);
   }
-  #board-branded-matrix .vds-beat-sub, #board-kick-to-grid .vds-beat-sub {
+  #board-branded-matrix .vds-beat-sub, #board-kick-to-grid .vds-beat-sub , #board-anatomy-watt .vds-beat-sub{
     font-size: 12px;
     color: var(--ink-mute);
     letter-spacing: 0.04em;
   }
-  #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames {
+  #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames , #board-anatomy-watt .vds-beat-frames{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  #board-branded-matrix .vds-placeholder, #board-kick-to-grid .vds-placeholder {
+  #board-branded-matrix .vds-placeholder, #board-kick-to-grid .vds-placeholder , #board-anatomy-watt .vds-placeholder{
     width: 100%;
     height: 100%;
     position: relative;
@@ -1249,7 +1249,7 @@
     mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 85%);
     opacity: 0.6;
   }
-  #board-branded-matrix .vds-frame, #board-kick-to-grid .vds-frame {
+  #board-branded-matrix .vds-frame, #board-kick-to-grid .vds-frame , #board-anatomy-watt .vds-frame{
     background: transparent;
     padding: 0;
     border: none;
@@ -1258,10 +1258,10 @@
     transition: transform 0.15s;
     position: relative;
   }
-  #board-branded-matrix .vds-frame:hover, #board-kick-to-grid .vds-frame:hover {
+  #board-branded-matrix .vds-frame:hover, #board-kick-to-grid .vds-frame:hover, #board-anatomy-watt .vds-frame:hover {
     transform: translateY(-2px);
   }
-  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame {
+  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame, #board-anatomy-watt .vds-frame .frame {
     position: relative;
     aspect-ratio: 16 / 9;
     background: #000;
@@ -1269,14 +1269,14 @@
     overflow: hidden;
     margin-bottom: 18px;
   }
-  #board-branded-matrix .vds-frame .frame video, #board-kick-to-grid .vds-frame .frame video,
-  #board-branded-matrix .vds-frame .frame img, #board-kick-to-grid .vds-frame .frame img {
+  #board-branded-matrix .vds-frame .frame video, #board-kick-to-grid .vds-frame .frame video, #board-anatomy-watt .vds-frame .frame video,
+  #board-branded-matrix .vds-frame .frame img, #board-kick-to-grid .vds-frame .frame img, #board-anatomy-watt .vds-frame .frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  #board-branded-matrix .vds-frame:hover .frame::after, #board-kick-to-grid .vds-frame:hover .frame::after {
+  #board-branded-matrix .vds-frame:hover .frame::after, #board-kick-to-grid .vds-frame:hover .frame::after, #board-anatomy-watt .vds-frame:hover .frame::after {
     content: "▶ OPEN";
     position: absolute;
     inset: 0;
@@ -1290,7 +1290,7 @@
     letter-spacing: 0.22em;
     pointer-events: none;
   }
-  #board-branded-matrix .vds-num, #board-kick-to-grid .vds-num {
+  #board-branded-matrix .vds-num, #board-kick-to-grid .vds-num , #board-anatomy-watt .vds-num{
     display: inline-block;
     font-family: var(--display);
     font-size: 16px;
@@ -1299,7 +1299,7 @@
     margin-right: 10px;
     vertical-align: baseline;
   }
-  #board-branded-matrix .vds-name, #board-kick-to-grid .vds-name {
+  #board-branded-matrix .vds-name, #board-kick-to-grid .vds-name , #board-anatomy-watt .vds-name{
     display: inline-block;
     font-family: var(--display);
     font-size: 14px;
@@ -1309,15 +1309,15 @@
     margin-bottom: 10px;
     vertical-align: baseline;
   }
-  #board-branded-matrix .vds-frame p, #board-kick-to-grid .vds-frame p {
+  #board-branded-matrix .vds-frame p, #board-kick-to-grid .vds-frame p, #board-anatomy-watt .vds-frame p {
     font-size: 12px;
     line-height: 1.5;
     color: var(--white);
     max-width: 100%;
     margin-top: 4px;
   }
-  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame { margin-bottom: 14px; }
-  #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend {
+  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame, #board-anatomy-watt .vds-frame .frame { margin-bottom: 14px; }
+  #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend , #board-anatomy-watt .vds-legend{
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 22px 0;
@@ -1327,19 +1327,19 @@
     align-items: center;
     margin-bottom: 40px;
   }
-  #board-branded-matrix .vds-legend-label, #board-kick-to-grid .vds-legend-label {
+  #board-branded-matrix .vds-legend-label, #board-kick-to-grid .vds-legend-label , #board-anatomy-watt .vds-legend-label{
     font-family: var(--display);
     font-size: 14px;
     color: var(--lime);
     letter-spacing: 0.18em;
   }
-  #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items {
+  #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items , #board-anatomy-watt .vds-legend-items{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 16px;
     align-items: center;
   }
-  #board-branded-matrix .vds-legend-item, #board-kick-to-grid .vds-legend-item {
+  #board-branded-matrix .vds-legend-item, #board-kick-to-grid .vds-legend-item , #board-anatomy-watt .vds-legend-item{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1358,19 +1358,19 @@
     font-family: var(--display);
   }
   @media (max-width: 1100px) {
-    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames { grid-template-columns: repeat(2, 1fr); }
-    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames , #board-anatomy-watt .vds-beat-frames{ grid-template-columns: repeat(2, 1fr); }
+    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items , #board-anatomy-watt .vds-legend-items{ grid-template-columns: repeat(4, 1fr); gap: 20px; }
   }
   @media (max-width: 720px) {
-    #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead {
+    #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead , #board-anatomy-watt .vds-masthead{
       grid-template-columns: 1fr;
       gap: 24px;
     }
     #board-branded-matrix .vds-head-right p { text-align: left; }
-    #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title { font-size: 28px; }
-    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames { grid-template-columns: 1fr; }
-    #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend { grid-template-columns: 1fr; gap: 16px; }
-    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items { grid-template-columns: repeat(3, 1fr); }
+    #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title , #board-anatomy-watt .vds-title{ font-size: 28px; }
+    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames , #board-anatomy-watt .vds-beat-frames{ grid-template-columns: 1fr; }
+    #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend , #board-anatomy-watt .vds-legend{ grid-template-columns: 1fr; gap: 16px; }
+    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items , #board-anatomy-watt .vds-legend-items{ grid-template-columns: repeat(3, 1fr); }
   }
 
   /* Branded Matrix board — legacy 27-frame layout (now unused but harmless) */
