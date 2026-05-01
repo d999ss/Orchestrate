@@ -60,7 +60,7 @@
   }
   .masthead h1, .masthead h1 .accent,
   .placeholder-board h2,
-  #board-branded-matrix .vds-title,
+  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title,
   .vds-title, .vds-tagline {
     font-family: var(--display);
     font-weight: 400;
@@ -1158,7 +1158,7 @@
   }
 
   /* Visual Direction Storyboard — magazine-clean (Imagery Direction layout) */
-  #board-branded-matrix .vds-masthead {
+  #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -1166,7 +1166,7 @@
     margin-bottom: 28px;
     border-bottom: 1px solid var(--border);
   }
-  #board-branded-matrix .vds-title {
+  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title {
     font-family: var(--display);
     font-size: 38px;
     font-weight: 400;
@@ -1175,7 +1175,7 @@
     line-height: 1;
     margin-bottom: 10px;
   }
-  #board-branded-matrix .vds-tagline {
+  #board-branded-matrix .vds-tagline, #board-kick-to-grid .vds-tagline {
     font-family: var(--display);
     font-size: 17px;
     font-weight: 400;
@@ -1190,13 +1190,13 @@
     text-align: right;
     margin-left: auto;
   }
-  #board-branded-matrix .vds-grid {
+  #board-branded-matrix .vds-grid, #board-kick-to-grid .vds-grid {
     display: grid;
     gap: 40px;
     margin-bottom: 56px;
   }
-  #board-branded-matrix .vds-beat { display: grid; gap: 14px; }
-  #board-branded-matrix .vds-beat-head {
+  #board-branded-matrix .vds-beat, #board-kick-to-grid .vds-beat { display: grid; gap: 14px; }
+  #board-branded-matrix .vds-beat-head, #board-kick-to-grid .vds-beat-head {
     display: grid;
     grid-template-columns: 64px 1fr;
     column-gap: 18px;
@@ -1205,30 +1205,30 @@
     border-bottom: 1px solid var(--border);
     padding-bottom: 10px;
   }
-  #board-branded-matrix .vds-beat-num {
+  #board-branded-matrix .vds-beat-num, #board-kick-to-grid .vds-beat-num {
     grid-row: span 2;
     font-family: var(--display);
     font-size: 36px;
     color: var(--lime);
     line-height: 1;
   }
-  #board-branded-matrix .vds-beat-name {
+  #board-branded-matrix .vds-beat-name, #board-kick-to-grid .vds-beat-name {
     font-family: var(--display);
     font-size: 18px;
     letter-spacing: 0.18em;
     color: var(--white);
   }
-  #board-branded-matrix .vds-beat-sub {
+  #board-branded-matrix .vds-beat-sub, #board-kick-to-grid .vds-beat-sub {
     font-size: 12px;
     color: var(--ink-mute);
     letter-spacing: 0.04em;
   }
-  #board-branded-matrix .vds-beat-frames {
+  #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  #board-branded-matrix .vds-placeholder {
+  #board-branded-matrix .vds-placeholder, #board-kick-to-grid .vds-placeholder {
     width: 100%;
     height: 100%;
     position: relative;
@@ -1249,7 +1249,7 @@
     mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 85%);
     opacity: 0.6;
   }
-  #board-branded-matrix .vds-frame {
+  #board-branded-matrix .vds-frame, #board-kick-to-grid .vds-frame {
     background: transparent;
     padding: 0;
     border: none;
@@ -1258,10 +1258,10 @@
     transition: transform 0.15s;
     position: relative;
   }
-  #board-branded-matrix .vds-frame:hover {
+  #board-branded-matrix .vds-frame:hover, #board-kick-to-grid .vds-frame:hover {
     transform: translateY(-2px);
   }
-  #board-branded-matrix .vds-frame .frame {
+  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame {
     position: relative;
     aspect-ratio: 16 / 9;
     background: #000;
@@ -1269,14 +1269,14 @@
     overflow: hidden;
     margin-bottom: 18px;
   }
-  #board-branded-matrix .vds-frame .frame video,
-  #board-branded-matrix .vds-frame .frame img {
+  #board-branded-matrix .vds-frame .frame video, #board-kick-to-grid .vds-frame .frame video,
+  #board-branded-matrix .vds-frame .frame img, #board-kick-to-grid .vds-frame .frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  #board-branded-matrix .vds-frame:hover .frame::after {
+  #board-branded-matrix .vds-frame:hover .frame::after, #board-kick-to-grid .vds-frame:hover .frame::after {
     content: "▶ OPEN";
     position: absolute;
     inset: 0;
@@ -1290,7 +1290,7 @@
     letter-spacing: 0.22em;
     pointer-events: none;
   }
-  #board-branded-matrix .vds-num {
+  #board-branded-matrix .vds-num, #board-kick-to-grid .vds-num {
     display: inline-block;
     font-family: var(--display);
     font-size: 16px;
@@ -1299,7 +1299,7 @@
     margin-right: 10px;
     vertical-align: baseline;
   }
-  #board-branded-matrix .vds-name {
+  #board-branded-matrix .vds-name, #board-kick-to-grid .vds-name {
     display: inline-block;
     font-family: var(--display);
     font-size: 14px;
@@ -1309,15 +1309,15 @@
     margin-bottom: 10px;
     vertical-align: baseline;
   }
-  #board-branded-matrix .vds-frame p {
+  #board-branded-matrix .vds-frame p, #board-kick-to-grid .vds-frame p {
     font-size: 12px;
     line-height: 1.5;
     color: var(--white);
     max-width: 100%;
     margin-top: 4px;
   }
-  #board-branded-matrix .vds-frame .frame { margin-bottom: 14px; }
-  #board-branded-matrix .vds-legend {
+  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame { margin-bottom: 14px; }
+  #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 22px 0;
@@ -1327,19 +1327,19 @@
     align-items: center;
     margin-bottom: 40px;
   }
-  #board-branded-matrix .vds-legend-label {
+  #board-branded-matrix .vds-legend-label, #board-kick-to-grid .vds-legend-label {
     font-family: var(--display);
     font-size: 14px;
     color: var(--lime);
     letter-spacing: 0.18em;
   }
-  #board-branded-matrix .vds-legend-items {
+  #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 16px;
     align-items: center;
   }
-  #board-branded-matrix .vds-legend-item {
+  #board-branded-matrix .vds-legend-item, #board-kick-to-grid .vds-legend-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1358,19 +1358,19 @@
     font-family: var(--display);
   }
   @media (max-width: 1100px) {
-    #board-branded-matrix .vds-beat-frames { grid-template-columns: repeat(2, 1fr); }
-    #board-branded-matrix .vds-legend-items { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames { grid-template-columns: repeat(2, 1fr); }
+    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items { grid-template-columns: repeat(4, 1fr); gap: 20px; }
   }
   @media (max-width: 720px) {
-    #board-branded-matrix .vds-masthead {
+    #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead {
       grid-template-columns: 1fr;
       gap: 24px;
     }
     #board-branded-matrix .vds-head-right p { text-align: left; }
-    #board-branded-matrix .vds-title { font-size: 28px; }
-    #board-branded-matrix .vds-beat-frames { grid-template-columns: 1fr; }
-    #board-branded-matrix .vds-legend { grid-template-columns: 1fr; gap: 16px; }
-    #board-branded-matrix .vds-legend-items { grid-template-columns: repeat(3, 1fr); }
+    #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title { font-size: 28px; }
+    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames { grid-template-columns: 1fr; }
+    #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend { grid-template-columns: 1fr; gap: 16px; }
+    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items { grid-template-columns: repeat(3, 1fr); }
   }
 
   /* Branded Matrix board — legacy 27-frame layout (now unused but harmless) */
@@ -1724,9 +1724,9 @@
       </a>
       <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
       <div class="meta">
-        <strong>Storyboard v2 · Expanded Cut</strong>
-        27 shots · ~60 sec runtime<br/>
-        makebttr.com · April 30, 2026
+        <strong>Visual Direction Storyboard</strong>
+        27 frames · ~60 sec runtime<br/>
+        makebttr.com · May 1, 2026
       </div>
     </div>
     <div class="title-block">
@@ -1739,7 +1739,7 @@
     <p>A visual direction rooted in connection, data, and global intelligence. Inspired by networks, technology, and the flow of information shaping a smarter future. <span class="accent">Where systems become intelligence in motion.</span></p>
     <div class="stats">
       <div class="stat"><label>Aspect</label><span>16:9</span></div>
-      <div class="stat"><label>Beats</label><span>9 × 3 sub-shots</span></div>
+      <div class="stat"><label>Frames</label><span>9 × 3</span></div>
       <div class="stat"><label>Runtime</label><span>~60 sec</span></div>
     </div>
   </section>
@@ -1790,352 +1790,257 @@
   </section>
 
   <!-- Beat 1 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">01</div>
-      <div class="beat-title">The Stage<span class="sub">Mercedes-Benz Stadium · Atlanta, GA</span></div>
-      <div class="beat-meta">~6.5 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/01a_aerial.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 1A</div>
-          <div class="title">Helicopter aerial wide</div>
-          <div class="desc">Approach to Mercedes-Benz Stadium at twilight. Stadium lit, city quiet. Pre-game emptiness, anticipation.</div>
-          <div class="direction"><strong>Camera:</strong> Slow forward dolly · anamorphic lens flare</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">01</div>
+        <div class="vds-beat-name">POWER UP</div>
+        <div class="vds-beat-sub">The first arc, the first watt</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/01a_aerial.png" alt="" loading="lazy"></div>
+          <div class="vds-num">01A</div>
+          <div class="vds-name">Stadium aerial</div>
+          <p>Aerial of Mercedes-Benz Stadium at twilight, halftone overlay tracing the structure.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/01b_arch.png" alt="" loading="lazy"></div>
+          <div class="vds-num">01B</div>
+          <div class="vds-name">Architecture detail</div>
+          <p>Petal roof rendered as halftone pattern, edges traced in cyan-teal.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/01c_field.png" alt="" loading="lazy"></div>
+          <div class="vds-num">01C</div>
+          <div class="vds-name">Field, lights up</div>
+          <p>Empty pitch, stadium lights coming online as cyan nodes.</p>
         </div>
       </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/01b_arch.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 1B</div>
-          <div class="title">Architecture detail push</div>
-          <div class="desc">Tighter on the petal-roof structure as it pulses with interior glow. Stadium identity established.</div>
-          <div class="direction"><strong>Camera:</strong> Push-in · macro detail</div>
-        </div>
-      </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/01c_field.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 1C</div>
-          <div class="title">Field-level wide, lights up</div>
-          <div class="desc">Empty pitch from sideline. Stadium lights kick on in sequence. The stage is set.</div>
-          <div class="direction"><strong>Camera:</strong> Static wide · slow exposure ramp</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 2 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">02</div>
-      <div class="beat-title">The Energy Builds<span class="sub">Anticipation crests across the stadium</span></div>
-      <div class="beat-meta">~6.5 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/02a_crowd.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 2A</div>
-          <div class="title">Crowd in shadow, hands rising</div>
-          <div class="desc">Tens of thousands silhouetted. Hands lift in unison. Anticipation as a physical wave.</div>
-          <div class="direction"><strong>Camera:</strong> Pan across crowd · low angle</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">02</div>
+        <div class="vds-beat-name">ENERGY BUILDS</div>
+        <div class="vds-beat-sub">Anticipation crests across the stadium</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/02a_crowd.png" alt="" loading="lazy"></div>
+          <div class="vds-num">02A</div>
+          <div class="vds-name">Crowd in shadow</div>
+          <p>Halftone-dot silhouettes, a wave of cyan light rippling across the stands.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/02b_field.png" alt="" loading="lazy"></div>
+          <div class="vds-num">02B</div>
+          <div class="vds-name">Field rippling</div>
+          <p>Aerial: cyan-teal energy currents pulsing through stands and field.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/02c_grass.png" alt="" loading="lazy"></div>
+          <div class="vds-num">02C</div>
+          <div class="vds-name">Grass macro</div>
+          <p>Single cyan energy line racing across blades of grass.</p>
         </div>
       </div>
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/02b_field.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 2B</div>
-          <div class="title">Field rippling green</div>
-          <div class="desc">Electric green energy ripples across the field and climbs the stands. Force entering the system.</div>
-          <div class="direction"><strong>Camera:</strong> Aerial wide · volumetric haze</div>
-        </div>
-      </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/02c_grass.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 2C</div>
-          <div class="title">Player in locker room</div>
-          <div class="desc">Alone on the bench, quiet preparation. The roar muffled outside. Calm before walking out.</div>
-          <div class="direction"><strong>Camera:</strong> Medium · warm tungsten · stillness</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 3 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">03</div>
-      <div class="beat-title">The Player<span class="sub">Focus before everything changes</span></div>
-      <div class="beat-meta">~6 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/03a_walk.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 3A</div>
-          <div class="title">Solo walk onto field</div>
-          <div class="desc">Wide shot, single figure striding from tunnel into stadium light. Solitary purpose.</div>
-          <div class="direction"><strong>Camera:</strong> Tracking wide · backlit silhouette</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">03</div>
+        <div class="vds-beat-name">THE PLAYER</div>
+        <div class="vds-beat-sub">Focus before everything changes</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/03a_walk.png" alt="" loading="lazy"></div>
+          <div class="vds-num">03A</div>
+          <div class="vds-name">Solo walk</div>
+          <p>Wide tracking silhouette walking onto a stadium pitch at night.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/03b_corridor.png" alt="" loading="lazy"></div>
+          <div class="vds-num">03B</div>
+          <div class="vds-name">Lit corridor</div>
+          <p>Athlete in stadium tunnel, halftone walls, cyan-teal ambient glow.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/03c_focus.png" alt="" loading="lazy"></div>
+          <div class="vds-num">03C</div>
+          <div class="vds-name">ECU focus</div>
+          <p>Profile close-up with cyan-teal halftone data points overlaid on the face.</p>
         </div>
       </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/03b_corridor.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 3B</div>
-          <div class="title">Medium, lit corridor</div>
-          <div class="desc">Player approaching through stadium light, breath visible, gaze locked forward.</div>
-          <div class="direction"><strong>Camera:</strong> Steadicam push-in · 50mm</div>
-        </div>
-      </div>
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/03c_focus.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 3C</div>
-          <div class="title">ECU eyes, sweat, focus</div>
-          <div class="desc">Extreme close-up. Sweat catches floodlight. Eyes locked. The silent calm before action.</div>
-          <div class="direction"><strong>Camera:</strong> Macro lens · breath-held stillness</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 4 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">04</div>
-      <div class="beat-title">The Strategy<span class="sub">Every detail accounted for</span></div>
-      <div class="beat-meta">~6 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/04a_clipboard.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 4A</div>
-          <div class="title">OTS, coach &amp; clipboard</div>
-          <div class="desc">Over-shoulder on tactical clipboard, diagrams active. Strategy made visible.</div>
-          <div class="direction"><strong>Camera:</strong> OTS handheld · warm rim light</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">04</div>
+        <div class="vds-beat-name">THE STRATEGY</div>
+        <div class="vds-beat-sub">Every detail accounted for</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/04a_clipboard.png" alt="" loading="lazy"></div>
+          <div class="vds-num">04A</div>
+          <div class="vds-name">OTS clipboard</div>
+          <p>Tactical clipboard rendered as a UI dashboard, lime accent on a readout.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/04b_huddle.png" alt="" loading="lazy"></div>
+          <div class="vds-num">04B</div>
+          <div class="vds-name">Faces leaning in</div>
+          <p>Halftone-dot silhouettes leaning into the huddle, cyan glow connecting them.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/04c_hands.png" alt="" loading="lazy"></div>
+          <div class="vds-num">04C</div>
+          <div class="vds-name">Hands stacking</div>
+          <p>Top-down: hands stacking in the center, halftone pattern, cyan glow.</p>
         </div>
       </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/04b_huddle.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 4B</div>
-          <div class="title">Player faces leaning in</div>
-          <div class="desc">Tight on faces in the huddle. Trust, alignment, shared mission.</div>
-          <div class="direction"><strong>Camera:</strong> Slow arc · shallow depth</div>
-        </div>
-      </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/04c_hands.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 4C</div>
-          <div class="title">Hands stacking center</div>
-          <div class="desc">Top-down on hands meeting. Unity image, the team becoming one system.</div>
-          <div class="direction"><strong>Camera:</strong> Top-down · jib drop</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 5 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">05</div>
-      <div class="beat-title">The Kick<span class="sub">Energy ignites</span></div>
-      <div class="beat-meta">~7 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/05a_approach.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 5A</div>
-          <div class="title">Low angle approach</div>
-          <div class="desc">Camera at grass-level, player approaching ball. Footfalls heavy, momentum gathering.</div>
-          <div class="direction"><strong>Camera:</strong> Low slider · 100fps slow-mo</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">05</div>
+        <div class="vds-beat-name">THE KICK</div>
+        <div class="vds-beat-sub">Energy ignites</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/05a_approach.png" alt="" loading="lazy"></div>
+          <div class="vds-num">05A</div>
+          <div class="vds-name">Low approach</div>
+          <p>Slider angle at grass level, athlete approaching the ball, halftone turf.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/05b_contact.png" alt="" loading="lazy"></div>
+          <div class="vds-num">05B</div>
+          <div class="vds-name">Macro contact</div>
+          <p>Cleat-ball contact with cyan-teal energy bursting in radial halftone.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/05c_explode.png" alt="" loading="lazy"></div>
+          <div class="vds-num">05C</div>
+          <div class="vds-name">Energy explosion</div>
+          <p>Pure VFX cyan-teal shockwave radiating in concentric halftone rings.</p>
         </div>
       </div>
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/05b_contact.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 5B</div>
-          <div class="title">Macro foot/ball contact</div>
-          <div class="desc">Hyper slow motion: cleat strikes ball. Leather deforms, debris scatters. Force visible.</div>
-          <div class="direction"><strong>Camera:</strong> 1000fps · macro</div>
-        </div>
-      </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/05c_explode.png" alt="" loading="lazy"><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 5C</div>
-          <div class="title">Ball launches off foot</div>
-          <div class="desc">Deformed ball, debris, motion blur. Energy starts to glow from the surface. The journey begins.</div>
-          <div class="direction"><strong>Camera:</strong> Slow-mo · trailing motion blur</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 6 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">06</div>
-      <div class="beat-title">In Flight<span class="sub">Reality begins to break</span></div>
-      <div class="beat-meta">~7 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/06a_arc.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 6A</div>
-          <div class="title">Ball arcing, energy trail</div>
-          <div class="desc">Ball traces an arc against night sky. Brilliant green particle trail follows.</div>
-          <div class="direction"><strong>Camera:</strong> Tracking arc · sky as canvas</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">06</div>
+        <div class="vds-beat-name">IN FLIGHT</div>
+        <div class="vds-beat-sub">Reality begins to break</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/06a_arc.png" alt="" loading="lazy"></div>
+          <div class="vds-num">06A</div>
+          <div class="vds-name">Ball arcing</div>
+          <p>Tracking shot of ball arcing through dark sky with cyan data trail.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/06b_smash.png" alt="" loading="lazy"></div>
+          <div class="vds-num">06B</div>
+          <div class="vds-name">Smashes net</div>
+          <p>Slow-motion macro of ball striking the goal net, cyan-teal energy shockwave.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/06c_dissolve.png" alt="" loading="lazy"></div>
+          <div class="vds-num">06C</div>
+          <div class="vds-name">Energy bloom</div>
+          <p>Inside-goal POV: cyan-teal energy streaming out, ball gone, halftone bloom.</p>
         </div>
       </div>
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/06b_smash.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 6B</div>
-          <div class="title">Ball smashes net, energy explodes</div>
-          <div class="desc">The instant of impact. Net ripples, brilliant green shockwave erupts outward. Climactic release.</div>
-          <div class="direction"><strong>Camera:</strong> Slow-mo macro · radial burst</div>
-        </div>
-      </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/06c_dissolve.png" alt="" loading="lazy"><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 6C</div>
-          <div class="title">Energy floods from the goal</div>
-          <div class="desc">Net still rippling. Green energy streams outward and coalesces into light. The ball is gone — only force remains.</div>
-          <div class="direction"><strong>Camera:</strong> Inside-goal POV · slow motion bloom</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 7 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">07</div>
-      <div class="beat-title">Energy Becomes Data<span class="sub">The pivot moment</span></div>
-      <div class="beat-meta">~7 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/07a_sphere.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 7A</div>
-          <div class="title">Sphere of pure energy</div>
-          <div class="desc">Ball fully transformed: glowing data sphere, geometric particles in concentric orbit.</div>
-          <div class="direction"><strong>Camera:</strong> Locked hold · subject hover</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">07</div>
+        <div class="vds-beat-name">ENERGY BECOMES DATA</div>
+        <div class="vds-beat-sub">The pivot moment</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/07a_sphere.png" alt="" loading="lazy"></div>
+          <div class="vds-num">07A</div>
+          <div class="vds-name">Sphere of energy</div>
+          <p>Glowing sphere of pure cyan-teal data, geometric halftone particles in orbit.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/07b_beams.png" alt="" loading="lazy"></div>
+          <div class="vds-num">07B</div>
+          <div class="vds-name">Beams shooting outward</div>
+          <p>Pull-back: multiple cyan-teal beams firing outward across a halftone field.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/07c_nodes.png" alt="" loading="lazy"></div>
+          <div class="vds-num">07C</div>
+          <div class="vds-name">Nodes lighting</div>
+          <p>Aerial: distant city points and infrastructure igniting in rapid sequence.</p>
         </div>
       </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/07b_beams.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 7B</div>
-          <div class="title">Beams shooting outward</div>
-          <div class="desc">Energy beams fire from sphere in calculated directions. The network reaching.</div>
-          <div class="direction"><strong>Camera:</strong> Pull-back rapid · vector pulses</div>
-        </div>
-      </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/07c_nodes.png" alt="" loading="lazy"><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 7C</div>
-          <div class="title">Network nodes lighting</div>
-          <div class="desc">Beams reach distant points. Each contact ignites a node. The system wakes up.</div>
-          <div class="direction"><strong>Camera:</strong> Quick cuts · node POVs</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 8 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">08</div>
-      <div class="beat-title">Systems Awaken<span class="sub">Everything connects</span></div>
-      <div class="beat-meta">~7 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/08a_pullback.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 8A</div>
-          <div class="title">Stadium pull-back w/ grid</div>
-          <div class="desc">Pull-back reveals stadium with green grid lines extending outward like circuitry.</div>
-          <div class="direction"><strong>Camera:</strong> Aerial pull-back · scale reveal</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">08</div>
+        <div class="vds-beat-name">SYSTEMS AWAKEN</div>
+        <div class="vds-beat-sub">Everything connects</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/08a_pullback.png" alt="" loading="lazy"></div>
+          <div class="vds-num">08A</div>
+          <div class="vds-name">Stadium pull-back</div>
+          <p>Stadium revealed with cyan-teal grid lines extending across surrounding city.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/08b_city.png" alt="" loading="lazy"></div>
+          <div class="vds-num">08B</div>
+          <div class="vds-name">Cityscape grid</div>
+          <p>High aerial: city skyline with luminous cyan-teal grid network.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/08c_pylon.png" alt="" loading="lazy"></div>
+          <div class="vds-num">08C</div>
+          <div class="vds-name">Power-line nodes</div>
+          <p>Macro of transmission tower with cyan-teal energy traveling along the line.</p>
         </div>
       </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/08b_city.png" alt="" loading="lazy"><div class="duration">2s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 8B</div>
-          <div class="title">Cityscape grid overlay</div>
-          <div class="desc">Atlanta skyline at night with green grid pulsing across buildings, streets, infrastructure.</div>
-          <div class="direction"><strong>Camera:</strong> High angle · time-lapse feel</div>
-        </div>
-      </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/08c_pylon.png" alt="" loading="lazy"><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 8C</div>
-          <div class="title">Power-line nodes pulsing</div>
-          <div class="desc">Tight on transmission tower, energy traveling along the line. Live network in action.</div>
-          <div class="direction"><strong>Camera:</strong> Macro detail · pulse-rhythm</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Beat 9 -->
-  <section class="beat">
-    <header class="beat-head">
-      <div class="beat-num">09</div>
-      <div class="beat-title">From the Game to the Grid<span class="sub">Endless impact</span></div>
-      <div class="beat-meta">~8 sec · 3 shots</div>
-    </header>
-    <div class="shots">
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/09a_orbit.png" alt="" loading="lazy"><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 9A</div>
-          <div class="title">Earth low orbit reveal</div>
-          <div class="desc">Camera rises into low orbit. Earth fills the frame, atmospheric glow on the horizon.</div>
-          <div class="direction"><strong>Camera:</strong> Vertical rise · long focal</div>
+    <section class="beat vds-beat">
+      <header class="vds-beat-head">
+        <div class="vds-beat-num">09</div>
+        <div class="vds-beat-name">FROM THE GAME TO THE GRID</div>
+        <div class="vds-beat-sub">Endless impact</div>
+      </header>
+      <div class="vds-beat-frames">
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/09a_orbit.png" alt="" loading="lazy"></div>
+          <div class="vds-num">09A</div>
+          <div class="vds-name">Earth, low orbit</div>
+          <p>Cinematic vertical rise into low Earth orbit at night.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/09b_grid.png" alt="" loading="lazy"></div>
+          <div class="vds-num">09B</div>
+          <div class="vds-name">Grid spreading</div>
+          <p>Earth from orbit with cyan-teal grid network spreading across continents.</p>
+        </div>
+        <div class="vds-frame">
+          <div class="frame"><img src="imagen_wc/09c_climax.png" alt="" loading="lazy"></div>
+          <div class="vds-num">09C</div>
+          <div class="vds-name">Hero hold</div>
+          <p>Locked hero hold: full active grid, sunrise glow rising on the right edge.</p>
         </div>
       </div>
-      <div class="shot">
-        <div class="frame"><img src="imagen_wc/09b_grid.png" alt="" loading="lazy"><div class="duration">2.5s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 9B</div>
-          <div class="title">Grid spreading continents</div>
-          <div class="desc">Green grid lines snake across continents, connecting cities in a living web.</div>
-          <div class="direction"><strong>Camera:</strong> Slow orbit · time-lapse spread</div>
-        </div>
-      </div>
-      <div class="shot hero">
-        <div class="frame"><img src="imagen_wc/09c_climax.png" alt="" loading="lazy"><div class="badge">Hero</div><div class="duration">3s</div></div>
-        <div class="body">
-          <div class="shot-id">Shot 9C</div>
-          <div class="title">Hero hold, full network</div>
-          <div class="desc">Earth at night with full grid network active. Cities pulse in rhythm. Climactic hold.</div>
-          <div class="direction"><strong>Camera:</strong> Locked hero · final fade</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <footer class="colophon">
-    <div>GE Vernova · Orchestrate 2026 · Direction 3 Hybrid · Storyboard v2 (Expanded)</div>
-    <div class="right">Bttr · April 30, 2026</div>
-  </footer>
+    </section>
 
   </div><!-- /board-kick-to-grid -->
 
@@ -2810,7 +2715,7 @@
     var initial = location.hash.replace('#', '');
     if (initial === 'promo' || initial === 'branded-matrix' || initial === 'kick-to-grid' || initial === 'imagery-direction') switchBoard(initial);
     var boardConfigs = [
-      { id: 'board-kick-to-grid', shots: SHOTS, selector: '.shots .shot' },
+      { id: 'board-kick-to-grid', shots: SHOTS, selector: '.vds-frame' },
       { id: 'board-branded-matrix', shots: BM_SHOTS, selector: '.vds-frame' },
       { id: 'board-imagery-direction', shots: ID_SHOTS, selector: '.id-card' }
     ];
