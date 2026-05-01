@@ -907,47 +907,7 @@
     .sts-grid .shots { grid-template-columns: 1fr; gap: 14px; }
   }
 
-  /* Visual Direction Storyboard — exact reference layout */
-  /* Board-level teal wash with organic square-halftone overlay (matches brand reference) */
-  #board-branded-matrix.active {
-    position: relative;
-    background:
-      /* Square halftone overlay — varying density with a soft mask */
-      radial-gradient(ellipse 80% 70% at 75% 35%,
-        rgba(0, 178, 169, 0.18) 0%,
-        rgba(0, 178, 169, 0.10) 35%,
-        rgba(0, 178, 169, 0.04) 60%,
-        transparent 80%),
-      linear-gradient(180deg, #0B2B33 0%, #082226 100%);
-    margin: -8px -56px 0;
-    padding: 24px 56px 80px;
-    min-height: calc(100vh - 100px);
-    isolation: isolate;
-  }
-  #board-branded-matrix.active::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      /* Square pixel halftone — small base layer */
-      linear-gradient(rgba(0, 178, 169, 0.18) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 178, 169, 0.18) 1px, transparent 1px);
-    background-size: 14px 14px, 14px 14px;
-    background-position: 0 0;
-    /* Mask gives organic density gradient — denser top-right, fading bottom-left */
-    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 80% 30%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.15) 60%, transparent 85%);
-    mask-image: radial-gradient(ellipse 90% 80% at 80% 30%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.15) 60%, transparent 85%);
-    pointer-events: none;
-    opacity: 0.45;
-    z-index: 0;
-  }
-  #board-branded-matrix.active > * {
-    position: relative;
-    z-index: 1;
-  }
-  @media (max-width: 720px) {
-    #board-branded-matrix.active { margin: -8px -16px 0; padding: 16px 16px 56px; }
-  }
+  /* Visual Direction Storyboard — magazine-clean (Imagery Direction layout) */
   #board-branded-matrix .vds-masthead {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -998,7 +958,7 @@
   #board-branded-matrix .vds-beat-num {
     grid-row: span 2;
     font-family: var(--display);
-    font-size: 40px;
+    font-size: 36px;
     color: var(--lime);
     line-height: 1;
   }
@@ -1040,17 +1000,15 @@
     opacity: 0.6;
   }
   #board-branded-matrix .vds-frame {
-    background: rgba(11, 43, 51, 0.6);
-    backdrop-filter: blur(2px);
-    padding: 22px 22px 24px;
-    border: 1px solid rgba(0, 178, 169, 0.18);
-    border-radius: 2px;
+    background: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 0;
     cursor: pointer;
-    transition: border-color 0.15s, transform 0.15s;
+    transition: transform 0.15s;
     position: relative;
   }
   #board-branded-matrix .vds-frame:hover {
-    border-color: var(--aqua);
     transform: translateY(-2px);
   }
   #board-branded-matrix .vds-frame .frame {
@@ -1082,26 +1040,32 @@
     pointer-events: none;
   }
   #board-branded-matrix .vds-num {
+    display: inline-block;
     font-family: var(--display);
-    font-size: 18px;
-    color: var(--aqua);
-    letter-spacing: 0.08em;
-    margin-bottom: 4px;
+    font-size: 16px;
+    color: var(--lime);
+    letter-spacing: 0.06em;
+    margin-right: 10px;
+    vertical-align: baseline;
   }
   #board-branded-matrix .vds-name {
+    display: inline-block;
     font-family: var(--display);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     color: var(--white);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    vertical-align: baseline;
   }
   #board-branded-matrix .vds-frame p {
-    font-size: 13px;
-    line-height: 1.55;
-    color: var(--ink-mute);
-    max-width: 240px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--white);
+    max-width: 100%;
+    margin-top: 4px;
   }
+  #board-branded-matrix .vds-frame .frame { margin-bottom: 14px; }
   #board-branded-matrix .vds-legend {
     border-top: 1px solid var(--border);
     padding: 28px 0 12px;
