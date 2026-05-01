@@ -793,6 +793,266 @@
     max-width: 520px;
     margin: 0 auto 32px;
   }
+
+  /* Branded Matrix visualizations — minimalist dot/grid placeholders */
+  .bm-vis {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    overflow: hidden;
+  }
+  .bm-zero { background: #000; }
+  .bm-dot::before, .bm-pulse::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 10px; height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .bm-pulse::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 10px; height: 10px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: bmPulse 2s ease-out infinite;
+  }
+  @keyframes bmPulse {
+    0% { width: 10px; height: 10px; opacity: 1; }
+    100% { width: 100px; height: 100px; opacity: 0; }
+  }
+  .bm-four {
+    background:
+      radial-gradient(circle at 35% 35%, #fff 0 4px, transparent 5px),
+      radial-gradient(circle at 65% 35%, #fff 0 4px, transparent 5px),
+      radial-gradient(circle at 35% 65%, #fff 0 4px, transparent 5px),
+      radial-gradient(circle at 65% 65%, #fff 0 4px, transparent 5px),
+      #000;
+  }
+  .bm-grid {
+    background-color: #000;
+    background-image: radial-gradient(circle, #fff 1px, transparent 1.5px);
+    background-size: 22px 22px;
+    background-position: 11px 11px;
+  }
+  .bm-locked { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
+  .bm-wave-h {
+    background-color: #000;
+    background-image:
+      radial-gradient(circle, #fff 1px, transparent 1.5px),
+      linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+    background-size: 22px 22px, 100% 22px;
+    background-position: 11px 11px, 0 50%;
+    background-repeat: repeat, no-repeat;
+  }
+  .bm-wave-cross {
+    background-color: #000;
+    background-image:
+      radial-gradient(circle, #fff 1px, transparent 1.5px),
+      linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%),
+      linear-gradient(0deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    background-size: 22px 22px, 100% 22px, 22px 100%;
+    background-position: 11px 11px, 0 50%, 50% 0;
+    background-repeat: repeat, no-repeat, no-repeat;
+  }
+  .bm-lattice {
+    background-color: #000;
+    background-image:
+      linear-gradient(135deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+      linear-gradient(45deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+      radial-gradient(circle, #fff 1px, transparent 1.5px);
+    background-size: 32px 32px, 32px 32px, 22px 22px;
+    background-position: 0 0, 0 0, 11px 11px;
+  }
+  .bm-pulse-green {
+    background-color: #000;
+    background-image: radial-gradient(circle, #fff 1px, transparent 1.5px);
+    background-size: 22px 22px;
+    background-position: 11px 11px;
+  }
+  .bm-pulse-green::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 25%;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 18px var(--accent);
+    transform: translate(-50%, -50%);
+  }
+  .bm-split {
+    background-color: #000;
+    background-image: radial-gradient(circle, #fff 1px, transparent 1.5px);
+    background-size: 22px 22px;
+    background-position: 11px 11px;
+  }
+  .bm-split::before, .bm-split::after {
+    content: "";
+    position: absolute;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .bm-split::before { top: 35%; left: 50%; }
+  .bm-split::after  { top: 65%; left: 50%; }
+  .bm-converge {
+    background:
+      radial-gradient(circle at center, rgba(110,225,91,0.6) 0%, transparent 30%),
+      radial-gradient(circle at center, rgba(110,225,91,0.2) 0%, transparent 60%),
+      #000;
+  }
+  .bm-collapse {
+    background-color: #000;
+    background-image:
+      radial-gradient(circle at center, transparent 0%, transparent 30%, rgba(255,255,255,0.05) 60%, transparent 80%),
+      radial-gradient(circle, #fff 1px, transparent 1.5px);
+    background-size: cover, 22px 22px;
+    background-position: center, 11px 11px;
+  }
+  .bm-sphere {
+    background:
+      radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 30%, transparent 50%),
+      radial-gradient(circle at center, #fff 0%, transparent 8%),
+      #000;
+  }
+  .bm-flicker::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 45% 50%, rgba(255,255,255,0.3) 0%, transparent 4%),
+      radial-gradient(circle at 55% 48%, rgba(255,255,255,0.3) 0%, transparent 4%),
+      radial-gradient(circle at 50% 55%, rgba(255,255,255,0.3) 0%, transparent 4%);
+    mix-blend-mode: screen;
+  }
+  .bm-vectors {
+    background:
+      conic-gradient(from 0deg at center,
+        transparent 0deg, rgba(255,255,255,0.6) 5deg, transparent 10deg,
+        transparent 80deg, rgba(255,255,255,0.6) 85deg, transparent 90deg,
+        transparent 170deg, rgba(255,255,255,0.6) 175deg, transparent 180deg,
+        transparent 260deg, rgba(255,255,255,0.6) 265deg, transparent 270deg,
+        transparent 360deg),
+      #000;
+  }
+  .bm-network {
+    background-color: #000;
+    background-image:
+      linear-gradient(60deg, transparent 49%, rgba(255,255,255,0.18) 50%, transparent 51%),
+      linear-gradient(-60deg, transparent 49%, rgba(255,255,255,0.18) 50%, transparent 51%),
+      radial-gradient(circle, #fff 1.5px, transparent 2px);
+    background-size: 60px 60px, 60px 60px, 60px 60px;
+    background-position: 0 0, 0 0, 30px 30px;
+  }
+  .bm-flow::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: -10%;
+    width: 30%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: bmFlow 2.4s linear infinite;
+  }
+  @keyframes bmFlow {
+    0% { left: -30%; }
+    100% { left: 100%; }
+  }
+  .bm-cluster {
+    background-color: #000;
+    background-image:
+      radial-gradient(circle at 50% 50%, #fff 1.5px, transparent 2.5px),
+      radial-gradient(circle at 35% 40%, #fff 1.5px, transparent 2.5px),
+      radial-gradient(circle at 65% 40%, #fff 1.5px, transparent 2.5px),
+      radial-gradient(circle at 35% 60%, #fff 1.5px, transparent 2.5px),
+      radial-gradient(circle at 65% 60%, #fff 1.5px, transparent 2.5px),
+      radial-gradient(circle at 50% 30%, #fff 1.5px, transparent 2.5px),
+      radial-gradient(circle at 50% 70%, #fff 1.5px, transparent 2.5px);
+  }
+  .bm-evolve {
+    background-color: #000;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1.5px);
+    background-size: 18px 18px;
+    background-position: 9px 9px;
+    filter: contrast(1.1);
+  }
+  .bm-emergent {
+    background:
+      conic-gradient(from 45deg at center, rgba(255,255,255,0.15) 0deg 60deg, transparent 60deg 120deg, rgba(255,255,255,0.15) 120deg 180deg, transparent 180deg 240deg, rgba(255,255,255,0.15) 240deg 300deg, transparent 300deg 360deg),
+      radial-gradient(circle, #fff 1px, transparent 1.5px) 11px 11px / 22px 22px,
+      #000;
+  }
+  .bm-pullback {
+    background-color: #000;
+    background-image:
+      radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%),
+      radial-gradient(circle, #fff 0.6px, transparent 1px);
+    background-size: cover, 14px 14px;
+    background-position: center, 7px 7px;
+  }
+  .bm-layers {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.04) 33%, transparent 33%, transparent 66%, rgba(255,255,255,0.04) 66%),
+      radial-gradient(circle, #fff 0.8px, transparent 1.4px) 9px 9px / 18px 18px,
+      #000;
+  }
+  .bm-cross-flow {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.04) 33%, transparent 33%, transparent 66%, rgba(255,255,255,0.04) 66%),
+      radial-gradient(circle, #fff 0.8px, transparent 1.4px) 9px 9px / 18px 18px,
+      #000;
+  }
+  .bm-cross-flow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, transparent, rgba(110,225,91,0.7), transparent) no-repeat,
+      linear-gradient(0deg, transparent, rgba(110,225,91,0.5), transparent) no-repeat;
+    background-size: 30% 2px, 2px 30%;
+    background-position: 20% 17%, 70% 50%;
+  }
+  .bm-extreme-wide {
+    background-color: #000;
+    background-image: radial-gradient(circle, #fff 0.4px, transparent 0.8px);
+    background-size: 8px 8px;
+    background-position: 4px 4px;
+  }
+  .bm-rhythm {
+    background-color: #000;
+    background-image: radial-gradient(circle, var(--accent) 0.8px, transparent 1.4px);
+    background-size: 14px 14px;
+    background-position: 7px 7px;
+    box-shadow: inset 0 0 80px rgba(110,225,91,0.15);
+  }
+  .bm-mark {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bm-mark::before {
+    content: "GE VERNOVA";
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+  }
+  .bm-mark::after {
+    content: "";
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    box-shadow: 0 0 12px var(--accent);
+  }
 </style>
 </head>
 <body>
@@ -1239,11 +1499,430 @@
   </div><!-- /board-kick-to-grid -->
 
   <div class="board" id="board-branded-matrix">
-    <div class="placeholder-board">
-      <div class="badge">Storyboard · in development</div>
-      <h2>Branded <span class="accent">Matrix</span></h2>
-      <p>Concept and shot list coming soon. This is the second direction for GE Vernova · Orchestrate 2026 — distinct visual language from "From Kick to Grid", same tagline arc.</p>
-    </div>
+
+    <header class="masthead">
+      <div class="brand-block">
+        <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
+          <svg width="68" height="53" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="#FFFFFF"/>
+            <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="#FFFFFF"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="#FFFFFF"/>
+          </svg>
+        </a>
+        <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
+        <div class="meta">
+          <strong>Storyboard v3 · System Film</strong>
+          27 frames · ~60 sec runtime<br/>
+          makebttr.com · April 30, 2026
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
+        <h1>Branded Matrix<br/><span class="accent">Dots, Patterns, Electricity</span></h1>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p>System → Intelligence → Control. From a single point, structure emerges, patterns activate, and a network learns to orchestrate itself. <span class="accent">Clean. Visual. Executable.</span></p>
+      <div class="stats">
+        <div class="stat"><label>Aspect</label><span>16:9</span></div>
+        <div class="stat"><label>Frames</label><span>9 × 3 chapters</span></div>
+        <div class="stat"><label>Runtime</label><span>~60 sec</span></div>
+      </div>
+    </section>
+
+    <!-- Beat 1: BIRTH -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">01</div>
+        <div class="beat-title">Birth<span class="sub">Absolute zero, then a single point</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-zero"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 1</div>
+            <div class="title">Absolute zero</div>
+            <div class="desc">Black frame. No grain, no gradient. Hold the tension.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · pure void</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-dot"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 2</div>
+            <div class="title">Single dot appears</div>
+            <div class="desc">One white dot, center frame. Hard edge, no glow, perfectly still.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · sub-pixel precision</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-pulse"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 3</div>
+            <div class="title">First pulse</div>
+            <div class="desc">Dot emits one controlled pulse. Expands, contracts. Rhythm begins.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · pulse cycle</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 2: STRUCTURE -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">02</div>
+        <div class="beat-title">Structure<span class="sub">Replication and alignment</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-four"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 4</div>
+            <div class="title">Dot splits into four</div>
+            <div class="desc">Perfect square, equal spacing. Mathematical division.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · symmetry</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-grid"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 5</div>
+            <div class="title">Exponential duplication</div>
+            <div class="desc">4 → 16 → 64 → 256. Grid fills the frame with precision.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · exponential beat</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-grid bm-locked"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 6</div>
+            <div class="title">Grid locks into alignment</div>
+            <div class="desc">Every node snaps into its perfect position. Stillness.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · snap-to-grid</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 3: PATTERN -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">03</div>
+        <div class="beat-title">Pattern<span class="sub">Waves, interference, depth</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-wave-h"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 7</div>
+            <div class="title">Horizontal wave</div>
+            <div class="desc">Each node brightens in sequence. Smooth sine motion across the grid.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · sine sweep</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-wave-cross"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 8</div>
+            <div class="title">Waves intersect</div>
+            <div class="desc">Vertical wave crosses horizontal. Interference pattern emerges — complexity.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · cross-pattern</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-lattice"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 9</div>
+            <div class="title">Grid extrudes into depth</div>
+            <div class="desc">Nodes connect into a 3D lattice. Subtle perspective shift reveals structure.</div>
+            <div class="direction"><strong>Camera:</strong> Slow tilt · 3D reveal</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 4: ACTIVATION -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">04</div>
+        <div class="beat-title">Activation<span class="sub">Energy enters the system</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-pulse-green"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 10</div>
+            <div class="title">First green pulse</div>
+            <div class="desc">Energy enters. Travels node to node along the connections.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · path tracking</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-split"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 11</div>
+            <div class="title">Energy splits at junctions</div>
+            <div class="desc">Multiple paths form. Clean and efficient distribution.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · branching</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-converge"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 12</div>
+            <div class="title">Overload moment</div>
+            <div class="desc">Several pulses converge. Bright flash. Instant stabilization.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · flash &amp; settle</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 5: COMPRESSION -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">05</div>
+        <div class="beat-title">Compression<span class="sub">The lattice condenses</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-collapse"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 13</div>
+            <div class="title">Lattice pulls inward</div>
+            <div class="desc">Structure collapses toward center. Connections preserved.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · inward force</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-sphere"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 14</div>
+            <div class="title">Dense sphere forms</div>
+            <div class="desc">Thousands of nodes compressed into a single glowing object.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · core hold</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-sphere bm-flicker"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 15</div>
+            <div class="title">Surface flickers</div>
+            <div class="desc">Micro-currents on the surface. High-frequency activity contained.</div>
+            <div class="direction"><strong>Camera:</strong> Macro · surface detail</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 6: REFINEMENT -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">06</div>
+        <div class="beat-title">Refinement<span class="sub">Smarter, fewer, faster</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-vectors"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 16</div>
+            <div class="title">Sphere fractures into vectors</div>
+            <div class="desc">Clean directional lines shoot outward. No fragments — pure direction.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · radial vectors</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-network"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 17</div>
+            <div class="title">Vectors reorganize</div>
+            <div class="desc">Fewer nodes, smarter connections, more open space. Optimization made visible.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · re-arrangement</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-network bm-flow"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 18</div>
+            <div class="title">Energy resumes flow</div>
+            <div class="desc">Faster, smoother, no redundancy. The system now performs.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · steady flow</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 7: INTELLIGENCE -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">07</div>
+        <div class="beat-title">Intelligence<span class="sub">Learning, adapting, evolving</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-cluster"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 19</div>
+            <div class="title">Node cluster, dynamic reroute</div>
+            <div class="desc">Close on a cluster. Incoming energy reroutes around congestion.</div>
+            <div class="direction"><strong>Camera:</strong> Macro · reroute reveal</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-evolve"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 20</div>
+            <div class="title">System-wide evolution</div>
+            <div class="desc">Patterns shift continuously. No repetition.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · pattern morph</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-emergent"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 21</div>
+            <div class="title">Emergent geometry</div>
+            <div class="desc">New structures form and lock into function. Order from intelligence.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · structure lock</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 8: SCALE -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">08</div>
+        <div class="beat-title">Scale<span class="sub">Beyond the original frame</span></div>
+        <div class="beat-meta">~6 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-pullback"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 22</div>
+            <div class="title">Camera pulls back</div>
+            <div class="desc">Network extends far beyond the original frame. The reveal.</div>
+            <div class="direction"><strong>Camera:</strong> Slow pull-back · scale</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-layers"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 23</div>
+            <div class="title">Multiple layers appear</div>
+            <div class="desc">Stacked systems, semi-transparent, different depths.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · layer stack</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-cross-flow"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 24</div>
+            <div class="title">Cross-layer flow</div>
+            <div class="desc">Energy moves across layers. Vertical and horizontal orchestration in sync.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · poly-axis flow</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beat 9: CONTROL -->
+    <section class="beat">
+      <header class="beat-head">
+        <div class="beat-num">09</div>
+        <div class="beat-title">Control<span class="sub">Mastery, balance, signature</span></div>
+        <div class="beat-meta">~7 sec · 3 frames</div>
+      </header>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-extreme-wide"></div><div class="duration">2.5s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 25</div>
+            <div class="title">Extreme wide</div>
+            <div class="desc">Full network visible. Massive and ordered.</div>
+            <div class="direction"><strong>Camera:</strong> Extreme wide · full reveal</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-rhythm"></div><div class="duration">2s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 26</div>
+            <div class="title">Perfect rhythm</div>
+            <div class="desc">All nodes pulse in sync. Balanced energy. No spikes, no gaps.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · sync pulse</div>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bm-vis bm-mark"></div><div class="duration">2.5s</div></div>
+          <div class="body">
+            <div class="shot-id">Frame 27</div>
+            <div class="title">Hard cut to GE Vernova</div>
+            <div class="desc">Black. The mark appears center. A single green pulse passes beneath, fades to zero.</div>
+            <div class="direction"><strong>Camera:</strong> Locked · signature</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="beat" style="margin-top:48px;border-top:1px solid var(--border-strong);padding-top:32px;">
+      <header class="beat-head">
+        <div class="beat-num" style="color:var(--accent-warm);">§</div>
+        <div class="beat-title">Execution Rules<span class="sub">Discipline of the cut</span></div>
+        <div class="beat-meta">No exceptions</div>
+      </header>
+      <div class="shots" style="grid-template-columns:repeat(5,1fr);">
+        <div class="shot" style="cursor:default;">
+          <div class="body" style="padding:16px;">
+            <div class="shot-id">01</div>
+            <div class="title">No randomness</div>
+            <div class="desc">Every motion deterministic.</div>
+          </div>
+        </div>
+        <div class="shot" style="cursor:default;">
+          <div class="body" style="padding:16px;">
+            <div class="shot-id">02</div>
+            <div class="title">No decorative motion</div>
+            <div class="desc">If it doesn't function, cut it.</div>
+          </div>
+        </div>
+        <div class="shot" style="cursor:default;">
+          <div class="body" style="padding:16px;">
+            <div class="shot-id">03</div>
+            <div class="title">Mathematically precise spacing</div>
+            <div class="desc">Sub-pixel grid alignment.</div>
+          </div>
+        </div>
+        <div class="shot" style="cursor:default;">
+          <div class="body" style="padding:16px;">
+            <div class="shot-id">04</div>
+            <div class="title">Green only at activation</div>
+            <div class="desc">Reserved color = reserved meaning.</div>
+          </div>
+        </div>
+        <div class="shot" style="cursor:default;">
+          <div class="body" style="padding:16px;">
+            <div class="shot-id">05</div>
+            <div class="title">Minimal, intentional camera</div>
+            <div class="desc">Movement only when it earns its frame.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="colophon">
+      <div>GE Vernova · Orchestrate 2026 · Branded Matrix · Storyboard v3 · System Film</div>
+      <div class="right">Bttr · April 30, 2026</div>
+    </footer>
+
   </div><!-- /board-branded-matrix -->
 
 <div class="mini-player" id="miniPlayer" aria-label="Music player">
