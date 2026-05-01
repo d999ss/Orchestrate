@@ -24,27 +24,46 @@
 <meta name="twitter:description" content="Powering Performance, from the Game to the Grid. Bttr × GE Vernova." />
 <meta name="twitter:image" content="https://orchestrate-ten.vercel.app/og.png" />
 
-<meta name="theme-color" content="#07090d" />
+<meta name="theme-color" content="#0B2B33" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #07090d;
-    --bg-card: #11151c;
-    --border: #1f2630;
-    --border-strong: #2a3340;
-    --ink: #e8eef4;
-    --ink-mute: #8a96a6;
-    --ink-dim: #5a6675;
-    --accent: #6ee15b;
-    --accent-warm: #d2a62c;
+    /* Orchestrate 2026 brand palette */
+    --teal-deep: #0B2B33;
+    --teal-mid: #0E4C55;
+    --aqua: #00B2A9;
+    --lime: #A6FF00;
+    --white: #FFFFFF;
+    --bg: #0B2B33;
+    --bg-card: #0E3038;
+    --border: #143842;
+    --border-strong: #1c4a55;
+    --ink: #FFFFFF;
+    --ink-mute: #7fa3a8;
+    --ink-dim: #4d6e72;
+    --accent: #A6FF00;
+    --accent-warm: #00B2A9;
+    --display: 'Bebas Neue', 'Helvetica Neue', system-ui, sans-serif;
+    --body: 'Inter', -apple-system, system-ui, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     background: var(--bg);
     color: var(--ink);
-    font-family: -apple-system, "SF Pro Text", "Inter", system-ui, sans-serif;
+    font-family: var(--body);
     font-size: 14px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+  }
+  .masthead h1, .masthead h1 .accent,
+  .placeholder-board h2,
+  #board-branded-matrix .vds-title,
+  .vds-title, .vds-tagline {
+    font-family: var(--display);
+    font-weight: 400;
+    letter-spacing: 0.02em;
   }
   .page {
     max-width: 1480px;
