@@ -724,10 +724,86 @@
     .shot .shot-id { color: #555; }
     .beat { page-break-inside: avoid; }
   }
+
+  .board-nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 80%, rgba(7,9,13,0.0) 100%);
+    padding: 16px 0 24px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+  }
+  .board-tab {
+    background: var(--bg-card);
+    color: var(--ink-mute);
+    border: 1px solid var(--border);
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+  }
+  .board-tab:hover { color: var(--ink); border-color: var(--border-strong); }
+  .board-tab.active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .board { display: none; }
+  .board.active { display: block; }
+  @media (max-width: 720px) {
+    .board-nav { padding: 12px 0 16px; gap: 4px; }
+    .board-tab { padding: 8px 14px; font-size: 10px; letter-spacing: 0.12em; }
+  }
+  .placeholder-board {
+    text-align: center;
+    padding: 120px 24px;
+    color: var(--ink-mute);
+  }
+  .placeholder-board .badge {
+    display: inline-block;
+    color: var(--accent-warm);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding: 6px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+  }
+  .placeholder-board h2 {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .placeholder-board h2 .accent { color: var(--accent); }
+  .placeholder-board p {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 32px;
+  }
 </style>
 </head>
 <body>
 <div class="page">
+
+  <nav class="board-nav" role="tablist" aria-label="Storyboards">
+    <button class="board-tab active" data-board="kick-to-grid" role="tab" aria-selected="true">From Kick to Grid</button>
+    <button class="board-tab" data-board="branded-matrix" role="tab" aria-selected="false">Branded Matrix</button>
+  </nav>
+
+  <div class="board active" id="board-kick-to-grid">
 
   <div class="play-bar">
     <button class="play-btn" onclick="openSlideshow()">
@@ -1160,6 +1236,16 @@
     <div class="right">Bttr · April 30, 2026</div>
   </footer>
 
+  </div><!-- /board-kick-to-grid -->
+
+  <div class="board" id="board-branded-matrix">
+    <div class="placeholder-board">
+      <div class="badge">Storyboard · in development</div>
+      <h2>Branded <span class="accent">Matrix</span></h2>
+      <p>Concept and shot list coming soon. This is the second direction for GE Vernova · Orchestrate 2026 — distinct visual language from "From Kick to Grid", same tagline arc.</p>
+    </div>
+  </div><!-- /board-branded-matrix -->
+
 <div class="mini-player" id="miniPlayer" aria-label="Music player">
   <div class="mini-player-handle" id="miniPlayerHandle" title="Drag to move"></div>
   <div class="mini-player-tabs">
@@ -1348,7 +1434,24 @@
     else if (e.key === 'ArrowLeft') prevShot();
     else if (e.key === ' ') { e.preventDefault(); togglePlay(); }
   });
+  function switchBoard(name) {
+    document.querySelectorAll('.board').forEach(function(b){ b.classList.toggle('active', b.id === 'board-' + name); });
+    document.querySelectorAll('.board-tab').forEach(function(t){
+      var on = t.getAttribute('data-board') === name;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (location.hash !== '#' + name) {
+      history.replaceState(null, '', '#' + name);
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
   document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.board-tab').forEach(function(tab){
+      tab.addEventListener('click', function(){ switchBoard(tab.getAttribute('data-board')); });
+    });
+    var initial = location.hash.replace('#', '');
+    if (initial === 'branded-matrix' || initial === 'kick-to-grid') switchBoard(initial);
     var cards = document.querySelectorAll('.shot');
     cards.forEach(function(card, idx){
       card.setAttribute('role', 'button');
