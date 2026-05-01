@@ -887,11 +887,80 @@
     .sts-grid .shots { grid-template-columns: 1fr; gap: 14px; }
   }
 
-  /* Branded Matrix visualizations — minimalist dot/grid placeholders */
+  /* Branded Matrix board — clean reference-style layout */
+  #board-branded-matrix .shots { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
+  #board-branded-matrix .beat { margin-bottom: 56px; }
+  #board-branded-matrix .beat-num { font-size: 36px; }
+  #board-branded-matrix .beat-title { font-size: 18px; }
+  #board-branded-matrix .shot {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    grid-template-rows: auto auto;
+  }
+  #board-branded-matrix .shot.hero { border: none; }
+  #board-branded-matrix .shot:hover { transform: translateY(-2px); }
+  #board-branded-matrix .shot:hover .frame::after {
+    content: "▶ OPEN";
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 9, 13, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    pointer-events: none;
+  }
+  #board-branded-matrix .shot .frame {
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+  }
+  #board-branded-matrix .shot .frame .badge { display: none; }
+  #board-branded-matrix .shot .frame .duration {
+    background: transparent;
+    color: var(--ink-mute);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    padding: 0;
+    bottom: auto;
+    right: auto;
+    top: 8px;
+    left: 12px;
+    backdrop-filter: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+  #board-branded-matrix .shot .body { padding: 12px 0 0; background: transparent; }
+  #board-branded-matrix .shot .shot-id { display: none; }
+  #board-branded-matrix .shot .title {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.45;
+    margin-bottom: 0;
+  }
+  #board-branded-matrix .shot .desc,
+  #board-branded-matrix .shot .direction { display: none; }
+  @media (max-width: 1100px) {
+    #board-branded-matrix .shots { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    #board-branded-matrix .shots { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  /* Branded Matrix visualizations — uniform dark placeholder until video is generated */
   .bm-vis {
     position: absolute;
     inset: 0;
-    background: #000;
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(110,225,91,0.06) 0%, transparent 60%),
+      linear-gradient(180deg, #06080c 0%, #0a0d12 100%);
     overflow: hidden;
   }
   .bm-zero { background: #000; }
