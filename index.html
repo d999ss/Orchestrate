@@ -908,6 +908,46 @@
   }
 
   /* Visual Direction Storyboard — exact reference layout */
+  /* Board-level teal wash with organic square-halftone overlay (matches brand reference) */
+  #board-branded-matrix.active {
+    position: relative;
+    background:
+      /* Square halftone overlay — varying density with a soft mask */
+      radial-gradient(ellipse 80% 70% at 75% 35%,
+        rgba(0, 178, 169, 0.18) 0%,
+        rgba(0, 178, 169, 0.10) 35%,
+        rgba(0, 178, 169, 0.04) 60%,
+        transparent 80%),
+      linear-gradient(180deg, #0B2B33 0%, #082226 100%);
+    margin: -8px -56px 0;
+    padding: 24px 56px 80px;
+    min-height: calc(100vh - 100px);
+    isolation: isolate;
+  }
+  #board-branded-matrix.active::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      /* Square pixel halftone — small base layer */
+      linear-gradient(rgba(0, 178, 169, 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 178, 169, 0.18) 1px, transparent 1px);
+    background-size: 14px 14px, 14px 14px;
+    background-position: 0 0;
+    /* Mask gives organic density gradient — denser top-right, fading bottom-left */
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 80% 30%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.15) 60%, transparent 85%);
+    mask-image: radial-gradient(ellipse 90% 80% at 80% 30%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.15) 60%, transparent 85%);
+    pointer-events: none;
+    opacity: 0.45;
+    z-index: 0;
+  }
+  #board-branded-matrix.active > * {
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 720px) {
+    #board-branded-matrix.active { margin: -8px -16px 0; padding: 16px 16px 56px; }
+  }
   #board-branded-matrix .vds-masthead {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -981,15 +1021,29 @@
   #board-branded-matrix .vds-placeholder {
     width: 100%;
     height: 100%;
+    position: relative;
     background:
-      radial-gradient(circle, rgba(0,178,169,0.18) 1px, transparent 1.5px) 0 0 / 10px 10px,
       radial-gradient(ellipse at 50% 60%, rgba(0,178,169,0.10) 0%, transparent 60%),
-      linear-gradient(180deg, #0a2229 0%, #0d2c33 100%);
+      linear-gradient(180deg, #0a2a30 0%, #082226 100%);
+    overflow: hidden;
+  }
+  #board-branded-matrix .vds-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 178, 169, 0.28) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 178, 169, 0.28) 1px, transparent 1px);
+    background-size: 8px 8px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 85%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 85%);
+    opacity: 0.6;
   }
   #board-branded-matrix .vds-frame {
-    background: var(--teal-deep);
+    background: rgba(11, 43, 51, 0.6);
+    backdrop-filter: blur(2px);
     padding: 22px 22px 24px;
-    border: 1px solid #143842;
+    border: 1px solid rgba(0, 178, 169, 0.18);
     border-radius: 2px;
     cursor: pointer;
     transition: border-color 0.15s, transform 0.15s;
