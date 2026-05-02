@@ -60,7 +60,7 @@
   }
   .masthead h1, .masthead h1 .accent,
   .placeholder-board h2,
-  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title, #board-anatomy-watt .vds-title,
+  #board-the-save .vds-title, #board-first-light .vds-title, #board-one-watt .vds-title,
   .vds-title, .vds-tagline {
     font-family: var(--display);
     font-weight: 400;
@@ -1158,7 +1158,7 @@
   }
 
   /* Visual Direction Storyboard — magazine-clean (Imagery Direction layout) */
-  #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead , #board-anatomy-watt .vds-masthead{
+  #board-the-save .vds-masthead, #board-first-light .vds-masthead , #board-one-watt .vds-masthead{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -1166,7 +1166,7 @@
     margin-bottom: 28px;
     border-bottom: 1px solid var(--border);
   }
-  #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title , #board-anatomy-watt .vds-title{
+  #board-the-save .vds-title, #board-first-light .vds-title , #board-one-watt .vds-title{
     font-family: var(--display);
     font-size: 38px;
     font-weight: 400;
@@ -1175,14 +1175,14 @@
     line-height: 1;
     margin-bottom: 10px;
   }
-  #board-branded-matrix .vds-tagline, #board-kick-to-grid .vds-tagline , #board-anatomy-watt .vds-tagline{
+  #board-the-save .vds-tagline, #board-first-light .vds-tagline , #board-one-watt .vds-tagline{
     font-family: var(--display);
     font-size: 17px;
     font-weight: 400;
     letter-spacing: 0.18em;
     color: var(--aqua);
   }
-  #board-branded-matrix .vds-head-right p {
+  #board-the-save .vds-head-right p {
     font-size: 14px;
     line-height: 1.6;
     color: var(--ink-mute);
@@ -1190,13 +1190,13 @@
     text-align: right;
     margin-left: auto;
   }
-  #board-branded-matrix .vds-grid, #board-kick-to-grid .vds-grid , #board-anatomy-watt .vds-grid{
+  #board-the-save .vds-grid, #board-first-light .vds-grid , #board-one-watt .vds-grid{
     display: grid;
     gap: 40px;
     margin-bottom: 56px;
   }
-  #board-branded-matrix .vds-beat, #board-kick-to-grid .vds-beat , #board-anatomy-watt .vds-beat{ display: grid; gap: 14px; }
-  #board-branded-matrix .vds-beat-head, #board-kick-to-grid .vds-beat-head , #board-anatomy-watt .vds-beat-head{
+  #board-the-save .vds-beat, #board-first-light .vds-beat , #board-one-watt .vds-beat{ display: grid; gap: 14px; }
+  #board-the-save .vds-beat-head, #board-first-light .vds-beat-head , #board-one-watt .vds-beat-head{
     display: grid;
     grid-template-columns: 64px 1fr;
     column-gap: 18px;
@@ -1205,30 +1205,30 @@
     border-bottom: 1px solid var(--border);
     padding-bottom: 10px;
   }
-  #board-branded-matrix .vds-beat-num, #board-kick-to-grid .vds-beat-num , #board-anatomy-watt .vds-beat-num{
+  #board-the-save .vds-beat-num, #board-first-light .vds-beat-num , #board-one-watt .vds-beat-num{
     grid-row: span 2;
     font-family: var(--display);
     font-size: 36px;
     color: var(--lime);
     line-height: 1;
   }
-  #board-branded-matrix .vds-beat-name, #board-kick-to-grid .vds-beat-name , #board-anatomy-watt .vds-beat-name{
+  #board-the-save .vds-beat-name, #board-first-light .vds-beat-name , #board-one-watt .vds-beat-name{
     font-family: var(--display);
     font-size: 18px;
     letter-spacing: 0.18em;
     color: var(--white);
   }
-  #board-branded-matrix .vds-beat-sub, #board-kick-to-grid .vds-beat-sub , #board-anatomy-watt .vds-beat-sub{
+  #board-the-save .vds-beat-sub, #board-first-light .vds-beat-sub , #board-one-watt .vds-beat-sub{
     font-size: 12px;
     color: var(--ink-mute);
     letter-spacing: 0.04em;
   }
-  #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames , #board-anatomy-watt .vds-beat-frames{
+  #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  #board-branded-matrix .vds-placeholder, #board-kick-to-grid .vds-placeholder , #board-anatomy-watt .vds-placeholder{
+  #board-the-save .vds-placeholder, #board-first-light .vds-placeholder , #board-one-watt .vds-placeholder{
     width: 100%;
     height: 100%;
     position: relative;
@@ -1237,7 +1237,7 @@
       linear-gradient(180deg, #0a2a30 0%, #082226 100%);
     overflow: hidden;
   }
-  #board-branded-matrix .vds-placeholder::before {
+  #board-the-save .vds-placeholder::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -1249,7 +1249,7 @@
     mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 85%);
     opacity: 0.6;
   }
-  #board-branded-matrix .vds-frame, #board-kick-to-grid .vds-frame , #board-anatomy-watt .vds-frame{
+  #board-the-save .vds-frame, #board-first-light .vds-frame , #board-one-watt .vds-frame{
     background: transparent;
     padding: 0;
     border: none;
@@ -1258,10 +1258,10 @@
     transition: transform 0.15s;
     position: relative;
   }
-  #board-branded-matrix .vds-frame:hover, #board-kick-to-grid .vds-frame:hover, #board-anatomy-watt .vds-frame:hover {
+  #board-the-save .vds-frame:hover, #board-first-light .vds-frame:hover, #board-one-watt .vds-frame:hover {
     transform: translateY(-2px);
   }
-  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame, #board-anatomy-watt .vds-frame .frame {
+  #board-the-save .vds-frame .frame, #board-first-light .vds-frame .frame, #board-one-watt .vds-frame .frame {
     position: relative;
     aspect-ratio: 16 / 9;
     background: #000;
@@ -1269,14 +1269,14 @@
     overflow: hidden;
     margin-bottom: 18px;
   }
-  #board-branded-matrix .vds-frame .frame video, #board-kick-to-grid .vds-frame .frame video, #board-anatomy-watt .vds-frame .frame video,
-  #board-branded-matrix .vds-frame .frame img, #board-kick-to-grid .vds-frame .frame img, #board-anatomy-watt .vds-frame .frame img {
+  #board-the-save .vds-frame .frame video, #board-first-light .vds-frame .frame video, #board-one-watt .vds-frame .frame video,
+  #board-the-save .vds-frame .frame img, #board-first-light .vds-frame .frame img, #board-one-watt .vds-frame .frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  #board-branded-matrix .vds-frame:hover .frame::after, #board-kick-to-grid .vds-frame:hover .frame::after, #board-anatomy-watt .vds-frame:hover .frame::after {
+  #board-the-save .vds-frame:hover .frame::after, #board-first-light .vds-frame:hover .frame::after, #board-one-watt .vds-frame:hover .frame::after {
     content: "▶ OPEN";
     position: absolute;
     inset: 0;
@@ -1290,7 +1290,7 @@
     letter-spacing: 0.22em;
     pointer-events: none;
   }
-  #board-branded-matrix .vds-num, #board-kick-to-grid .vds-num , #board-anatomy-watt .vds-num{
+  #board-the-save .vds-num, #board-first-light .vds-num , #board-one-watt .vds-num{
     display: inline-block;
     font-family: var(--display);
     font-size: 16px;
@@ -1299,7 +1299,7 @@
     margin-right: 10px;
     vertical-align: baseline;
   }
-  #board-branded-matrix .vds-name, #board-kick-to-grid .vds-name , #board-anatomy-watt .vds-name{
+  #board-the-save .vds-name, #board-first-light .vds-name , #board-one-watt .vds-name{
     display: inline-block;
     font-family: var(--display);
     font-size: 14px;
@@ -1309,15 +1309,15 @@
     margin-bottom: 10px;
     vertical-align: baseline;
   }
-  #board-branded-matrix .vds-frame p, #board-kick-to-grid .vds-frame p, #board-anatomy-watt .vds-frame p {
+  #board-the-save .vds-frame p, #board-first-light .vds-frame p, #board-one-watt .vds-frame p {
     font-size: 12px;
     line-height: 1.5;
     color: var(--white);
     max-width: 100%;
     margin-top: 4px;
   }
-  #board-branded-matrix .vds-frame .frame, #board-kick-to-grid .vds-frame .frame, #board-anatomy-watt .vds-frame .frame { margin-bottom: 14px; }
-  #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend , #board-anatomy-watt .vds-legend{
+  #board-the-save .vds-frame .frame, #board-first-light .vds-frame .frame, #board-one-watt .vds-frame .frame { margin-bottom: 14px; }
+  #board-the-save .vds-legend, #board-first-light .vds-legend , #board-one-watt .vds-legend{
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 22px 0;
@@ -1327,67 +1327,67 @@
     align-items: center;
     margin-bottom: 40px;
   }
-  #board-branded-matrix .vds-legend-label, #board-kick-to-grid .vds-legend-label , #board-anatomy-watt .vds-legend-label{
+  #board-the-save .vds-legend-label, #board-first-light .vds-legend-label , #board-one-watt .vds-legend-label{
     font-family: var(--display);
     font-size: 14px;
     color: var(--lime);
     letter-spacing: 0.18em;
   }
-  #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items , #board-anatomy-watt .vds-legend-items{
+  #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 16px;
     align-items: center;
   }
-  #board-branded-matrix .vds-legend-item, #board-kick-to-grid .vds-legend-item , #board-anatomy-watt .vds-legend-item{
+  #board-the-save .vds-legend-item, #board-first-light .vds-legend-item , #board-one-watt .vds-legend-item{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
     text-align: center;
   }
-  #board-branded-matrix .vds-legend-item svg {
+  #board-the-save .vds-legend-item svg {
     width: 38px;
     height: 38px;
     opacity: 0.9;
   }
-  #board-branded-matrix .vds-legend-item span {
+  #board-the-save .vds-legend-item span {
     font-size: 9px;
     letter-spacing: 0.18em;
     color: var(--ink-mute);
     font-family: var(--display);
   }
   @media (max-width: 1100px) {
-    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames , #board-anatomy-watt .vds-beat-frames{ grid-template-columns: repeat(2, 1fr); }
-    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items , #board-anatomy-watt .vds-legend-items{ grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames{ grid-template-columns: repeat(2, 1fr); }
+    #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items{ grid-template-columns: repeat(4, 1fr); gap: 20px; }
   }
   @media (max-width: 720px) {
-    #board-branded-matrix .vds-masthead, #board-kick-to-grid .vds-masthead , #board-anatomy-watt .vds-masthead{
+    #board-the-save .vds-masthead, #board-first-light .vds-masthead , #board-one-watt .vds-masthead{
       grid-template-columns: 1fr;
       gap: 24px;
     }
-    #board-branded-matrix .vds-head-right p { text-align: left; }
-    #board-branded-matrix .vds-title, #board-kick-to-grid .vds-title , #board-anatomy-watt .vds-title{ font-size: 28px; }
-    #board-branded-matrix .vds-beat-frames, #board-kick-to-grid .vds-beat-frames , #board-anatomy-watt .vds-beat-frames{ grid-template-columns: 1fr; }
-    #board-branded-matrix .vds-legend, #board-kick-to-grid .vds-legend , #board-anatomy-watt .vds-legend{ grid-template-columns: 1fr; gap: 16px; }
-    #board-branded-matrix .vds-legend-items, #board-kick-to-grid .vds-legend-items , #board-anatomy-watt .vds-legend-items{ grid-template-columns: repeat(3, 1fr); }
+    #board-the-save .vds-head-right p { text-align: left; }
+    #board-the-save .vds-title, #board-first-light .vds-title , #board-one-watt .vds-title{ font-size: 28px; }
+    #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames{ grid-template-columns: 1fr; }
+    #board-the-save .vds-legend, #board-first-light .vds-legend , #board-one-watt .vds-legend{ grid-template-columns: 1fr; gap: 16px; }
+    #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items{ grid-template-columns: repeat(3, 1fr); }
   }
 
   /* Branded Matrix board — legacy 27-frame layout (now unused but harmless) */
-  #board-branded-matrix .shots { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
-  #board-branded-matrix .beat { margin-bottom: 56px; }
-  #board-branded-matrix .beat-num { font-size: 36px; }
-  #board-branded-matrix .beat-title { font-size: 18px; }
-  #board-branded-matrix .shot {
+  #board-the-save .shots { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
+  #board-the-save .beat { margin-bottom: 56px; }
+  #board-the-save .beat-num { font-size: 36px; }
+  #board-the-save .beat-title { font-size: 18px; }
+  #board-the-save .shot {
     background: transparent;
     border: none;
     border-radius: 0;
     overflow: visible;
     grid-template-rows: auto auto;
   }
-  #board-branded-matrix .shot.hero { border: none; }
-  #board-branded-matrix .shot:hover { transform: translateY(-2px); }
-  #board-branded-matrix .shot:hover .frame::after {
+  #board-the-save .shot.hero { border: none; }
+  #board-the-save .shot:hover { transform: translateY(-2px); }
+  #board-the-save .shot:hover .frame::after {
     content: "▶ OPEN";
     position: absolute;
     inset: 0;
@@ -1401,15 +1401,15 @@
     letter-spacing: 0.22em;
     pointer-events: none;
   }
-  #board-branded-matrix .shot .frame {
+  #board-the-save .shot .frame {
     aspect-ratio: 16 / 9;
     border-radius: 4px;
     overflow: hidden;
     background: #000;
     border: 1px solid var(--border);
   }
-  #board-branded-matrix .shot .frame .badge { display: none; }
-  #board-branded-matrix .shot .frame .duration {
+  #board-the-save .shot .frame .badge { display: none; }
+  #board-the-save .shot .frame .duration {
     background: transparent;
     color: var(--ink-mute);
     font-size: 11px;
@@ -1422,22 +1422,22 @@
     backdrop-filter: none;
     text-shadow: 0 1px 4px rgba(0,0,0,0.8);
   }
-  #board-branded-matrix .shot .body { padding: 12px 0 0; background: transparent; }
-  #board-branded-matrix .shot .shot-id { display: none; }
-  #board-branded-matrix .shot .title {
+  #board-the-save .shot .body { padding: 12px 0 0; background: transparent; }
+  #board-the-save .shot .shot-id { display: none; }
+  #board-the-save .shot .title {
     font-size: 13px;
     color: var(--ink);
     font-weight: 400;
     line-height: 1.45;
     margin-bottom: 0;
   }
-  #board-branded-matrix .shot .desc,
-  #board-branded-matrix .shot .direction { display: none; }
+  #board-the-save .shot .desc,
+  #board-the-save .shot .direction { display: none; }
   @media (max-width: 1100px) {
-    #board-branded-matrix .shots { grid-template-columns: repeat(2, 1fr); }
+    #board-the-save .shots { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 720px) {
-    #board-branded-matrix .shots { grid-template-columns: 1fr; gap: 16px; }
+    #board-the-save .shots { grid-template-columns: 1fr; gap: 16px; }
   }
 
   /* Branded Matrix visualizations — uniform dark placeholder until video is generated */
@@ -1702,36 +1702,55 @@
     box-shadow: 0 0 12px var(--accent);
   }
 
-  /* Placeholder for un-rendered watt frames — styled, not broken */
-  #board-anatomy-watt .vds-frame .frame.pending::before {
-    content: "RENDER\A PENDING";
-    white-space: pre;
+  /* Placeholder for un-rendered frames — brand-styled, not broken */
+  .vds-frame .frame.pending::before {
+    content: "RENDERING";
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--ink-mute);
+    color: rgba(255, 200, 87, 0.55);
     font-family: var(--display);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 10px;
+    letter-spacing: 0.32em;
     background:
-      repeating-linear-gradient(45deg, rgba(0,178,169,0.04) 0 8px, transparent 8px 16px),
-      linear-gradient(180deg, #0a2229 0%, #082226 100%);
+      radial-gradient(ellipse 80% 60% at 30% 30%, rgba(20,184,166,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 80% at 80% 70%, rgba(103,245,214,0.10) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255,200,87,0.04) 0%, transparent 40%),
+      linear-gradient(135deg, #061F1F 0%, #0A2E2E 100%);
   }
+  .vds-frame .frame.pending::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(103,245,214,0.6) 0.5px, transparent 1px),
+      radial-gradient(circle at 70% 20%, rgba(20,184,166,0.5) 0.5px, transparent 1px),
+      radial-gradient(circle at 40% 70%, rgba(103,245,214,0.4) 0.5px, transparent 1px),
+      radial-gradient(circle at 85% 60%, rgba(20,184,166,0.5) 0.5px, transparent 1px),
+      radial-gradient(circle at 15% 85%, rgba(103,245,214,0.4) 0.5px, transparent 1px),
+      radial-gradient(circle at 60% 45%, rgba(255,200,87,0.4) 0.5px, transparent 1px),
+      radial-gradient(circle at 30% 55%, rgba(103,245,214,0.3) 0.5px, transparent 1px),
+      radial-gradient(circle at 80% 90%, rgba(20,184,166,0.5) 0.5px, transparent 1px);
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
 
   <nav class="board-nav" role="tablist" aria-label="Storyboards">
-    <button class="board-tab active" data-board="branded-matrix" role="tab" aria-selected="true">Branded Matrix</button>
-    <button class="board-tab" data-board="kick-to-grid" role="tab" aria-selected="false">World Cup</button>
-    <button class="board-tab" data-board="anatomy-watt" role="tab" aria-selected="false">Anatomy of a Watt</button>
+    <button class="board-tab active" data-board="one-watt" role="tab" aria-selected="true">One Watt</button>
+    <button class="board-tab" data-board="the-save" role="tab" aria-selected="false">The Save</button>
+    <button class="board-tab" data-board="first-light" role="tab" aria-selected="false">First Light</button>
+    <button class="board-tab" data-board="music" role="tab" aria-selected="false">Music</button>
   </nav>
 
-  <div class="board" id="board-kick-to-grid">
+  <div class="board" id="board-first-light">
 
   <header class="masthead">
     <div class="brand-block">
@@ -1751,12 +1770,12 @@
     </div>
     <div class="title-block">
       <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
-      <h1>World Cup<br/><span class="accent">From Kick to Grid</span></h1>
+      <h1>First Light<br/><span class="accent">A continent wakes with the sun</span></h1>
     </div>
   </header>
 
   <section class="intro">
-    <p>A visual direction rooted in connection, data, and global intelligence. Inspired by networks, technology, and the flow of information shaping a smarter future. <span class="accent">Where systems become intelligence in motion.</span></p>
+    <p>A continent wakes with the sun. Region by region the grid joins the day: wind farms spin up, solar tracks east, hydro releases, cities light, demand follows the daylight. Thousands of decisions performed as a single piece. <span class="accent">Orchestration as orchestra.</span></p>
     <div class="stats">
       <div class="stat"><label>Aspect</label><span>16:9</span></div>
       <div class="stat"><label>Frames</label><span>9 × 3</span></div>
@@ -1764,76 +1783,30 @@
     </div>
   </section>
 
-  <section class="sound">
-    <header class="sound-head">
-      <div class="num">♪</div>
-      <h2>Sound Direction<span class="sub">Music candidates · paste any Spotify link to load</span></h2>
-      <div class="meta">Hybrid score · 60 sec piece</div>
-    </header>
-
-    <div class="track-loader">
-      <input id="trackUrl" type="text" placeholder="Paste Spotify track or playlist link here…" />
-      <button onclick="loadTrack()">Load track</button>
-      <div class="hint">Paste a link like <code>https://open.spotify.com/track/...</code> or <code>https://open.spotify.com/playlist/...</code> — fills the next empty slot below.</div>
-    </div>
-
-    <div class="candidates">
-      <div class="candidate">
-        <div class="candidate-head">
-          <div class="label"><span class="pos">01</span>F1 · Hans Zimmer (F1® The Movie Original Score)</div>
-          <button class="clear" onclick="clearSlot(0)">Clear</button>
-        </div>
-        <iframe id="slot-0" src="https://open.spotify.com/embed/track/27qC3KK5wjQzyNenY53fep?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="candidate">
-        <div class="candidate-head">
-          <div class="label"><span class="pos">02</span>a good man with a broken heart · LoVibe.</div>
-          <button class="clear" onclick="clearSlot(1)">Clear</button>
-        </div>
-        <iframe id="slot-1" src="https://open.spotify.com/embed/track/07fNxq0gkGFZpAYCTd0v2A?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="candidate">
-        <div class="candidate-head">
-          <div class="label"><span class="pos">03</span>starly · Slowed · LONOWN, riserayss</div>
-          <button class="clear" onclick="clearSlot(2)">Clear</button>
-        </div>
-        <iframe id="slot-2" src="https://open.spotify.com/embed/track/2ao4kVf8DsGghi3mUGaVEr?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="candidate">
-        <div class="candidate-head">
-          <div class="label"><span class="pos">04</span>Track 04</div>
-          <button class="clear" onclick="clearSlot(3)">Clear</button>
-        </div>
-        <iframe id="slot-3" src="https://open.spotify.com/embed/track/53KH5aEFGi0PMlwAvpCT5t?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Beat 1 -->
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">01</div>
-        <div class="vds-beat-name">POWER UP</div>
-        <div class="vds-beat-sub">The first arc, the first watt</div>
+        <div class="vds-beat-name">PRE-DAWN</div>
+        <div class="vds-beat-sub">A continent still asleep.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/01a_aerial.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/01a_orbit_dark.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">01A</div>
-          <div class="vds-name">Stadium aerial</div>
-          <p>Aerial of Mercedes-Benz Stadium at twilight, halftone overlay tracing the structure.</p>
+          <div class="vds-name">Dark continent from orbit</div>
+          <p>Earth from low orbit at night. Sparse city lights as cyan nodes. East edge faintly glowing.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/01b_arch.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/01b_sleeping_city.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">01B</div>
-          <div class="vds-name">Architecture detail</div>
-          <p>Petal roof rendered as halftone pattern, edges traced in cyan-teal.</p>
+          <div class="vds-name">Sleeping city</div>
+          <p>Aerial of a city before dawn. A single streetlight. Halftone navy.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/01c_field.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/01c_still_turbine.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">01C</div>
-          <div class="vds-name">Field, lights up</div>
-          <p>Empty pitch, stadium lights coming online as cyan nodes.</p>
+          <div class="vds-name">A turbine, still</div>
+          <p>A wind turbine silent at first hint of dawn. Cyan ambient beginning to grow.</p>
         </div>
       </div>
     </section>
@@ -1841,27 +1814,27 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">02</div>
-        <div class="vds-beat-name">ENERGY BUILDS</div>
-        <div class="vds-beat-sub">Anticipation crests across the stadium</div>
+        <div class="vds-beat-name">SOURCES WAKE</div>
+        <div class="vds-beat-sub">Light reaches the generators.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/02a_crowd.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/02a_wind.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">02A</div>
-          <div class="vds-name">Crowd in shadow</div>
-          <p>Halftone-dot silhouettes, a wave of cyan light rippling across the stands.</p>
+          <div class="vds-name">Wind farm starts</div>
+          <p>First light. Blades begin to rotate. Cyan-teal pulses form at each turbine.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/02b_field.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/02b_solar.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">02B</div>
-          <div class="vds-name">Field rippling</div>
-          <p>Aerial: cyan-teal energy currents pulsing through stands and field.</p>
+          <div class="vds-name">Solar tracks east</div>
+          <p>Aerial of a solar farm. Panels rotating eastward in unison as sunlight hits them.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/02c_grass.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/02c_hydro.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">02C</div>
-          <div class="vds-name">Grass macro</div>
-          <p>Single cyan energy line racing across blades of grass.</p>
+          <div class="vds-name">Hydro releases</div>
+          <p>Dam at dawn. Water releases. Turbines spin up. Cyan pulses travel down the conduit.</p>
         </div>
       </div>
     </section>
@@ -1869,27 +1842,27 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">03</div>
-        <div class="vds-beat-name">THE PLAYER</div>
-        <div class="vds-beat-sub">Focus before everything changes</div>
+        <div class="vds-beat-name">CITIES WAKE</div>
+        <div class="vds-beat-sub">Demand follows the daylight.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/03a_walk.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/03a_skyline.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">03A</div>
-          <div class="vds-name">Solo walk</div>
-          <p>Wide tracking silhouette walking onto a stadium pitch at night.</p>
+          <div class="vds-name">Atlanta wakes first</div>
+          <p>Aerial sweep across the Atlanta skyline as dawn arrives. Lights cascade building by building. The host city of the conference is the first major US city to join the day.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/03b_corridor.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/03b_transit.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">03B</div>
-          <div class="vds-name">Lit corridor</div>
-          <p>Athlete in stadium tunnel, halftone walls, cyan-teal ambient glow.</p>
+          <div class="vds-name">Transit comes online</div>
+          <p>Subway stations lighting. Train indicators activating. Halftone overlay.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/03c_focus.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/03c_airport.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">03C</div>
-          <div class="vds-name">ECU focus</div>
-          <p>Profile close-up with cyan-teal halftone data points overlaid on the face.</p>
+          <div class="vds-name">Runway lit</div>
+          <p>Airport runway at first light. Cyan grid lines connecting it to the broader network.</p>
         </div>
       </div>
     </section>
@@ -1897,27 +1870,27 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">04</div>
-        <div class="vds-beat-name">THE STRATEGY</div>
-        <div class="vds-beat-sub">Every detail accounted for</div>
+        <div class="vds-beat-name">DEMAND WAKES</div>
+        <div class="vds-beat-sub">The day begins everywhere at once.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/04a_clipboard.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/04a_stadium.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">04A</div>
-          <div class="vds-name">OTS clipboard</div>
-          <p>Tactical clipboard rendered as a UI dashboard, lime accent on a readout.</p>
+          <div class="vds-name">Stadium readies for match day</div>
+          <p>Mercedes-Benz Stadium at first light. Floodlights coming up. Cyan-teal pulses entering the building. Anticipation as load.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/04b_huddle.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/04b_hospital.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">04B</div>
-          <div class="vds-name">Faces leaning in</div>
-          <p>Halftone-dot silhouettes leaning into the huddle, cyan glow connecting them.</p>
+          <div class="vds-name">Hospital floors light</div>
+          <p>Hospital exterior at dawn. Floors illuminating in sequence. Halftone overlay.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/04c_hands.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/04c_school.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">04C</div>
-          <div class="vds-name">Hands stacking</div>
-          <p>Top-down: hands stacking in the center, halftone pattern, cyan glow.</p>
+          <div class="vds-name">School lights up</div>
+          <p>School exterior at dawn. Lights coming on classroom by classroom.</p>
         </div>
       </div>
     </section>
@@ -1925,27 +1898,27 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">05</div>
-        <div class="vds-beat-name">THE KICK</div>
-        <div class="vds-beat-sub">Energy ignites</div>
+        <div class="vds-beat-name">COORDINATION</div>
+        <div class="vds-beat-sub">The grid keeps time.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/05a_approach.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/05a_subs_cadence.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">05A</div>
-          <div class="vds-name">Low approach</div>
-          <p>Slider angle at grass level, athlete approaching the ball, halftone turf.</p>
+          <div class="vds-name">Substations switch in cadence</div>
+          <p>Wide aerial. Substations across the region switch in synchronized rhythm.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/05b_contact.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/05b_balance.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">05B</div>
-          <div class="vds-name">Macro contact</div>
-          <p>Cleat-ball contact with cyan-teal energy bursting in radial halftone.</p>
+          <div class="vds-name">Lines balance load</div>
+          <p>Top-down. Transmission lines balancing load in real time. Energy flow as cyan rivers.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/05c_explode.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/05c_distribution.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">05C</div>
-          <div class="vds-name">Energy explosion</div>
-          <p>Pure VFX cyan-teal shockwave radiating in concentric halftone rings.</p>
+          <div class="vds-name">Distribution animates</div>
+          <p>Aerial. Distribution lines reaching from substations into neighborhoods. Lights cascading.</p>
         </div>
       </div>
     </section>
@@ -1953,27 +1926,27 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">06</div>
-        <div class="vds-beat-name">IN FLIGHT</div>
-        <div class="vds-beat-sub">Reality begins to break</div>
+        <div class="vds-beat-name">MACRO TEXTURES</div>
+        <div class="vds-beat-sub">The system in close-up.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/06a_arc.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/06a_generator.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">06A</div>
-          <div class="vds-name">Ball arcing</div>
-          <p>Tracking shot of ball arcing through dark sky with cyan data trail.</p>
+          <div class="vds-name">Inside a generator</div>
+          <p>Macro of a wind turbine generator at full rhythm. Cyan-teal pulse steady.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/06b_smash.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/06b_screen.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">06B</div>
-          <div class="vds-name">Smashes net</div>
-          <p>Slow-motion macro of ball striking the goal net, cyan-teal energy shockwave.</p>
+          <div class="vds-name">Control screen alive</div>
+          <p>Macro of a control room screen. Real-time grid orchestration UI. Lime green readouts steady.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/06c_dissolve.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/06c_transformer.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">06C</div>
-          <div class="vds-name">Energy bloom</div>
-          <p>Inside-goal POV: cyan-teal energy streaming out, ball gone, halftone bloom.</p>
+          <div class="vds-name">Transformer at flow</div>
+          <p>Macro of a step-up transformer. Pulses entering and leaving in continuous flow.</p>
         </div>
       </div>
     </section>
@@ -1981,27 +1954,27 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">07</div>
-        <div class="vds-beat-name">ENERGY BECOMES DATA</div>
-        <div class="vds-beat-sub">The pivot moment</div>
+        <div class="vds-beat-name">PERFORMANCE</div>
+        <div class="vds-beat-sub">Thousands of decisions, one rhythm.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/07a_sphere.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/07a_aerial_sweep.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">07A</div>
-          <div class="vds-name">Sphere of energy</div>
-          <p>Glowing sphere of pure cyan-teal data, geometric halftone particles in orbit.</p>
+          <div class="vds-name">Region pulses in unison</div>
+          <p>Sweeping aerial. Every line, every node, every substation pulses together.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/07b_beams.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/07b_control_room.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">07B</div>
-          <div class="vds-name">Beams shooting outward</div>
-          <p>Pull-back: multiple cyan-teal beams firing outward across a halftone field.</p>
+          <div class="vds-name">Control room cadence</div>
+          <p>Time-lapse of operators working in calm cadence. Screens showing continuous flow. No alarms.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/07c_nodes.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/07c_half_continent.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">07C</div>
-          <div class="vds-name">Nodes lighting</div>
-          <p>Aerial: distant city points and infrastructure igniting in rapid sequence.</p>
+          <div class="vds-name">Half a continent lit</div>
+          <p>Wide aerial. The eastern half of the continent now fully illuminated. Cyan grid alive.</p>
         </div>
       </div>
     </section>
@@ -2009,27 +1982,27 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">08</div>
-        <div class="vds-beat-name">SYSTEMS AWAKEN</div>
-        <div class="vds-beat-sub">Everything connects</div>
+        <div class="vds-beat-name">WHOLE CONTINENT</div>
+        <div class="vds-beat-sub">The sun crosses the rest.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/08a_pullback.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/08a_sun_crossing.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">08A</div>
-          <div class="vds-name">Stadium pull-back</div>
-          <p>Stadium revealed with cyan-teal grid lines extending across surrounding city.</p>
+          <div class="vds-name">Sun line crosses west</div>
+          <p>Continental aerial. Illumination cascading west across two-thirds of the continent.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/08b_city.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/08b_full_demand.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">08B</div>
-          <div class="vds-name">Cityscape grid</div>
-          <p>High aerial: city skyline with luminous cyan-teal grid network.</p>
+          <div class="vds-name">Full demand served</div>
+          <p>Mid-day continental view. The entire grid actively serving full load. Halftone atmosphere.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/08c_pylon.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/08c_one_body.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">08C</div>
-          <div class="vds-name">Power-line nodes</div>
-          <p>Macro of transmission tower with cyan-teal energy traveling along the line.</p>
+          <div class="vds-name">One coordinated body</div>
+          <p>The grid as a single system. Cities glowing. Transmission flowing. Distribution animating.</p>
         </div>
       </div>
     </section>
@@ -2037,34 +2010,39 @@
     <section class="beat vds-beat">
       <header class="vds-beat-head">
         <div class="vds-beat-num">09</div>
-        <div class="vds-beat-name">FROM THE GAME TO THE GRID</div>
-        <div class="vds-beat-sub">Endless impact</div>
+        <div class="vds-beat-name">HELD WIDE</div>
+        <div class="vds-beat-sub">A planet performing.</div>
       </header>
       <div class="vds-beat-frames">
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/09a_orbit.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/09a_pullback.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">09A</div>
-          <div class="vds-name">Earth, low orbit</div>
-          <p>Cinematic vertical rise into low Earth orbit at night.</p>
+          <div class="vds-name">Pull back to planet</div>
+          <p>Continental view rising to planetary view. The day side of Earth fully illuminated.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/09b_grid.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/09b_earth_grid.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">09B</div>
-          <div class="vds-name">Grid spreading</div>
-          <p>Earth from orbit with cyan-teal grid network spreading across continents.</p>
+          <div class="vds-name">Earth, full grid</div>
+          <p>Earth from low orbit at full daylight. Brilliant cyan grid spans every landmass.</p>
         </div>
         <div class="vds-frame">
-          <div class="frame"><img src="imagen_wc/09c_climax.png" alt="" loading="lazy"></div>
+          <div class="frame"><img src="first_light/09c_held.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
           <div class="vds-num">09C</div>
-          <div class="vds-name">Hero hold</div>
-          <p>Locked hero hold: full active grid, sunrise glow rising on the right edge.</p>
+          <div class="vds-name">Climactic hold</div>
+          <p>Locked hero hold. Earth with full active grid. Sunrise rising on the right edge. Golden-cyan starburst.</p>
         </div>
       </div>
     </section>
 
-  </div><!-- /board-kick-to-grid -->
+    <footer class="colophon">
+      <div>GE Vernova · Orchestrate 2026 · First Light</div>
+      <div class="right">Bttr · May 1, 2026</div>
+    </footer>
 
-  <div class="board active" id="board-branded-matrix">
+  </div><!-- /board-first-light -->
+
+  <div class="board" id="board-the-save">
 
     <header class="masthead">
       <div class="brand-block">
@@ -2084,12 +2062,12 @@
       </div>
       <div class="title-block">
         <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
-        <h1>Branded Matrix<br/><span class="accent">Connected. Intelligent. Global.</span></h1>
+        <h1>The Save<br/><span class="accent">The outage that didn't happen</span></h1>
       </div>
     </header>
 
     <section class="intro">
-      <p>A visual direction rooted in connection, data, and global intelligence. Inspired by networks, technology, and the flow of information shaping a smarter future. <span class="accent">Where systems become intelligence in motion.</span></p>
+      <p>A storm rolls in. A transmission line faults. An outage should follow. It doesn't. GridOS calculates a new path in milliseconds, three substations switch in cadence, and a city never knows. <span class="accent">The most powerful thing the grid does is what nobody notices.</span></p>
       <div class="stats">
         <div class="stat"><label>Aspect</label><span>16:9</span></div>
         <div class="stat"><label>Beats</label><span>9 × 3 frames</span></div>
@@ -2115,243 +2093,243 @@
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">01</div>
-          <div class="vds-beat-name">POWER UP</div>
-          <div class="vds-beat-sub">The first arc, the first watt</div>
+          <div class="vds-beat-name">CALM BEFORE</div>
+          <div class="vds-beat-sub">A quiet night. Nothing wrong.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/01a_arc.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/01a_calm_city.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">01A</div>
-            <div class="vds-name">Arc in a transformer</div>
-            <p>Dawn. A bright emerald arc dances inside a high-voltage transformer.</p>
+            <div class="vds-name">Atlanta skyline at night</div>
+            <p>Wide aerial of Atlanta. A steady cyan grid pulses softly across the skyline.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/01b_pulse.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/01b_warm_window.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">01B</div>
-            <div class="vds-name">Pulse along the line</div>
-            <p>An emerald pulse races along a high-voltage transmission conductor.</p>
+            <div class="vds-name">A warm window</div>
+            <p>Macro of a residential window, warm amber against halftone-cyan night.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/01c_line.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/01c_calm_room.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">01C</div>
-            <div class="vds-name">The line stretches</div>
-            <p>Pull-back: the chain of towers reaches the horizon.</p>
+            <div class="vds-name">Operator at rest</div>
+            <p>Control room silhouette. Screens calm. Low cyan ambient. No alarms.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">02</div>
-          <div class="vds-beat-name">SCALE UP</div>
-          <div class="vds-beat-sub">One line becomes a network</div>
+          <div class="vds-beat-name">THREAT APPROACHES</div>
+          <div class="vds-beat-sub">A storm rolls in.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/02a_corridor.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/02a_storm_front.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">02A</div>
-            <div class="vds-name">Transmission corridor aerial</div>
-            <p>Aerial: parallel lines and towers cutting across landscape.</p>
+            <div class="vds-name">Storm front</div>
+            <p>Aerial of a transmission corridor as black clouds roll in. Distant lightning.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/02b_substation.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/02b_lightning.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">02B</div>
-            <div class="vds-name">Substation convergence</div>
-            <p>Top-down: lines converging into the geometry of a major substation.</p>
+            <div class="vds-name">Strike near a tower</div>
+            <p>Lightning splits the sky beside a transmission tower. Cyan sensors spike.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/02c_overlay.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/02c_wind_sub.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">02C</div>
-            <div class="vds-name">Grid map overlay</div>
-            <p>Network map drawing itself across the region — cities lighting up.</p>
+            <div class="vds-name">Wind through a substation</div>
+            <p>Wind whips through transformer equipment. Cyan indicators flicker with stress.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">03</div>
-          <div class="vds-beat-name">SOURCES IN</div>
-          <div class="vds-beat-sub">Generation joins the grid</div>
+          <div class="vds-beat-name">FAULT DETECTED</div>
+          <div class="vds-beat-sub">Something breaks.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/03a_wind.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/03a_line_stress.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">03A</div>
-            <div class="vds-name">Wind turbines</div>
-            <p>A wind farm at golden hour, blades in synchronized rhythm.</p>
+            <div class="vds-name">Line under stress</div>
+            <p>Macro of a transmission line. A bright flare erupts at a fault point.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/03b_solar.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/03b_warning_cluster.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">03B</div>
-            <div class="vds-name">Solar farm</div>
-            <p>Utility-scale solar tracking the sun, energy flowing along the cabling.</p>
+            <div class="vds-name">Warning cluster</div>
+            <p>Control room screen: red-orange warnings flare around a single node.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/03c_battery.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/03c_operator_pov.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">03C</div>
-            <div class="vds-name">Battery storage</div>
-            <p>Bright emerald pulses charging a row of utility-scale battery units.</p>
+            <div class="vds-name">Operator POV</div>
+            <p>Tight on the screen. Lime green coordinate readout. The grid map locates the break.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">04</div>
-          <div class="vds-beat-name">INTELLIGENCE WAKES</div>
-          <div class="vds-beat-sub">GridOS comes online</div>
+          <div class="vds-beat-name">TIME FREEZES</div>
+          <div class="vds-beat-sub">GridOS calculates in milliseconds.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/04a_bloom.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/04a_calc_fan.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">04A</div>
-            <div class="vds-name">Control room blooms</div>
-            <p>Data points blooming across the grid map on a control-room display.</p>
+            <div class="vds-name">Probability fan</div>
+            <p>Hyper close-up of GridOS UI. Probability vectors fan out from the fault.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/04b_predict.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/04b_gridos_layer.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">04B</div>
-            <div class="vds-name">AI predictive flows</div>
-            <p>Predictive flow lines drawing themselves ahead of real load.</p>
+            <div class="vds-name">Inside GridOS</div>
+            <p>The intelligence layer above the grid. Calculations cascade across thousands of paths.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/04c_recommend.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/04c_path_chosen.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">04C</div>
-            <div class="vds-name">Recommendation highlighted</div>
-            <p>Operator's POV — a recommendation glowing cyan, ready to act on.</p>
+            <div class="vds-name">A path chosen</div>
+            <p>One path lights up bright cyan. A lime green confidence score locks in beside it.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">05</div>
-          <div class="vds-beat-name">STRESS</div>
-          <div class="vds-beat-sub">A challenge enters the system</div>
+          <div class="vds-beat-name">ACTION</div>
+          <div class="vds-beat-sub">The grid moves before you can.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/05a_storm.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/05a_switchgear.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">05A</div>
-            <div class="vds-name">Storm front</div>
-            <p>Storm rolling in over a substation, sensors blinking awake.</p>
+            <div class="vds-name">Switchgear flips</div>
+            <p>Macro inside a substation. A breaker snaps to a new position. Cyan indicator changes state.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/05b_anomaly.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/05b_subs_cadence.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">05B</div>
-            <div class="vds-name">Anomaly detected</div>
-            <p>Cluster of warnings flares around a single network node.</p>
+            <div class="vds-name">Three substations in cadence</div>
+            <p>Top-down: three substations switch in synchronized rhythm. Energy reroutes in real time.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/05c_isolate.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/05c_fault_isolate.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">05C</div>
             <div class="vds-name">Fault isolated</div>
-            <p>Cyan beams converge — an emerald perimeter draws around the fault.</p>
+            <p>Grid map zoomed out. Alternate path draws across the network. Fault node sealed off.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">06</div>
-          <div class="vds-beat-name">ORCHESTRATION</div>
-          <div class="vds-beat-sub">The grid responds in real time</div>
+          <div class="vds-beat-name">LIGHTS STAY ON</div>
+          <div class="vds-beat-sub">No one notices.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/06a_reroute.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/06a_surgeon.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">06A</div>
-            <div class="vds-name">Power flows redirect</div>
-            <p>Energy pathways shift visibly, rerouting around the isolated node.</p>
+            <div class="vds-name">In the operating room</div>
+            <p>Surgeon's hands at work over surgical light. No flicker. No interruption.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/06b_switch.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/06b_marta.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">06B</div>
-            <div class="vds-name">Substations switch in coordination</div>
-            <p>Breakers and switchgear flipping in synchronized sequence.</p>
+            <div class="vds-name">MARTA keeps moving</div>
+            <p>Atlanta MARTA train through a tunnel. Headlight steady. Cyan ambient overlay. The schedule holds.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/06c_steady.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/06c_stadium.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">06C</div>
-            <div class="vds-name">Demand met, lights stay on</div>
-            <p>City skyline lights steady through the moment; load chart levels out.</p>
+            <div class="vds-name">The match never pauses</div>
+            <p>Mercedes-Benz Stadium during a packed soccer match. Floodlights steady. The world's biggest event keeps playing because the grid kept its promise.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">07</div>
-          <div class="vds-beat-name">RESILIENCE</div>
-          <div class="vds-beat-sub">Lights stay on for the people who depend on them</div>
+          <div class="vds-beat-name">CONTINUITY</div>
+          <div class="vds-beat-sub">Ordinary life, kept ordinary.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/07a_city.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/07a_baby.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">07A</div>
-            <div class="vds-name">City at night</div>
-            <p>Aerial of a city skyline, every window lit and steady.</p>
+            <div class="vds-name">A baby sleeping</div>
+            <p>Quiet nursery. A soft warm lamp beside the crib. Halftone ambient texture.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/07b_places.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/07b_family.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">07B</div>
-            <div class="vds-name">Hospital · factory · school</div>
-            <p>Three windows still glowing — the system serving the people behind them.</p>
+            <div class="vds-name">A family at dinner</div>
+            <p>High-rise apartment window. Kitchen and living room glowing warm.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/07c_pulse.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/07c_intersection.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">07C</div>
-            <div class="vds-name">City pulsing healthy</div>
-            <p>High aerial pull-back: the entire urban grid pulsing in steady rhythm.</p>
+            <div class="vds-name">Traffic still flowing</div>
+            <p>City intersection at night. Signals cycling normally. Halftone city beyond.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">08</div>
-          <div class="vds-beat-name">THE NETWORK LEARNS</div>
-          <div class="vds-beat-sub">Every event makes it smarter</div>
+          <div class="vds-beat-name">STORM PASSES</div>
+          <div class="vds-beat-sub">Tension releases.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/08a_feedback.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/08a_storm_pass.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">08A</div>
-            <div class="vds-name">Patterns feed back</div>
-            <p>Event data streaming back into the model, integrating.</p>
+            <div class="vds-name">The storm moves on</div>
+            <p>Aerial wide. The storm front receding. Below, the city unbroken. Cyan grid steady.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/08b_new.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/08b_quiet_line.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">08B</div>
-            <div class="vds-name">New connections form</div>
-            <p>The network reorganizing — new pathways drawing in real time.</p>
+            <div class="vds-name">Faulted line, quiet</div>
+            <p>The damaged line sits isolated. Around it, alternate paths still pulse cyan.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/08c_tight.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/08c_all_green.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">08C</div>
-            <div class="vds-name">Tighter and more efficient</div>
-            <p>The network at higher efficiency than before, humming evenly.</p>
+            <div class="vds-name">All green</div>
+            <p>Operator's screen. Dashboard returns to all-green readouts. Lime indicators steady.</p>
           </div>
         </div>
       </div>
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">09</div>
-          <div class="vds-beat-name">A MORE INTELLIGENT GRID</div>
-          <div class="vds-beat-sub">Connected. Intelligent. Global.</div>
+          <div class="vds-beat-name">THE DAY BEGINS</div>
+          <div class="vds-beat-sub">The conference opens because the grid kept its promise.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/09a_pullback.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/09a_venue_dawn.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">09A</div>
-            <div class="vds-name">Pull back from the city</div>
-            <p>Aerial rise revealing more cities and the network between them.</p>
+            <div class="vds-name">Venue at first light</div>
+            <p>Sunrise hitting the Orchestrate 2026 venue exterior. Atlanta skyline behind. The grid still alive. The night held.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/09b_continent.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/09b_doors_open.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">09B</div>
-            <div class="vds-name">Continental view</div>
-            <p>Continental grid alive with emerald arteries and cyan flows.</p>
+            <div class="vds-name">Doors open</div>
+            <p>Conference attendees flowing in through the venue entrance at dawn. Halftone-cyan ambient. The day begins as planned.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="imagen/09c_earth.png" alt="" loading="lazy"></div>
+            <div class="frame"><img src="save/09c_keynote.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">09C</div>
-            <div class="vds-name">Earth · brand reveal</div>
-            <p>Earth from low orbit, full grid active, sunrise igniting the horizon.</p>
+            <div class="vds-name">Orchestrate 2026 begins</div>
+            <p>Wide of the keynote hall. Audience filling the seats. Stage lights coming up on Orchestrate 2026. The film hands the room to the room.</p>
           </div>
         </div>
       </div>
@@ -2359,13 +2337,14 @@
 
 
     <footer class="colophon">
-      <div>GE Vernova · Orchestrate 2026 · Visual Direction Storyboard</div>
-      <div class="right">Bttr · April 30, 2026</div>
+      <div>GE Vernova · Orchestrate 2026 · The Save</div>
+      <div class="right">Bttr · May 1, 2026</div>
     </footer>
 
-  </div><!-- /board-branded-matrix -->
+  </div><!-- /board-the-save -->
 
-  <div class="board" id="board-anatomy-watt">
+  <div class="board active" id="board-one-watt">
+
     <header class="masthead">
       <div class="brand-block">
         <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
@@ -2384,12 +2363,12 @@
       </div>
       <div class="title-block">
         <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
-        <h1>Anatomy of a Watt<br/><span class="accent">Connected. Intelligent. Global.</span></h1>
+        <h1>One Watt<br/><span class="accent">From a turbine to a child's nightlight</span></h1>
       </div>
     </header>
 
     <section class="intro">
-      <p>A visual direction rooted in connection, data, and global intelligence. Inspired by networks, technology, and the flow of information shaping a smarter future. <span class="accent">Where systems become intelligence in motion.</span></p>
+      <p>Follow a single watt of electricity from the moment it leaves a wind turbine to the moment it powers a child's nightlight. In sixty seconds it travels through every piece of the grid: cable, substation, transformer, switching station, distribution line, meter, wall, outlet, bulb. <span class="accent">Vision to value, told through the smallest possible unit.</span></p>
       <div class="stats">
         <div class="stat"><label>Aspect</label><span>16:9</span></div>
         <div class="stat"><label>Frames</label><span>9 × 3</span></div>
@@ -2543,8 +2522,8 @@
           <div class="vds-frame">
             <div class="frame"><img src="watt/06a_suburb.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">6A</div>
-            <div class="vds-name">Suburb lines</div>
-            <p>Aerial of suburb at dusk, pulse along the distribution line above the streets.</p>
+            <div class="vds-name">Atlanta suburb at dusk</div>
+            <p>Aerial above a quiet Atlanta-area neighborhood, the pulse traveling along the distribution line above the streets.</p>
           </div>
           <div class="vds-frame">
             <div class="frame"><img src="watt/06b_poletx.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
@@ -2617,37 +2596,110 @@
       <div class="vds-beat">
         <div class="vds-beat-head">
           <div class="vds-beat-num">09</div>
-          <div class="vds-beat-name">THE REASON</div>
-          <div class="vds-beat-sub">Why all of this exists</div>
+          <div class="vds-beat-name">GAMETIME</div>
+          <div class="vds-beat-sub">The watt arrives where the world is watching.</div>
         </div>
         <div class="vds-beat-frames">
           <div class="vds-frame">
-            <div class="frame"><img src="watt/09a_glow.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="frame"><img src="watt/09a_floodlights.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">9A</div>
-            <div class="vds-name">Nightlight glows</div>
-            <p>The nightlight warms to a soft glow; the pulse dissipates into the bulb.</p>
+            <div class="vds-name">Floodlights ignite</div>
+            <p>The cyan-teal pulse arrives at Mercedes-Benz Stadium and the floodlight banks blaze on. Signal Gold flare across the stands.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="watt/09b_child.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="frame"><img src="watt/09b_crowd.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">9B</div>
-            <div class="vds-name">Child sleeping</div>
-            <p>Soft light falls across a sleeping child's silhouette. Calm. Safe.</p>
+            <div class="vds-name">Match in motion</div>
+            <p>Mercedes-Benz Stadium revealed. Packed crowd, World Cup match underway. The grid feeds the moment the planet is watching.</p>
           </div>
           <div class="vds-frame">
-            <div class="frame"><img src="watt/09c_planet.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="frame"><img src="watt/09c_pullback.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
             <div class="vds-num">9C</div>
-            <div class="vds-name">Pull back</div>
-            <p>Bedroom → house → city → planet — countless homes lit. Hero hold.</p>
+            <div class="vds-name">Stadium to planet</div>
+            <p>Pull back from the stadium to Atlanta skyline to continent to Earth from orbit. The same orchestrated grid lit it all. Hero hold.</p>
           </div>
         </div>
       </div>
     </section>
 
     <footer class="colophon">
-      <div>GE Vernova · Orchestrate 2026 · Anatomy of a Watt</div>
+      <div>GE Vernova · Orchestrate 2026 · One Watt</div>
       <div class="right">Bttr · May 1, 2026</div>
     </footer>
-  </div><!-- /board-anatomy-watt -->
+  </div><!-- /board-one-watt -->
+
+
+  <div class="board" id="board-music">
+    <header class="masthead">
+      <div class="brand-block">
+        <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
+          <svg width="68" height="53" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="#FFFFFF"/>
+            <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="#FFFFFF"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="#FFFFFF"/>
+          </svg>
+        </a>
+        <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
+        <div class="meta">
+          <strong>Sound Direction</strong>
+          Music candidates · ~60 sec piece<br/>
+          makebttr.com · May 1, 2026
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
+        <h1>Music<br/><span class="accent">Hybrid score · 60 sec piece</span></h1>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p>Music candidates for the hero film. Paste any Spotify track or playlist link to load it into the next open slot. <span class="accent">Used to set tone, pace, and emotional arc.</span></p>
+    </section>
+
+    <section class="sound">
+      <div class="track-loader">
+        <input id="trackUrl" type="text" placeholder="Paste Spotify track or playlist link here…" />
+        <button onclick="loadTrack()">Load track</button>
+        <div class="hint">Paste a link like <code>https://open.spotify.com/track/...</code> or <code>https://open.spotify.com/playlist/...</code> — fills the next empty slot below.</div>
+      </div>
+
+      <div class="candidates">
+        <div class="candidate">
+          <div class="candidate-head">
+            <div class="label"><span class="pos">01</span>F1 · Hans Zimmer (F1® The Movie Original Score)</div>
+            <button class="clear" onclick="clearSlot(0)">Clear</button>
+          </div>
+          <iframe id="slot-0" src="https://open.spotify.com/embed/track/27qC3KK5wjQzyNenY53fep?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="candidate">
+          <div class="candidate-head">
+            <div class="label"><span class="pos">02</span>a good man with a broken heart · LoVibe.</div>
+            <button class="clear" onclick="clearSlot(1)">Clear</button>
+          </div>
+          <iframe id="slot-1" src="https://open.spotify.com/embed/track/07fNxq0gkGFZpAYCTd0v2A?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="candidate">
+          <div class="candidate-head">
+            <div class="label"><span class="pos">03</span>starly · Slowed · LONOWN, riserayss</div>
+            <button class="clear" onclick="clearSlot(2)">Clear</button>
+          </div>
+          <iframe id="slot-2" src="https://open.spotify.com/embed/track/2ao4kVf8DsGghi3mUGaVEr?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="candidate">
+          <div class="candidate-head">
+            <div class="label"><span class="pos">04</span>Track 04</div>
+            <button class="clear" onclick="clearSlot(3)">Clear</button>
+          </div>
+          <iframe id="slot-3" src="https://open.spotify.com/embed/track/53KH5aEFGi0PMlwAvpCT5t?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer class="colophon">
+      <div>GE Vernova · Orchestrate 2026 · Sound Direction</div>
+      <div class="right">Bttr · May 1, 2026</div>
+    </footer>
+  </div><!-- /board-music -->
 
 
   <div class="board" id="board-imagery-direction">
@@ -2798,62 +2850,62 @@
 
 <script>
   const SHOTS = [
-    {id:"01A", beat:"01 — The Stage", title:"Helicopter aerial wide", duration:"2.5s", img:"imagen_wc/01a_aerial.png", desc:"Approach to Mercedes-Benz Stadium at twilight. Stadium lit, city quiet. Pre-game emptiness, anticipation.", camera:"Slow forward dolly · anamorphic lens flare"},
-    {id:"01B", beat:"01 — The Stage", title:"Architecture detail push", duration:"2s", img:"imagen_wc/01b_arch.png", desc:"Tighter on the petal-roof structure as it pulses with interior glow. Stadium identity established.", camera:"Push-in · macro detail"},
-    {id:"01C", beat:"01 — The Stage", title:"Field-level wide, lights up", duration:"2s", img:"imagen_wc/01c_field.png", desc:"Empty pitch from sideline. Stadium lights kick on in sequence. The stage is set.", camera:"Static wide · slow exposure ramp"},
-    {id:"02A", beat:"02 — The Energy Builds", title:"Crowd in shadow, hands rising", duration:"2s", img:"imagen_wc/02a_crowd.png", desc:"Tens of thousands silhouetted. Hands lift in unison. Anticipation as a physical wave.", camera:"Pan across crowd · low angle"},
-    {id:"02B", beat:"02 — The Energy Builds", title:"Field rippling green", duration:"2.5s", img:"imagen_wc/02b_field.png", desc:"Electric green energy ripples across the field and climbs the stands. Force entering the system.", camera:"Aerial wide · volumetric haze"},
-    {id:"02C", beat:"02 — The Energy Builds", title:"Player in locker room", duration:"2s", img:"imagen_wc/02c_grass.png", desc:"Alone on the bench, quiet preparation. The roar muffled outside. Calm before walking out.", camera:"Medium · warm tungsten · stillness"},
-    {id:"03A", beat:"03 — The Player", title:"Solo walk onto field", duration:"2s", img:"imagen_wc/03a_walk.png", desc:"Wide shot, single figure striding from tunnel into stadium light. Solitary purpose.", camera:"Tracking wide · backlit silhouette"},
-    {id:"03B", beat:"03 — The Player", title:"Medium, lit corridor", duration:"2s", img:"imagen_wc/03b_corridor.png", desc:"Player approaching through stadium light, breath visible, gaze locked forward.", camera:"Steadicam push-in · 50mm"},
-    {id:"03C", beat:"03 — The Player", title:"ECU eyes, sweat, focus", duration:"2s", img:"imagen_wc/03c_focus.png", desc:"Extreme close-up. Sweat catches floodlight. Eyes locked. The silent calm before action.", camera:"Macro lens · breath-held stillness"},
-    {id:"04A", beat:"04 — The Strategy", title:"OTS, coach & clipboard", duration:"2s", img:"imagen_wc/04a_clipboard.png", desc:"Over-shoulder on tactical clipboard, diagrams active. Strategy made visible.", camera:"OTS handheld · warm rim light"},
-    {id:"04B", beat:"04 — The Strategy", title:"Player faces leaning in", duration:"2s", img:"imagen_wc/04b_huddle.png", desc:"Tight on faces in the huddle. Trust, alignment, shared mission.", camera:"Slow arc · shallow depth"},
-    {id:"04C", beat:"04 — The Strategy", title:"Hands stacking center", duration:"2s", img:"imagen_wc/04c_hands.png", desc:"Top-down on hands meeting. Unity image, the team becoming one system.", camera:"Top-down · jib drop"},
-    {id:"05A", beat:"05 — The Kick", title:"Low angle approach", duration:"2s", img:"imagen_wc/05a_approach.png", desc:"Camera at grass-level, player approaching ball. Footfalls heavy, momentum gathering.", camera:"Low slider · 100fps slow-mo"},
-    {id:"05B", beat:"05 — The Kick", title:"Macro foot/ball contact", duration:"2.5s", img:"imagen_wc/05b_contact.png", desc:"Hyper slow motion: cleat strikes ball. Leather deforms, debris scatters. Force visible.", camera:"1000fps · macro"},
-    {id:"05C", beat:"05 — The Kick", title:"Ball launches off foot", duration:"2.5s", img:"imagen_wc/05c_explode.png", desc:"Deformed ball, debris, motion blur. Energy starts to glow from the surface. The journey begins.", camera:"Slow-mo · trailing motion blur"},
-    {id:"06A", beat:"06 — In Flight", title:"Ball arcing, energy trail", duration:"2s", img:"imagen_wc/06a_arc.png", desc:"Ball traces an arc against night sky. Brilliant green particle trail follows.", camera:"Tracking arc · sky as canvas"},
-    {id:"06B", beat:"06 — In Flight", title:"Ball smashes net, energy explodes", duration:"2.5s", img:"imagen_wc/06b_smash.png", desc:"The instant of impact. Net ripples, brilliant green shockwave erupts outward. Climactic release.", camera:"Slow-mo macro · radial burst"},
-    {id:"06C", beat:"06 — In Flight", title:"Energy floods from the goal", duration:"2.5s", img:"imagen_wc/06c_dissolve.png", desc:"Net still rippling. Green energy streams outward and coalesces into light. The ball is gone — only force remains.", camera:"Inside-goal POV · slow motion bloom"},
-    {id:"07A", beat:"07 — Energy Becomes Data", title:"Sphere of pure energy", duration:"2.5s", img:"imagen_wc/07a_sphere.png", desc:"Ball fully transformed: glowing data sphere, geometric particles in concentric orbit.", camera:"Locked hold · subject hover"},
-    {id:"07B", beat:"07 — Energy Becomes Data", title:"Beams shooting outward", duration:"2s", img:"imagen_wc/07b_beams.png", desc:"Energy beams fire from sphere in calculated directions. The network reaching.", camera:"Pull-back rapid · vector pulses"},
-    {id:"07C", beat:"07 — Energy Becomes Data", title:"Network nodes lighting", duration:"2.5s", img:"imagen_wc/07c_nodes.png", desc:"Beams reach distant points. Each contact ignites a node. The system wakes up.", camera:"Quick cuts · node POVs"},
-    {id:"08A", beat:"08 — Systems Awaken", title:"Stadium pull-back w/ grid", duration:"2.5s", img:"imagen_wc/08a_pullback.png", desc:"Pull-back reveals stadium with green grid lines extending outward like circuitry.", camera:"Aerial pull-back · scale reveal"},
-    {id:"08B", beat:"08 — Systems Awaken", title:"Cityscape grid overlay", duration:"2s", img:"imagen_wc/08b_city.png", desc:"Atlanta skyline at night with green grid pulsing across buildings, streets, infrastructure.", camera:"High angle · time-lapse feel"},
-    {id:"08C", beat:"08 — Systems Awaken", title:"Power-line nodes pulsing", duration:"2.5s", img:"imagen_wc/08c_pylon.png", desc:"Tight on transmission tower, energy traveling along the line. Live network in action.", camera:"Macro detail · pulse-rhythm"},
-    {id:"09A", beat:"09 — From the Game to the Grid", title:"Earth low orbit reveal", duration:"2.5s", img:"imagen_wc/09a_orbit.png", desc:"Camera rises into low orbit. Earth fills the frame, atmospheric glow on the horizon.", camera:"Vertical rise · long focal"},
-    {id:"09B", beat:"09 — From the Game to the Grid", title:"Grid spreading continents", duration:"2.5s", img:"imagen_wc/09b_grid.png", desc:"Green grid lines snake across continents, connecting cities in a living web.", camera:"Slow orbit · time-lapse spread"},
-    {id:"09C", beat:"09 — From the Game to the Grid", title:"Hero hold, full network", duration:"3s", img:"imagen_wc/09c_climax.png", desc:"Earth at night with full grid network active. Cities pulse in rhythm. Climactic hold.", camera:"Locked hero · final fade"}
+    {id:"01A", beat:"01 — PRE-DAWN", title:"Dark continent from orbit", duration:"2.5s", img:"first_light/01a_orbit_dark.png", desc:"Earth from low orbit at night. Sparse city lights as cyan nodes. East edge faintly glowing.", camera:"Locked wide · slow rise"},
+    {id:"01B", beat:"01 — PRE-DAWN", title:"Sleeping city", duration:"2s", img:"first_light/01b_sleeping_city.png", desc:"Aerial of a city before dawn. A single streetlight. Halftone navy.", camera:"High aerial · static"},
+    {id:"01C", beat:"01 — PRE-DAWN", title:"A turbine, still", duration:"2s", img:"first_light/01c_still_turbine.png", desc:"A wind turbine silent at first hint of dawn. Cyan ambient beginning to grow.", camera:"Wide · long focal"},
+    {id:"02A", beat:"02 — SOURCES WAKE", title:"Wind farm starts", duration:"2s", img:"first_light/02a_wind.png", desc:"First light. Blades begin to rotate. Cyan-teal pulses form at each turbine.", camera:"Aerial · slow lateral"},
+    {id:"02B", beat:"02 — SOURCES WAKE", title:"Solar tracks east", duration:"2s", img:"first_light/02b_solar.png", desc:"Aerial of a solar farm. Panels rotating eastward in unison as sunlight hits them.", camera:"Top-down · time-lapse"},
+    {id:"02C", beat:"02 — SOURCES WAKE", title:"Hydro releases", duration:"2s", img:"first_light/02c_hydro.png", desc:"Dam at dawn. Water releases. Turbines spin up. Cyan pulses travel down the conduit.", camera:"Wide · push-in"},
+    {id:"03A", beat:"03 — CITIES WAKE", title:"Atlanta wakes first", duration:"2s", img:"first_light/03a_skyline.png", desc:"Aerial sweep across the Atlanta skyline as dawn arrives. Lights cascade building by building. The host city is first to join the day.", camera:"Aerial sweep · time-lapse"},
+    {id:"03B", beat:"03 — CITIES WAKE", title:"Transit comes online", duration:"2s", img:"first_light/03b_transit.png", desc:"Subway stations lighting. Train indicators activating. Halftone overlay.", camera:"Underground POV"},
+    {id:"03C", beat:"03 — CITIES WAKE", title:"Runway lit", duration:"2s", img:"first_light/03c_airport.png", desc:"Airport runway at first light. Cyan grid lines connecting it to the broader network.", camera:"High wide aerial"},
+    {id:"04A", beat:"04 — DEMAND WAKES", title:"Stadium readies for match day", duration:"2s", img:"first_light/04a_stadium.png", desc:"Mercedes-Benz Stadium at first light. Floodlights coming up. Cyan-teal pulses entering. Anticipation as load.", camera:"Aerial wide · time-lapse"},
+    {id:"04B", beat:"04 — DEMAND WAKES", title:"Hospital floors light", duration:"2s", img:"first_light/04b_hospital.png", desc:"Hospital exterior at dawn. Floors illuminating in sequence. Halftone overlay.", camera:"Exterior · time-lapse"},
+    {id:"04C", beat:"04 — DEMAND WAKES", title:"School lights up", duration:"2s", img:"first_light/04c_school.png", desc:"School exterior at dawn. Lights coming on classroom by classroom.", camera:"Exterior wide"},
+    {id:"05A", beat:"05 — COORDINATION", title:"Substations switch in cadence", duration:"2s", img:"first_light/05a_subs_cadence.png", desc:"Wide aerial. Substations across the region switch in synchronized rhythm.", camera:"Aerial · cut sequence"},
+    {id:"05B", beat:"05 — COORDINATION", title:"Lines balance load", duration:"2s", img:"first_light/05b_balance.png", desc:"Top-down. Transmission lines balancing load in real time. Energy flow as cyan rivers.", camera:"Top-down · vector overlay"},
+    {id:"05C", beat:"05 — COORDINATION", title:"Distribution animates", duration:"2s", img:"first_light/05c_distribution.png", desc:"Aerial. Distribution lines reaching from substations into neighborhoods. Lights cascading.", camera:"Aerial · time-lapse"},
+    {id:"06A", beat:"06 — MACRO TEXTURES", title:"Inside a generator", duration:"2s", img:"first_light/06a_generator.png", desc:"Macro of a wind turbine generator at full rhythm. Cyan-teal pulse steady.", camera:"Macro interior"},
+    {id:"06B", beat:"06 — MACRO TEXTURES", title:"Control screen alive", duration:"2s", img:"first_light/06b_screen.png", desc:"Macro of a control room screen. Real-time grid orchestration UI. Lime green readouts steady.", camera:"Macro screen"},
+    {id:"06C", beat:"06 — MACRO TEXTURES", title:"Transformer at flow", duration:"2s", img:"first_light/06c_transformer.png", desc:"Macro of a step-up transformer. Pulses entering and leaving in continuous flow.", camera:"Macro detail"},
+    {id:"07A", beat:"07 — PERFORMANCE", title:"Region pulses in unison", duration:"2.5s", img:"first_light/07a_aerial_sweep.png", desc:"Sweeping aerial. Every line, every node, every substation pulses together.", camera:"Aerial sweep"},
+    {id:"07B", beat:"07 — PERFORMANCE", title:"Control room cadence", duration:"2s", img:"first_light/07b_control_room.png", desc:"Time-lapse of operators working in calm cadence. Screens showing continuous flow. No alarms.", camera:"Wide interior · time-lapse"},
+    {id:"07C", beat:"07 — PERFORMANCE", title:"Half a continent lit", duration:"2.5s", img:"first_light/07c_half_continent.png", desc:"Wide aerial. The eastern half of the continent now fully illuminated. Cyan grid alive.", camera:"Continental aerial"},
+    {id:"08A", beat:"08 — WHOLE CONTINENT", title:"Sun line crosses west", duration:"2.5s", img:"first_light/08a_sun_crossing.png", desc:"Continental aerial. Illumination cascading west across two-thirds of the continent.", camera:"Orbital aerial"},
+    {id:"08B", beat:"08 — WHOLE CONTINENT", title:"Full demand served", duration:"2s", img:"first_light/08b_full_demand.png", desc:"Mid-day continental view. The entire grid actively serving full load. Halftone atmosphere.", camera:"Continental aerial"},
+    {id:"08C", beat:"08 — WHOLE CONTINENT", title:"One coordinated body", duration:"2.5s", img:"first_light/08c_one_body.png", desc:"The grid as a single system. Cities glowing. Transmission flowing. Distribution animating.", camera:"Aerial composite"},
+    {id:"09A", beat:"09 — HELD WIDE", title:"Pull back to planet", duration:"2.5s", img:"first_light/09a_pullback.png", desc:"Continental view rising to planetary view. The day side of Earth fully illuminated.", camera:"Vertical rise"},
+    {id:"09B", beat:"09 — HELD WIDE", title:"Earth, full grid", duration:"2.5s", img:"first_light/09b_earth_grid.png", desc:"Earth from low orbit at full daylight. Brilliant cyan grid spans every landmass.", camera:"Orbital wide"},
+    {id:"09C", beat:"09 — HELD WIDE", title:"Climactic hold", duration:"3s", img:"first_light/09c_held.png", desc:"Locked hero hold. Earth with full active grid. Sunrise rising on the right edge. Golden-cyan starburst.", camera:"Locked hero · final hold"}
   ];
   const BM_SHOTS = [
-    {id:"01A", beat:"01 — POWER UP", title:"Arc in a transformer", duration:"2s", img:"imagen/01a_arc.png", desc:"Dawn. A bright emerald arc dances inside a high-voltage transformer.", camera:"—"},
-    {id:"01B", beat:"01 — POWER UP", title:"Pulse along the line", duration:"2s", img:"imagen/01b_pulse.png", desc:"An emerald pulse races along a high-voltage transmission conductor.", camera:"—"},
-    {id:"01C", beat:"01 — POWER UP", title:"The line stretches", duration:"2s", img:"imagen/01c_line.png", desc:"Pull-back: the chain of towers reaches the horizon.", camera:"—"},
-    {id:"02A", beat:"02 — SCALE UP", title:"Transmission corridor aerial", duration:"2s", img:"imagen/02a_corridor.png", desc:"Aerial: parallel lines and towers cutting across landscape.", camera:"—"},
-    {id:"02B", beat:"02 — SCALE UP", title:"Substation convergence", duration:"2s", img:"imagen/02b_substation.png", desc:"Top-down: lines converging into the geometry of a major substation.", camera:"—"},
-    {id:"02C", beat:"02 — SCALE UP", title:"Grid map overlay", duration:"2s", img:"imagen/02c_overlay.png", desc:"Network map drawing itself across the region — cities lighting up.", camera:"—"},
-    {id:"03A", beat:"03 — SOURCES IN", title:"Wind turbines", duration:"2s", img:"imagen/03a_wind.png", desc:"A wind farm at golden hour, blades in synchronized rhythm.", camera:"—"},
-    {id:"03B", beat:"03 — SOURCES IN", title:"Solar farm", duration:"2s", img:"imagen/03b_solar.png", desc:"Utility-scale solar tracking the sun, energy flowing along the cabling.", camera:"—"},
-    {id:"03C", beat:"03 — SOURCES IN", title:"Battery storage", duration:"2s", img:"imagen/03c_battery.png", desc:"Bright emerald pulses charging a row of utility-scale battery units.", camera:"—"},
-    {id:"04A", beat:"04 — INTELLIGENCE WAKES", title:"Control room blooms", duration:"2s", img:"imagen/04a_bloom.png", desc:"Data points blooming across the grid map on a control-room display.", camera:"—"},
-    {id:"04B", beat:"04 — INTELLIGENCE WAKES", title:"AI predictive flows", duration:"2s", img:"imagen/04b_predict.png", desc:"Predictive flow lines drawing themselves ahead of real load.", camera:"—"},
-    {id:"04C", beat:"04 — INTELLIGENCE WAKES", title:"Recommendation highlighted", duration:"2s", img:"imagen/04c_recommend.png", desc:"Operator's POV — a recommendation glowing cyan, ready to act on.", camera:"—"},
-    {id:"05A", beat:"05 — STRESS", title:"Storm front", duration:"2s", img:"imagen/05a_storm.png", desc:"Storm rolling in over a substation, sensors blinking awake.", camera:"—"},
-    {id:"05B", beat:"05 — STRESS", title:"Anomaly detected", duration:"2s", img:"imagen/05b_anomaly.png", desc:"Cluster of warnings flares around a single network node.", camera:"—"},
-    {id:"05C", beat:"05 — STRESS", title:"Fault isolated", duration:"2s", img:"imagen/05c_isolate.png", desc:"Cyan beams converge — an emerald perimeter draws around the fault.", camera:"—"},
-    {id:"06A", beat:"06 — ORCHESTRATION", title:"Power flows redirect", duration:"2s", img:"imagen/06a_reroute.png", desc:"Energy pathways shift visibly, rerouting around the isolated node.", camera:"—"},
-    {id:"06B", beat:"06 — ORCHESTRATION", title:"Substations switch in coordination", duration:"2s", img:"imagen/06b_switch.png", desc:"Breakers and switchgear flipping in synchronized sequence.", camera:"—"},
-    {id:"06C", beat:"06 — ORCHESTRATION", title:"Demand met, lights stay on", duration:"2s", img:"imagen/06c_steady.png", desc:"City skyline lights steady through the moment; load chart levels out.", camera:"—"},
-    {id:"07A", beat:"07 — RESILIENCE", title:"City at night", duration:"2s", img:"imagen/07a_city.png", desc:"Aerial of a city skyline, every window lit and steady.", camera:"—"},
-    {id:"07B", beat:"07 — RESILIENCE", title:"Hospital · factory · school", duration:"2s", img:"imagen/07b_places.png", desc:"Three windows still glowing — the system serving the people behind them.", camera:"—"},
-    {id:"07C", beat:"07 — RESILIENCE", title:"City pulsing healthy", duration:"2s", img:"imagen/07c_pulse.png", desc:"High aerial pull-back: the entire urban grid pulsing in steady rhythm.", camera:"—"},
-    {id:"08A", beat:"08 — THE NETWORK LEARNS", title:"Patterns feed back", duration:"2s", img:"imagen/08a_feedback.png", desc:"Event data streaming back into the model, integrating.", camera:"—"},
-    {id:"08B", beat:"08 — THE NETWORK LEARNS", title:"New connections form", duration:"2s", img:"imagen/08b_new.png", desc:"The network reorganizing — new pathways drawing in real time.", camera:"—"},
-    {id:"08C", beat:"08 — THE NETWORK LEARNS", title:"Tighter and more efficient", duration:"2s", img:"imagen/08c_tight.png", desc:"The network at higher efficiency than before, humming evenly.", camera:"—"},
-    {id:"09A", beat:"09 — A MORE INTELLIGENT GRID", title:"Pull back from the city", duration:"2s", img:"imagen/09a_pullback.png", desc:"Aerial rise revealing more cities and the network between them.", camera:"—"},
-    {id:"09B", beat:"09 — A MORE INTELLIGENT GRID", title:"Continental view", duration:"2s", img:"imagen/09b_continent.png", desc:"Continental grid alive with emerald arteries and cyan flows.", camera:"—"},
-    {id:"09C", beat:"09 — A MORE INTELLIGENT GRID", title:"Earth · brand reveal", duration:"2s", img:"imagen/09c_earth.png", desc:"Earth from low orbit, full grid active, sunrise igniting the horizon.", camera:"—"}
+    {id:"01A", beat:"01 — CALM BEFORE", title:"Atlanta skyline at night", duration:"2s", img:"save/01a_calm_city.png", desc:"Wide aerial of Atlanta. A steady cyan grid pulses softly across the skyline.", camera:"High aerial · static"},
+    {id:"01B", beat:"01 — CALM BEFORE", title:"A warm window", duration:"2s", img:"save/01b_warm_window.png", desc:"Macro of a residential window, warm amber against halftone-cyan night.", camera:"Macro · low angle"},
+    {id:"01C", beat:"01 — CALM BEFORE", title:"Operator at rest", duration:"2s", img:"save/01c_calm_room.png", desc:"Control room silhouette. Screens calm. Low cyan ambient. No alarms.", camera:"Wide interior"},
+    {id:"02A", beat:"02 — THREAT APPROACHES", title:"Storm front", duration:"2s", img:"save/02a_storm_front.png", desc:"Aerial of a transmission corridor as black clouds roll in. Distant lightning.", camera:"Aerial wide · slow push"},
+    {id:"02B", beat:"02 — THREAT APPROACHES", title:"Strike near a tower", duration:"2s", img:"save/02b_lightning.png", desc:"Lightning splits the sky beside a transmission tower. Cyan sensors spike.", camera:"Wide · long exposure"},
+    {id:"02C", beat:"02 — THREAT APPROACHES", title:"Wind through a substation", duration:"2s", img:"save/02c_wind_sub.png", desc:"Wind whips through transformer equipment. Cyan indicators flicker with stress.", camera:"Macro · handheld"},
+    {id:"03A", beat:"03 — FAULT DETECTED", title:"Line under stress", duration:"2s", img:"save/03a_line_stress.png", desc:"Macro of a transmission line. A bright flare erupts at a fault point.", camera:"Macro · slow-mo"},
+    {id:"03B", beat:"03 — FAULT DETECTED", title:"Warning cluster", duration:"2s", img:"save/03b_warning_cluster.png", desc:"Control room screen: red-orange warnings flare around a single node.", camera:"Screen macro"},
+    {id:"03C", beat:"03 — FAULT DETECTED", title:"Operator POV", duration:"2s", img:"save/03c_operator_pov.png", desc:"Tight on the screen. Lime green coordinate readout. The grid map locates the break.", camera:"OTS · screen"},
+    {id:"04A", beat:"04 — TIME FREEZES", title:"Probability fan", duration:"2.5s", img:"save/04a_calc_fan.png", desc:"Hyper close-up of GridOS UI. Probability vectors fan out from the fault.", camera:"Macro UI"},
+    {id:"04B", beat:"04 — TIME FREEZES", title:"Inside GridOS", duration:"2.5s", img:"save/04b_gridos_layer.png", desc:"The intelligence layer above the grid. Calculations cascade across thousands of paths.", camera:"Abstract · vector overlay"},
+    {id:"04C", beat:"04 — TIME FREEZES", title:"A path chosen", duration:"2s", img:"save/04c_path_chosen.png", desc:"One path lights up bright cyan. A lime green confidence score locks in beside it.", camera:"Close-up · UI"},
+    {id:"05A", beat:"05 — ACTION", title:"Switchgear flips", duration:"2s", img:"save/05a_switchgear.png", desc:"Macro inside a substation. A breaker snaps to a new position. Cyan indicator changes state.", camera:"Macro mechanical"},
+    {id:"05B", beat:"05 — ACTION", title:"Three substations in cadence", duration:"2.5s", img:"save/05b_subs_cadence.png", desc:"Top-down: three substations switch in synchronized rhythm. Energy reroutes in real time.", camera:"Top-down composite"},
+    {id:"05C", beat:"05 — ACTION", title:"Fault isolated", duration:"2s", img:"save/05c_fault_isolate.png", desc:"Grid map zoomed out. Alternate path draws across the network. Fault node sealed off.", camera:"Map UI · zoomed wide"},
+    {id:"06A", beat:"06 — LIGHTS STAY ON", title:"In the operating room", duration:"2s", img:"save/06a_surgeon.png", desc:"Surgeon's hands at work over surgical light. No flicker. No interruption.", camera:"Macro · steady"},
+    {id:"06B", beat:"06 — LIGHTS STAY ON", title:"MARTA keeps moving", duration:"2s", img:"save/06b_marta.png", desc:"Atlanta MARTA train through a tunnel. Headlight steady. Cyan ambient overlay. The schedule holds.", camera:"Wide · tracking"},
+    {id:"06C", beat:"06 — LIGHTS STAY ON", title:"The match never pauses", duration:"2s", img:"save/06c_stadium.png", desc:"Mercedes-Benz Stadium during a packed soccer match. Floodlights steady. The world's biggest event keeps playing.", camera:"Aerial · stadium interior"},
+    {id:"07A", beat:"07 — CONTINUITY", title:"A baby sleeping", duration:"2s", img:"save/07a_baby.png", desc:"Quiet nursery. A soft warm lamp beside the crib. Halftone ambient texture.", camera:"Macro · low key"},
+    {id:"07B", beat:"07 — CONTINUITY", title:"A family at dinner", duration:"2s", img:"save/07b_family.png", desc:"High-rise apartment window. Kitchen and living room glowing warm.", camera:"Exterior wide"},
+    {id:"07C", beat:"07 — CONTINUITY", title:"Traffic still flowing", duration:"2s", img:"save/07c_intersection.png", desc:"City intersection at night. Signals cycling normally. Halftone city beyond.", camera:"Wide · time-lapse"},
+    {id:"08A", beat:"08 — STORM PASSES", title:"The storm moves on", duration:"2.5s", img:"save/08a_storm_pass.png", desc:"Aerial wide. The storm front receding. Below, the city unbroken. Cyan grid steady.", camera:"Aerial wide"},
+    {id:"08B", beat:"08 — STORM PASSES", title:"Faulted line, quiet", duration:"2s", img:"save/08b_quiet_line.png", desc:"The damaged line sits isolated. Around it, alternate paths still pulse cyan.", camera:"Macro · still"},
+    {id:"08C", beat:"08 — STORM PASSES", title:"All green", duration:"2s", img:"save/08c_all_green.png", desc:"Operator's screen. Dashboard returns to all-green readouts. Lime indicators steady.", camera:"Screen macro"},
+    {id:"09A", beat:"09 — THE DAY BEGINS", title:"Venue at first light", duration:"2s", img:"save/09a_venue_dawn.png", desc:"Sunrise hitting the Orchestrate 2026 venue exterior. Atlanta skyline behind. The grid still alive. The night held.", camera:"Wide · long focal"},
+    {id:"09B", beat:"09 — THE DAY BEGINS", title:"Doors open", duration:"2s", img:"save/09b_doors_open.png", desc:"Conference attendees flowing in through the venue entrance at dawn. Halftone-cyan ambient. The day begins as planned.", camera:"Wide · tracking"},
+    {id:"09C", beat:"09 — THE DAY BEGINS", title:"Orchestrate 2026 begins", duration:"3s", img:"save/09c_keynote.png", desc:"Wide of the keynote hall. Audience filling the seats. Stage lights coming up. The film hands the room to the room.", camera:"Wide hero · final hold"}
   ];
   const ID_SHOTS = [
     {id:"01", beat:"Imagery Direction · Close-Ups", title:"The System",            duration:"—", desc:"Structured data fields. Controlled, intelligent, and intentional.", camera:"Close-up · macro", placeholder:true},
@@ -2892,9 +2944,9 @@
     {id:"8A", beat:"08 — ARRIVAL", title:"Outlet", duration:"2s", img:"watt/08a_outlet.png", desc:"Macro of the back of an outlet, pulse arriving at the contact.", camera:"—"},
     {id:"8B", beat:"08 — ARRIVAL", title:"Up the cord", duration:"2s", img:"watt/08b_cord.png", desc:"Pulse climbing up a small cord.", camera:"—"},
     {id:"8C", beat:"08 — ARRIVAL", title:"Into the device", duration:"2s", img:"watt/08c_device.png", desc:"Pulse entering a small bedroom nightlight.", camera:"—"},
-    {id:"9A", beat:"09 — THE REASON", title:"Nightlight glows", duration:"2s", img:"watt/09a_glow.png", desc:"The nightlight warms to a soft glow; the pulse dissipates into the bulb.", camera:"—"},
-    {id:"9B", beat:"09 — THE REASON", title:"Child sleeping", duration:"2s", img:"watt/09b_child.png", desc:"Soft light falls across a sleeping child's silhouette. Calm. Safe.", camera:"—"},
-    {id:"9C", beat:"09 — THE REASON", title:"Pull back", duration:"2s", img:"watt/09c_planet.png", desc:"Bedroom → house → city → planet — countless homes lit. Hero hold.", camera:"—"}
+    {id:"9A", beat:"09 — GAMETIME", title:"Floodlights ignite", duration:"2s", img:"watt/09a_floodlights.png", desc:"The pulse arrives at Mercedes-Benz Stadium. Floodlight banks blaze on. Signal Gold flare across the stands.", camera:"—"},
+    {id:"9B", beat:"09 — GAMETIME", title:"Match in motion", duration:"2.5s", img:"watt/09b_crowd.png", desc:"Mercedes-Benz Stadium revealed. Packed crowd, World Cup match underway. The grid feeds the moment the planet is watching.", camera:"—"},
+    {id:"9C", beat:"09 — GAMETIME", title:"Stadium to planet", duration:"3s", img:"watt/09c_pullback.png", desc:"Pull back from the stadium to Atlanta skyline to continent to Earth from orbit. Hero hold.", camera:"—"}
   ];
   let activeShots = SHOTS;
   let lbIndex = 0;
@@ -2959,10 +3011,10 @@
     if (spotifyController) { try { spotifyController.pause(); } catch(e) {} }
   }
   function openSlideshow(startIndex, boardName) {
-    var board = boardName || (document.querySelector('.board.active') && document.querySelector('.board.active').id) || 'board-kick-to-grid';
-    activeShots = (board === 'board-branded-matrix') ? BM_SHOTS
+    var board = boardName || (document.querySelector('.board.active') && document.querySelector('.board.active').id) || 'board-first-light';
+    activeShots = (board === 'board-the-save') ? BM_SHOTS
                 : (board === 'board-imagery-direction') ? ID_SHOTS
-                : (board === 'board-anatomy-watt') ? AW_SHOTS
+                : (board === 'board-one-watt') ? AW_SHOTS
                 : SHOTS;
     lbIndex = (typeof startIndex === 'number' && startIndex >= 0 && startIndex < activeShots.length) ? startIndex : 0;
     lbPlaying = true;
@@ -3048,12 +3100,12 @@
       tab.addEventListener('click', function(){ switchBoard(tab.getAttribute('data-board')); });
     });
     var initial = location.hash.replace('#', '');
-    if (initial === 'promo' || initial === 'branded-matrix' || initial === 'kick-to-grid' || initial === 'imagery-direction' || initial === 'anatomy-watt') switchBoard(initial);
+    if (initial === 'promo' || initial === 'the-save' || initial === 'first-light' || initial === 'imagery-direction' || initial === 'one-watt' || initial === 'music') switchBoard(initial);
     var boardConfigs = [
-      { id: 'board-kick-to-grid', shots: SHOTS, selector: '.vds-frame' },
-      { id: 'board-branded-matrix', shots: BM_SHOTS, selector: '.vds-frame' },
+      { id: 'board-first-light', shots: SHOTS, selector: '.vds-frame' },
+      { id: 'board-the-save', shots: BM_SHOTS, selector: '.vds-frame' },
       { id: 'board-imagery-direction', shots: ID_SHOTS, selector: '.id-card' },
-      { id: 'board-anatomy-watt', shots: AW_SHOTS, selector: '.vds-frame' }
+      { id: 'board-one-watt', shots: AW_SHOTS, selector: '.vds-frame' }
     ];
     boardConfigs.forEach(function(cfg){
       var board = document.getElementById(cfg.id);
