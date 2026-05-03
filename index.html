@@ -1282,10 +1282,10 @@
     transition: transform 0.15s;
     position: relative;
   }
-  #board-the-save .vds-frame:hover, #board-first-light .vds-frame:hover, #board-one-watt .vds-frame:hover {
+  #board-the-save .vds-frame:hover, #board-first-light .vds-frame:hover, #board-one-watt .vds-frame:hover, #board-signal .vds-frame:hover {
     transform: translateY(-2px);
   }
-  #board-the-save .vds-frame .frame, #board-first-light .vds-frame .frame, #board-one-watt .vds-frame .frame {
+  #board-the-save .vds-frame .frame, #board-first-light .vds-frame .frame, #board-one-watt .vds-frame .frame, #board-signal .vds-frame .frame {
     position: relative;
     aspect-ratio: 16 / 9;
     background: #000;
@@ -1293,14 +1293,14 @@
     overflow: hidden;
     margin-bottom: 18px;
   }
-  #board-the-save .vds-frame .frame video, #board-first-light .vds-frame .frame video, #board-one-watt .vds-frame .frame video,
-  #board-the-save .vds-frame .frame img, #board-first-light .vds-frame .frame img, #board-one-watt .vds-frame .frame img {
+  #board-the-save .vds-frame .frame video, #board-first-light .vds-frame .frame video, #board-one-watt .vds-frame .frame video, #board-signal .vds-frame .frame video,
+  #board-the-save .vds-frame .frame img, #board-first-light .vds-frame .frame img, #board-one-watt .vds-frame .frame img, #board-signal .vds-frame .frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  #board-the-save .vds-frame:hover .frame::after, #board-first-light .vds-frame:hover .frame::after, #board-one-watt .vds-frame:hover .frame::after {
+  #board-the-save .vds-frame:hover .frame::after, #board-first-light .vds-frame:hover .frame::after, #board-one-watt .vds-frame:hover .frame::after, #board-signal .vds-frame:hover .frame::after {
     content: "▶ OPEN";
     position: absolute;
     inset: 0;
@@ -1333,14 +1333,14 @@
     margin-bottom: 10px;
     vertical-align: baseline;
   }
-  #board-the-save .vds-frame p, #board-first-light .vds-frame p, #board-one-watt .vds-frame p {
+  #board-the-save .vds-frame p, #board-first-light .vds-frame p, #board-one-watt .vds-frame p, #board-signal .vds-frame p {
     font-size: 12px;
     line-height: 1.5;
     color: var(--white);
     max-width: 100%;
     margin-top: 4px;
   }
-  #board-the-save .vds-frame .frame, #board-first-light .vds-frame .frame, #board-one-watt .vds-frame .frame { margin-bottom: 14px; }
+  #board-the-save .vds-frame .frame, #board-first-light .vds-frame .frame, #board-one-watt .vds-frame .frame, #board-signal .vds-frame .frame { margin-bottom: 14px; }
   #board-the-save .vds-legend, #board-first-light .vds-legend , #board-one-watt .vds-legend, #board-signal .vds-legend{
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
