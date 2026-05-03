@@ -712,7 +712,8 @@
   }
   .mini-player.active { display: block; }
   .mini-player-handle {
-    height: 18px;
+    position: relative;
+    height: 28px;
     background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.0));
     border-bottom: 1px solid var(--border);
     cursor: grab;
@@ -722,6 +723,29 @@
     user-select: none;
   }
   .mini-player-handle:active { cursor: grabbing; }
+  .mini-player-close {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 2;
+  }
+  .mini-player-close:hover {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+  }
   .mini-player-handle::before {
     content: "";
     width: 32px;
@@ -2816,7 +2840,9 @@
 </button>
 
 <div class="mini-player" id="miniPlayer" aria-label="Music player">
-  <div class="mini-player-handle" id="miniPlayerHandle" title="Drag to move"></div>
+  <div class="mini-player-handle" id="miniPlayerHandle" title="Drag to move">
+    <button class="mini-player-close" id="miniPlayerClose" title="Close" aria-label="Close music player">×</button>
+  </div>
   <div class="mini-player-tabs">
     <button class="mini-tab active" data-track="27qC3KK5wjQzyNenY53fep" data-label="F1">F1</button>
     <button class="mini-tab" data-track="07fNxq0gkGFZpAYCTd0v2A" data-label="LoVibe.">LoVibe.</button>
@@ -3125,6 +3151,14 @@
     (function setupMiniPlayerDrag(){
       var mp = document.getElementById('miniPlayer');
       var handle = document.getElementById('miniPlayerHandle');
+      var closeBtn = document.getElementById('miniPlayerClose');
+      if (closeBtn && mp) {
+        closeBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          mp.classList.remove('active');
+        });
+        closeBtn.addEventListener('pointerdown', function(e){ e.stopPropagation(); });
+      }
       if (!mp || !handle) return;
       var dragging = false;
       var startX = 0, startY = 0;
