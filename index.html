@@ -60,7 +60,7 @@
   }
   .masthead h1, .masthead h1 .accent,
   .placeholder-board h2,
-  #board-the-save .vds-title, #board-first-light .vds-title, #board-one-watt .vds-title,
+  #board-the-save .vds-title, #board-first-light .vds-title, #board-one-watt .vds-title, #board-signal .vds-title,
   .vds-title, .vds-tagline {
     font-family: var(--display);
     font-weight: 400;
@@ -1182,7 +1182,7 @@
   }
 
   /* Visual Direction Storyboard — magazine-clean (Imagery Direction layout) */
-  #board-the-save .vds-masthead, #board-first-light .vds-masthead , #board-one-watt .vds-masthead{
+  #board-the-save .vds-masthead, #board-first-light .vds-masthead , #board-one-watt .vds-masthead, #board-signal .vds-masthead{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -1190,7 +1190,7 @@
     margin-bottom: 28px;
     border-bottom: 1px solid var(--border);
   }
-  #board-the-save .vds-title, #board-first-light .vds-title , #board-one-watt .vds-title{
+  #board-the-save .vds-title, #board-first-light .vds-title , #board-one-watt .vds-title, #board-signal .vds-title{
     font-family: var(--display);
     font-size: 38px;
     font-weight: 400;
@@ -1199,7 +1199,7 @@
     line-height: 1;
     margin-bottom: 10px;
   }
-  #board-the-save .vds-tagline, #board-first-light .vds-tagline , #board-one-watt .vds-tagline{
+  #board-the-save .vds-tagline, #board-first-light .vds-tagline , #board-one-watt .vds-tagline, #board-signal .vds-tagline{
     font-family: var(--display);
     font-size: 17px;
     font-weight: 400;
@@ -1214,13 +1214,13 @@
     text-align: right;
     margin-left: auto;
   }
-  #board-the-save .vds-grid, #board-first-light .vds-grid , #board-one-watt .vds-grid{
+  #board-the-save .vds-grid, #board-first-light .vds-grid , #board-one-watt .vds-grid, #board-signal .vds-grid{
     display: grid;
     gap: 40px;
     margin-bottom: 56px;
   }
-  #board-the-save .vds-beat, #board-first-light .vds-beat , #board-one-watt .vds-beat{ display: grid; gap: 14px; }
-  #board-the-save .vds-beat-head, #board-first-light .vds-beat-head , #board-one-watt .vds-beat-head{
+  #board-the-save .vds-beat, #board-first-light .vds-beat , #board-one-watt .vds-beat, #board-signal .vds-beat{ display: grid; gap: 14px; }
+  #board-the-save .vds-beat-head, #board-first-light .vds-beat-head , #board-one-watt .vds-beat-head, #board-signal .vds-beat-head{
     display: grid;
     grid-template-columns: 64px 1fr;
     column-gap: 18px;
@@ -1229,30 +1229,30 @@
     border-bottom: 1px solid var(--border);
     padding-bottom: 10px;
   }
-  #board-the-save .vds-beat-num, #board-first-light .vds-beat-num , #board-one-watt .vds-beat-num{
+  #board-the-save .vds-beat-num, #board-first-light .vds-beat-num , #board-one-watt .vds-beat-num, #board-signal .vds-beat-num{
     grid-row: span 2;
     font-family: var(--display);
     font-size: 36px;
     color: var(--lime);
     line-height: 1;
   }
-  #board-the-save .vds-beat-name, #board-first-light .vds-beat-name , #board-one-watt .vds-beat-name{
+  #board-the-save .vds-beat-name, #board-first-light .vds-beat-name , #board-one-watt .vds-beat-name, #board-signal .vds-beat-name{
     font-family: var(--display);
     font-size: 18px;
     letter-spacing: 0.18em;
     color: var(--white);
   }
-  #board-the-save .vds-beat-sub, #board-first-light .vds-beat-sub , #board-one-watt .vds-beat-sub{
+  #board-the-save .vds-beat-sub, #board-first-light .vds-beat-sub , #board-one-watt .vds-beat-sub, #board-signal .vds-beat-sub{
     font-size: 12px;
     color: var(--ink-mute);
     letter-spacing: 0.04em;
   }
-  #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames{
+  #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames, #board-signal .vds-beat-frames{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  #board-the-save .vds-placeholder, #board-first-light .vds-placeholder , #board-one-watt .vds-placeholder{
+  #board-the-save .vds-placeholder, #board-first-light .vds-placeholder , #board-one-watt .vds-placeholder, #board-signal .vds-placeholder{
     width: 100%;
     height: 100%;
     position: relative;
@@ -1273,7 +1273,7 @@
     mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 85%);
     opacity: 0.6;
   }
-  #board-the-save .vds-frame, #board-first-light .vds-frame , #board-one-watt .vds-frame{
+  #board-the-save .vds-frame, #board-first-light .vds-frame , #board-one-watt .vds-frame, #board-signal .vds-frame{
     background: transparent;
     padding: 0;
     border: none;
@@ -1314,7 +1314,7 @@
     letter-spacing: 0.22em;
     pointer-events: none;
   }
-  #board-the-save .vds-num, #board-first-light .vds-num , #board-one-watt .vds-num{
+  #board-the-save .vds-num, #board-first-light .vds-num , #board-one-watt .vds-num, #board-signal .vds-num{
     display: inline-block;
     font-family: var(--display);
     font-size: 16px;
@@ -1323,7 +1323,7 @@
     margin-right: 10px;
     vertical-align: baseline;
   }
-  #board-the-save .vds-name, #board-first-light .vds-name , #board-one-watt .vds-name{
+  #board-the-save .vds-name, #board-first-light .vds-name , #board-one-watt .vds-name, #board-signal .vds-name{
     display: inline-block;
     font-family: var(--display);
     font-size: 14px;
@@ -1341,7 +1341,7 @@
     margin-top: 4px;
   }
   #board-the-save .vds-frame .frame, #board-first-light .vds-frame .frame, #board-one-watt .vds-frame .frame { margin-bottom: 14px; }
-  #board-the-save .vds-legend, #board-first-light .vds-legend , #board-one-watt .vds-legend{
+  #board-the-save .vds-legend, #board-first-light .vds-legend , #board-one-watt .vds-legend, #board-signal .vds-legend{
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: 22px 0;
@@ -1351,19 +1351,19 @@
     align-items: center;
     margin-bottom: 40px;
   }
-  #board-the-save .vds-legend-label, #board-first-light .vds-legend-label , #board-one-watt .vds-legend-label{
+  #board-the-save .vds-legend-label, #board-first-light .vds-legend-label , #board-one-watt .vds-legend-label, #board-signal .vds-legend-label{
     font-family: var(--display);
     font-size: 14px;
     color: var(--lime);
     letter-spacing: 0.18em;
   }
-  #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items{
+  #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items, #board-signal .vds-legend-items{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 16px;
     align-items: center;
   }
-  #board-the-save .vds-legend-item, #board-first-light .vds-legend-item , #board-one-watt .vds-legend-item{
+  #board-the-save .vds-legend-item, #board-first-light .vds-legend-item , #board-one-watt .vds-legend-item, #board-signal .vds-legend-item{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1382,19 +1382,19 @@
     font-family: var(--display);
   }
   @media (max-width: 1100px) {
-    #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames{ grid-template-columns: repeat(2, 1fr); }
-    #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items{ grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames, #board-signal .vds-beat-frames{ grid-template-columns: repeat(2, 1fr); }
+    #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items, #board-signal .vds-legend-items{ grid-template-columns: repeat(4, 1fr); gap: 20px; }
   }
   @media (max-width: 720px) {
-    #board-the-save .vds-masthead, #board-first-light .vds-masthead , #board-one-watt .vds-masthead{
+    #board-the-save .vds-masthead, #board-first-light .vds-masthead , #board-one-watt .vds-masthead, #board-signal .vds-masthead{
       grid-template-columns: 1fr;
       gap: 24px;
     }
     #board-the-save .vds-head-right p { text-align: left; }
-    #board-the-save .vds-title, #board-first-light .vds-title , #board-one-watt .vds-title{ font-size: 28px; }
-    #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames{ grid-template-columns: 1fr; }
-    #board-the-save .vds-legend, #board-first-light .vds-legend , #board-one-watt .vds-legend{ grid-template-columns: 1fr; gap: 16px; }
-    #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items{ grid-template-columns: repeat(3, 1fr); }
+    #board-the-save .vds-title, #board-first-light .vds-title , #board-one-watt .vds-title, #board-signal .vds-title{ font-size: 28px; }
+    #board-the-save .vds-beat-frames, #board-first-light .vds-beat-frames , #board-one-watt .vds-beat-frames, #board-signal .vds-beat-frames{ grid-template-columns: 1fr; }
+    #board-the-save .vds-legend, #board-first-light .vds-legend , #board-one-watt .vds-legend, #board-signal .vds-legend{ grid-template-columns: 1fr; gap: 16px; }
+    #board-the-save .vds-legend-items, #board-first-light .vds-legend-items , #board-one-watt .vds-legend-items, #board-signal .vds-legend-items{ grid-template-columns: repeat(3, 1fr); }
   }
 
   /* Branded Matrix board — legacy 27-frame layout (now unused but harmless) */
@@ -1771,6 +1771,7 @@
     <button class="board-tab active" data-board="one-watt" role="tab" aria-selected="true">One Watt</button>
     <button class="board-tab" data-board="the-save" role="tab" aria-selected="false">The Save</button>
     <button class="board-tab" data-board="first-light" role="tab" aria-selected="false">First Light</button>
+    <button class="board-tab" data-board="signal" role="tab" aria-selected="false">Signal</button>
     <button class="board-tab" data-board="music" role="tab" aria-selected="false">Music</button>
   </nav>
 
@@ -2653,6 +2654,295 @@
   </div><!-- /board-one-watt -->
 
 
+  <div class="board" id="board-signal">
+    <header class="masthead">
+      <div class="brand-block">
+        <a class="brand-mark" href="https://www.makebttr.com" target="_blank" rel="noopener" aria-label="Bttr.">
+          <svg width="68" height="53" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="#FFFFFF"/>
+            <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="#FFFFFF"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="#FFFFFF"/>
+          </svg>
+        </a>
+        <div class="partnership">Bttr<span class="x">×</span>GE Vernova</div>
+        <div class="meta">
+          <strong>Visual Direction Storyboard</strong>
+          27 frames · ~60 sec runtime<br/>
+          makebttr.com · May 3, 2026
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="eyebrow">GE Vernova · Orchestrate 2026 · Storyboards</div>
+        <h1>Signal<br/><span class="accent">The brand visual system, in motion</span></h1>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p>The safest direction. No metaphor, no characters, no places. Sixty seconds of pure GE Vernova brand visuals, animated to a single piece of music. Particles, dot matrix, intelligent connections, energy moments, scale. Lifted directly from the Orchestrate 2026 visual identity. <span class="accent">If story feels risky, this is the version that always works.</span></p>
+    </section>
+
+    <section class="vds-grid">
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">01</div>
+          <div class="vds-beat-name">ORIGIN</div>
+          <div class="vds-beat-sub">A single point of light.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/01a_origin.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">01A</div>
+            <div class="vds-name">Single point</div>
+            <p>Black void. One bright cyan-teal particle at center.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/01b_pulse_out.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">01B</div>
+            <div class="vds-name">First pulse</div>
+            <p>The particle pulses outward. Faint ripple in the void.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/01c_first_trail.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">01C</div>
+            <div class="vds-name">A trail begins</div>
+            <p>The particle leaves its first comet trail of light.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">02</div>
+          <div class="vds-beat-name">PARTICLE FIELD</div>
+          <div class="vds-beat-sub">Density grows. The system populates itself.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/02a_sparse.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">02A</div>
+            <div class="vds-name">Sparse field</div>
+            <p>Dozens of cyan-teal particles emerging across the frame.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/02b_growing.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">02B</div>
+            <div class="vds-name">Density rises</div>
+            <p>Hundreds of particles, first Signal Gold accent appears.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/02c_dense_field.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">02C</div>
+            <div class="vds-name">Full field</div>
+            <p>Thousands of particles fill the frame. The system is alive.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">03</div>
+          <div class="vds-beat-name">DOT MATRIX</div>
+          <div class="vds-beat-sub">Structure emerges. Order from particles.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/03a_grid_form.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">03A</div>
+            <div class="vds-name">Grid forms</div>
+            <p>Particles snap into a precise dot matrix grid.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/03b_dot_world.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">03B</div>
+            <div class="vds-name">Dotted world</div>
+            <p>The grid resolves into a continental map made of dots.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/03c_perspective.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">03C</div>
+            <div class="vds-name">Perspective grid</div>
+            <p>The dot matrix tilts into perspective. Depth opens up.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">04</div>
+          <div class="vds-beat-name">INTELLIGENT CONNECTIONS</div>
+          <div class="vds-beat-sub">Nodes connect. The network thinks.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/04a_first_links.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">04A</div>
+            <div class="vds-name">First links</div>
+            <p>Bright cyan lines draw between nodes. Connections form.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/04b_radiating.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">04B</div>
+            <div class="vds-name">Radiating outward</div>
+            <p>Lines fan out from a central node. Star-burst geometry.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/04c_mesh.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">04C</div>
+            <div class="vds-name">Full mesh</div>
+            <p>A dense network of nodes and lines. Every point connected.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">05</div>
+          <div class="vds-beat-name">FLOW + MOTION</div>
+          <div class="vds-beat-sub">The system finds its rhythm.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/05a_comet.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">05A</div>
+            <div class="vds-name">Comet trail</div>
+            <p>A long sweeping comet trail of cyan-teal particles.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/05b_swirl.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">05B</div>
+            <div class="vds-name">Swirling currents</div>
+            <p>Multiple flow lines weaving together in motion.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/05c_aurora.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">05C</div>
+            <div class="vds-name">Aurora curve</div>
+            <p>A cinematic curve of light bends across the frame.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">06</div>
+          <div class="vds-beat-name">ACTIVATION + ENERGY</div>
+          <div class="vds-beat-sub">The moment of impact.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/06a_starburst.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">06A</div>
+            <div class="vds-name">Starburst</div>
+            <p>A bright Signal Gold radial burst. Particles fly outward.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/06b_lime_pulse.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">06B</div>
+            <div class="vds-name">Lime pulse</div>
+            <p>A second activation: Signal Lime ripples through the dot grid.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/06c_climax_burst.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">06C</div>
+            <div class="vds-name">Climactic burst</div>
+            <p>Maximum activation. Gold + lime + cyan converge in a single flash.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">07</div>
+          <div class="vds-beat-name">SCALE + PERSPECTIVE</div>
+          <div class="vds-beat-sub">Micro to cosmic.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/07a_micro.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">07A</div>
+            <div class="vds-name">Micro detail</div>
+            <p>Hyper-close: a few particles in shallow focus, gold glints.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/07b_zoom_out.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">07B</div>
+            <div class="vds-name">Zoom out</div>
+            <p>Particles resolve into a vast network seen from above.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/07c_cosmic.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">07C</div>
+            <div class="vds-name">Cosmic scale</div>
+            <p>The network now planetary, edge of orbit visible.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">08</div>
+          <div class="vds-beat-name">DOTTED GLOBE</div>
+          <div class="vds-beat-sub">A planet made of light.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/08a_globe_form.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">08A</div>
+            <div class="vds-name">Globe forms</div>
+            <p>Dots assemble into a glowing globe. Continents in halftone.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/08b_globe_lit.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">08B</div>
+            <div class="vds-name">Globe alive</div>
+            <p>The globe pulses. Lines arc between cities. The grid lives.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/08c_globe_full.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">08C</div>
+            <div class="vds-name">Full network</div>
+            <p>Every continent connected. Cyan grid spanning the planet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vds-beat">
+        <div class="vds-beat-head">
+          <div class="vds-beat-num">09</div>
+          <div class="vds-beat-name">ORCHESTRATE</div>
+          <div class="vds-beat-sub">The brand, held wide.</div>
+        </div>
+        <div class="vds-beat-frames">
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/09a_wide_hold.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">09A</div>
+            <div class="vds-name">Wide hold</div>
+            <p>Earth from orbit, full active grid, atmospheric arc on the horizon.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/09b_sunrise.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">09B</div>
+            <div class="vds-name">Sunrise rays</div>
+            <p>Signal Gold sunrise rays burst from the right edge.</p>
+          </div>
+          <div class="vds-frame">
+            <div class="frame"><img src="signal/09c_brand_hero.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('pending');this.style.display='none'"></div>
+            <div class="vds-num">09C</div>
+            <div class="vds-name">Brand hero hold</div>
+            <p>Locked wide hero hold. Black void, the planet alive, ready for the brand mark.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="colophon">
+      <div>GE Vernova · Orchestrate 2026 · Signal</div>
+      <div class="right">Bttr · May 3, 2026</div>
+    </footer>
+
+  </div><!-- /board-signal -->
+
+
   <div class="board" id="board-music">
     <header class="masthead">
       <div class="brand-block">
@@ -2974,6 +3264,35 @@
     {id:"9B", beat:"09 — GAMETIME", title:"Match in motion", duration:"2.5s", img:"watt/09b_crowd.png", desc:"Mercedes-Benz Stadium revealed. Packed crowd, World Cup match underway. The grid feeds the moment the planet is watching.", camera:"—"},
     {id:"9C", beat:"09 — GAMETIME", title:"Stadium to planet", duration:"3s", img:"watt/09c_pullback.png", desc:"Pull back from the stadium to Atlanta skyline to continent to Earth from orbit. Hero hold.", camera:"—"}
   ];
+  const SG_SHOTS = [
+    {id:"01A", beat:"01 — ORIGIN", title:"Single point", duration:"2s", img:"signal/01a_origin.png", desc:"Black void. One bright cyan-teal particle at center.", camera:"Locked · macro"},
+    {id:"01B", beat:"01 — ORIGIN", title:"First pulse", duration:"2s", img:"signal/01b_pulse_out.png", desc:"The particle pulses outward. Faint ripple in the void.", camera:"Locked · macro"},
+    {id:"01C", beat:"01 — ORIGIN", title:"A trail begins", duration:"2s", img:"signal/01c_first_trail.png", desc:"The particle leaves its first comet trail of light.", camera:"Slow lateral"},
+    {id:"02A", beat:"02 — PARTICLE FIELD", title:"Sparse field", duration:"2s", img:"signal/02a_sparse.png", desc:"Dozens of cyan-teal particles emerging across the frame.", camera:"Wide · static"},
+    {id:"02B", beat:"02 — PARTICLE FIELD", title:"Density rises", duration:"2s", img:"signal/02b_growing.png", desc:"Hundreds of particles, first Signal Gold accent appears.", camera:"Wide · slow push"},
+    {id:"02C", beat:"02 — PARTICLE FIELD", title:"Full field", duration:"2s", img:"signal/02c_dense_field.png", desc:"Thousands of particles fill the frame. The system is alive.", camera:"Wide · density wash"},
+    {id:"03A", beat:"03 — DOT MATRIX", title:"Grid forms", duration:"2s", img:"signal/03a_grid_form.png", desc:"Particles snap into a precise dot matrix grid.", camera:"Wide · structured"},
+    {id:"03B", beat:"03 — DOT MATRIX", title:"Dotted world", duration:"2s", img:"signal/03b_dot_world.png", desc:"The grid resolves into a continental map made of dots.", camera:"Wide · map view"},
+    {id:"03C", beat:"03 — DOT MATRIX", title:"Perspective grid", duration:"2s", img:"signal/03c_perspective.png", desc:"The dot matrix tilts into perspective. Depth opens up.", camera:"Tilt · vanishing point"},
+    {id:"04A", beat:"04 — INTELLIGENT CONNECTIONS", title:"First links", duration:"2s", img:"signal/04a_first_links.png", desc:"Bright cyan lines draw between nodes. Connections form.", camera:"Wide · graphic"},
+    {id:"04B", beat:"04 — INTELLIGENT CONNECTIONS", title:"Radiating outward", duration:"2s", img:"signal/04b_radiating.png", desc:"Lines fan out from a central node. Star-burst geometry.", camera:"Wide · radial"},
+    {id:"04C", beat:"04 — INTELLIGENT CONNECTIONS", title:"Full mesh", duration:"2s", img:"signal/04c_mesh.png", desc:"A dense network of nodes and lines. Every point connected.", camera:"Wide · network"},
+    {id:"05A", beat:"05 — FLOW + MOTION", title:"Comet trail", duration:"2s", img:"signal/05a_comet.png", desc:"A long sweeping comet trail of cyan-teal particles.", camera:"Wide · sweeping"},
+    {id:"05B", beat:"05 — FLOW + MOTION", title:"Swirling currents", duration:"2s", img:"signal/05b_swirl.png", desc:"Multiple flow lines weaving together in motion.", camera:"Wide · swirl"},
+    {id:"05C", beat:"05 — FLOW + MOTION", title:"Aurora curve", duration:"2.5s", img:"signal/05c_aurora.png", desc:"A cinematic curve of light bends across the frame.", camera:"Wide · long arc"},
+    {id:"06A", beat:"06 — ACTIVATION + ENERGY", title:"Starburst", duration:"2s", img:"signal/06a_starburst.png", desc:"A bright Signal Gold radial burst. Particles fly outward.", camera:"Locked · radial"},
+    {id:"06B", beat:"06 — ACTIVATION + ENERGY", title:"Lime pulse", duration:"2s", img:"signal/06b_lime_pulse.png", desc:"A second activation: Signal Lime ripples through the dot grid.", camera:"Locked · pulse"},
+    {id:"06C", beat:"06 — ACTIVATION + ENERGY", title:"Climactic burst", duration:"2.5s", img:"signal/06c_climax_burst.png", desc:"Maximum activation. Gold + lime + cyan converge in a single flash.", camera:"Locked · flash"},
+    {id:"07A", beat:"07 — SCALE + PERSPECTIVE", title:"Micro detail", duration:"2s", img:"signal/07a_micro.png", desc:"Hyper-close: a few particles in shallow focus, gold glints.", camera:"Macro · shallow DoF"},
+    {id:"07B", beat:"07 — SCALE + PERSPECTIVE", title:"Zoom out", duration:"2s", img:"signal/07b_zoom_out.png", desc:"Particles resolve into a vast network seen from above.", camera:"Pull-back"},
+    {id:"07C", beat:"07 — SCALE + PERSPECTIVE", title:"Cosmic scale", duration:"2.5s", img:"signal/07c_cosmic.png", desc:"The network now planetary, edge of orbit visible.", camera:"Orbital wide"},
+    {id:"08A", beat:"08 — DOTTED GLOBE", title:"Globe forms", duration:"2s", img:"signal/08a_globe_form.png", desc:"Dots assemble into a glowing globe. Continents in halftone.", camera:"Wide · globe"},
+    {id:"08B", beat:"08 — DOTTED GLOBE", title:"Globe alive", duration:"2.5s", img:"signal/08b_globe_lit.png", desc:"The globe pulses. Lines arc between cities. The grid lives.", camera:"Wide · globe"},
+    {id:"08C", beat:"08 — DOTTED GLOBE", title:"Full network", duration:"2.5s", img:"signal/08c_globe_full.png", desc:"Every continent connected. Cyan grid spanning the planet.", camera:"Wide · globe full"},
+    {id:"09A", beat:"09 — ORCHESTRATE", title:"Wide hold", duration:"2.5s", img:"signal/09a_wide_hold.png", desc:"Earth from orbit, full active grid, atmospheric arc on the horizon.", camera:"Locked wide"},
+    {id:"09B", beat:"09 — ORCHESTRATE", title:"Sunrise rays", duration:"2.5s", img:"signal/09b_sunrise.png", desc:"Signal Gold sunrise rays burst from the right edge.", camera:"Locked wide · gold"},
+    {id:"09C", beat:"09 — ORCHESTRATE", title:"Brand hero hold", duration:"3s", img:"signal/09c_brand_hero.png", desc:"Locked wide hero hold. Black void, the planet alive, ready for the brand mark.", camera:"Final hold"}
+  ];
   let activeShots = SHOTS;
   let lbIndex = 0;
   let lbPlaying = true;
@@ -3041,6 +3360,7 @@
     activeShots = (board === 'board-the-save') ? BM_SHOTS
                 : (board === 'board-imagery-direction') ? ID_SHOTS
                 : (board === 'board-one-watt') ? AW_SHOTS
+                : (board === 'board-signal') ? SG_SHOTS
                 : SHOTS;
     lbIndex = (typeof startIndex === 'number' && startIndex >= 0 && startIndex < activeShots.length) ? startIndex : 0;
     lbPlaying = true;
@@ -3126,12 +3446,13 @@
       tab.addEventListener('click', function(){ switchBoard(tab.getAttribute('data-board')); });
     });
     var initial = location.hash.replace('#', '');
-    if (initial === 'promo' || initial === 'the-save' || initial === 'first-light' || initial === 'imagery-direction' || initial === 'one-watt' || initial === 'music') switchBoard(initial);
+    if (initial === 'promo' || initial === 'the-save' || initial === 'first-light' || initial === 'imagery-direction' || initial === 'one-watt' || initial === 'signal' || initial === 'music') switchBoard(initial);
     var boardConfigs = [
       { id: 'board-first-light', shots: SHOTS, selector: '.vds-frame' },
       { id: 'board-the-save', shots: BM_SHOTS, selector: '.vds-frame' },
       { id: 'board-imagery-direction', shots: ID_SHOTS, selector: '.id-card' },
-      { id: 'board-one-watt', shots: AW_SHOTS, selector: '.vds-frame' }
+      { id: 'board-one-watt', shots: AW_SHOTS, selector: '.vds-frame' },
+      { id: 'board-signal', shots: SG_SHOTS, selector: '.vds-frame' }
     ];
     boardConfigs.forEach(function(cfg){
       var board = document.getElementById(cfg.id);
