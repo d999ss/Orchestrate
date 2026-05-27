@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/", "destination": "/storyboard-1/index.html" },
     { "source": "/((?!.*\\.).+)", "destination": "/index.html" }
   ]
 }
