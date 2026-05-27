@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Storyboard 3 · Orchestrate 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #04090b;
+    --fg: #cdebe7;
+    --fg-dim: #7aa9a4;
+    --accent: #4ed9c6;
+    --line: #14302e;
+    --card: #060f11;
+    --display: 'Bebas Neue', 'Helvetica Neue', system-ui, sans-serif;
+    --body: 'Inter', ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    padding: 96px 48px 48px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+  header .eyebrow {
+    font-family: var(--body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  header .eyebrow-sub { font-family: var(--body); font-size:11px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--fg-dim); margin-bottom:20px; }
+  header h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px);
+    letter-spacing: 0.01em;
+    line-height: 1.02;
+    color: var(--fg);
+    max-width: 18ch;
+  }
+  header .meta { color: var(--fg-dim); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+  header .meta span + span::before { content: "·"; margin: 0 10px; color: var(--line); }
+  .toolbar {
+    padding: 16px 48px; display: flex; gap: 10px;
+    border-bottom: 1px solid var(--line);
+    background: var(--card);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(6px);
+  }
+  .toolbar button {
+    background: transparent; color: var(--fg-dim);
+    border: 1px solid var(--line);
+    padding: 8px 16px; border-radius: 999px;
+    font-family: var(--body); font-size: 12px; font-weight: 500; line-height: 1;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: 120ms;
+    height: 32px; box-sizing: border-box; display: inline-flex; align-items: center;
+  }
+  .toolbar button:hover { color: var(--accent); border-color: var(--accent); }
+  .toolbar button.active { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  main { padding: 32px 48px 96px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden; transition: 160ms;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card .frame-img {
+    aspect-ratio: 3 / 2; background: #000;
+    display: block; width: 100%; object-fit: cover; cursor: zoom-in;
+    filter: brightness(1.7) contrast(1.15) saturate(1.05);
+  }
+  .lightbox img { filter: brightness(1.7) contrast(1.15) saturate(1.05); }
+  .card .body { padding: 14px 18px 18px; }
+  .card .num { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; margin: 0 0 6px; }
+  .card .desc { margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg); }
+  .list { display: flex; flex-direction: column; gap: 48px; }
+  .list .card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 0; }
+  .list .card .frame-img { aspect-ratio: 3 / 2; height: 100%; }
+  .list .card .body { padding: 32px; align-self: center; border-left: 1px solid var(--line); }
+  .list .card .num { font-size: 12px; }
+  .list .card .desc { font-size: 16px; line-height: 1.6; }
+  @media (max-width: 900px) {
+    .list .card { grid-template-columns: 1fr; }
+    .list .card .body { border-left: none; border-top: 1px solid var(--line); }
+  }
+  .strip { display: flex; overflow-x: auto; gap: 4px; padding-bottom: 16px; scroll-snap-type: x mandatory; }
+  .strip .card { flex: 0 0 auto; width: 480px; scroll-snap-align: start; border-radius: 0; }
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+    display: none; align-items: center; justify-content: center; flex-direction: column;
+    padding: 32px; z-index: 100;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 75vh; border: 1px solid var(--line); }
+  .lightbox .lb-caption { color: var(--fg); margin-top: 18px; font-size: 14px; text-align: center; max-width: 720px; }
+  .lightbox .lb-num { color: var(--accent); font-size: 11px; letter-spacing: 0.18em; margin-bottom: 6px; }
+  .lightbox .lb-close { position: absolute; top: 24px; right: 32px; background: transparent; color: var(--fg-dim); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 12px; letter-spacing: 0.08em; }
+  .lightbox .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: transparent; color: var(--fg-dim); border: 1px solid var(--line); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 20px; }
+  .lightbox .lb-prev { left: 32px; }
+  .lightbox .lb-next { right: 32px; }
+  .lightbox button:hover { color: var(--accent); border-color: var(--accent); }
+  @media print {
+    html, body { background: #000; color: #fff; }
+    .toolbar, .lightbox { display: none !important; }
+    main { padding: 0; }
+    .grid, .list, .strip { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+    .card { break-inside: avoid; border: 1px solid #222; }
+  }
+
+  .next-sb{display:inline-flex;align-items:center;gap:18px;padding:18px 28px;border:1px solid var(--line);border-radius:999px;color:var(--fg);text-decoration:none;font-family:var(--display);font-size:28px;letter-spacing:0.06em;text-transform:uppercase;transition:160ms;}
+  .next-sb:hover{border-color:var(--accent);color:var(--accent);transform:translateX(6px);}
+  .next-sb-label{font-size:16px;letter-spacing:0.18em;color:var(--fg-dim);font-family:var(--body);font-weight:500;}
+  .next-sb:hover .next-sb-label{color:var(--accent);}
+  .next-sb-arrow{font-size:32px;line-height:1;}
+</style>
+</head>
+<body>
+<style>
+.board-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding:18px 48px;border-bottom:1px solid var(--line);background:rgba(4,9,11,0.9);backdrop-filter:blur(6px);position:sticky;top:0;z-index:50;}
+.board-nav .board-tab-logo{justify-self:start;color:#fff;text-decoration:none;grid-column:1;}
+.board-nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;grid-column:2;}
+.board-nav .board-tab{font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-dim);text-decoration:none;background:transparent;border:none;cursor:pointer;padding:6px 0;font-family:inherit;}
+.board-nav .board-tab:hover{color:var(--accent);}
+.board-nav-sep{width:1px;height:18px;background:var(--line);display:inline-block;margin:0 6px;}
+.board-nav-dropdown{position:relative;display:inline-block;}
+.board-nav-dd-menu{position:absolute;top:100%;right:0;background:var(--card);border:1px solid var(--line);padding:8px 0;display:none;min-width:200px;}
+.board-nav-dropdown:hover .board-nav-dd-menu{display:block;}
+.board-nav-dd-item{display:block;padding:8px 16px;}
+.board-nav-dd-sep{height:1px;background:var(--line);margin:6px 0;}
+.toolbar{top:62px !important;}
+</style>
+<nav class="board-nav" role="tablist" aria-label="Storyboards">
+    <a class="board-tab board-tab-logo" href="/" aria-label="Bttr — Cover">
+      <svg width="32" height="25" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="currentColor"/>
+        <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="board-nav-links">
+      <a class="board-tab" href="/storyboard-1/" target="_self">Storyboard 1</a>
+      <a class="board-tab" href="/storyboard-2/" target="_self">Storyboard 2</a>
+      <a class="board-tab" href="/storyboard-3/" target="_self">Storyboard 3</a>
+      <span class="board-nav-sep" aria-hidden="true"></span>
+      <a class="board-tab" href="/references">References</a>
+      <div class="board-nav-dropdown" id="archive-dd">
+        <button type="button" class="board-tab board-nav-dd-trigger" aria-haspopup="menu" aria-expanded="false">Archive <span class="board-nav-dd-caret" aria-hidden="true">▾</span></button>
+        <div class="board-nav-dd-menu" role="menu">
+          <a class="board-tab" href="/archive">Archive · Index</a>
+          <div class="board-nav-dd-sep" aria-hidden="true"></div>
+          <a class="board-tab" href="/signal">The Signal</a>
+          <a class="board-tab" href="/kick-to-grid">World Cup</a>
+          <a class="board-tab" href="/blade">The Blade</a>
+          <a class="board-tab" href="/one-watt">One Watt</a>
+          <a class="board-tab" href="/the-save">The Save</a>
+          <a class="board-tab" href="/first-light">First Light</a>
+          <a class="board-tab" href="/demand">Demand</a>
+          <div class="board-nav-dd-sep" aria-hidden="true"></div>
+          <a class="board-tab" href="/music">Music · Candidates</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <div class="eyebrow">Orchestrate 2026</div>
+      <h1>Storyboard 3</h1>
+      <div class="meta" style="margin-top:24px;">
+        <span>30 frames</span>
+        <span>1536 × 1024</span>
+        <span>2026-05-27</span>
+      </div>
+    </div>
+    <a class="next-sb" href="/storyboard-1/" aria-label="Next storyboard"><span class="next-sb-label">Storyboard 1</span><span class="next-sb-arrow">→</span></a>
+  </header>
+  <div class="toolbar">
+    <button data-view="grid">Grid</button>
+    <button data-view="list" class="active">List</button>
+    <button data-view="strip">Film strip</button>
+    <button onclick="window.print()" style="margin-left:auto;">Print / PDF</button>
+  </div>
+  <main>
+    <section id="board" class="list"></section>
+  </main>
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" onclick="closeLB()">Close</button>
+    <button class="lb-nav lb-prev" onclick="navLB(-1)">‹</button>
+    <button class="lb-nav lb-next" onclick="navLB(1)">›</button>
+    <img id="lb-img" alt="" />
+    <div class="lb-num" id="lb-num"></div>
+    <div class="lb-caption" id="lb-cap"></div>
+  </div>
+<script>
+const FRAMES = [
+  "A glowing globe floats in darkness. Connected lights appear across the world \u2014 the planet running on the grid.",
+  "The camera moves toward the globe and transitions into a modern energy facility \u2014 where the electricity starts.",
+  "Natural gas ignites inside a turbine system. The first energy release \u2014 combustion at scale.",
+  "Step 1 \u2014 Gas ignites. Heat releases as a column of rising energy.",
+  "Step 2 \u2014 The energy spins into a vortex, gathering speed.",
+  "Step 3 \u2014 Spin transfers into a magnetic field, ready to make current.",
+  "Step 4 \u2014 Spinning magnetic fields induce current. Motion becomes voltage.",
+  "Step 5 \u2014 Electricity sparks into being. The first arc of current jumps.",
+  "Step 6 \u2014 Electrons stream forward. The current is alive, the journey begins.",
+  "The electricity moves into the power grid \u2014 high-voltage lines leaving the substation.",
+  "Transformers increase the power for long distance travel. Voltage stepped up for the journey.",
+  "Transmission lines carry electricity across the region. Towers and wires marching toward the city.",
+  "The regional grid becomes visible. Dot matrix tilting into depth \u2014 the system as terrain.",
+  "Grid systems direct where the electricity needs to go. Paths fan out across the territory.",
+  "Operators monitor the system inside a control room. Human-in-the-loop, eyes on the grid.",
+  "The southeastern power network becomes visible. The full regional system, lit.",
+  "More power begins flowing toward Atlanta. The current bends toward the destination.",
+  "Transmission lines lead into the city. The lattice tightens around Atlanta.",
+  "Atlanta begins lighting up. The skyline catches the surge.",
+  "Buildings, roads, and infrastructure turn on across the city. Every system coming online at once.",
+  "The city begins to brighten. The skyline catches the surge before the landmark ignites.",
+  "Electricity flows into the stadium. The path's final surge \u2014 the climax of the journey.",
+  "The stadium lights turn on. The eight-petal pinwheel crown ignites in cyan over the host city.",
+  "The surrounding downtown area lights up. The full mesh of the city visible at once.",
+  "The conference center powers on. Signia by Hilton \u2014 the front door of the journey's end.",
+  "Interior lights activate throughout the building. The corridors and halls coming awake.",
+  "The keynote room begins turning on. A soft particle bloom \u2014 the space the journey lands in.",
+  "The stage lights and presentation screens activate. The room fully lit, ready to begin.",
+  "The audience sits inside the powered environment. ORCHESTRATE 2026 on the main wall.",
+  "The whole planet, fully lit and connected \u2014 the visual opposite of where we began."
+];
+const VERSION = Date.now();
+const board = document.getElementById('board');
+FRAMES.forEach((desc, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.innerHTML = `
+    <img class="frame-img" src="frame-${n}.png?v=${VERSION}" alt="Frame ${n}" loading="lazy" data-idx="${i}" />
+    <div class="body">
+      <p class="num">Frame ${n}</p>
+      <p class="desc">${desc}</p>
+    </div>`;
+  el.querySelector('img').addEventListener('click', () => openLB(i));
+  board.appendChild(el);
+});
+document.querySelectorAll('.toolbar button[data-view]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.toolbar button[data-view]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    board.className = btn.dataset.view;
+  });
+});
+let lbIdx = 0;
+function openLB(i) { lbIdx = i; renderLB(); document.getElementById('lightbox').classList.add('open'); }
+function closeLB() { document.getElementById('lightbox').classList.remove('open'); }
+function navLB(dir) { lbIdx = (lbIdx + dir + FRAMES.length) % FRAMES.length; renderLB(); }
+function renderLB() {
+  const n = String(lbIdx + 1).padStart(2, '0');
+  document.getElementById('lb-img').src = `frame-${n}.png?v=${VERSION}`;
+  document.getElementById('lb-num').textContent = `Frame ${n}`;
+  document.getElementById('lb-cap').textContent = FRAMES[lbIdx];
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowLeft') navLB(-1);
+  if (e.key === 'ArrowRight') navLB(1);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Signal — beat verifier</title>
+<style>
+ html,body{margin:0;background:#000;color:#cfd8d6;font:13px/1.4 -apple-system,system-ui,sans-serif}
+ .wrap{max-width:1180px;margin:0 auto;padding:22px}
+ h1{font-size:14px;font-weight:600;letter-spacing:.04em;margin:0 0 2px}
+ .sub{color:#7e8c89;margin:0 0 16px}
+ video{width:100%;aspect-ratio:16/9;background:#0b0f0e;border:1px solid #1c2422;border-radius:6px;display:block}
+ .tl{position:relative;margin-top:10px;height:88px;background:#0b0f0e;border:1px solid #1c2422;border-radius:6px;overflow:hidden;cursor:pointer}
+ canvas{display:block;width:100%;height:88px}
+ .row{display:flex;align-items:center;gap:18px;margin-top:12px;flex-wrap:wrap}
+ .pulse{width:42px;height:42px;border-radius:50%;background:#11201e;border:1px solid #1c2422;transition:transform .05s,background .05s}
+ .pulse.hit{background:#A6FF00;transform:scale(1.18)}
+ .legend span{display:inline-flex;align-items:center;gap:6px;margin-right:16px;color:#9fb0ad}
+ .sw{width:14px;height:3px;display:inline-block}
+ b{color:#A6FF00;font-variant-numeric:tabular-nums}
+ button{background:#1c2422;color:#cfd8d6;border:0;border-radius:4px;padding:8px 14px;font:inherit;cursor:pointer}
+ button:hover{background:#00B2A9;color:#001a18}
+</style></head><body><div class="wrap">
+<h1>The Signal — beat verifier</h1>
+<p class="sub">Lime lines = cuts. Cyan ticks = detected beats. By design every cut sits on a beat — watch the playhead and the pulse.</p>
+<video id="v" src="signal_film.mp4" controls playsinline preload="auto"></video>
+<div class="tl" id="tl"><canvas id="c"></canvas></div>
+<div class="row">
+ <button id="pp">▶ Play</button>
+ <div class="pulse" id="pulse"></div>
+ <div class="legend">
+   <span><i class="sw" style="background:#00B2A9"></i>detected beat</span>
+   <span><i class="sw" style="background:#A6FF00;height:10px"></i>cut</span>
+   <span><i class="sw" style="background:#fff"></i>playhead</span>
+ </div>
+ <div id="readout" class="sub" style="margin:0">t=0.00s · <b id="bpm">–</b> BPM · cut/beat offset: <b id="off">–</b></div>
+</div>
+</div><script>
+const v=document.getElementById('v'),c=document.getElementById('c'),tl=document.getElementById('tl');
+const pulse=document.getElementById('pulse'),pp=document.getElementById('pp');
+let D={beats:[],cuts:[],duration:60,tempo_bpm:0};
+fetch('scripts/cuts.json?n='+Date.now()).then(r=>r.json()).then(d=>{D=d;document.getElementById('bpm').textContent=d.tempo_bpm;draw();});
+function size(){c.width=tl.clientWidth*devicePixelRatio;c.height=88*devicePixelRatio;}
+addEventListener('resize',()=>{size();draw();});size();
+const X=t=>t/D.duration*c.width;
+function draw(){
+ const g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);
+ g.strokeStyle='#00B2A9';g.globalAlpha=.55;g.lineWidth=1*devicePixelRatio;
+ D.beats.forEach(t=>{g.beginPath();g.moveTo(X(t),c.height*.55);g.lineTo(X(t),c.height);g.stroke();});
+ g.globalAlpha=1;g.strokeStyle='#A6FF00';g.lineWidth=2*devicePixelRatio;
+ D.cuts.forEach(t=>{g.beginPath();g.moveTo(X(t),0);g.lineTo(X(t),c.height);g.stroke();});
+ const ph=X(v.currentTime||0);g.strokeStyle='#fff';g.lineWidth=2*devicePixelRatio;
+ g.beginPath();g.moveTo(ph,0);g.lineTo(ph,c.height);g.stroke();
+}
+let lastBeat=-1;
+function tick(){
+ const t=v.currentTime;draw();
+ // nearest beat + flash when crossing
+ let nb=0,bd=9;for(const b of D.beats){const dd=Math.abs(b-t);if(dd<bd){bd=dd;nb=b;}}
+ const idx=D.beats.indexOf(nb);
+ if(idx!==lastBeat && bd<0.06){lastBeat=idx;pulse.classList.add('hit');setTimeout(()=>pulse.classList.remove('hit'),90);}
+ // nearest cut→beat offset (should be ~0)
+ let co=9;for(const cu of D.cuts){let m=9;for(const b of D.beats)m=Math.min(m,Math.abs(cu-b));co=Math.min(co,m);}
+ document.getElementById('readout').firstChild.textContent='t='+t.toFixed(2)+'s · ';
+ document.getElementById('off').textContent=(Math.max(...D.cuts.map(cu=>Math.min(...D.beats.map(b=>Math.abs(cu-b)))))*1000).toFixed(0)+' ms max';
+ requestAnimationFrame(tick);
+}
+v.addEventListener('play',()=>{pp.textContent='⏸ Pause';});
+v.addEventListener('pause',()=>{pp.textContent='▶ Play';});
+pp.onclick=()=>v.paused?v.play():v.pause();
+tl.onclick=e=>{const r=tl.getBoundingClientRect();v.currentTime=(e.clientX-r.left)/r.width*D.duration;};
+requestAnimationFrame(tick);
+</script></body></html>
