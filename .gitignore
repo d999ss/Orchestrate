@@ -24,3 +24,5 @@ films/sb1_clips/*.opname
 
 # Vercel build artifacts
 .vercel/
+.vercel
+.env*.local

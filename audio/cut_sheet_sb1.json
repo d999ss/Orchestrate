@@ -1,0 +1,122 @@
+{
+  "audio_file": "Beats.mp3",
+  "audio_start_sec": 7.13,
+  "audio_end_sec": 67.13,
+  "film_duration_sec": 60.0,
+  "phase": "sb1_v23_clean_structural",
+  "storyboard": "1",
+  "windows": [
+    {
+      "frame": 1,
+      "start_in_audio": 0.0,
+      "end_in_audio": 1.852,
+      "duration": 1.852,
+      "abs_audio_t": 7.13
+    },
+    {
+      "frame": 2,
+      "start_in_audio": 1.852,
+      "end_in_audio": 5.544,
+      "duration": 3.692,
+      "abs_audio_t": 8.982
+    },
+    {
+      "frame": 3,
+      "start_in_audio": 5.544,
+      "end_in_audio": 9.236,
+      "duration": 3.692,
+      "abs_audio_t": 12.674
+    },
+    {
+      "frame": 4,
+      "start_in_audio": 9.236,
+      "end_in_audio": 12.928,
+      "duration": 3.692,
+      "abs_audio_t": 16.366
+    },
+    {
+      "frame": 9,
+      "start_in_audio": 12.928,
+      "end_in_audio": 16.64,
+      "duration": 3.712,
+      "abs_audio_t": 20.058
+    },
+    {
+      "frame": 10,
+      "start_in_audio": 16.64,
+      "end_in_audio": 19.87,
+      "duration": 3.23,
+      "abs_audio_t": 23.77
+    },
+    {
+      "frame": 11,
+      "start_in_audio": 19.87,
+      "end_in_audio": 23.33,
+      "duration": 3.46,
+      "abs_audio_t": 27.0
+    },
+    {
+      "frame": 12,
+      "start_in_audio": 23.33,
+      "end_in_audio": 27.02,
+      "duration": 3.69,
+      "abs_audio_t": 30.46
+    },
+    {
+      "frame": 13,
+      "start_in_audio": 27.02,
+      "end_in_audio": 29.91,
+      "duration": 2.89,
+      "abs_audio_t": 34.15
+    },
+    {
+      "frame": 18,
+      "start_in_audio": 29.91,
+      "end_in_audio": 34.19,
+      "duration": 4.28,
+      "abs_audio_t": 37.04
+    },
+    {
+      "frame": 19,
+      "start_in_audio": 34.19,
+      "end_in_audio": 37.88,
+      "duration": 3.69,
+      "abs_audio_t": 41.32
+    },
+    {
+      "frame": 20,
+      "start_in_audio": 37.88,
+      "end_in_audio": 41.32,
+      "duration": 3.44,
+      "abs_audio_t": 45.01
+    },
+    {
+      "frame": 21,
+      "start_in_audio": 41.32,
+      "end_in_audio": 45.01,
+      "duration": 3.69,
+      "abs_audio_t": 48.45
+    },
+    {
+      "frame": 25,
+      "start_in_audio": 45.01,
+      "end_in_audio": 48.48,
+      "duration": 3.47,
+      "abs_audio_t": 52.14
+    },
+    {
+      "frame": 27,
+      "start_in_audio": 48.48,
+      "end_in_audio": 52.18,
+      "duration": 3.7,
+      "abs_audio_t": 55.61
+    },
+    {
+      "frame": 28,
+      "start_in_audio": 52.18,
+      "end_in_audio": 60.0,
+      "duration": 7.82,
+      "abs_audio_t": 59.31
+    }
+  ]
+}
