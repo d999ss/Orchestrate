@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Python venv (huge, regenerable)
+.venv/
+__pycache__/
+*.pyc
+
+# Source assets — kept local, not deployed
+audio/Beats.mp3
+audio/slate_countdown.mp3
+audio/*.m4a
+audio/*.wav
+
+# Raw Veo clips and grade tests — regenerable from scripts, not deployed
+films/sb1_clips/
+films/grades/
+
+# Pre-slate film — sb1_master.mp4 is the canonical deliverable
+films/sb1_film.mp4
+
+# Operation tracking files
+films/sb1_clips/*.opname
+
+# Vercel build artifacts
+.vercel/
