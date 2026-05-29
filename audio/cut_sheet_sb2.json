@@ -3,7 +3,7 @@
   "audio_start_sec": 8.97,
   "audio_end_sec": 68.97,
   "film_duration_sec": 60.0,
-  "phase": "sb2_synced_v1",
+  "phase": "sb2_forward_v2_drop_f29",
   "bpm": 129.98,
   "storyboard": "2",
   "windows": [
@@ -204,18 +204,11 @@
       "abs_audio_t": 62.98
     },
     {
-      "frame": 29,
-      "start_in_audio": 56.076,
-      "end_in_audio": 57.911,
-      "duration": 1.834,
-      "abs_audio_t": 65.046
-    },
-    {
       "frame": 30,
-      "start_in_audio": 57.911,
+      "start_in_audio": 56.076,
       "end_in_audio": 60.0,
-      "duration": 2.089,
-      "abs_audio_t": 66.881
+      "duration": 3.924,
+      "abs_audio_t": 65.046
     }
   ]
 }
