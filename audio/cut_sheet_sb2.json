@@ -9,38 +9,38 @@
   "windows": [
     {
       "frame": 1,
+      "start_in_audio": 0.0,
+      "end_in_audio": 1.788,
+      "duration": 1.788,
+      "abs_audio_t": 8.97
+    },
+    {
+      "frame": 2,
       "start_in_audio": 1.788,
       "end_in_audio": 3.669,
       "duration": 1.881,
       "abs_audio_t": 10.758
     },
     {
-      "frame": 2,
+      "frame": 3,
       "start_in_audio": 3.669,
       "end_in_audio": 5.503,
       "duration": 1.834,
       "abs_audio_t": 12.639
     },
     {
-      "frame": 3,
+      "frame": 4,
       "start_in_audio": 5.503,
       "end_in_audio": 7.338,
       "duration": 1.834,
       "abs_audio_t": 14.473
     },
     {
-      "frame": 4,
-      "start_in_audio": 7.338,
-      "end_in_audio": 9.195,
-      "duration": 1.858,
-      "abs_audio_t": 16.308
-    },
-    {
       "frame": 5,
-      "start_in_audio": 9.195,
+      "start_in_audio": 7.338,
       "end_in_audio": 10.333,
-      "duration": 1.138,
-      "abs_audio_t": 18.165
+      "duration": 2.995,
+      "abs_audio_t": 16.308
     },
     {
       "frame": 6,

@@ -58,20 +58,24 @@ def merge_anchors(kicks, bass_notes):
 def pick_cuts(anchors, n_cuts: int, film_len: float, min_hold: float):
     """Choose n_cuts cut START times from anchors so they tile film_len evenly.
 
-    Strategy: target start times at i * film_len/n_cuts, then for each target
-    pick the closest anchor that is >= prev_start + min_hold. Forward-only.
+    First pick is ALWAYS 0 — f01 plays as the lead-in bar before the first
+    kick. This mirrors SB1 v23, where the first frame holds while the music
+    builds, and the first detected kick lands on the cut to f02. Without this
+    the body ends short of film_len and the audio fade-out gets truncated.
+
+    Remaining (n_cuts-1) picks: target start times at i * film_len/n_cuts for
+    i=1..n_cuts-1, snap each to the closest forward anchor.
     """
     if not anchors:
         raise SystemExit("no kick anchors detected -- bad audio split?")
-    targets = [i * film_len / n_cuts for i in range(n_cuts)]
-    picks = []
-    prev = -min_hold  # so first cut can start at 0
+    # f01 lead-in always starts at 0
+    picks = [0.0]
+    prev = 0.0
+    targets = [i * film_len / n_cuts for i in range(1, n_cuts)]
     for t in targets:
         candidates = [a for a in anchors if a >= prev + min_hold]
         if not candidates:
-            # Ran out of anchors -- extend last hold to fill
             break
-        # Choose the candidate closest to t
         best = min(candidates, key=lambda a: abs(a - t))
         picks.append(best)
         prev = best
