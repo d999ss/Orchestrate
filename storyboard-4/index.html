@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Storyboard 4 · Orchestrate 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #04090b;
+    --fg: #cdebe7;
+    --fg-dim: #7aa9a4;
+    --accent: #4ed9c6;
+    --line: #14302e;
+    --card: #060f11;
+    --display: 'Bebas Neue', 'Helvetica Neue', system-ui, sans-serif;
+    --body: 'Inter', ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    padding: 96px 48px 48px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+  header .eyebrow {
+    font-family: var(--body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  header .eyebrow-sub { font-family: var(--body); font-size:11px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--fg-dim); margin-bottom:20px; }
+  header h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px);
+    letter-spacing: 0.01em;
+    line-height: 1.02;
+    color: var(--fg);
+    max-width: 18ch;
+  }
+  header .meta { color: var(--fg-dim); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+  header .meta span + span::before { content: "·"; margin: 0 10px; color: var(--line); }
+  .toolbar {
+    padding: 16px 48px; display: flex; gap: 10px;
+    border-bottom: 1px solid var(--line);
+    background: var(--card);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(6px);
+  }
+  .toolbar button {
+    background: transparent; color: var(--fg-dim);
+    border: 1px solid var(--line);
+    padding: 8px 16px; border-radius: 999px;
+    font-family: var(--body); font-size: 12px; font-weight: 500; line-height: 1;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: 120ms;
+    height: 32px; box-sizing: border-box; display: inline-flex; align-items: center;
+  }
+  .toolbar button:hover { color: var(--accent); border-color: var(--accent); }
+  .toolbar button.active { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  main { padding: 32px 48px 96px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 28px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden; transition: 160ms;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card .frame-img {
+    aspect-ratio: 3 / 1; background: #000;
+    display: block; width: 100%; object-fit: cover; cursor: zoom-in;
+    filter: brightness(1.7) contrast(1.15) saturate(1.05);
+  }
+  .card .frame-img.placeholder { filter: none; }
+  .lightbox img { filter: brightness(1.7) contrast(1.15) saturate(1.05); }
+  .lightbox img.placeholder { filter: none; }
+  .card .body { padding: 16px 18px 18px; }
+  .card .head { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; flex-wrap: wrap; }
+  .card .num { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; margin: 0; }
+  .card .tc { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--fg-dim); border: 1px solid var(--line); border-radius: 4px; padding: 2px 7px; }
+  .card .stage { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bg); background: var(--accent); border-radius: 4px; padding: 3px 8px; }
+  .card .desc { margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg); }
+  .card .tempo { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10px; color: var(--accent); border: 1px solid var(--line); border-radius: 4px; padding: 2px 7px; }
+  .card .pivot { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bg); background: var(--accent); border-radius: 4px; padding: 3px 8px; font-weight: 600; }
+  .card.is-pivot { border-color: var(--accent); }
+  .card .song { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--fg-dim); border: 1px solid var(--line); border-radius: 4px; padding: 2px 7px; }
+  .card.playing { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 0 30px -6px var(--accent); }
+  .toolbar #playBtn.on { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  .play-readout { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--accent); align-self: center; padding: 0 6px; min-width: 168px; letter-spacing: 0.02em; }
+  .card .movement { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim); margin: 9px 0 0; }
+  .card .climax-note { margin-top: 12px; font-size: 12.5px; color: var(--accent); border-left: 2px solid var(--accent); padding-left: 11px; line-height: 1.5; }
+  .grid .movement, .grid .climax-note, .strip .movement, .strip .climax-note { display: none; }
+
+  /* Direction memo */
+  .memo { margin: 24px 48px 0; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+  .memo > summary { cursor: pointer; list-style: none; padding: 22px 28px; display: flex; align-items: center; gap: 14px; font-family: var(--display); font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg); }
+  .memo > summary::-webkit-details-marker { display: none; }
+  .memo > summary .tag { font-family: var(--body); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: var(--accent); border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; }
+  .memo > summary .chev { margin-left: auto; color: var(--fg-dim); transition: 120ms; font-size: 18px; }
+  .memo[open] > summary .chev { transform: rotate(90deg); color: var(--accent); }
+  .memo-body { padding: 4px 32px 32px; }
+  .memo-body h4 { color: var(--accent); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin: 30px 0 10px; }
+  .memo-body p { font-size: 14px; line-height: 1.65; color: var(--fg); max-width: 84ch; margin: 0 0 12px; }
+  .memo-body .shape { font-family: var(--display); font-size: 34px; letter-spacing: 0.1em; color: var(--accent); margin: 4px 0 14px; }
+  .memo-body table { border-collapse: collapse; width: 100%; margin: 6px 0 4px; font-size: 13px; }
+  .memo-body th, .memo-body td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--fg); line-height: 1.5; }
+  .memo-body th { color: var(--fg-dim); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .memo-body td.k { color: var(--accent); white-space: nowrap; font-weight: 600; }
+  .memo-body td.f { font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--fg-dim); white-space: nowrap; }
+  .memo-body .read { border-left: 2px solid var(--accent); padding: 4px 0 4px 16px; color: var(--fg); font-size: 15px; line-height: 1.65; margin-top: 8px; }
+  .memo-body .callout { border: 1px solid var(--accent); border-radius: 8px; padding: 16px 18px; margin: 8px 0 4px; }
+  .memo-body .callout p { margin: 0; }
+
+  .spec { display: grid; gap: 7px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .spec .row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; }
+  .spec .lbl { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim); padding-top: 1px; }
+  .spec .val { font-size: 12.5px; color: var(--fg); line-height: 1.4; }
+
+  .prompt { margin-top: 14px; }
+  .prompt .phead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .prompt .ttl { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+  .copy { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; cursor: pointer; transition: 120ms; }
+  .copy:hover { color: var(--accent); border-color: var(--accent); }
+  .copy.ok { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  .ptext { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; line-height: 1.6; color: var(--fg-dim); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px 13px; max-height: 132px; overflow: auto; white-space: pre-wrap; }
+  .ptext .g { color: #3c6863; }
+
+  .list { display: flex; flex-direction: column; gap: 48px; }
+  .list .card { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 1400px; margin: 0 auto; width: 100%; }
+  .list .card .frame-img { aspect-ratio: 3 / 1; height: auto; width: 100%; }
+  .list .card .body { padding: 28px 32px; align-self: stretch; border-top: 1px solid var(--line); overflow-y: auto; }
+  .list .card .num { font-size: 12px; }
+  .list .card .desc { font-size: 15px; line-height: 1.55; }
+  @media (max-width: 900px) {
+    .list .card { grid-template-columns: 1fr; }
+    .list .card .body { border-left: none; border-top: 1px solid var(--line); }
+  }
+  .strip { display: flex; overflow-x: auto; gap: 4px; padding-bottom: 16px; scroll-snap-type: x mandatory; }
+  .strip .card { flex: 0 0 auto; width: 480px; scroll-snap-align: start; border-radius: 0; }
+  .strip .spec, .strip .prompt { display: none; }
+  .grid .spec, .grid .prompt { display: none; }
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+    display: none; align-items: center; justify-content: center; flex-direction: column;
+    padding: 32px; z-index: 100;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 78vw; max-height: 66vh; border: 1px solid var(--line); }
+  .lightbox .lb-caption { color: var(--fg); margin-top: 18px; font-size: 15px; text-align: center; max-width: 760px; }
+  .lightbox .lb-sub { color: var(--fg-dim); margin-top: 10px; font-size: 12px; text-align: center; max-width: 760px; letter-spacing: 0.04em; }
+  .lightbox .lb-num { color: var(--accent); font-size: 11px; letter-spacing: 0.18em; margin-bottom: 6px; }
+  .lightbox .lb-close { position: absolute; top: 24px; right: 32px; background: transparent; color: var(--fg-dim); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 12px; letter-spacing: 0.08em; }
+  .lightbox .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: transparent; color: var(--fg-dim); border: 1px solid var(--line); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 20px; }
+  .lightbox .lb-prev { left: 32px; }
+  .lightbox .lb-next { right: 32px; }
+  .lightbox button:hover { color: var(--accent); border-color: var(--accent); }
+  @media print {
+    html, body { background: #000; color: #fff; }
+    .toolbar, .lightbox { display: none !important; }
+    main { padding: 0; }
+    .grid, .list, .strip { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+    .card { break-inside: avoid; border: 1px solid #222; }
+    .spec, .prompt { display: block !important; }
+  }
+
+  .next-sb{display:inline-flex;align-items:center;gap:18px;padding:18px 28px;border:1px solid var(--line);border-radius:999px;color:var(--fg);text-decoration:none;font-family:var(--display);font-size:28px;letter-spacing:0.06em;text-transform:uppercase;transition:160ms;}
+  .next-sb:hover{border-color:var(--accent);color:var(--accent);transform:translateX(6px);}
+  .next-sb-label{font-size:16px;letter-spacing:0.18em;color:var(--fg-dim);font-family:var(--body);font-weight:500;}
+  .next-sb:hover .next-sb-label{color:var(--accent);}
+  .next-sb-arrow{font-size:32px;line-height:1;}
+</style>
+</head>
+<body>
+<style>
+.board-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding:18px 48px;border-bottom:1px solid var(--line);background:rgba(4,9,11,0.9);backdrop-filter:blur(6px);position:sticky;top:0;z-index:50;}
+.board-nav .board-tab-logo{justify-self:start;color:#fff;text-decoration:none;grid-column:1;}
+.board-nav-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;grid-column:2;}
+.board-nav .board-tab{font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-dim);text-decoration:none;background:transparent;border:none;cursor:pointer;padding:6px 0;font-family:inherit;}
+.board-nav .board-tab:hover{color:var(--accent);}
+.board-nav .board-tab.active{color:var(--accent);}
+.board-nav-sep{width:1px;height:18px;background:var(--line);display:inline-block;margin:0 6px;}
+.board-nav-dropdown{position:relative;display:inline-block;}
+.board-nav-dd-menu{position:absolute;top:100%;right:0;background:var(--card);border:1px solid var(--line);padding:8px 0;display:none;min-width:200px;}
+.board-nav-dropdown:hover .board-nav-dd-menu{display:block;}
+.board-nav-dd-item{display:block;padding:8px 16px;}
+.board-nav-dd-sep{height:1px;background:var(--line);margin:6px 0;}
+.toolbar{top:62px !important;}
+</style>
+<nav class="board-nav" role="tablist" aria-label="Storyboards">
+    <a class="board-tab board-tab-logo" href="/" aria-label="Bttr — Cover">
+      <svg width="32" height="25" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="currentColor"/>
+        <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="board-nav-links">
+      <a class="board-tab" href="/storyboard-1/" target="_self">Storyboard 1</a>
+      <a class="board-tab" href="/storyboard-2/" target="_self">Storyboard 2</a>
+      <a class="board-tab" href="/storyboard-3/" target="_self">Storyboard 3</a>
+      <a class="board-tab active" href="/storyboard-4/" target="_self">Storyboard 4</a>
+      <span class="board-nav-sep"></span>
+      <a class="board-tab" href="/film-1/" target="_self">Film 1</a>
+      <a class="board-tab" href="/film-2/" target="_self">Film 2</a>
+      <a class="board-tab" href="/film-3/" target="_self">Film 3</a>
+    <a class="board-tab" href="/film-4/" target="_self">Film 4</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <div class="eyebrow">Orchestrate 2026</div>
+      <h1>Storyboard 4</h1>
+      <div class="eyebrow-sub" style="margin-top:18px;">The Electron · From source to stage</div>
+      <div class="meta" style="margin-top:24px;">
+        <span>30 frames · 1:00</span>
+        <span>Beat-synced · beats.mp3 · window 0:48–1:48</span>
+        <span>Drop on Fire · 1:45.2</span>
+        <span>4608 × 1536 · 3:1 LED wall</span>
+        <span>2026-05-30</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px;"><a class="next-sb watch-film" href="/film-1/" aria-label="Watch Film 1" style="border-color:var(--accent);color:var(--accent);"><span class="next-sb-label" style="color:var(--accent);">Watch</span>Film 1<span class="next-sb-arrow">▶</span></a><a class="next-sb" href="/storyboard-1/" aria-label="Next storyboard"><span class="next-sb-label">Storyboard 1</span><span class="next-sb-arrow">→</span></a></div>
+  </header>
+
+  <details class="memo">
+    <summary>
+      Direction memo · edit and pacing
+      <span class="tag">Read first</span>
+      <span class="chev">›</span>
+    </summary>
+    <div class="memo-body">
+      <h4>Thesis</h4>
+      <p>One electron, born in raw combustion, travels the grid intact and arrives as an idea landing in a single mind. The whole film is that one move: energy under control, delivered. Everything in the cut should serve the arrival.</p>
+
+      <h4>Scored to the track</h4>
+      <p>Locked to beats.mp3 at 130.8 BPM. The film rides the 0:48 to 1:48 window so the track's one dramatic feature lands where the film needs it: the breakdown at 1:38 becomes the Aim hush, and the drop at 1:45 hits exactly on Fire. The long drift, frames 01 to 22, is beat-aligned across the build. Frames 23 and 24 hold across the near silent breakdown. Frames 25 to 30 fragment fast off the drop. Press Play with track above to watch the board run against the song.</p>
+      <table>
+        <thead><tr><th>Track moment</th><th>Song time</th><th>Frames</th><th>Beat</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Build / verse</td><td class="f">0:48 – 1:36</td><td class="f">01 to 22</td><td>The long drift, one to two downbeats per frame</td></tr>
+          <tr><td class="k">Breakdown</td><td class="f">1:38 – 1:45</td><td class="f">23 · 24</td><td>The held breath. Two frames across the near silence</td></tr>
+          <tr><td class="k">The drop</td><td class="f">1:45.2</td><td class="f">25 · 26</td><td>Fire on the downbeat. Fragment sub second</td></tr>
+          <tr><td class="k">Post drop</td><td class="f">1:46 – 1:48</td><td class="f">27 to 30</td><td>Flight, the face, bloom, cut to white. Fast, riding the energy</td></tr>
+        </tbody>
+      </table>
+
+      <h4>The one directive that changes everything</h4>
+      <p>Right now the board reads as 30 frames at a flat 2 second metronome. A metronome is a slideshow. The film only becomes a film when the cutting is variable. Slow and hypnotic through the journey, a held breath at the threshold, a fast eruption at the moment of release, then a slow hold on the landing. Lock that curve and the piece comes alive. Leave it even and it stays a deck.</p>
+      <p class="shape">drift · suspend · release · hold</p>
+
+      <h4>The three pivots</h4>
+      <p>Three hard cuts carry the entire film. Treat each as a hard cut, never a dissolve. Everything between them is allowed to breathe. If a viewer feels only three things, it is these.</p>
+      <table>
+        <thead><tr><th>Pivot</th><th>Frame</th><th>The move</th></tr></thead>
+        <tbody>
+          <tr><td class="k">1 · Departure</td><td class="f">08</td><td>The line lifts off the pylon into open sky. Plant becomes world.</td></tr>
+          <tr><td class="k">2 · The release</td><td class="f">25 to 26</td><td>The electron strikes the diode, the photon rockets out through the lens. The trigger.</td></tr>
+          <tr><td class="k">3 · The reception</td><td class="f">28</td><td>The young face turns up into the light. The journey meets a person.</td></tr>
+        </tbody>
+      </table>
+
+      <h4>The acceleration curve · re-time</h4>
+      <p>Replace the flat 2s with this. The drift earns the climax, so let the early movements run long and resist the urge to trim them.</p>
+      <table>
+        <thead><tr><th>Movement</th><th>Frames</th><th>Tempo</th><th>Direction note</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Birth</td><td class="f">01 · 02</td><td>Slow · ~2.5s</td><td>Let the electric crack land in silence. Do not rush the loose electron.</td></tr>
+          <tr><td class="k">The forming drift</td><td class="f">03 to 07</td><td>Hypnotic · ~3s</td><td>The calmest, longest stretch. Near hypnotic on purpose. This patience is what gives the ending its weight.</td></tr>
+          <tr><td class="k">Pivot 1 · lift off</td><td class="f">08</td><td>Hard cut · hold</td><td>Plant to world. Majestic, locked.</td></tr>
+          <tr><td class="k">Transit</td><td class="f">09 to 13</td><td>Longest holds · ~3.5s</td><td>The aerials and the river span are where an even cut hurts most. Scale needs air. Let the country roll under us.</td></tr>
+          <tr><td class="k">Distribution</td><td class="f">14 to 19</td><td>Tighten · 2s toward 1.5s</td><td>Begin the ramp. Each step down into the city cuts a touch faster. Tension enters here.</td></tr>
+          <tr><td class="k">Breaker snap</td><td class="f">20</td><td>~1s · percussive</td><td>First hard hit. The room flinches.</td></tr>
+          <tr><td class="k">Chambering</td><td class="f">21 · 22</td><td>Fast · ~1.2s</td><td>The POV plunge. Tempo spikes for the first time.</td></tr>
+          <tr><td class="k">Pivot 2 · hush, then burst</td><td class="f">23 · 24 / 25 · 26</td><td>Aim held ~2.5s · Fire fastest</td><td>Hold the hand reaching for the clicker longer than instinct allows. The stillness is what sells the burst.</td></tr>
+          <tr><td class="k">Flight</td><td class="f">27</td><td>~1.2s</td><td>The beam streaks the dark house.</td></tr>
+          <tr><td class="k">Pivot 3 · the turn</td><td class="f">28</td><td>Hard cut, then slow push</td><td>Snap to the face, then decelerate hard.</td></tr>
+          <tr><td class="k">Bloom · resolve</td><td class="f">29 · 30</td><td>Slow · ~3s</td><td>Hold the landing. Let the room fill. Let it breathe out.</td></tr>
+        </tbody>
+      </table>
+      <p>Runtime is locked at 1:00 to match the other three films, but the window is repositioned to 0:48 to 1:48 so the climax lands on the track's drop rather than on flat verse. The journey still gets roughly 48 seconds of the minute, the contrast between the long drift and the fast release is the whole engine, and the resolution after the drop is deliberately quick, riding the energy rather than holding.</p>
+
+      <h4>The single biggest miss · the Fire moment</h4>
+      <div class="callout">
+        <p>The climax currently gets two even beats, 25 and 26, cut at the same length as a transmission tower in a field. The climax must hold the most cuts in the film, not the fewest. Fragment the release into four to six fast cuts: the diode junction, the bloom building from a point, the lens flaring out, the burst into the dark hall. Sub second, kinetic, stacked. This is the one place to add frames rather than cut them. Everything upstream is the patient hand pulling back. This is the loose.</p>
+      </div>
+
+      <h4>The landing · protect the inversion</h4>
+      <p>The entire film is built on a reversal. The same cold, procedural machinery that moves raw power across a continent does not end in force. It ends in a face catching light and an idea taking hold. The closer the mechanics stay to a real industrial process, cold, exact, POV as the electron itself, the harder the warm turn lands at frame 28. Keep it cold and procedural all the way to the turn. Hold the cyan as the only living color in a steel world. Then let the warmth break in all at once at the face. Do not pre warm it. The discipline of the first 27 frames is what makes the last 3 mean something.</p>
+
+      <h4>Guardrails carried from the prompts</h4>
+      <table>
+        <thead><tr><th>Constraint</th><th>Hold</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Energy</td><td>Directed, precise, deliberate. Never chaotic, never explosive. No real lightning.</td></tr>
+          <tr><td class="k">Color</td><td>Cool industrial steel blue throughout. The cyan teal #4ED9C6 IS the electron and is the only accent. Warmth permitted only at the final face.</td></tr>
+          <tr><td class="k">Frame</td><td>Photoreal cinematic. Anamorphic 2.39:1. Fine 35mm grain. Shallow depth.</td></tr>
+          <tr><td class="k">Clean plate</td><td>No on screen text, no logos, no captions inside the frames.</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Title card placement</h4>
+      <p>If Orchestrate 2026 carries a wordmark or title moment, land it on a pivot or on the final white at frame 30. Do not scatter it across the transit beats. One clean reveal, earned, at the arrival.</p>
+
+      <h4>Motion and export</h4>
+      <p>The deliverable decides the tool: a 4608 × 1536 (3:1) LED-wall film, 60s, cut to beats.mp3 with the drop on Fire at 1:45, silent picture with the music and designed sound laid in the edit. Three properties of that work against Veo 3, which was the earlier assumption.</p>
+      <table>
+        <thead><tr><th>Need</th><th>Veo 3 liability</th><th>Better fit</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Silent clips</td><td>Its headline feature is generated audio you would strip and fight; the film already owns its sound</td><td>Runway / Kling output silent natively</td></tr>
+          <tr><td class="k">True 3:1</td><td>16:9 only, so you crop back to 3:1 and lose the tops and bottoms the outpaint just rebuilt</td><td>letterbox method, any model</td></tr>
+          <tr><td class="k">Energy under control</td><td>Tends to inject its own camera energy</td><td>Runway Gen-4 motion control + first/last frame</td></tr>
+        </tbody>
+      </table>
+      <p><b>The call: Runway Gen-4 image-to-video as primary, Kling 2.x as the cheaper backup.</b> Veo 3 only if generated sound is ever wanted, which here it is not.</p>
+
+      <h4>Aspect · never re-crop</h4>
+      <div class="callout">
+        <p>Do not feed a 16:9 model the 3:1 and let it crop. Letterbox each 3:1 frame into the model's canvas (black top and bottom), animate, then crop the center 3:1 band back out. The bars are inert carrier, the content band moves, zero content lost. Model-agnostic, so the tool choice stays about motion and silence, not aspect.</p>
+      </div>
+
+      <h4>Motion doctrine · forward through space</h4>
+      <p>The spine of the film is one unbroken forward move through space, from the plant to the mind. The camera is the electron, always travelling forward, into the frame, toward the destination. The 30 cuts are waypoints on that single trajectory, not separate vignettes, so the motion vector stays consistent across the whole piece: we are always pushing ahead, never drifting sideways, never pulling back. The cut sheet only modulates the speed of that forward travel, it never reverses it.</p>
+      <p>So every frame is real generative motion in three dimensions, particles and depth streaming past as we advance. No flat 2D push or zoom on a still, that look is dead and cheap on point-cloud frames and it breaks the sense of travelling through real space. Controlled energy always, never chaotic, never a camera that shakes or races. Each clip is silent, holds the palette, adds nothing new, and ends where the cut needs it.</p>
+      <table>
+        <thead><tr><th>Role (cut sheet)</th><th>Forward motion</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Drift 01–22</td><td>slow steady push deeper into the space, particles streaming gently toward and past camera</td></tr>
+          <tr><td class="k">Hush 23–24</td><td>forward travel slows almost to a hover, the held breath before arrival</td></tr>
+          <tr><td class="k">Fire 25–26</td><td>the forward rush punches through, a cyan burst from the point ahead</td></tr>
+          <tr><td class="k">Flight 27</td><td>full forward streak down the beam toward the figure</td></tr>
+          <tr><td class="k">Bloom 29–30</td><td>arrival, the forward motion settles as light floods in</td></tr>
+        </tbody>
+      </table>
+      <p>Brief structure, short and motion-only since the frame carries the content: controlled camera move, one subtle thing that moves, scene stays locked (no new objects, no people, no text, palette unchanged), deliberate controlled energy, no shake, no fast moves, no morphing. Generate ~5s silent clips, trim each to its beat-locked duration, place on the grid. Assembles down the same path as the existing LED-wall films, minus the crop step, since these frames are already native 3:1.</p>
+
+      <h4>Resolution flow · 4K is a video step, not a still step</h4>
+      <p>The stills are already 4608 × 1536, wider than DCI and UHD 4K, so they feed the animator as-is. Do not upscale them first: the video model downsamples any input to its own working resolution, so a bigger still is thrown away. Resolution drops at animation and is recovered afterward.</p>
+      <table>
+        <thead><tr><th>Stage</th><th>Resolution</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Stills (now)</td><td>4608 × 1536</td><td>Already 4K-class, feed as-is</td></tr>
+          <tr><td class="k">Runway Gen-4 output</td><td>~1080p, letterboxed then cropped to 3:1</td><td>Model caps here</td></tr>
+          <tr><td class="k">Topaz Video AI</td><td>upscale clips to 4608 × 1536</td><td>The 4K step, per clip is safest for re-rolls</td></tr>
+          <tr><td class="k">Assemble · grade · audio</td><td>4608 × 1536 master</td><td>Final LED-wall film</td></tr>
+        </tbody>
+      </table>
+
+      <h4>The read in a sentence</h4>
+      <p class="read">Hold the journey longer than feels comfortable, suspend the moment before release, fire the climax faster and in more cuts than anything else in the film, then slow all the way down for the face. The patience is the point.</p>
+    </div>
+  </details>
+
+  <audio id="track" src="beats.mp3" preload="auto"></audio>
+  <div class="toolbar">
+    <button data-view="grid" class="active">Grid</button>
+    <button data-view="list">List</button>
+    <button data-view="strip">Film strip</button>
+    <button id="playBtn" style="margin-left:auto;">▶ Play with track</button>
+    <span id="playT" class="play-readout">0:00.0 · ♪0:48.4</span>
+    <button onclick="window.print()">Print / PDF</button>
+  </div>
+  <main>
+    <section id="board" class="grid"></section>
+  </main>
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" onclick="closeLB()">Close</button>
+    <button class="lb-nav lb-prev" onclick="navLB(-1)">‹</button>
+    <button class="lb-nav lb-next" onclick="navLB(1)">›</button>
+    <img id="lb-img" alt="" />
+    <div class="lb-num" id="lb-num"></div>
+    <div class="lb-caption" id="lb-cap"></div>
+    <div class="lb-sub" id="lb-sub"></div>
+  </div>
+<script>
+const GLOBAL = "Style: photoreal cinematic, anamorphic, 2.39:1, fine 35mm grain, shallow depth of field. Palette: cool industrial steel blues with a single cyan-teal accent (#4ED9C6) that IS the electron. Energy is directed, precise, deliberate, never chaotic, never explosive, no real lightning. No on-screen text, no logos, no captions.";
+
+const SHOTS = [
+  {tc:"0:00", stage:"Born", desc:"A natural gas power plant at night. Combustion glows inside the turbine hall — where the energy begins.",
+   cam:"Wide establishing, slow push", light:"Cold night, furnace glow", audio:"Low turbine roar, deep hum",
+   prompt:"Wide establishing shot of a modern natural gas power plant at night. Steel turbine hall and stacks venting vapor, the deep orange glow of combustion within. Slow cinematic push-in, locked horizon. Cold night blue against furnace glow. Mood: immense, quiet, charged with potential. Audio: deep turbine roar, low generator hum rising underneath."},
+  {tc:"0:02", stage:"Born", desc:"Extreme macro inside the generator. One electron is knocked loose from its atom and snaps free. Our electron is born.",
+   cam:"100mm macro, snap push-in", light:"Hard blue rim, cyan core", audio:"Sharp electric crack",
+   prompt:"Extreme macro inside a spinning generator winding driven by the gas turbine. Copper crystal lattice in shallow focus, a single glowing cyan-teal electron is knocked loose from its atom and snaps free. Slow motion into the release, then real time. 100mm macro lens, razor-shallow depth, hard snap push-in. Hard blue rim light, cyan core glow, high contrast. Mood: tense, precise. Audio: one sharp electric crack, sub-bass thrum."},
+  {tc:"0:04", stage:"Forming", desc:"Chaos resolves into order. Countless faint electrons align into one directed current flowing down the copper.",
+   cam:"Tracking along conductor", light:"Streaking specular highlights", audio:"Rising tonal swell",
+   prompt:"Macro tracking shot gliding down a copper conductor. A chaotic shimmer of countless faint electrons snaps into one directed, flowing current of cyan-teal light moving with the camera. Smooth lateral tracking, streaking specular highlights. Cool steel surface, cyan flow. Mood: order emerging from chaos. Audio: rising tonal swell, fine electric shimmer."},
+  {tc:"0:06", stage:"Charging", desc:"The step-up transformer. Voltage ramps and the charge is pressurized for the journey ahead.",
+   cam:"Slow orbit, low angle", light:"Sodium amber on steel", audio:"Mains hum builds",
+   prompt:"Low-angle slow orbit around a high-voltage step-up transformer at a power plant, night. Coils and bushings tower overhead, a pulse of cyan light climbs the windings as voltage ramps. Cinematic orbit, low angle, heroic scale. Sodium amber light raking cold steel. Mood: pressure building, controlled. Audio: heavy mains hum swelling, faint corona crackle."},
+  {tc:"0:08", stage:"Assembly", desc:"The current leaves the plant, racing out along the first conductor into the dark.",
+   cam:"Crane up, reveal yard", light:"Pre-dawn blue, work lights", audio:"Switchgear thunk",
+   prompt:"Crane-up reveal over a pre-dawn electrical switchyard. Rows of insulators and steel gantries, a thread of cyan current races out along the first conductor into the distance. Smooth crane lift revealing scale. Pre-dawn blue with hard white work lights. Mood: departure, momentum. Audio: a heavy switchgear thunk, then a sustained hum."},
+  {tc:"0:10", stage:"Inspection", desc:"A lone operator watches the load curve climb inside a dim grid control room. Human in the loop.",
+   cam:"Over-shoulder, rack focus", light:"Screen glow, cool fill", audio:"Soft beeps, room tone",
+   prompt:"Over-the-shoulder shot in a dim grid control room. A lone operator watches a glowing load curve climb across a wall of dispatch screens, a regional map softly lit behind. Subtle rack focus from operator to screen. Cool screen glow, low fill on the face. Mood: calm command. Audio: soft beeps, low room tone, distant hum."},
+  {tc:"0:12", stage:"Packing", desc:"The current is bundled into the conductor, sealed under insulation and dressed for the long haul.",
+   cam:"Macro slide along cable", light:"Hard side key", audio:"Insulation creak, hum",
+   prompt:"Macro slide along a thick insulated power cable. Cyan current pulses just visible beneath translucent insulation, the strand sealed and dressed for the long haul. Slow macro dolly, hard side key light. Cool steel and shadow with the cyan pulse inside. Mood: contained power. Audio: faint insulation creak, steady electric hum."},
+  {tc:"0:14", stage:"Transit", desc:"The line climbs its first steel pylon and lifts off the ground into open sky.",
+   cam:"Tilt up the tower", light:"Backlit dawn silhouette", audio:"Wind, line buzz",
+   prompt:"Tilt-up a tall steel transmission pylon at dawn as a power line climbs from the ground and lifts off into open sky. The conductor carries a faint cyan thread along it. Slow tilt up, backlit silhouette. Backlit dawn, cold blue sky, sun behind the tower. Mood: ascension, release. Audio: wind, a low singing line buzz."},
+  {tc:"0:16", stage:"Rail", desc:"Transmission towers stride across cold open country, the current running the wires.",
+   cam:"Aerial side-track", light:"Flat overcast, blue cast", audio:"Wind bed, low drone",
+   prompt:"Aerial side-tracking shot following transmission towers striding across cold open country, ridgelines and bare plains below, a faint cyan current running the wires. Steady aerial side-track, vast scale. Flat overcast light with a blue cast. Mood: epic, lonely, relentless. Audio: wind bed, a low cinematic drone."},
+  {tc:"0:18", stage:"Rail", desc:"Aerial chase racing the lines, the towers whipping past as the current accelerates.",
+   cam:"Fast aerial chase, motion blur", light:"Sun raking the wires", audio:"Whoosh, tempo lifts",
+   prompt:"Fast aerial chase racing alongside power lines, motion blur on the towers as they whip past, the cyan current streaking ahead of the camera. High-speed aerial, motion blur, kinetic. Late sun raking the wires. Mood: acceleration, drive. Audio: airy whoosh, score tempo lifting."},
+  {tc:"0:20", stage:"Span", desc:"The span crosses a wide river on giant towers, silver water far below.",
+   cam:"Drone reveal, wide", light:"Silver water, hazy sun", audio:"Open air, water below",
+   prompt:"Wide drone reveal as a transmission span crosses a broad river on giant towers, silver water far below, the cyan thread carried across the gap. Slow drone pull to reveal full span. Silver water, hazy low sun. Mood: grand crossing. Audio: open air, faint water far below, sustained tone."},
+  {tc:"0:22", stage:"Corridor", desc:"The current runs the interstate corridor toward the Southeast, golden light on the horizon.",
+   cam:"Aerial over highway", light:"Late afternoon gold", audio:"Distant traffic, drone",
+   prompt:"Aerial shot over an interstate corridor at late afternoon, power lines running parallel to the highway toward a distant Southern city, cyan current flowing with traffic. Smooth aerial glide, golden-hour haze. Warm late-afternoon light. Mood: nearing destination. Audio: distant traffic wash, low drone."},
+  {tc:"0:24", stage:"Atlanta", desc:"The Atlanta skyline rises from the dark. The Signia by Hilton tower and the curved Mercedes-Benz Stadium roof resolve. The destination comes into view.",
+   cam:"Aerial approach, push", light:"Warm haze, glass glints", audio:"City wash swells",
+   prompt:"Aerial approach toward the downtown Atlanta skyline rising through summer heat haze, the tall Signia by Hilton glass tower and the distinctive curved roof of Mercedes-Benz Stadium recognizable among the towers, power infrastructure threading in below. Slow aerial push toward downtown. Warm haze, bright glass glints. Mood: arrival, anticipation. Audio: a swelling city wash, rising music bed."},
+  {tc:"0:26", stage:"Distribution", desc:"The feed drops onto urban distribution, threading down poles into the city at dusk.",
+   cam:"Descend along poles", light:"Street sodium, dusk", audio:"Transformer buzz",
+   prompt:"Descending shot moving down a line of urban distribution poles at dusk, the feed dropping from transmission scale into city streets, cyan current threading down. Smooth vertical descend along the poles. Street sodium light, dusk blue sky. Mood: stepping down, intimate. Audio: transformer buzz, faint street ambience."},
+  {tc:"0:28", stage:"Distribution", desc:"The step-down substation. Voltage cracks open, the current split toward the feeders.",
+   cam:"Macro on insulators", light:"Arc-blue accents", audio:"Sharp tick, hum drop",
+   prompt:"Extreme macro on substation insulators as voltage steps down, a crisp blue-cyan arc tick crackles across a gap, the cyan current splitting to feeders. Locked macro, tiny shimmer. Arc-blue accents over steel, cyan core. Mood: precise discharge. Audio: a sharp electric tick, the hum dropping in pitch."},
+  {tc:"0:30", stage:"Distribution", desc:"Street feeders carry the current the last blocks toward the venue.",
+   cam:"Low tracking under lines", light:"Dusk, shop glow", audio:"Street tone, pulse",
+   prompt:"Low tracking shot moving beneath city distribution lines at dusk, shopfront glow below, the cyan current pulsing along the last blocks toward a venue. Steady low dolly under the wires. Dusk blue with warm shop glow. Mood: closing in. Audio: street tone, a quickening rhythmic pulse."},
+  {tc:"0:32", stage:"Venue", desc:"The Signia by Hilton Atlanta. The glass tower glows against the night, the convention center beside it, as the crowd filters in.",
+   cam:"Crane down to entrance", light:"Tower glow, warm entrance", audio:"Crowd murmur rises",
+   prompt:"Crane-down shot of the Signia by Hilton Atlanta at night, a tall modern glass hotel tower with a glowing facade, the Georgia World Congress Center convention hall adjacent, a warmer glowing entrance below, a crowd filtering in. Smooth crane descent toward the doors. Warm entrance wash against night blue. Mood: arrival at the event. Audio: crowd murmur rising, muffled music inside."},
+  {tc:"0:34", stage:"Loading", desc:"Inside, the feed presses down into the breaker panel.",
+   cam:"Macro into panel", light:"Hard work light", audio:"Metal hum, click",
+   prompt:"Macro push into an electrical breaker panel inside the venue, rows of breakers, the cyan feed pressing down into the bus. Slow macro push-in. Hard work light, deep shadow. Cool metal with cyan accent. Mood: final approach. Audio: metallic hum, a soft click."},
+  {tc:"0:36", stage:"Loading", desc:"Circuits energize one by one. Our electron waits among them, brighter than the rest.",
+   cam:"Slide across breakers", light:"Cyan LED indicators", audio:"Ticks in sequence",
+   prompt:"Macro slide across a row of breakers as circuits energize one by one, cyan indicators lighting in sequence, our single cyan electron among them brighter than the rest. Lateral macro slide. Cyan LED indicators on dark panel. Mood: selection, focus. Audio: ticks firing in sequence."},
+  {tc:"0:38", stage:"Loading", desc:"The breaker snaps closed. A small controlled spark, the surge released.",
+   cam:"Macro snap, tiny shake", light:"Spark flash, cyan", audio:"Hard clunk, surge",
+   prompt:"Tight macro as a breaker snaps closed, a small controlled cyan spark flashes at the contacts, a surge of current released. Macro with a tiny camera shake on the snap. Cyan spark flash against steel. Mood: commitment, ignition primed. Audio: a hard clunk, a current surge whoosh."},
+  {tc:"0:40", stage:"Chambering", desc:"POV drops into the cable, the electron racing a tunnel of light toward the stage.",
+   cam:"POV plunge into cable", light:"Tunnel of cyan glow", audio:"Whoosh down the line",
+   prompt:"POV plunge dropping into a power cable, the camera becomes the cyan electron racing inside a tunnel of glowing light toward the stage. First-person plunge into the conductor, fast. Tunnel of cyan light, dark walls. Mood: rush, propulsion. Audio: a deep whoosh accelerating down the line."},
+  {tc:"0:42", stage:"Chambering", desc:"The tunnel accelerates, the filament point growing ahead.",
+   cam:"POV tunnel, accelerate", light:"Cyan streaks, vignette", audio:"Tone climbs, tension",
+   prompt:"POV racing through the inside of a conductor, cyan streaks flying past, a bright filament point growing ahead, vignette tightening. Accelerating first-person tunnel. Cyan streaks, dark vignette. Mood: building tension, near release. Audio: a tone climbing toward a peak."},
+  {tc:"0:44", stage:"Aim", desc:"Reverse reveal. A lone speaker on the Orchestrate stage before the vast LED wall, teal drapes and coffered ceiling, the seated house waiting.",
+   cam:"Whip to wide stage", light:"LED wall glow, dark house", audio:"Room hush, breath",
+   prompt:"Whip transition reveal to a wide shot of the Orchestrate conference ballroom: a lone speaker stands center stage before a vast glowing LED video wall showing an abstract cyan particle sphere with no text, teal stage curtains either side, a dark coffered ceiling with rows of recessed downlights, an audience seated in black chairs with a center aisle, all in shadow. Whip pan settling to a locked wide. Bright LED wall glow against a deep dark house. Mood: the human reveal, hush. Audio: room falling quiet, a single breath."},
+  {tc:"0:46", stage:"Aim", desc:"The speaker's hand reaches for the clicker. The trigger moment.",
+   cam:"Tight insert on hand", light:"Edge light on skin", audio:"Soft click prep",
+   prompt:"Tight insert on the speaker's hand reaching for a presentation clicker, edge light on the skin, stage glow behind. Slow macro on the hand. Warm edge light, dark background. Mood: the trigger moment. Audio: a soft mechanical click prep, quiet room."},
+  {tc:"0:48", stage:"Fire", desc:"Power on. The electron strikes the LED junction and a bloom of light builds from a point.",
+   cam:"Macro into the diode", light:"Cyan bloom builds", audio:"Rising whine, snap",
+   prompt:"Macro into a stage LED fixture as power arrives, the cyan electron strikes the diode junction and a bloom of light builds from a point. Slow macro push as bloom grows. Cyan bloom expanding from black. Mood: the spark of release. Audio: a rising electric whine, then a snap."},
+  {tc:"0:50", stage:"Fire", desc:"The electron becomes a photon and rockets out through the lens into the hall.",
+   cam:"POV burst through optics", light:"White-cyan flare", audio:"Whoosh, impact swell",
+   prompt:"First-person burst as the cyan electron becomes a photon and rockets out through the lens of the fixture into the dark hall, a white-cyan flare blowing out the frame. POV burst through optics, fast. White-cyan lens flare. Mood: liberation, climax. Audio: a whoosh and a swelling impact."},
+  {tc:"0:52", stage:"Flight", desc:"A single beam streaks across the dark auditorium toward one figure.",
+   cam:"POV flight over rows", light:"Single beam in dark", audio:"Air rush, score peak",
+   prompt:"POV flight of a single cyan-white beam of light streaking across a dark conference hall over rows of silhouetted heads toward one figure. First-person flight, fast glide. A single cyan-white beam cutting the dark. Mood: the message in transit. Audio: air rush, the score hitting its peak."},
+  {tc:"0:54", stage:"Target", desc:"A young face in the audience turns up into the light.",
+   cam:"Slow push on face", light:"Beam catching the eyes", audio:"Quiet, heartbeat",
+   prompt:"Slow push-in on a young audience member in the dark as a beam of cyan-white light catches their upturned face and eyes. Slow cinematic push. Single cyan-white beam, dark surround. Mood: reception, wonder. Audio: everything quiet, a faint heartbeat."},
+  {tc:"0:56", stage:"Target", desc:"Light blooms across their face as the idea lands.",
+   cam:"Tight, light blooms in", light:"Cyan wash over skin", audio:"Swell holds",
+   prompt:"Tight shot as cyan-white light blooms across the audience member's face, their expression shifting as the idea lands. Locked tight, light blooming in. Cyan-white wash flooding the skin. Mood: the moment of impact, alive. Audio: the swell holding, breath caught."},
+  {tc:"0:58", stage:"Ignition", desc:"Cut to white. The stage ignites, the room glows, the talk begins.",
+   cam:"Flash to white, settle", light:"Full white-cyan, then stage", audio:"Music resolves, applause",
+   prompt:"Flash to white as the full stage lights ignite, then settling to reveal the lit stage and speaker mid-talk, the hall now glowing. Quick flash to white, then settle to a wide stage. Full white-cyan to balanced stage light. Mood: arrival of the idea, beginning. Audio: music resolving, the first edge of applause."}
+];
+
+const PACING = {
+  1:{t:"~2.5s",m:"Birth"}, 2:{t:"~2.5s",m:"Birth"},
+  3:{t:"~3s",m:"Forming drift"}, 4:{t:"~3s",m:"Forming drift"}, 5:{t:"~3s",m:"Forming drift"}, 6:{t:"~3s",m:"Forming drift"}, 7:{t:"~3s",m:"Forming drift"},
+  8:{t:"Hard cut · hold",m:"Pivot 1 · Departure",pivot:1},
+  9:{t:"~3.5s",m:"Transit"}, 10:{t:"~3.5s",m:"Transit"}, 11:{t:"~3.5s",m:"Transit"}, 12:{t:"~3.5s",m:"Transit"}, 13:{t:"~3.5s",m:"Transit"},
+  14:{t:"~2s",m:"Distribution"}, 15:{t:"~1.9s",m:"Distribution"}, 16:{t:"~1.8s",m:"Distribution"}, 17:{t:"~1.7s",m:"Distribution"}, 18:{t:"~1.6s",m:"Distribution"}, 19:{t:"~1.5s",m:"Distribution"},
+  20:{t:"~1s · percussive",m:"Breaker snap"},
+  21:{t:"~1.2s",m:"Chambering"}, 22:{t:"~1.2s",m:"Chambering"},
+  23:{t:"~2.5s · held",m:"Pivot 2 · Hush",pivot:2}, 24:{t:"~2.5s · held",m:"Pivot 2 · Hush",pivot:2},
+  25:{t:"Fastest · fragment",m:"Pivot 2 · Release",pivot:2}, 26:{t:"Fastest · fragment",m:"Pivot 2 · Release",pivot:2},
+  27:{t:"~1.2s",m:"Flight"},
+  28:{t:"Hard cut → slow push",m:"Pivot 3 · Reception",pivot:3},
+  29:{t:"~3s",m:"Bloom · resolve"}, 30:{t:"~3s",m:"Bloom · resolve"}
+};
+
+// Beat-synced cut sheet — sb4_synced_v1. Window 0:48–1:48 of beats.mp3 (130.8 BPM).
+// s = film-relative start (sec), song = absolute position in the track (sec).
+const CUTS = [
+  {s:0.000, song:48.448}, {s:1.856, song:50.304}, {s:3.701, song:52.149}, {s:5.547, song:53.995},
+  {s:9.237, song:57.685}, {s:11.083, song:59.531}, {s:14.773, song:63.221}, {s:16.619, song:65.067},
+  {s:18.464, song:66.912}, {s:21.931, song:70.379}, {s:23.776, song:72.224}, {s:27.456, song:75.904},
+  {s:29.195, song:77.643}, {s:32.779, song:81.227}, {s:34.624, song:83.072}, {s:36.469, song:84.917},
+  {s:38.315, song:86.763}, {s:40.160, song:88.608}, {s:42.005, song:90.453}, {s:43.851, song:92.299},
+  {s:45.696, song:94.144}, {s:47.552, song:96.000}, {s:49.387, song:97.835}, {s:53.077, song:101.525},
+  {s:56.768, song:105.216}, {s:57.400, song:105.848}, {s:58.000, song:106.448}, {s:58.450, song:106.898},
+  {s:59.300, song:107.748}, {s:59.700, song:108.148}
+];
+const AUDIO_START = 48.448, AUDIO_END = 108.448, FILM_DUR = 60.0;
+const fmtFilm = t => '0:' + Math.max(0, t).toFixed(1).padStart(4, '0');
+const fmtSong = t => { const m = Math.floor(t / 60); return m + ':' + (t - m * 60).toFixed(1).padStart(4, '0'); };
+const cutDur = i => (i < CUTS.length - 1 ? CUTS[i + 1].s : FILM_DUR) - CUTS[i].s;
+
+const VERSION = 20260530;
+function placeholder(n) {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='1536' height='512' viewBox='0 0 1536 512'>
+    <defs><radialGradient id='g' cx='50%' cy='55%' r='70%'>
+      <stop offset='0%' stop-color='#0e2422'/><stop offset='100%' stop-color='#04090b'/>
+    </radialGradient></defs>
+    <rect width='1536' height='512' fill='url(#g)'/>
+    <circle cx='768' cy='270' r='8' fill='#4ed9c6'/>
+    <circle cx='768' cy='270' r='30' fill='none' stroke='#4ed9c6' stroke-opacity='0.35'/>
+    <text x='60' y='120' fill='#1f4b47' font-family='Helvetica,Arial' font-size='120' font-weight='700'>${String(n).padStart(2,'0')}</text>
+    <text x='768' y='470' fill='#7aa9a4' font-family='Helvetica,Arial' font-size='24' text-anchor='middle' letter-spacing='6'>FRAME ${String(n).padStart(2,'0')} · TO RENDER</text>
+  </svg>`;
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+}
+const board = document.getElementById('board');
+SHOTS.forEach((s, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  const P = PACING[i + 1] || { t: '', m: '' };
+  const climax = (i + 1 === 25 || i + 1 === 26);
+  const el = document.createElement('article');
+  el.className = 'card' + (P.pivot ? ' is-pivot' : '');
+  el.id = 'card-' + i;
+  el.innerHTML = `
+    <img class="frame-img" src="3to1/frame-${n}.png?v=${VERSION}" alt="Frame ${n}" loading="lazy" data-idx="${i}"
+         onerror="this.onerror=null;this.classList.add('placeholder');this.src=placeholder(${i + 1});" />
+    <div class="body">
+      <div class="head">
+        <p class="num">Frame ${n}</p>
+        <span class="tc">${fmtFilm(CUTS[i].s)}</span>
+        <span class="song">♪ ${fmtSong(CUTS[i].song)}</span>
+        <span class="stage">${s.stage}</span>
+        <span class="tempo">${cutDur(i).toFixed(1)}s</span>
+        ${P.pivot ? `<span class="pivot">Pivot ${P.pivot}</span>` : ''}
+      </div>
+      <p class="movement">${P.m}</p>
+      <p class="desc">${s.desc}</p>
+      ${climax ? `<div class="climax-note">Climax · fragment into 4 to 6 sub second cuts: the diode junction, the bloom from a point, the lens flaring, the burst into the hall. The most cuts in the film.</div>` : ''}
+      <div class="spec">
+        <div class="row"><span class="lbl">Camera</span><span class="val">${s.cam}</span></div>
+        <div class="row"><span class="lbl">Light</span><span class="val">${s.light}</span></div>
+        <div class="row"><span class="lbl">Audio</span><span class="val">${s.audio}</span></div>
+      </div>
+      <div class="prompt">
+        <div class="phead">
+          <span class="ttl">Veo 3 prompt</span>
+          <button class="copy" data-n="${i + 1}">Copy</button>
+        </div>
+        <div class="ptext">${s.prompt}<span class="g">\n\n${GLOBAL}</span></div>
+      </div>
+    </div>`;
+  el.querySelector('img').addEventListener('click', () => openLB(i));
+  board.appendChild(el);
+});
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('.copy');
+  if (!b) return;
+  e.stopPropagation();
+  const idx = parseInt(b.dataset.n, 10) - 1;
+  const full = SHOTS[idx].prompt + "\n\n" + GLOBAL;
+  navigator.clipboard.writeText(full).then(() => {
+    b.textContent = 'Copied';
+    b.classList.add('ok');
+    setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('ok'); }, 1400);
+  });
+});
+
+document.querySelectorAll('.toolbar button[data-view]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.toolbar button[data-view]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    board.className = btn.dataset.view;
+  });
+});
+// Play the board against the actual track, locked to the synced window.
+const track = document.getElementById('track');
+const playBtn = document.getElementById('playBtn');
+const playT = document.getElementById('playT');
+let curCard = -1;
+function setActive(i) {
+  if (i === curCard) return;
+  if (curCard >= 0) { const p = document.getElementById('card-' + curCard); if (p) p.classList.remove('playing'); }
+  curCard = i;
+  if (i >= 0) { const c = document.getElementById('card-' + i); if (c) { c.classList.add('playing'); c.scrollIntoView({ behavior: 'smooth', block: 'center' }); } }
+}
+function frameAt(ft) { let idx = 0; for (let k = 0; k < CUTS.length; k++) { if (CUTS[k].s <= ft) idx = k; else break; } return idx; }
+playBtn.addEventListener('click', () => {
+  if (!track.paused) { track.pause(); return; }
+  if (track.currentTime < AUDIO_START || track.currentTime >= AUDIO_END) track.currentTime = AUDIO_START;
+  track.play();
+});
+track.addEventListener('play', () => { playBtn.textContent = '⏸ Pause'; playBtn.classList.add('on'); });
+track.addEventListener('pause', () => { playBtn.textContent = '▶ Play with track'; playBtn.classList.remove('on'); });
+track.addEventListener('timeupdate', () => {
+  if (track.currentTime >= AUDIO_END) { track.pause(); track.currentTime = AUDIO_START; setActive(-1); playT.textContent = '0:00.0 · ♪' + fmtSong(AUDIO_START); return; }
+  const ft = Math.max(0, track.currentTime - AUDIO_START);
+  setActive(frameAt(ft));
+  playT.textContent = fmtFilm(ft) + ' · ♪' + fmtSong(track.currentTime);
+});
+
+let lbIdx = 0;
+function openLB(i) { lbIdx = i; renderLB(); document.getElementById('lightbox').classList.add('open'); }
+function closeLB() { document.getElementById('lightbox').classList.remove('open'); }
+function navLB(dir) { lbIdx = (lbIdx + dir + SHOTS.length) % SHOTS.length; renderLB(); }
+function renderLB() {
+  const n = String(lbIdx + 1).padStart(2, '0');
+  const s = SHOTS[lbIdx];
+  const img = document.getElementById('lb-img');
+  img.classList.remove('placeholder');
+  // Zoom view loads the 4608×1536 wall frame; falls back to the 3:1 preview, then a placeholder.
+  img.onerror = function(){
+    if (!this.dataset.fb) { this.dataset.fb = '1'; this.src = `3to1/frame-${n}.png?v=${VERSION}`; }
+    else { this.onerror = null; this.classList.add('placeholder'); this.src = placeholder(lbIdx + 1); }
+  };
+  img.dataset.fb = '';
+  img.src = `3to1-4k/frame-${n}.png?v=${VERSION}`;
+  document.getElementById('lb-num').textContent = `Frame ${n} · ${fmtFilm(CUTS[lbIdx].s)} · ♪ ${fmtSong(CUTS[lbIdx].song)} · ${s.stage} · 4K`;
+  document.getElementById('lb-cap').textContent = s.desc;
+  document.getElementById('lb-sub').textContent = `Camera: ${s.cam}  ·  Light: ${s.light}  ·  Audio: ${s.audio}`;
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowLeft') navLB(-1);
+  if (e.key === 'ArrowRight') navLB(1);
+});
+</script>
+</body>
+</html>
