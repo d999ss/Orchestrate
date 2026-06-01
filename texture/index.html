@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GE Vernova · Texture Engine</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:#02100f;font-family:'Inter','Helvetica Neue',Arial,sans-serif;color:#cfeae6;overflow:hidden}
+  #stage{position:fixed;inset:0;display:grid;place-items:center;background:#02100f}
+  #tex{display:block;width:100vw;height:100vh;object-fit:cover}
+  /* control panel */
+  #panel{position:fixed;top:16px;left:16px;width:286px;max-height:calc(100vh - 32px);overflow:auto;
+    background:rgba(4,26,26,.82);backdrop-filter:blur(10px);border:1px solid rgba(120,220,210,.16);
+    border-radius:12px;padding:16px 16px 18px;z-index:10;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+  #panel.hidden{transform:translateX(-340px);opacity:0;pointer-events:none;transition:.3s}
+  #panel h1{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#D6FF1A;font-weight:800;margin-bottom:2px}
+  #panel .sub{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5f8e8e;margin-bottom:14px}
+  .row{margin:11px 0}
+  .row label{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#9fc4c4;margin-bottom:5px}
+  .row label .v{color:#2CE7F2;font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;height:3px;-webkit-appearance:none;background:rgba(120,220,210,.2);border-radius:3px;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:#2CE7F2;cursor:pointer;box-shadow:0 0 8px rgba(44,231,242,.6)}
+  .seg{display:flex;gap:4px;flex-wrap:wrap}
+  .seg button{flex:1;min-width:54px;font-size:10px;padding:6px 4px;border-radius:6px;border:1px solid rgba(120,220,210,.18);
+    background:rgba(120,220,210,.05);color:#9fc4c4;cursor:pointer;letter-spacing:.04em;text-transform:uppercase}
+  .seg button.on{background:#2CE7F2;color:#022;border-color:#2CE7F2;font-weight:700}
+  .colorrow{display:flex;gap:10px}
+  .colorrow .c{flex:1}
+  .colorrow input[type=color]{width:100%;height:30px;border:1px solid rgba(120,220,210,.2);border-radius:6px;background:none;cursor:pointer;padding:2px}
+  .btns{display:flex;gap:8px;margin-top:14px}
+  .btns button{flex:1;font-size:10.5px;padding:9px 6px;border-radius:7px;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;font-weight:700;border:none}
+  .btns .rand{background:rgba(120,220,210,.1);color:#cfeae6;border:1px solid rgba(120,220,210,.2)}
+  .btns .exp{background:#D6FF1A;color:#021}
+  .exprow{display:flex;gap:8px;align-items:flex-end;margin-top:10px}
+  .exprow .c{flex:1}
+  .exprow input[type=number]{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(120,220,210,.2);color:#cfeae6;border-radius:6px;padding:6px;font-size:11px}
+  .hint{font-size:9.5px;color:#5f8e8e;margin-top:3px;letter-spacing:.04em}
+  #toggle{position:fixed;top:16px;left:16px;z-index:11;display:none;width:38px;height:38px;border-radius:9px;
+    background:rgba(4,26,26,.85);border:1px solid rgba(120,220,210,.2);color:#2CE7F2;cursor:pointer;font-size:16px}
+  #panel.hidden ~ #toggle{display:block}
+  .toplabel{position:fixed;bottom:14px;right:16px;z-index:10;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(120,220,210,.4)}
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="tex"></canvas></div>
+<button id="toggle">≡</button>
+
+<div id="panel">
+  <h1>Texture Engine</h1>
+  <div class="sub">GE Vernova · Orchestrate</div>
+
+  <div class="row">
+    <label>Source</label>
+    <div class="seg" id="src">
+      <button data-v="ref" class="on">Reference</button>
+      <button data-v="mapclouds">Map + Clouds</button>
+      <button data-v="clouds">Clouds</button>
+      <button data-v="map">Map</button>
+      <button data-v="image">Image…</button>
+    </div>
+    <input type="file" id="imgfile" accept="image/*" style="display:none">
+  </div>
+
+  <div class="row"><label>Grid pitch <span class="v" id="vPitch"></span></label><input type="range" id="pitch" min="3" max="16" step="1"></div>
+  <div class="row"><label>Pixel size <span class="v" id="vDot"></span></label><input type="range" id="dot" min="0.25" max="1" step="0.01"></div>
+  <div class="row"><label>Density <span class="v" id="vDens"></span></label><input type="range" id="dens" min="-0.30" max="0.55" step="0.01"></div>
+  <div class="row"><label>Contrast <span class="v" id="vContrast"></span></label><input type="range" id="contrast" min="0.6" max="2.6" step="0.02"></div>
+  <div class="row"><label>Cloud scale <span class="v" id="vScale"></span></label><input type="range" id="scale" min="1" max="9" step="0.1"></div>
+  <div class="row"><label>Softness (blur) <span class="v" id="vBlur"></span></label><input type="range" id="blur" min="0" max="3" step="0.1"></div>
+  <div class="row"><label>Levels <span class="v" id="vLevels"></span></label><input type="range" id="levels" min="0" max="8" step="1"></div>
+  <div class="row"><label>Light sweep <span class="v" id="vSweep"></span></label><input type="range" id="sweep" min="0" max="1" step="0.02"></div>
+  <div class="row"><label>Vignette <span class="v" id="vVig"></span></label><input type="range" id="vig" min="0" max="1" step="0.02"></div>
+
+  <div class="row">
+    <label>Colors · base / pixel</label>
+    <div class="colorrow">
+      <div class="c"><input type="color" id="base" value="#0c3a37"></div>
+      <div class="c"><input type="color" id="dotcol" value="#74e6cf"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>Animate <span class="v" id="vSpeed"></span></label>
+    <div class="seg"><button id="animBtn" data-on="0">Off</button></div>
+    <input type="range" id="speed" min="0" max="1" step="0.02" style="margin-top:8px">
+  </div>
+
+  <div class="btns">
+    <button class="rand" id="randBtn">Randomize</button>
+    <button class="exp" id="expBtn">Export PNG</button>
+  </div>
+  <div class="exprow">
+    <div class="c"><label style="font-size:10px;color:#9fc4c4;display:block;margin-bottom:4px">W</label><input type="number" id="exW" value="2000"></div>
+    <div class="c"><label style="font-size:10px;color:#9fc4c4;display:block;margin-bottom:4px">H</label><input type="number" id="exH" value="663"></div>
+  </div>
+  <div class="hint">Default 2000×663 is the reference frame, exported 1:1.</div>
+</div>
+
+<div class="toplabel">drag a value · randomize · export</div>
+
+<script>
+const TAU=Math.PI*2;
+const cv=document.getElementById('tex'), ctx=cv.getContext('2d');
+const off=document.createElement('canvas'), octx=off.getContext('2d'); // crisp pixels rendered here, then blurred onto main
+
+/* ---------- value-noise fbm ---------- */
+function hash2(x,y){let h=(x*374761393+y*668265263)|0;h=(h^(h>>13))*1274126177|0;return ((h^(h>>16))>>>0)/4294967295;}
+function vnoise(x,y){const xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;
+  const u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);
+  const a=hash2(xi,yi),b=hash2(xi+1,yi),c=hash2(xi,yi+1),d=hash2(xi+1,yi+1);
+  return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;}
+function fbm(x,y){let s=0,amp=0.5,f=1;for(let i=0;i<4;i++){s+=amp*vnoise(x*f,y*f);f*=2;amp*=0.5;}return s;}
+
+/* ---------- world map (ellipse continents) ---------- */
+const LAND=[[0.18,0.30,0.085,0.11],[0.135,0.21,0.05,0.06],[0.24,0.30,0.05,0.08],[0.305,0.155,0.035,0.05],
+  [0.275,0.66,0.045,0.16],[0.235,0.52,0.035,0.06],[0.49,0.26,0.045,0.06],[0.535,0.55,0.075,0.17],
+  [0.50,0.43,0.045,0.07],[0.70,0.30,0.155,0.115],[0.645,0.45,0.035,0.06],[0.775,0.55,0.05,0.045],
+  [0.82,0.59,0.03,0.03],[0.86,0.72,0.06,0.045]];
+function landStrength(nx,ny){let m=0;for(let i=0;i<LAND.length;i++){const e=LAND[i];
+  const dx=(nx-e[0])/e[2],dy=(ny-e[1])/e[3];const d=dx*dx+dy*dy;if(d<1.2)m=Math.max(m,1-d*0.84);}return Math.max(0,m);}
+
+/* ---------- image source (cover-mapped so it holds aspect at any window) ---------- */
+let imgSampler=null, refSampler=null;
+function makeSampler(image){
+  const SW=Math.min(400,image.width||400), SH=Math.max(1,Math.round(SW*(image.height||1)/(image.width||1)));
+  const c=document.createElement('canvas');c.width=SW;c.height=SH;const cc=c.getContext('2d');
+  cc.drawImage(image,0,0,SW,SH);const d=cc.getImageData(0,0,SW,SH).data;
+  const As=(image.width||SW)/(image.height||SH);
+  return (nx,ny)=>{
+    const A=(W||1)/(H||1); let u=nx,v=ny;
+    if(A>As) v=(ny-0.5)*(As/A)+0.5; else u=(nx-0.5)*(A/As)+0.5;
+    u=u<0?0:u>1?1:u; v=v<0?0:v>1?1:v;
+    const x=Math.min(SW-1,u*SW|0), y=Math.min(SH-1,v*SH|0), i=(y*SW+x)*4;
+    return (0.299*d[i]+0.587*d[i+1]+0.114*d[i+2])/255;};
+}
+
+/* ---------- state ---------- */
+const P={src:'mapclouds',pitch:6,dot:0.58,dens:0.13,contrast:1.05,scale:3.2,blur:0.7,levels:0,
+  sweep:0,vig:0.42,base:'#0c3a37',dotcol:'#74e6cf',anim:false,speed:0.3,seed:0};
+function hex(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
+
+/* brightness field for a normalized coord */
+function field(nx,ny,t){
+  const sd=P.seed*0.137;
+  if((P.src==='ref'||P.src==='image')&&imgSampler){
+    return imgSampler(nx,ny);    // straight luminance of the source → 1:1 with it
+  }
+  const cl=fbm(nx*P.scale+sd+t,ny*P.scale*0.5+sd*1.7);    // organic clouds
+  const fine=fbm(nx*P.scale*3.1+sd*2.3,ny*P.scale*3.1);   // fine coastline dither
+  if(P.src==='clouds') return Math.pow(cl,1.4)*1.3;
+  const land=landStrength(nx,ny);
+  if(P.src==='map') return land*(0.55+0.7*cl)*(0.7+0.5*fine);
+  // map + clouds (default — matches reference): continents broken into pixel clouds,
+  // plus a faint allover field so the grid reads everywhere (not isolated blobs).
+  return land*(0.5+0.8*cl)*(0.7+0.5*fine) + cl*0.12*(0.6+0.6*fine) + 0.03;
+}
+
+/* ---------- render the crisp pixel grid into octx ---------- */
+function renderGrid(g,W,H,t){
+  const base=hex(P.base), dotc=hex(P.dotcol);
+  // gradient base + diagonal light sweep
+  const lg=g.createLinearGradient(0,H,W,0);
+  lg.addColorStop(0,'rgb('+(base[0]*0.7|0)+','+(base[1]*0.7|0)+','+(base[2]*0.7|0)+')');
+  lg.addColorStop(0.5,'rgb('+base[0]+','+base[1]+','+base[2]+')');
+  lg.addColorStop(1,'rgb('+(base[0]*0.78|0)+','+(base[1]*0.78|0)+','+(base[2]*0.78|0)+')');
+  g.fillStyle=lg; g.fillRect(0,0,W,H);
+  if(P.sweep>0){const sw=g.createLinearGradient(0,H,W*0.9,0);
+    sw.addColorStop(0,'rgba(0,0,0,0)');
+    sw.addColorStop(0.5,'rgba('+Math.min(255,base[0]+60)+','+Math.min(255,base[1]+70)+','+Math.min(255,base[2]+60)+','+(0.22*P.sweep)+')');
+    sw.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=sw;g.fillRect(0,0,W,H);}
+  const pp=Math.max(3,Math.round(P.pitch)), sz=Math.max(1,pp*P.dot);
+  for(let x=pp/2;x<W;x+=pp){const nx=x/W;
+    for(let y=pp/2;y<H;y+=pp){const ny=y/H;
+      let b=field(nx,ny,t);
+      b=(b-(0.18-P.dens))*P.contrast;
+      b=b<0?0:b>1?1:b;
+      if(P.levels>0) b=Math.round(b*P.levels)/P.levels;
+      // faint uniform grid everywhere + brighter clusters on top (matches reference)
+      const bd=b<0.05?0.05:b;                       // floor so every cell shows a faint dot
+      const a=Math.min(0.96,0.11+b*0.82);
+      const r=(dotc[0]-base[0])*bd+base[0], gg=(dotc[1]-base[1])*bd+base[1], bb=(dotc[2]-base[2])*bd+base[2];
+      g.fillStyle='rgba('+(r|0)+','+(gg|0)+','+(bb|0)+','+a.toFixed(3)+')';
+      g.fillRect(x-sz/2,y-sz/2,sz,sz);}}
+  // vignette
+  if(P.vig>0){const v=g.createRadialGradient(W*0.5,H*0.45,Math.min(W,H)*0.15,W*0.5,H*0.5,Math.max(W,H)*0.7);
+    v.addColorStop(0,'rgba(0,0,0,0)');
+    v.addColorStop(1,'rgba('+(base[0]*0.35|0)+','+(base[1]*0.35|0)+','+(base[2]*0.35|0)+','+P.vig+')');
+    g.fillStyle=v;g.fillRect(0,0,W,H);}
+}
+
+/* compose to a target ctx at WxH (renders crisp pixels offscreen, then blurs) */
+function compose(targetCtx,W,H,t,blurScale){
+  off.width=W; off.height=H;
+  octx.clearRect(0,0,W,H);
+  renderGrid(octx,W,H,t);
+  targetCtx.clearRect(0,0,W,H);
+  targetCtx.filter = P.blur>0 ? 'blur('+(P.blur*(blurScale||1)).toFixed(2)+'px)' : 'none';
+  targetCtx.drawImage(off,0,0);
+  targetCtx.filter='none';
+}
+
+/* ---------- live canvas ---------- */
+let W=0,H=0;
+function size(){W=Math.floor(window.innerWidth); H=Math.floor(window.innerHeight);
+  cv.width=W; cv.height=H; cv.style.width=W+'px'; cv.style.height=H+'px'; draw();}
+function draw(t){compose(ctx,W,H,(P.anim? (t||performance.now())*0.0001*P.speed*10:0),1);}
+function loop(t){ if(P.anim){draw(t);} requestAnimationFrame(loop); }
+
+/* ---------- UI wiring ---------- */
+function bind(id,key,fmt){const el=document.getElementById(id),out=document.getElementById('v'+id.charAt(0).toUpperCase()+id.slice(1));
+  el.value=P[key];
+  const show=()=>{ if(out) out.textContent=(fmt?fmt(P[key]):P[key]); };
+  el.addEventListener('input',()=>{P[key]=parseFloat(el.value);show();draw();});show();}
+bind('pitch','pitch'); bind('dot','dot',v=>v.toFixed(2)); bind('dens','dens',v=>v.toFixed(2));
+bind('contrast','contrast',v=>v.toFixed(2)); bind('scale','scale',v=>v.toFixed(1));
+bind('blur','blur',v=>v.toFixed(1)); bind('levels','levels',v=>v==0?'smooth':v);
+bind('sweep','sweep',v=>v.toFixed(2)); bind('vig','vig',v=>v.toFixed(2)); bind('speed','speed',v=>v.toFixed(2));
+document.getElementById('base').addEventListener('input',e=>{P.base=e.target.value;draw();});
+document.getElementById('dotcol').addEventListener('input',e=>{P.dotcol=e.target.value;draw();});
+
+function selSrc(v){document.querySelectorAll('#src button').forEach(x=>x.classList.toggle('on',x.dataset.v===v));}
+document.querySelectorAll('#src button').forEach(b=>b.addEventListener('click',()=>{
+  const v=b.dataset.v;
+  if(v==='image'){document.getElementById('imgfile').click();return;}
+  if(v==='ref'){imgSampler=refSampler;}
+  P.src=v; selSrc(v); draw();}));
+document.getElementById('imgfile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;
+  const img=new Image();img.onload=()=>{imgSampler=makeSampler(img);P.src='image';selSrc('image');draw();};img.src=URL.createObjectURL(f);});
+
+/* preload the reference frame as the default source → opens 1:1 with the ref */
+const REF_B64='data:image/png;base64,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';
+(function(){const ref=new Image();ref.onload=()=>{refSampler=makeSampler(ref);imgSampler=refSampler;P.src='ref';selSrc('ref');draw();};ref.src=REF_B64;})();
+
+const animBtn=document.getElementById('animBtn');
+animBtn.addEventListener('click',()=>{P.anim=!P.anim;animBtn.textContent=P.anim?'On':'Off';animBtn.classList.toggle('on',P.anim);});
+
+document.getElementById('randBtn').addEventListener('click',()=>{
+  P.seed=Math.floor(Math.random()*9999);
+  P.scale=1.5+Math.random()*5; document.getElementById('scale').value=P.scale; document.getElementById('vScale').textContent=P.scale.toFixed(1);
+  P.dens=-0.1+Math.random()*0.4; document.getElementById('dens').value=P.dens; document.getElementById('vDens').textContent=P.dens.toFixed(2);
+  draw();});
+
+document.getElementById('expBtn').addEventListener('click',()=>{
+  const ew=Math.max(64,parseInt(document.getElementById('exW').value)||2250);
+  const eh=Math.max(64,parseInt(document.getElementById('exH').value)||750);
+  const oc=document.createElement('canvas'); oc.width=ew; oc.height=eh; const octx2=oc.getContext('2d');
+  compose(octx2,ew,eh,(P.anim?performance.now()*0.0001*P.speed*10:0), ew/W);
+  oc.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);
+    a.download='orchestrate-texture-'+ew+'x'+eh+'.png';a.click();},'image/png');});
+
+document.getElementById('toggle').addEventListener('click',()=>document.getElementById('panel').classList.remove('hidden'));
+
+window.addEventListener('resize',size);
+size(); requestAnimationFrame(loop);
+</script>
+</body>
+</html>
