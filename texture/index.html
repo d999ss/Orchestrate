@@ -4,43 +4,55 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GE Vernova · Texture Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
+  /* matches the Orchestrate review site design system */
+  :root{
+    --bg:#04090b; --fg:#cdebe7; --fgdim:#7aa9a4; --accent:#4ed9c6;
+    --line:#14302e; --card:#060f11;
+    --display:'Bebas Neue','Helvetica Neue',system-ui,sans-serif;
+    --body:'Inter',ui-sans-serif,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{background:#02100f;font-family:'Inter','Helvetica Neue',Arial,sans-serif;color:#cfeae6;overflow:hidden}
+  body{background:#02100f;font-family:var(--body);color:var(--fg);overflow:hidden}
   #stage{position:fixed;inset:0;display:grid;place-items:center;background:#02100f}
   #tex{display:block;width:100vw;height:100vh;object-fit:cover}
   /* control panel */
-  #panel{position:fixed;top:16px;right:16px;width:286px;max-height:calc(100vh - 32px);overflow:auto;
-    background:rgba(4,26,26,.82);backdrop-filter:blur(10px);border:1px solid rgba(120,220,210,.16);
-    border-radius:12px;padding:16px 16px 18px;z-index:10;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+  #panel{position:fixed;top:16px;right:16px;width:288px;max-height:calc(100vh - 32px);overflow:auto;
+    background:rgba(6,15,17,.86);backdrop-filter:blur(8px);border:1px solid var(--line);
+    border-radius:6px;padding:20px 18px;z-index:10;box-shadow:0 30px 80px -30px rgba(0,0,0,.85)}
   #panel.hidden{transform:translateX(340px);opacity:0;pointer-events:none;transition:.3s}
-  #panel h1{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#D6FF1A;font-weight:800;margin-bottom:2px}
-  #panel .sub{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5f8e8e;margin-bottom:14px}
-  .row{margin:11px 0}
-  .row label{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#9fc4c4;margin-bottom:5px}
-  .row label .v{color:#2CE7F2;font-variant-numeric:tabular-nums}
-  input[type=range]{width:100%;height:3px;-webkit-appearance:none;background:rgba(120,220,210,.2);border-radius:3px;outline:none}
-  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:#2CE7F2;cursor:pointer;box-shadow:0 0 8px rgba(44,231,242,.6)}
-  .seg{display:flex;gap:4px;flex-wrap:wrap}
-  .seg button{flex:1;min-width:54px;font-size:10px;padding:6px 4px;border-radius:6px;border:1px solid rgba(120,220,210,.18);
-    background:rgba(120,220,210,.05);color:#9fc4c4;cursor:pointer;letter-spacing:.04em;text-transform:uppercase}
-  .seg button.on{background:#2CE7F2;color:#022;border-color:#2CE7F2;font-weight:700}
+  #panel h1{font-family:var(--display);font-weight:400;font-size:26px;line-height:1;letter-spacing:.02em;color:var(--fg)}
+  #panel .sub{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-top:4px;margin-bottom:18px}
+  .row{margin:12px 0}
+  .row label{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fgdim);font-weight:500;margin-bottom:7px}
+  .row label .v{color:var(--accent);font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;height:2px;-webkit-appearance:none;background:var(--line);border-radius:2px;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--accent);cursor:pointer}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .seg button{flex:1;min-width:54px;font-size:11px;padding:7px 6px;border-radius:999px;border:1px solid var(--line);
+    background:transparent;color:var(--fgdim);cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-weight:500;transition:120ms}
+  .seg button:hover{color:var(--accent);border-color:var(--accent)}
+  .seg button.on{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
   .colorrow{display:flex;gap:10px}
   .colorrow .c{flex:1}
-  .colorrow input[type=color]{width:100%;height:30px;border:1px solid rgba(120,220,210,.2);border-radius:6px;background:none;cursor:pointer;padding:2px}
-  .btns{display:flex;gap:8px;margin-top:14px}
-  .btns button{flex:1;font-size:10.5px;padding:9px 6px;border-radius:7px;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;font-weight:700;border:none}
-  .btns .rand{background:rgba(120,220,210,.1);color:#cfeae6;border:1px solid rgba(120,220,210,.2)}
-  .btns .exp{background:#D6FF1A;color:#021}
-  .exprow{display:flex;gap:8px;align-items:flex-end;margin-top:10px}
+  .colorrow input[type=color]{width:100%;height:30px;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;padding:2px}
+  .btns{display:flex;gap:8px;margin-top:16px}
+  .btns button{flex:1;font-size:12px;padding:10px 6px;border-radius:999px;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-weight:500;transition:120ms;height:36px}
+  .btns .rand{background:transparent;color:var(--fgdim);border:1px solid var(--line)}
+  .btns .rand:hover{color:var(--accent);border-color:var(--accent)}
+  .btns .exp{background:var(--accent);color:var(--bg);border:1px solid var(--accent);font-weight:600}
+  .exprow{display:flex;gap:8px;align-items:flex-end;margin-top:12px}
   .exprow .c{flex:1}
-  .exprow input[type=number]{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(120,220,210,.2);color:#cfeae6;border-radius:6px;padding:6px;font-size:11px}
-  .hint{font-size:9.5px;color:#5f8e8e;margin-top:3px;letter-spacing:.04em}
-  #toggle{position:fixed;top:16px;right:16px;z-index:11;display:none;width:38px;height:38px;border-radius:9px;
-    background:rgba(4,26,26,.85);border:1px solid rgba(120,220,210,.2);color:#2CE7F2;cursor:pointer;font-size:16px}
+  .exprow input[type=number]{width:100%;background:rgba(0,0,0,.3);border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:7px;font-size:12px}
+  .hint{font-size:10px;color:var(--fgdim);margin-top:4px;letter-spacing:.04em;line-height:1.5}
+  #toggle{position:fixed;top:16px;right:16px;z-index:11;display:none;width:38px;height:38px;border-radius:999px;
+    background:rgba(6,15,17,.9);border:1px solid var(--line);color:var(--accent);cursor:pointer;font-size:16px}
   #panel.hidden ~ #toggle{display:block}
-  .toplabel{position:fixed;bottom:14px;left:16px;z-index:10;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(120,220,210,.4)}
+  .toplabel{position:fixed;bottom:14px;left:16px;z-index:10;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--fgdim);opacity:.6}
 </style>
 </head>
 <body>
