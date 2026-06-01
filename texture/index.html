@@ -11,10 +11,10 @@
   #stage{position:fixed;inset:0;display:grid;place-items:center;background:#02100f}
   #tex{display:block;width:100vw;height:100vh;object-fit:cover}
   /* control panel */
-  #panel{position:fixed;top:16px;left:16px;width:286px;max-height:calc(100vh - 32px);overflow:auto;
+  #panel{position:fixed;top:16px;right:16px;width:286px;max-height:calc(100vh - 32px);overflow:auto;
     background:rgba(4,26,26,.82);backdrop-filter:blur(10px);border:1px solid rgba(120,220,210,.16);
     border-radius:12px;padding:16px 16px 18px;z-index:10;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
-  #panel.hidden{transform:translateX(-340px);opacity:0;pointer-events:none;transition:.3s}
+  #panel.hidden{transform:translateX(340px);opacity:0;pointer-events:none;transition:.3s}
   #panel h1{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#D6FF1A;font-weight:800;margin-bottom:2px}
   #panel .sub{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5f8e8e;margin-bottom:14px}
   .row{margin:11px 0}
@@ -37,10 +37,10 @@
   .exprow .c{flex:1}
   .exprow input[type=number]{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(120,220,210,.2);color:#cfeae6;border-radius:6px;padding:6px;font-size:11px}
   .hint{font-size:9.5px;color:#5f8e8e;margin-top:3px;letter-spacing:.04em}
-  #toggle{position:fixed;top:16px;left:16px;z-index:11;display:none;width:38px;height:38px;border-radius:9px;
+  #toggle{position:fixed;top:16px;right:16px;z-index:11;display:none;width:38px;height:38px;border-radius:9px;
     background:rgba(4,26,26,.85);border:1px solid rgba(120,220,210,.2);color:#2CE7F2;cursor:pointer;font-size:16px}
   #panel.hidden ~ #toggle{display:block}
-  .toplabel{position:fixed;bottom:14px;right:16px;z-index:10;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(120,220,210,.4)}
+  .toplabel{position:fixed;bottom:14px;left:16px;z-index:10;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(120,220,210,.4)}
 </style>
 </head>
 <body>
