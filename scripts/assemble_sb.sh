@@ -26,10 +26,7 @@ for F in $(jq -r '.windows[].frame' "$CUT_SHEET" | sort -u); do
   [ -f "$CLIPS/clip-$PADF.mp4" ] || { echo "MISSING $CLIPS/clip-$PADF.mp4" >&2; exit 1; }
 done
 
-# Trim each clip to its window duration. Native playback only.
-# If a window exceeds the source's native duration, freeze the last frame
-# (tpad=stop_mode=clone). This is NOT slow-motion — it's a still hold on
-# the final frame.
+# Trim each clip to its window duration. Native playback (no fake zoompan).
 for i in $(seq 1 "$N_CUTS"); do
   IDX=$(printf "%03d" "$i")
   FRAME=$(jq -r ".windows[$((i-1))].frame" "$CUT_SHEET")

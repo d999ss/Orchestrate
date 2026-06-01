@@ -1,0 +1,395 @@
+#!/usr/bin/env python3
+"""Build a visual cut editor — waveform + bass hits + current cuts overlaid.
+
+Outputs:
+  film-1/editor.html         — interactive cut editor
+  film-1/wave_data.json      — waveform + bass hit data
+  film-1/wave.png            — high-res waveform image
+
+What it shows:
+  - The 60s audio waveform of Beats.mp3 (with the build-up bar)
+  - Every detected bass thump as a vertical line (height = energy)
+  - The current cut sheet's cut points as RED markers
+  - Story frame thumbnails between cuts
+  - Click a bass hit to LOCK it as a cut point
+  - Click an existing cut to remove it
+  - Export → writes the chosen cuts to cut_sheet_sb1.json + triggers rebuild
+"""
+import json
+import numpy as np
+import scipy.signal
+import librosa
+import warnings
+import pathlib
+import subprocess
+warnings.filterwarnings("ignore")
+
+ROOT = pathlib.Path("/Users/donnysmith/Projects/Orchestrate")
+AUDIO_START = 7.13
+FILM_LEN = 60.0
+
+# Load the 60s audio window
+y, sr = librosa.load(str(ROOT / "audio/Beats.mp3"), sr=None, mono=True,
+                     offset=AUDIO_START, duration=FILM_LEN)
+
+# === Waveform downsample for display ===
+TARGET_WIDTH = 4000   # px
+samples_per_px = max(1, len(y) // TARGET_WIDTH)
+peaks = []
+for i in range(0, len(y), samples_per_px):
+    chunk = y[i:i + samples_per_px]
+    if len(chunk):
+        peaks.append([float(chunk.min()), float(chunk.max())])
+print(f"Waveform: {len(peaks)} columns over {FILM_LEN}s")
+
+# === Bass hit detection (kick drum specifically, not all bass) ===
+# Strategy: bandpass to kick fundamentals (50-100Hz), compute RMS envelope on
+# small windows, then peak-detect with PROMINENCE so only actual punches count.
+nyq = sr / 2
+sos = scipy.signal.butter(6, [50/nyq, 100/nyq], btype="bandpass", output="sos")
+y_kick = scipy.signal.sosfiltfilt(sos, y)
+
+# RMS envelope at 10ms hops
+hop_s = 0.010
+hop_n = int(hop_s * sr)
+win_n = int(0.025 * sr)  # 25ms window
+n_frames = (len(y_kick) - win_n) // hop_n
+env = np.zeros(n_frames)
+for i in range(n_frames):
+    seg = y_kick[i*hop_n:i*hop_n + win_n]
+    env[i] = np.sqrt(np.mean(seg ** 2))
+
+# Smooth slightly to ride out 60Hz transient ringing
+env_smooth = scipy.signal.savgol_filter(env, 5, 2) if len(env) > 5 else env
+
+# Peak-detect with prominence threshold tied to overall max
+max_env = env_smooth.max() if env_smooth.size else 1.0
+peaks, props = scipy.signal.find_peaks(
+    env_smooth,
+    height=max_env * 0.15,          # at least 15% of max
+    prominence=max_env * 0.08,      # rise above noise floor
+    distance=int(0.18 / hop_s),     # ≥180ms between hits (max ~5/s = 300 BPM)
+)
+bass_hits = []
+for p in peaks:
+    t = float(p * hop_s)
+    e = float(env_smooth[p])
+    bass_hits.append({"t": round(t, 3), "energy": round(e, 4)})
+
+# Normalize energy 0-1
+max_e = max(h["energy"] for h in bass_hits) if bass_hits else 1.0
+for h in bass_hits:
+    h["norm"] = round(h["energy"] / max_e, 3)
+print(f"Bass hits (kick-band peak detection): {len(bass_hits)}")
+# Show the loudest 10
+top10 = sorted(bass_hits, key=lambda h: -h["energy"])[:10]
+print("Top 10 by energy:")
+for h in sorted(top10, key=lambda h: h["t"]):
+    print(f"  {h['t']:5.2f}s  norm={h['norm']:.2f}")
+
+# === Beat grid (madmom-equivalent, every 0.4615s @ 130 BPM) ===
+from madmom.features.downbeats import RNNDownBeatProcessor, DBNDownBeatTrackingProcessor
+act = RNNDownBeatProcessor()(str(ROOT / "audio/Beats.mp3"))
+tracker = DBNDownBeatTrackingProcessor(beats_per_bar=[3, 4], fps=100)
+beats_raw = tracker(act)
+beats = []
+for t, bp in beats_raw:
+    rel = float(t) - AUDIO_START
+    if 0 <= rel <= FILM_LEN:
+        beats.append({"t": round(rel, 3), "bar_pos": int(bp)})
+print(f"Beats in window: {len(beats)}")
+
+# === Existing cut sheet (whatever's current) ===
+cs_path = ROOT / "audio/cut_sheet_sb1.json"
+current_cuts = []
+if cs_path.exists():
+    with open(cs_path) as f:
+        cs = json.load(f)
+    for w in cs["windows"]:
+        current_cuts.append({"t": w["start_in_audio"], "frame": w["frame"]})
+
+# Save data
+data = {
+    "audio_url": "/audio/Beats.mp3",
+    "audio_start_sec": AUDIO_START,
+    "film_duration": FILM_LEN,
+    "waveform_peaks": peaks,
+    "bass_hits": bass_hits,
+    "beats": beats,
+    "current_cuts": current_cuts,
+}
+(ROOT / "film-1" / "wave_data.json").write_text(json.dumps(data))
+print(f"Wrote film-1/wave_data.json")
+
+# Now the editor HTML
+HTML = r"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SB1 cut editor · local</title>
+<style>
+  :root { --bg:#04090b; --fg:#cdebe7; --fg-dim:#7aa9a4; --accent:#4ed9c6; --line:#14302e; --card:#060f11; --kick:#ff4757; --beat:#3a5a55; }
+  html, body { margin:0; background:var(--bg); color:var(--fg); font-family:'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  header { padding:18px 28px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  header h1 { margin:0; font-size:16px; font-weight:500; letter-spacing:0.04em; }
+  header h1 .pill { color:var(--accent); border:1px solid var(--accent); padding:2px 10px; border-radius:999px; font-size:10px; letter-spacing:0.18em; margin-left:10px; }
+  .controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .controls button { background:transparent; color:var(--fg); border:1px solid var(--line); padding:8px 14px; border-radius:999px; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; font-family:inherit; }
+  .controls button:hover { color:var(--accent); border-color:var(--accent); }
+  .controls button.primary { background:var(--accent); color:var(--bg); border-color:var(--accent); font-weight:600; }
+  .controls input[type=range] { width:120px; }
+  main { padding:18px 28px 40px; }
+  .legend { display:flex; gap:18px; font-size:11px; color:var(--fg-dim); letter-spacing:0.05em; margin-bottom:10px; flex-wrap:wrap; }
+  .legend .sw { display:inline-block; width:14px; height:14px; vertical-align:middle; margin-right:5px; }
+  .timeline-wrap { position:relative; background:var(--card); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  canvas { display:block; width:100%; height:260px; background:var(--card); cursor:crosshair; }
+  .timecode { position:absolute; top:6px; left:8px; font-family: 'Geist Mono', ui-monospace, monospace; font-size:11px; color:var(--accent); pointer-events:none; background:rgba(0,0,0,0.5); padding:2px 6px; border-radius:3px; }
+  .cuts-list { margin-top:14px; padding:14px; background:var(--card); border:1px solid var(--line); border-radius:6px; }
+  .cuts-list h3 { margin:0 0 8px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--fg-dim); font-weight:600; }
+  .cut-row { display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px solid var(--line); font-family:'Geist Mono', ui-monospace, monospace; font-size:12px; }
+  .cut-row:last-child { border-bottom:none; }
+  .cut-row .frame { color:var(--accent); width:60px; }
+  .cut-row .time { color:var(--fg); width:90px; }
+  .cut-row .energy { color:var(--fg-dim); width:120px; }
+  .cut-row button { background:transparent; color:var(--fg-dim); border:1px solid var(--line); padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer; }
+  .cut-row button:hover { color:var(--kick); border-color:var(--kick); }
+  audio { width:100%; margin-top:14px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>SB1 cut editor <span class="pill">click bass hits to set cuts</span></h1>
+  <div class="controls">
+    <button onclick="playPause()">▶ ⏸ play</button>
+    <button onclick="autoSnap()">⚡ auto-snap to loudest</button>
+    <button onclick="resetCuts()">↺ reset</button>
+    <button class="primary" onclick="exportCuts()">Export &amp; rebuild</button>
+  </div>
+</header>
+<main>
+  <div class="legend">
+    <span><span class="sw" style="background:#4ed9c6;border:1px solid #4ed9c6;"></span>waveform</span>
+    <span><span class="sw" style="background:#ff4757;"></span>bass hit (height = energy)</span>
+    <span><span class="sw" style="background:#3a5a55;"></span>beat grid</span>
+    <span><span class="sw" style="background:#ffe066;border:2px solid #ffe066;"></span>cut point (drag or click to set)</span>
+    <span style="color:#fff;">click a bass hit to ADD · click a cut to REMOVE</span>
+  </div>
+  <div class="timeline-wrap">
+    <canvas id="canvas" width="4000" height="260"></canvas>
+    <div class="timecode" id="timecode">0.00s</div>
+  </div>
+  <audio id="audio" controls src="/audio/Beats.mp3"></audio>
+  <div class="cuts-list">
+    <h3>Current cuts (story frames in order, last cut = film end)</h3>
+    <div id="cuts"></div>
+  </div>
+</main>
+
+<script>
+const STORY = [1, 2, 4, 9, 10, 11, 12, 13, 16, 19, 21, 25, 27, 28];
+let data = null;
+let cuts = []; // array of {t, frame_idx (which STORY index this cut ENDS)}
+
+fetch('/film-1/wave_data.json').then(r => r.json()).then(d => {
+  data = d;
+  // Initialize cuts from current_cuts if reasonable
+  if (d.current_cuts && d.current_cuts.length === STORY.length) {
+    // Use cut END times (next window start)
+    cuts = d.current_cuts.slice(1).map((c, i) => ({t: c.t, frame_idx: i}));
+  }
+  draw();
+  renderCuts();
+});
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const W = 4000, H = 260;
+
+function tToX(t) { return (t / data.film_duration) * W; }
+function xToT(x) { return (x / W) * data.film_duration; }
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  // beats
+  ctx.lineWidth = 1;
+  data.beats.forEach(b => {
+    ctx.strokeStyle = b.bar_pos === 1 ? '#557a72' : '#2a4a45';
+    ctx.beginPath();
+    ctx.moveTo(tToX(b.t), 0);
+    ctx.lineTo(tToX(b.t), H);
+    ctx.stroke();
+  });
+  // bass hits
+  data.bass_hits.forEach(h => {
+    const x = tToX(h.t);
+    const height = h.norm * (H/2 - 10);
+    ctx.fillStyle = `rgba(255, 71, 87, ${0.4 + h.norm * 0.6})`;
+    ctx.fillRect(x - 1, H/2 - height, 2, height * 2);
+  });
+  // waveform
+  ctx.strokeStyle = '#4ed9c6';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  data.waveform_peaks.forEach((p, i) => {
+    const x = i * (W / data.waveform_peaks.length);
+    const y1 = H/2 + p[0] * (H/2 - 12);
+    const y2 = H/2 + p[1] * (H/2 - 12);
+    ctx.moveTo(x, y1);
+    ctx.lineTo(x, y2);
+  });
+  ctx.stroke();
+  // cuts
+  cuts.forEach((c, i) => {
+    const x = tToX(c.t);
+    ctx.strokeStyle = '#ffe066';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, H);
+    ctx.stroke();
+    ctx.fillStyle = '#ffe066';
+    ctx.font = 'bold 13px Inter, sans-serif';
+    ctx.fillText('f' + STORY[i+1], x + 4, 18);
+  });
+  // playhead
+  const audio = document.getElementById('audio');
+  const ct = audio.currentTime - data.audio_start_sec;
+  if (ct >= 0 && ct <= data.film_duration) {
+    const x = tToX(ct);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, H);
+    ctx.stroke();
+  }
+}
+
+setInterval(draw, 50);
+
+function getCanvasCoord(e) {
+  const rect = canvas.getBoundingClientRect();
+  const x = (e.clientX - rect.left) * (W / rect.width);
+  return x;
+}
+
+canvas.addEventListener('click', (e) => {
+  if (!data) return;
+  const x = getCanvasCoord(e);
+  const t = xToT(x);
+  // Are we within 8px of an existing cut? → remove
+  for (let i = 0; i < cuts.length; i++) {
+    if (Math.abs(tToX(cuts[i].t) - x) < 8) {
+      cuts.splice(i, 1);
+      reindexCuts();
+      draw(); renderCuts();
+      return;
+    }
+  }
+  // Else snap to nearest bass hit within 0.3s
+  let nearest = null;
+  let bestDist = 0.3;
+  data.bass_hits.forEach(h => {
+    const dist = Math.abs(h.t - t);
+    if (dist < bestDist) { bestDist = dist; nearest = h; }
+  });
+  if (nearest) {
+    cuts.push({t: nearest.t, frame_idx: 0});
+    cuts.sort((a, b) => a.t - b.t);
+    reindexCuts();
+    if (cuts.length > STORY.length - 1) cuts = cuts.slice(0, STORY.length - 1);
+    draw(); renderCuts();
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (!data) return;
+  const x = getCanvasCoord(e);
+  const t = xToT(x);
+  document.getElementById('timecode').textContent = `${t.toFixed(2)}s · master ${(t+3).toFixed(2)}s`;
+});
+
+function reindexCuts() {
+  cuts.forEach((c, i) => c.frame_idx = i);
+}
+
+function renderCuts() {
+  const out = document.getElementById('cuts');
+  let html = '';
+  let prev = 0;
+  const allCuts = [{t: 0}].concat(cuts).concat([{t: data.film_duration}]);
+  for (let i = 0; i < STORY.length; i++) {
+    const s = allCuts[i] ? allCuts[i].t : 0;
+    const e = allCuts[i+1] ? allCuts[i+1].t : data.film_duration;
+    const energy = i < cuts.length ? findBassEnergy(cuts[i].t) : null;
+    html += `<div class="cut-row">
+      <span class="frame">f${String(STORY[i]).padStart(2,'0')}</span>
+      <span class="time">${s.toFixed(2)}→${e.toFixed(2)}s</span>
+      <span class="energy">${(e-s).toFixed(2)}s${energy ? ' · ⚡' + energy.toFixed(2) : ''}</span>
+      ${i < cuts.length ? `<button onclick="removeCut(${i})">remove cut</button>` : ''}
+    </div>`;
+  }
+  out.innerHTML = html;
+}
+
+function findBassEnergy(t) {
+  let best = null;
+  data.bass_hits.forEach(h => {
+    if (Math.abs(h.t - t) < 0.05) best = h.norm;
+  });
+  return best;
+}
+
+function removeCut(i) {
+  cuts.splice(i, 1);
+  reindexCuts();
+  draw(); renderCuts();
+}
+
+function autoSnap() {
+  // Take the top (STORY.length-1) loudest bass hits, in time order
+  const sorted = data.bass_hits.slice().sort((a,b) => b.norm - a.norm);
+  const top = sorted.slice(0, STORY.length - 1).sort((a,b) => a.t - b.t);
+  // Enforce min 0.6s spacing
+  const filtered = [top[0]];
+  for (let i = 1; i < top.length; i++) {
+    if (top[i].t - filtered[filtered.length-1].t >= 0.6) filtered.push(top[i]);
+  }
+  cuts = filtered.map(h => ({t: h.t, frame_idx: 0}));
+  reindexCuts();
+  draw(); renderCuts();
+}
+
+function resetCuts() { cuts = []; draw(); renderCuts(); }
+
+function playPause() {
+  const a = document.getElementById('audio');
+  if (a.paused) a.play(); else a.pause();
+}
+
+document.getElementById('audio').addEventListener('loadedmetadata', () => {
+  document.getElementById('audio').currentTime = data ? data.audio_start_sec : 0;
+});
+
+async function exportCuts() {
+  if (cuts.length !== STORY.length - 1) {
+    alert(`Need exactly ${STORY.length - 1} cuts (have ${cuts.length}). One per frame transition.`);
+    return;
+  }
+  // Post to local endpoint... but server is simple http.server, no POST. Instead:
+  // Write to clipboard and tell user to run the rebuild script.
+  const out = {
+    cuts: cuts.map(c => c.t),
+    story: STORY,
+  };
+  await navigator.clipboard.writeText(JSON.stringify(out, null, 2));
+  alert('Cut sheet copied to clipboard. Paste into terminal:\n\necho \'<paste>\' > /tmp/manual_cuts.json && .venv/bin/python scripts/apply_manual_cuts.py');
+}
+</script>
+</body>
+</html>
+"""
+
+(ROOT / "film-1" / "editor.html").write_text(HTML)
+print(f"Wrote film-1/editor.html")
+print(f"\nOpen: http://localhost:8765/film-1/editor.html")

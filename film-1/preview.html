@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SB1 — every generation · local only</title>
+<style>
+  :root { --bg:#04090b; --fg:#cdebe7; --fg-dim:#7aa9a4; --accent:#4ed9c6; --line:#14302e; --card:#060f11; }
+  html, body { margin:0; background:var(--bg); color:var(--fg); font-family:'Inter', system-ui, sans-serif; }
+  h1 { padding:24px 32px 8px; margin:0; font-weight:500; font-size:18px; letter-spacing:0.04em; }
+  h1 .pill { color:var(--accent); border:1px solid var(--accent); padding:2px 8px; border-radius:999px; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; margin-left:10px; vertical-align:middle; }
+  .section { padding:24px 32px 8px; border-bottom:1px solid var(--line); }
+  .section h2 { font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin:0 0 4px; }
+  .section p { font-size:13px; color:var(--fg-dim); margin:0 0 18px; max-width:80ch; }
+  .controls { padding:14px 32px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--card); display:flex; gap:12px; position:sticky; top:0; z-index:10; flex-wrap:wrap; }
+  .controls button { background:transparent; color:var(--fg); border:1px solid var(--line); padding:8px 16px; border-radius:999px; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; font-family:inherit; }
+  .controls button:hover { color:var(--accent); border-color:var(--accent); }
+  .grid { padding:18px 32px 32px; display:grid; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr)); gap:18px; }
+  .clip { background:var(--card); border:1px solid var(--line); border-radius:6px; overflow:hidden; position:relative; }
+  .clip video { display:block; width:100%; height:auto; background:#000; }
+  .clip .num { position:absolute; top:8px; left:8px; background:rgba(0,0,0,0.65); color:var(--accent); border:1px solid var(--accent); padding:4px 10px; border-radius:999px; font-size:10px; letter-spacing:0.18em; font-weight:600; }
+  .clip .meta { padding:10px 14px; font-size:11px; color:var(--fg-dim); display:flex; justify-content:space-between; gap:8px; }
+  .clip .meta strong { color:var(--fg); font-weight:600; }
+  .clip[data-status="current"] { border-color:var(--accent); }
+</style>
+</head>
+<body>
+<h1>SB1 · every Veo generation <span class="pill">local only · not deployed</span></h1>
+
+<div class="controls">
+  <button onclick="document.querySelectorAll('video').forEach(v=>v.play())">▶ Play all</button>
+  <button onclick="document.querySelectorAll('video').forEach(v=>{v.pause(); v.currentTime=0})">■ Reset</button>
+  <button onclick="document.querySelectorAll('video').forEach(v=>{v.loop=true; v.play()})">↻ Loop all</button>
+</div>
+
+<div class="section">
+  <h2>Current production set · 30 clips</h2>
+  <p>These are the clips currently in the cut sheet — what plays in the master film.</p>
+</div>
+<div class="grid">
+<div class="clip" data-status="current">
+    <span class="num">1</span>
+    <video data-src="/films/sb1_clips/clip-01.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-01.mp4</strong> · earth</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">2</span>
+    <video data-src="/films/sb1_clips/clip-02.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-02.mp4</strong> · zoom→facility</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">3</span>
+    <video data-src="/films/sb1_clips/clip-03.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-03.mp4</strong> · turbine coupling</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">4</span>
+    <video data-src="/films/sb1_clips/clip-04.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-04.mp4</strong> · combustion ring</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">5</span>
+    <video data-src="/films/sb1_clips/clip-05.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-05.mp4</strong> · rotor blades</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">6</span>
+    <video data-src="/films/sb1_clips/clip-06.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-06.mp4</strong> · rotor spinning</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">7</span>
+    <video data-src="/films/sb1_clips/clip-07.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-07.mp4</strong> · generator interior</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">8</span>
+    <video data-src="/films/sb1_clips/clip-08.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-08.mp4</strong> · electromagnetic</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">9</span>
+    <video data-src="/films/sb1_clips/clip-09.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-09.mp4</strong> · electricity in copper</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">10</span>
+    <video data-src="/films/sb1_clips/clip-10.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-10.mp4</strong> · switchyard</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">11</span>
+    <video data-src="/films/sb1_clips/clip-11.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-11.mp4</strong> · transformers</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">12</span>
+    <video data-src="/films/sb1_clips/clip-12.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-12.mp4</strong> · transmission lines</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">13</span>
+    <video data-src="/films/sb1_clips/clip-13.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-13.mp4</strong> · grid network aerial</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">14</span>
+    <video data-src="/films/sb1_clips/clip-14.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-14.mp4</strong> · data trails / grid</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">15</span>
+    <video data-src="/films/sb1_clips/clip-15.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-15.mp4</strong> · control room</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">16</span>
+    <video data-src="/films/sb1_clips/clip-16.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-16.mp4</strong> · southeast US</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">17</span>
+    <video data-src="/films/sb1_clips/clip-17.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-17.mp4</strong> · cyan flow→city</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">18</span>
+    <video data-src="/films/sb1_clips/clip-18.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-18.mp4</strong> · transmission→city</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">19</span>
+    <video data-src="/films/sb1_clips/clip-19.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-19.mp4</strong> · Atlanta lighting up</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">20</span>
+    <video data-src="/films/sb1_clips/clip-20.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-20.mp4</strong> · lights spreading</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">21</span>
+    <video data-src="/films/sb1_clips/clip-21.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-21.mp4</strong> · downtown stadium</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">22</span>
+    <video data-src="/films/sb1_clips/clip-22.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-22.mp4</strong> · energy→stadium</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">23</span>
+    <video data-src="/films/sb1_clips/clip-23.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-23.mp4</strong> · stadium bowl</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">24</span>
+    <video data-src="/films/sb1_clips/clip-24.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-24.mp4</strong> · downtown synced</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">25</span>
+    <video data-src="/films/sb1_clips/clip-25.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-25.mp4</strong> · conference center</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">26</span>
+    <video data-src="/films/sb1_clips/clip-26.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-26.mp4</strong> · atrium</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">27</span>
+    <video data-src="/films/sb1_clips/clip-27.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-27.mp4</strong> · keynote hall</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">28</span>
+    <video data-src="/films/sb1_clips/clip-28.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-28.mp4</strong> · stage lights</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">29</span>
+    <video data-src="/films/sb1_clips/clip-29.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-29.mp4</strong> · keynote pull-back</span></div>
+  </div>
+<div class="clip" data-status="current">
+    <span class="num">30</span>
+    <video data-src="/films/sb1_clips/clip-30.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-30.mp4</strong> · stage finale</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Take 2 · stylized regens (replaced — you rejected)</h2>
+  <p>3D-rendered objects in void. Same files as the current set above, repeated here for direct A/B with earlier takes below.</p>
+</div>
+
+<div class="section">
+  <h2>Take 1 · documentary realism (rejected · archived)</h2>
+  <p>First regen attempt. Wrong art direction — too photoreal/literal.</p>
+</div>
+<div class="grid">
+<div class="clip">
+    <span class="num">8</span>
+    <video data-src="/films/sb1_clips/take1_documentary/clip-08.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-08.mp4</strong> · electromagnetic · take1</span></div>
+  </div>
+<div class="clip">
+    <span class="num">14</span>
+    <video data-src="/films/sb1_clips/take1_documentary/clip-14.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-14.mp4</strong> · data trails / grid · take1</span></div>
+  </div>
+<div class="clip">
+    <span class="num">17</span>
+    <video data-src="/films/sb1_clips/take1_documentary/clip-17.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-17.mp4</strong> · cyan flow→city · take1</span></div>
+  </div>
+<div class="clip">
+    <span class="num">23</span>
+    <video data-src="/films/sb1_clips/take1_documentary/clip-23.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-23.mp4</strong> · stadium bowl · take1</span></div>
+  </div>
+<div class="clip">
+    <span class="num">29</span>
+    <video data-src="/films/sb1_clips/take1_documentary/clip-29.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-29.mp4</strong> · keynote pull-back · take1</span></div>
+  </div>
+<div class="clip">
+    <span class="num">30</span>
+    <video data-src="/films/sb1_clips/take1_documentary/clip-30.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-30.mp4</strong> · stage finale · take1</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>v9 abstract originals · pre-regen storyboard-aligned</h2>
+  <p>The original 6 frames flagged as unreadable ("UFO/podium," explosion, etc.). Now archived.</p>
+</div>
+<div class="grid">
+<div class="clip">
+    <span class="num">8</span>
+    <video data-src="/films/sb1_clips/v9_abstract_originals/clip-08.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-08.mp4</strong> · electromagnetic · v9 abstract</span></div>
+  </div>
+<div class="clip">
+    <span class="num">14</span>
+    <video data-src="/films/sb1_clips/v9_abstract_originals/clip-14.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-14.mp4</strong> · data trails / grid · v9 abstract</span></div>
+  </div>
+<div class="clip">
+    <span class="num">17</span>
+    <video data-src="/films/sb1_clips/v9_abstract_originals/clip-17.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-17.mp4</strong> · cyan flow→city · v9 abstract</span></div>
+  </div>
+<div class="clip">
+    <span class="num">23</span>
+    <video data-src="/films/sb1_clips/v9_abstract_originals/clip-23.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-23.mp4</strong> · stadium bowl · v9 abstract</span></div>
+  </div>
+<div class="clip">
+    <span class="num">29</span>
+    <video data-src="/films/sb1_clips/v9_abstract_originals/clip-29.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-29.mp4</strong> · keynote pull-back · v9 abstract</span></div>
+  </div>
+<div class="clip">
+    <span class="num">30</span>
+    <video data-src="/films/sb1_clips/v9_abstract_originals/clip-30.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-30.mp4</strong> · stage finale · v9 abstract</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Text-artifact archive · had GE/Atlanta text in early gens</h2>
+  <p>Replaced when anti-text prompts were added.</p>
+</div>
+<div class="grid">
+<div class="clip">
+    <span class="num">16</span>
+    <video data-src="/films/sb1_clips/v3_text_artifacts/clip-16.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-16.mp4</strong> · southeast US · had text artifact</span></div>
+  </div>
+<div class="clip">
+    <span class="num">26</span>
+    <video data-src="/films/sb1_clips/v3_text_artifacts/clip-26.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-26.mp4</strong> · atrium · had text artifact</span></div>
+  </div>
+<div class="clip">
+    <span class="num">29</span>
+    <video data-src="/films/sb1_clips/v3_text_artifacts/clip-29.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-29.mp4</strong> · keynote pull-back · had text artifact</span></div>
+  </div>
+<div class="clip">
+    <span class="num">30</span>
+    <video data-src="/films/sb1_clips/v3_text_artifacts/clip-30.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-30.mp4</strong> · stage finale · had text artifact</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Earth · original eastward rotation</h2>
+  <p>Reversed to westward (toward US) per direction. Original kept here.</p>
+</div>
+<div class="grid">
+<div class="clip">
+    <span class="num">01</span>
+    <video data-src="/films/sb1_clips/clip-01.east-rotation.bak.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-01 · east rotation</strong></span></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Earlier static / intro generations</h2>
+  <p>Pre-motion-rewrite. Near-static, replaced in the motion-explicit regen pass.</p>
+</div>
+<div class="grid">
+<div class="clip">
+    <span class="num">1</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-01.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-01.mp4</strong> · earth · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">2</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-02.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-02.mp4</strong> · zoom→facility · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">3</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-03.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-03.mp4</strong> · turbine coupling · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">4</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-04.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-04.mp4</strong> · combustion ring · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">5</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-05.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-05.mp4</strong> · rotor blades · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">6</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-06.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-06.mp4</strong> · rotor spinning · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">7</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-07.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-07.mp4</strong> · generator interior · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">8</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-08.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-08.mp4</strong> · electromagnetic · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">9</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-09.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-09.mp4</strong> · electricity in copper · v2 static</span></div>
+  </div>
+<div class="clip">
+    <span class="num">10</span>
+    <video data-src="/films/sb1_clips/v2_static/clip-10.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-10.mp4</strong> · switchyard · v2 static</span></div>
+  </div>
+</div>
+
+<div class="grid">
+<div class="clip">
+    <span class="num">01</span>
+    <video data-src="/films/sb1_clips/v3_intro_short/clip-01.mp4" autoplay controls muted loop playsinline preload="auto"></video>
+    <div class="meta"><span><strong>clip-01 · v3 intro short</strong></span></div>
+  </div>
+</div>
+
+<script>
+// Lazy-load: only start fetching the videos that are visible.
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const v = e.target;
+      if (!v.dataset.loaded) {
+        v.src = v.dataset.src;
+        v.dataset.loaded = '1';
+        v.addEventListener('loadeddata', () => v.play().catch(() => {}), { once: true });
+        io.unobserve(v);
+      }
+    }
+  });
+}, { rootMargin: '600px' });
+document.querySelectorAll('video[data-src]').forEach(v => io.observe(v));
+</script>
+</body>
+</html>

@@ -26,3 +26,11 @@ films/sb1_clips/*.opname
 .vercel/
 .vercel
 .env*.local
+
+# --- local source + archive (not deployed) ---
+_archive/
+_source/
+storyboard-4/3to1-4k/
+films/sb4_clips_runway/*.mp4
+films/sb4_clips_runway/*.json
+.gstack/
