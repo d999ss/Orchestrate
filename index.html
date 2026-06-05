@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Orchestrate 2026</title>
+<link rel="icon" href="/bttr-favicon-dark.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #04090b;
+    --fg: #cdebe7;
+    --fg-dim: #7aa9a4;
+    --accent: #4ed9c6;
+    --line: #14302e;
+    --card: #060f11;
+    --display: 'Bebas Neue', 'Helvetica Neue', system-ui, sans-serif;
+    --body: 'Inter', ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; display: flex; flex-direction: column; }
+
+  /* Top bar — logo left, single menu button right (all links tucked inside) */
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 22px 40px; position: relative; z-index: 50; }
+  .topbar .logo { color: #fff; text-decoration: none; display: inline-flex; }
+  .menu-wrap { position: relative; }
+  .menu-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--fg-dim);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 9px 16px; cursor: pointer;
+    font-family: var(--body); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; transition: 160ms;
+  }
+  .menu-btn:hover, .menu-btn[aria-expanded="true"] { color: var(--accent); border-color: var(--accent); }
+  .menu-btn .bars { display: inline-flex; flex-direction: column; gap: 3px; }
+  .menu-btn .bars span { width: 16px; height: 1.5px; background: currentColor; display: block; }
+
+  .menu-panel {
+    position: absolute; top: calc(100% + 10px); right: 0;
+    min-width: 220px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px; opacity: 0; visibility: hidden;
+    transform: translateY(-6px); transition: 140ms; box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+  }
+  .menu-panel.open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .menu-group-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-dim); padding: 10px 12px 4px; }
+  .menu-panel a {
+    display: block; padding: 9px 12px; border-radius: 5px;
+    color: var(--fg); text-decoration: none;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em; transition: 120ms;
+  }
+  .menu-panel a:hover { background: rgba(78,217,198,0.08); color: var(--accent); }
+  .menu-sep { height: 1px; background: var(--line); margin: 6px 4px; }
+
+  /* Stage — one player, centered */
+  main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 40px 56px; }
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; text-align: center; }
+  .player-wrap {
+    width: 100%; max-width: 1280px; aspect-ratio: 16 / 9; position: relative;
+    background: #000; border: 1px solid var(--line); border-radius: 8px;
+    overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+  }
+  video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+
+  /* Rendering / placeholder state shown until the final cut is dropped in */
+  .pending {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px; text-align: center;
+    background: radial-gradient(120% 120% at 50% 40%, #08161a 0%, #04090b 70%);
+  }
+  .pending .title { font-family: var(--display); font-size: clamp(34px, 5vw, 64px); letter-spacing: 0.02em; color: var(--fg); }
+  .pending .sub { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-dim); }
+  .pending .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(78,217,198,0.5); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(78,217,198,0.5);} 70% { box-shadow: 0 0 0 14px rgba(78,217,198,0);} 100% { box-shadow: 0 0 0 0 rgba(78,217,198,0);} }
+  .pending .path { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--fg-dim); }
+
+  .stage-caption { margin-top: 22px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-dim); }
+
+  @media (max-width: 640px) {
+    .topbar { padding: 18px 20px; }
+    main { padding: 8px 16px 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="logo" href="/" aria-label="Bttr">
+    <svg width="32" height="25" viewBox="0 0 51 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M18.2584 3.61619V18.182H3.63786V3.61619H18.2584ZM21.8983 0H0V21.7982H21.8983V0Z" fill="currentColor"/>
+      <path d="M39.1241 7.32615C43.6689 7.32615 47.3535 10.9888 47.3535 15.5065C47.3535 20.0243 43.6689 23.6869 39.1241 23.6869C34.5793 23.6869 30.8947 20.0243 30.8947 15.5065C30.8947 10.9888 34.5793 7.32615 39.1241 7.32615ZM39.1241 3.70996C32.5804 3.70996 27.2568 9.00185 27.2568 15.5065C27.2568 22.0112 32.5804 27.3031 39.1241 27.3031C45.6678 27.3031 50.9914 22.0112 50.9914 15.5065C50.9914 9.00185 45.6678 3.70996 39.1241 3.70996Z" fill="currentColor"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.18945 29.0479C9.62612 35.1602 14.7684 40.0006 21.0267 40.0006C25.8178 40.0006 29.9525 37.1643 31.8254 33.0918L28.6581 31.2632C27.4399 34.2651 24.4833 36.3844 21.0267 36.3844C16.7685 36.3844 13.2655 33.1691 12.8405 29.0479H9.18945Z" fill="currentColor"/>
+    </svg>
+  </a>
+  <div class="menu-wrap">
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-haspopup="true">
+      <span class="bars"><span></span><span></span><span></span></span>
+      Menu
+    </button>
+    <div class="menu-panel" id="menuPanel" role="menu">
+      <div class="menu-group-label">Storyboards</div>
+      <a href="/storyboard-1/" role="menuitem">Storyboard 1</a>
+      <a href="/storyboard-2/" role="menuitem">Storyboard 2</a>
+      <a href="/storyboard-3/" role="menuitem">Storyboard 3</a>
+      <a href="/storyboard-4/" role="menuitem">Storyboard 4</a>
+      <div class="menu-sep"></div>
+      <div class="menu-group-label">Films</div>
+      <a href="/film-1/" role="menuitem">Film 1</a>
+      <a href="/film-2/" role="menuitem">Film 2</a>
+      <a href="/film-3/" role="menuitem">Film 3</a>
+      <a href="/film-4/" role="menuitem">Film 4</a>
+      <a href="/film-5/" role="menuitem">Film 5</a>
+      <div class="menu-sep"></div>
+      <div class="menu-group-label">Tools</div>
+      <a href="/texture/" role="menuitem">Texture Engine</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="eyebrow">Orchestrate 2026 · Final Film</div>
+  <div class="player-wrap">
+    <video id="finalVideo" controls preload="metadata" playsinline poster="/films/orchestrate_final_poster.jpg">
+      <source src="/films/orchestrate_final.mp4" type="video/mp4" />
+    </video>
+    <div class="pending" id="pending">
+      <div class="pulse"></div>
+      <div class="title">Final Cut Rendering</div>
+      <div class="sub">Live the moment it lands</div>
+      <div class="path">films/orchestrate_final.mp4</div>
+    </div>
+  </div>
+  <div class="stage-caption" id="caption">Drop the render at films/orchestrate_final.mp4</div>
+</main>
+
+<script>
+  // Menu toggle
+  var btn = document.getElementById('menuBtn');
+  var panel = document.getElementById('menuPanel');
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function () {
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { panel.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Hide the pending overlay once the final film actually loads; keep it if the file isn't there yet.
+  var v = document.getElementById('finalVideo');
+  var pending = document.getElementById('pending');
+  var caption = document.getElementById('caption');
+  function filmReady() {
+    pending.style.display = 'none';
+    caption.textContent = 'Orchestrate 2026 · The Electron';
+  }
+  v.addEventListener('loadeddata', filmReady);
+  v.addEventListener('canplay', filmReady);
+  // If the source 404s, the <source> errors — leave the rendering state visible.
+</script>
+</body>
+</html>
